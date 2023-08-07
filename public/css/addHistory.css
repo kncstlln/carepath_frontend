@@ -1,0 +1,22 @@
+.createRecord{
+    border:1px solid black;
+    border-radius: 20px;
+}
+
+.cancelButton{
+    height: 50px;
+    width: 150px;
+}
+
+.submitButton{
+    height: 50px;
+    width: 150px;
+    background-color:#980B0B;
+    color:white;
+}
+
+.submitButton:hover{
+    height: 50px;
+    background-color:#680c0c;
+    color:white;
+}

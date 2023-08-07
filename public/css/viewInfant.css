@@ -1,0 +1,13 @@
+.txtBold{
+    font-weight: bold;
+}
+
+.createRecord{
+    border:1px solid black;
+    border-radius: 20px;
+}
+
+
+.tableHeading{
+    background-color:#863A3A;
+}
