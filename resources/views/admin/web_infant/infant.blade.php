@@ -69,8 +69,8 @@
                 <td>
                   <table>
                     <tr>
-                      <td class="text-center  align-middle"><a href="viewInfant"><i class="fa-solid fa-eye me-2"></i></a></td>
-                      <td class="text-center  align-middle"><a href="editInfant"><i class='bx bxs-pencil me-2'></i></a></td>
+                      <td class="text-center  align-middle"><a href="viewInfant.html"><i class="fa-solid fa-eye me-2"></i></a></td>
+                      <td class="text-center  align-middle"><a href="editInfant.html"><i class='bx bxs-pencil me-2'></i></a></td>
                       <td class="text-center  align-middle"><i class="fa-solid fa-trash"></i></td>
                     </tr>
                   </table>
@@ -88,8 +88,8 @@
                 <td>
                   <table>
                     <tr>
-                      <td class="text-center align-middle"><a href="viewInfant"><i class="fa-solid fa-eye me-2"></i></a></td>
-                      <td class="text-center align-middle"><a href="editInfant"><i class='bx bxs-pencil me-2'></i></a></td>
+                      <td class="text-center align-middle"><a href="viewInfant.html"><i class="fa-solid fa-eye me-2"></i></a></td>
+                      <td class="text-center align-middle"><a href="editInfant.html"><i class='bx bxs-pencil me-2'></i></a></td>
                       <td class="text-center align-middle"><i class="fa-solid fa-trash"></i></td>
                     </tr>
                   </table>

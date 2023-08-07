@@ -17,15 +17,15 @@
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
     />
-    <link href="{{ asset('/main.css') }}" rel="stylesheet" />
-    <script src="{{ asset('/main.js') }}"></script>
+    <link href="main.css" rel="stylesheet" />
+    <script src="main.js"></script>
     <title>CarePath</title>
   </head>
   <body>
     <nav class="navbar navbar-expand-lg sticky-top" style="font-family: 'Montserrat', sans-serif;">
       <div class="container-fluid">
         <a class="navbar-brand" style="color: #e61414" href="#">
-          <img src="admin/images/logo.png"alt="Logo" width="35" height="35" class="d-inline-block align-text-middle"/> CarePath
+          <img src="images/logo.png"alt="Logo" width="35" height="35" class="d-inline-block align-text-middle"/> CarePath
         </a>
         <button class="navbar-toggler btnToggle" type="button" data-bs-toggle="collapse" data-bs-target="#navbarToggler" aria-controls="navbarToggler" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
@@ -33,7 +33,7 @@
         <div class="collapse navbar-collapse" id="navbarToggler">
           <ul class="navbar-nav ms-auto me-auto">
             <li class="nav-item">
-              <a class="nav-link" aria-current="page" href="#home">Home</a>
+              <a class="nav-link" href="#home">Home</a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="#about">About Us</a>
@@ -45,9 +45,9 @@
               <a class="nav-link" href="#contact">Contact Us</a>
             </li>
           </ul>
-          <form>
+   
             <a class="btn rounded btnColor" href="#" role="button">Login</a>
-          </form>
+
         </div>
       </div>
     </nav>
@@ -114,7 +114,7 @@
 
     <div class="container aboutUs" id="about">
       <div class="row observe mb-5">
-        <div class="col-md-6 mt-3 position-relative start">
+        <div class="col-md-6 position-relative start">
           <span class="about-us-title">CAREPATH</span>
           <span class="subtitle">: Protecting Little Ones, Empowering the future!</span>
           <div class="row mt-3">
@@ -162,35 +162,41 @@
             </div>
           </div>
         </div>
-        <div class="col-sm image">
+        <div class="col ms-5 ps-5 image">
           <img
             src="banner.png"
-            class="img-fluid position-relative img1"
-            width="320"
+            class="img-fluid"
+            width="250"
           />
           <img
             src="banner1.JPG"
-            class="img-fluid position-relative img2 z-2"
-            width="320"
+            class="img-fluid"
+            width="250"
           />
           <img
             src="banner2.png"
-            class="img-fluid position-relative img3 z-1"
-            width="320"
+            class="img-fluid third"
+            width="250"
+          />
+          <img
+            src="banner2.png"
+            class="img-fluid fourth"
+            width="250"
           />
         </div>
       </div>
     </div>
-    <section class="services min-vh-100 position-relative ps-5 pe-5" id="services">
+    <section class="services min-vh-100 pb-5 position-relative" id="services" >
       <div class="custom-shape-divider-top-1690472653">
         <svg data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none">
             <path d="M649.97 0L550.03 0 599.91 54.12 649.97 0z" class="shape-fill"></path>
         </svg>
       </div>
-      <div class="row">
+      <div class="container-fluid">
         <div class="row mt-5">
-          <div class="col text-center">SERVICES</div>
+          <div class="col text-center serviceTitle">SERVICES</div>
         </div>
+        <div class="row">
           <div class="col-md mt-2 d-flex justify-content-center">
             <div class="card animate__animated animate__fadeInLeft" style="width: 18rem;">
               <img src="banner.png" class="card-img-top" alt="...">
@@ -227,15 +233,16 @@
               </div>
             </div>
           </div>
-          <figure class="text-center">
+        </div>
+      </div>
+        <figure class="text-center">
             <blockquote class="blockquote">
               <p><i>"The greatest gift you can give your family and the world is a healthy you.” </i></p>
             </blockquote>
             <figcaption class="blockquote-footer">
               <cite title="Source Title">Joyce Meyer</cite>
             </figcaption>
-          </figure>
-        </div>
+        </figure>
       </section>
       <div class="container-md mt-5 mb-5" id="contact">
         <div class="row">
@@ -252,7 +259,7 @@
             </div>
           </div>
           <div class="col-4 mt-4">
-            <img src="admin/images/AC_LOGO.png" class="img-fluid float-end" width="150"/>
+            <img src="images/AC_LOGO.png" class="img-fluid float-end" width="150"/>
           </div>
         </div>
       </div>

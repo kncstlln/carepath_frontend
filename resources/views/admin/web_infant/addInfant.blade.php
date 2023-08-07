@@ -111,7 +111,7 @@
 
                     <div class="row mb-4 justify-content-center text-center">
                       <div class="col-md-3 col-lg-2 mt-1">
-                        <a href="infant"><button type="button" class="btn btn-secondary cancelButton">Cancel</button></a>
+                        <a href="infant.html"><button type="button" class="btn btn-secondary cancelButton">Cancel</button></a>
                       </div>
                       <div class="col-md-3 col-lg-2 mt-1">
                         <button type="button" class="btn submitButton">Submit</button>

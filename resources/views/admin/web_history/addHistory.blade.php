@@ -17,11 +17,11 @@
   @include('sidebar')
         <div class="container-sm mt-4">
             <div class="row">
-                <div class="col-sm mb-5" id="infantsTxt">Edit Vaccination History Record</div>
+                <div class="col-sm mb-5" id="infantsTxt">Create Vaccination History Record</div>
             </div>
             <div class="container-sm createRecord">
                 <div class="row">
-                    <div class="col h2 mb-5 mt-3 text-center">Edit Vaccination History Record</div>
+                    <div class="col h2 mb-5 mt-3 text-center">Create Vaccination History Record</div>
                 </div>
                 <form>
                   <div class="row mb-4">
@@ -100,10 +100,10 @@
                     </div>
                   </div>
                   <div class="row mb-4 justify-content-center text-center">
-                    <div class="col-md-3 col-lg-2 mt-1">
+                    <div class="col-lg-2 mt-1">
                       <a href="{{ url('/history') }}"><button type="button" class="btn btn-secondary cancelButton">Cancel</button></a>
                     </div>
-                    <div class="col-md-3 col-lg-2 mt-1">
+                    <div class="col-lg-2 mt-1">
                       <button type="button" class="btn submitButton">Submit</button>
                     </div>
                   </div>

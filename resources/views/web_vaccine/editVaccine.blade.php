@@ -24,15 +24,15 @@
                     <div class="col h2 mb-5 mt-3 text-center">Edit Vaccine Record</div>
                 </div>
                 <form>
-                  <div class="row mb-4">
-                      <div class="col-md-2 ms-3 pt-1 text-center">Name of Vaccine: </div>
-                      <div class="col-md-3">
+                <div class="row mb-4">
+                      <div class="col-md-3  pt-1 text-center ">Name of Vaccine: </div>
+                      <div class="col-md-4">
                         <input class="form-control" type="text" placeholder="Vaccine Name" aria-label="default input" required/>
                       </div>
                   </div>
                   <div class="row mb-2">
-                    <div class="col-md-2 ms-3 pt-2 text-center">Vaccination Doses:</div>
-                    <div class="col-md-1">
+                    <div class="col-md-4 col-xl-3 pt-2 text-center text-md-start ps-md-3 ps-lg-5">Vaccination Doses:</div>
+                    <div class="col-md-2">
                         <select class="form-select" aria-label="Default select example">
                             <option selected></option>
                             <option value="1">1</option>
@@ -42,21 +42,21 @@
                     </div>
                   </div>
                   <div class="row mb-1">
-                    <div class="col-md-3 pt-2 text-center">Vaccination Date from Birth:</div>
+                    <div class="col-md-5 col-xl-4 pt-2 text-center text-md-start ps-md-3  ps-lg-5">Vaccination Date from Birth:</div>
                   </div>
                   <div class="row mb-2">
                     <div class="col-md-2 pt-2 text-center">Dose 1:</div>
                     <div class="col-md-1">
                         <input class="form-control" type="text" placeholder="" aria-label="default input" required/>
                     </div>
-                    <div class="col-md-2 pt-2 text-center">months from birth</div>
+                    <div class="col-md-3 pt-2 text-center">months from birth</div>
                   </div>
     
-                  <div class="row mb-4 justify-content-center text-center">
-                    <div class="col-lg-2 mt-1">
-                      <a href="{{ url('/editVaccine') }}"><button type="button" class="btn btn-secondary cancelButton">Cancel</button></a>
+                  <div class="row mb-4 justify-content-center text-center text-lg-center">
+                    <div class="col-md-3 col-lg-2 mt-1">
+                      <a href="{{ url('/addVaccine') }}"><button type="button" class="btn btn-secondary cancelButton">Cancel</button></a>
                     </div>
-                    <div class="col-lg-2 mt-1">
+                    <div class="col-md-3 col-lg-2 mt-1">
                       <button type="button" class="btn submitButton">Submit</button>
                     </div>
                   </div>

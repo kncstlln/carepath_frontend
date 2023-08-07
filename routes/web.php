@@ -14,6 +14,8 @@ use App\Http\Controllers\WebController;
 |
 */
 
+
+Route::get('/', [WebController::class,'main']);
 Route::get('/dashboard', [WebController::class,'index']);
 Route::get('/barangay', [WebController::class,'barangay']);
 Route::get('/addBarangay', [WebController::class,'addBarangay']);

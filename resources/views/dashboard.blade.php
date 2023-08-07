@@ -4,16 +4,16 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
-    <link href="{{ asset('css/sidebar.css') }}" rel="stylesheet"/>
-    <script src="{{ asset('js/sidebar.js') }}" defer></script>
-    <link href="{{ asset('css/dashboard.css') }}" rel="stylesheet"/>
+    <link href="css/sidebar.css" rel="stylesheet"/>
+    <script src="js/sidebar.js" defer></script>
+    <link href="css/dashboard.css" rel="stylesheet"/>
     <link flex href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet" />
-    <script src="{{ asset('js/dashboard.js') }}"></script>
+    <script src="js/dashboard.js"></script>
     <title>Dashboard</title>
 </head>
 <body>
-@include('sidebar')
-      <div class="container-sm"> 
+  @include('sidebar')
+      <div class="container"> 
         <div class="row mt-3 mb-5" id="rectangle">
           <div class="col-sm-10" id="user">Hello Varona,
             <div class="row">
@@ -22,19 +22,19 @@
               </div>
             </div>
           </div>
-          <div class="col-sm-2 mt-2"><img src="images/AC_LOGO.png" class="aclogo" width="139px" height="139px"/></div>
+          <div class="col-sm-2 mt-2 d-none d-lg-block"><img src="images/AC_LOGO.png" width="139px" height="139px"/></div>
         </div>
           <div class="row g-4 mb-5 text-center">
-            <div class="col-sm">
+            <div class="col-6 col-md-3">
               <div class="p-1 pt-4" id="listbox1"><i class='bx bx-injection'></i>  Vaccine Listed</div>
             </div>
-            <div class="col-sm">
+            <div class="col-6 col-md-3">
               <div class="p-1 pt-4" id="listbox2">Barangay List</div>
             </div>
-            <div class="col-sm">
+            <div class="col-6 col-md-3">
               <div class="p-1 pt-4" id="listbox3">Partially Vaccinated</div>
             </div>
-            <div class="col-sm">
+            <div class="col-6 col-md-3">
               <div class="p-1 pt-4" id="listbox4">Fully Vaccinated</div>
             </div>
           </div>

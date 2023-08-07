@@ -6,6 +6,13 @@ use Illuminate\Http\Request;
 
 class WebController extends Controller
 {
+
+    public function main()
+    {
+  
+        return view('main');
+    }
+    
     public function index()
     {
   

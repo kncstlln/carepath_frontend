@@ -14,7 +14,7 @@
     <title>Add Infant</title>    
 </head>
   <body>
-  <!-- @include('sidebar') -->
+  @include('sidebar')
         <div class="container-sm mt-4">
             <div class="row">
                 <div class="col-sm mb-5" id="infantsTxt">View Vaccine Record</div>
@@ -27,24 +27,24 @@
                 <div>
                     <form>
                         <div class="row mb-4">
-                            <div class="col-md-3 txtBold pt-1">Name of Vaccine:</div>
-                            <div class="col-md-5 pt-1">Pentavalent Vaccine </div>
+                            <div class="col-md-2 txtBold pt-1">Name of Vaccine:</div>
+                            <div class="col-md-3 pt-1">Pentavalent Vaccine </div>
                         </div>
                         <div class="row mb-4">
-                            <div class="col-md-4 col-lg-3 pt-2 txtBold">Vaccination Doses:  </div>
+                            <div class="col-md-2 pt-2 txtBold">Vaccination Doses:  </div>
                             <div class="col-md-1 pt-2 "> 3</div>
                         </div>
                         <div class="row mb-4">
                             <div class="col-md-2 pt-2 txtBold">Dose 1:  </div>
-                            <div class="col-md-4 col-lg-3 pt-2 ">1.5 months from birth</div>
+                            <div class="col-md-3 pt-2 ">1.5 months from birth</div>
                         </div>
                         <div class="row mb-4">
                             <div class="col-md-2 pt-2 txtBold">Dose 2:  </div>
-                            <div class="col-md-4 col-lg-3 pt-2 ">2.5 months from birth</div>
+                            <div class="col-md-3 pt-2 ">2.5 months from birth</div>
                         </div>
                         <div class="row mb-4">
                             <div class="col-md-2 pt-2 txtBold">Dose 3:  </div>
-                            <div class="col-md-4 col-lg-3 pt-2 ">3.5 months from birth</div>
+                            <div class="col-md-3 pt-2 ">3.5 months from birth</div>
                         </div>
                       </div>
                     </form>

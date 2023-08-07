@@ -4,25 +4,28 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
-    <link href="../css/sidebar.css" rel="stylesheet"/>
-    <script src="../js/sidebar.js" defer></script>
-    <link href="../css/dashboard.css" rel="stylesheet"/>
-    <link href="../css/vaccine.css" rel="stylesheet"/>
+    <link href="css/sidebar.css" rel="stylesheet"/>
+    <script src="js/sidebar.js" defer></script>
+    <link href="css/dashboard.css" rel="stylesheet"/>
+    <link href="css/vaccine.css" rel="stylesheet"/>
+    <link href="css/brgySelect.css" rel="stylesheet"/>
     <link flex href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet" />
     <script src="https://kit.fontawesome.com/2eead9cc17.js" crossorigin="anonymous"></script>
-    <script src="../js/dashboard.js"></script>
+    <script src="js/dashboard.js"></script>
     <title>Vaccine List</title>
 </head>
 <body>
 @include('sidebar')
     <div class="container-sm mt-4" id="targetclientlist">
         <div class="row mb-2">
-            <div class="col-sm" id="VaccinesTxt">List of Vaccines</div>
+            <div class="col-sm" id="infantsTxt">Upcoming Vaccinations</div>
         </div>
-        <div class="row">
-            <div class="col-sm">
-              <a class="btn btn-primary btn-lg float-end mb-4" href="{{ url('/addVaccine') }}" role="button" id="button-add">Add New +</a>
-            </div>
+        <div class="row mb-5">
+            <select class="form-select form-select-lg mb-3 selectSize" aria-label=".form-select-lg example">
+                <option selected value="1">Lourdes NorthWest</option>
+                <option value="2">Ninoy Aquino(Marisol)</option>
+                <option value="3">Salapungan</option>
+            </select>
         </div>
       </div>
       <div class="container-md">
@@ -31,8 +34,10 @@
             <thead>
               <tr class="table-danger">
                 <th scope="col">No.</th>
-                <th scope="col">Date Created</th>
-                <th scope="col">Name</th>
+                <th scope="col">Birth Date</th>
+                <th scope="col">Individual</th>
+                <th scope="col">Vaccine/s</th>
+                <th scope="col">Vaccination Day</th>
                 <th scope="col">Status</th>
                 <th scope="col">Action</th>
               </tr>
@@ -41,62 +46,44 @@
               <tr>
                 <th scope="row">1</th>
                 <td class="table-secondary align-middle">01/13/2023</td>
-                <td class="align-middle">DPT-Hib-HepB</td>
+                <td class="align-middle">Kane Castillano</td>
+                <td class="table-secondary align-middle">Pentavalent Vaccine, OPV, PCV</td>
+                <td class="align-middle">06/15/2023</td>
                 <td class="table-secondary tableSize">
                     <select class="form-select" aria-label="Default select example">
-                        <option value="1">Active</option>
+                        <option value="1">Informed</option>
                         <option value="2">Inactive</option>
                     </select>
                 </td>
-                <td class="align-middle">
-                  <table>
-                    <tr>
-                      <td class="align-middle"><a href="viewVaccine"><i class="fa-solid fa-eye me-2"></i></a></td>
-                      <td class="align-middle"><a href="editVaccine"><i class='bx bxs-pencil me-2'></i></a></td>
-                      <td class="align-middle"><i class="fa-solid fa-trash"></i></td>
-                    </tr>
-                  </table>
-                </td>             
+                <td class="align-middle"><i class="fa-solid fa-check fa-lg me-2"></i><i class="fa-solid fa-xmark fa-lg"></i></td>
               </tr>
               <tr>
-                <th scope="row">2</th>
+                <th scope="row">1</th>
                 <td class="table-secondary align-middle">01/13/2023</td>
-                <td class="align-middle">PCV Vaccine</td>
-                <td class="table-secondary">
+                <td class="align-middle">Kane Castillano</td>
+                <td class="table-secondary align-middle">Pentavalent Vaccine, OPV, PCV</td>
+                <td class="align-middle">06/15/2023</td>
+                <td class="table-secondary tableSize">
                     <select class="form-select" aria-label="Default select example">
-                    <option class="activeColor" selected value="1">Active</option>
-                    <option value="2">Inactive</option>
-                  </select>
+                        <option value="1">Informed</option>
+                        <option value="2">Inactive</option>
+                    </select>
                 </td>
-                <td class="align-middle">
-                  <table>
-                    <tr>
-                      <td class=><a href="viewVaccine"><i class="fa-solid fa-eye me-2"></i></a></td>
-                      <td class=><a href="editVaccine"><i class='bx bxs-pencil me-2'></i></a></td>
-                      <td class=><i class="fa-solid fa-trash"></i></td>
-                    </tr>
-                  </table>
-                </td>
+                <td class="align-middle"><i class="fa-solid fa-check fa-lg me-2"></i><i class="fa-solid fa-xmark fa-lg"></i></td>
               </tr>
               <tr>
-                <th scope="row">3</th>
+                <th scope="row">1</th>
                 <td class="table-secondary align-middle">01/13/2023</td>
-                <td class="align-middle">Oral Polio Vaccine</td>
-                <td class="table-secondary">
-                   <select class="form-select" aria-label="Default select example">
-                    <option value="1">Active</option>
-                    <option value="2">Inactive</option>
-                  </select>
+                <td class="align-middle">Kane Castillano</td>
+                <td class="table-secondary align-middle">Pentavalent Vaccine, OPV, PCV</td>
+                <td class="align-middle">06/15/2023</td>
+                <td class="table-secondary tableSize">
+                    <select class="form-select" aria-label="Default select example">
+                        <option value="1">Informed</option>
+                        <option value="2">Inactive</option>
+                    </select>
                 </td>
-                <td class="align-middle">
-                  <table>
-                    <tr>
-                      <td class=><a href="viewVaccine"><i class="fa-solid fa-eye me-2"></i></a></td>
-                      <td class=><a href="editVaccine"><i class='bx bxs-pencil me-2'></i></a></td>
-                      <td class=><i class="fa-solid fa-trash"></i></td>
-                    </tr>
-                  </table>
-                </td>
+                <td class="align-middle"><i class="fa-solid fa-check fa-lg me-2"></i><i class="fa-solid fa-xmark fa-lg"></i></td>
               </tr>
             </tbody>
           </table>

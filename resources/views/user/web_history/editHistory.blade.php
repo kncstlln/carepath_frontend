@@ -100,10 +100,10 @@
                     </div>
                   </div>
                   <div class="row mb-4 justify-content-center text-center">
-                    <div class="col-md-3 col-lg-2 mt-1">
+                    <div class="col-lg-2 mt-1">
                       <a href="{{ url('/history') }}"><button type="button" class="btn btn-secondary cancelButton">Cancel</button></a>
                     </div>
-                    <div class="col-md-3 col-lg-2 mt-1">
+                    <div class="col-lg-2 mt-1">
                       <button type="button" class="btn submitButton">Submit</button>
                     </div>
                   </div>

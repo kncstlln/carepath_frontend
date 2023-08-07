@@ -63,7 +63,7 @@
           </table>
         </div>
         <nav aria-label="Page navigation">
-          <ul class="pagination justify-content-center justify-content-md-end mt-4">
+          <ul class="pagination justify-content-end mt-4">
             <li class="page-item disabled">
               <a class="page-link paginationTxt">Previous</a>
             </li>

@@ -25,23 +25,23 @@
                 </div>
                 <form>
                   <div class="row mb-4">
-                      <div class="col-md-4 col-lg-3 pt-1 text-center">Name of Barangay: </div>
-                      <div class="col-md-4 col-lg-3">
+                      <div class="col-md-2 ms-3 pt-1 text-center">Name of Barangay: </div>
+                      <div class="col-md-3">
                         <input class="form-control" type="text" placeholder="Barangay Name" aria-label="default input" required/>
                       </div>
                   </div>
                   <div class="row mb-2">
-                    <div class="col-md-4 col-lg-3 pt-2 text-center">Location:</div>
-                    <div class="col-md-4 col-lg-3">
+                    <div class="col-md-2 ms-3 pt-2 text-center">Location:</div>
+                    <div class="col-md-3">
                         <input class="form-control" type="text" placeholder="Location" aria-label="default input" required/>
                       </div>
                   </div>
     
                   <div class="row mb-4 mt-5 justify-content-center text-center">
-                    <div class="col-md-3 col-lg-2 mt-1">
+                    <div class="col-lg-2 mt-1">
                       <a href="{{ url('/barangay') }}"><button type="button" class="btn btn-secondary cancelButton">Cancel</button></a>
                     </div>
-                    <div class="col-md-3 col-lg-2 mt-1">
+                    <div class="col-lg-2 mt-1">
                       <button type="button" class="btn submitButton">Submit</button>
                     </div>
                   </div>

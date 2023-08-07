@@ -17,46 +17,46 @@
   @include('sidebar')
         <div class="container-sm mt-4">
             <div class="row">
-                <div class="col-sm mb-5" id="infantsTxt">Add User</div>
+                <div class="col-sm mb-5" id="infantsTxt">Create Vaccine Record</div>
             </div>
             <div class="container-sm createRecord">
                 <div class="row">
-                    <div class="col h2 mb-5 mt-3 text-center">Add User</div>
+                    <div class="col h2 mb-5 mt-3 text-center">Create Vaccine Record</div>
                 </div>
                 <form>
                   <div class="row mb-4">
-                      <div class="col-md-2 pt-1 text-center">Name of Barangay: </div>
+                      <div class="col-md-2 ms-3 pt-1 text-center">Name of Vaccine: </div>
                       <div class="col-md-3">
-                        <input class="form-control" type="text" placeholder="Barangay Name" aria-label="default input" required/>
+                        <input class="form-control" type="text" placeholder="Vaccine Name" aria-label="default input" required/>
                       </div>
                   </div>
-                  <div class="row mb-4">
-                    <div class="col-md-2  pt-2 text-center">Password:</div>
-                    <div class="col-md-5 pt-2 text-center">
-                        <input type="password" id="inputPassword5" class="form-control" aria-labelledby="passwordHelpBlock">
-                        <div id="passwordHelpBlock" class="form-text">
-                        Your password must be 8-20 characters long, contain letters and numbers, and must not contain spaces, special characters, or emoji.
-                        </div>
+                  <div class="row mb-2">
+                    <div class="col-md-2 ms-3 pt-2 text-center">Vaccination Doses:</div>
+                    <div class="col-md-1">
+                        <select class="form-select" aria-label="Default select example">
+                            <option selected></option>
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                          </select>
                     </div>
                   </div>
-                  <div class="row mb-4">
-                    <div class="col-md-2  pt-1 text-center">Location: </div>
-                    <div class="col-md-3">
-                      <input class="form-control" type="text" placeholder="Location" aria-label="default input" required/>
-                    </div>
+                  <div class="row mb-1">
+                    <div class="col-md-3 pt-2 text-center">Vaccination Date from Birth:</div>
                   </div>
-                  <div class="row mb-4">
-                    <div class="col-md-2 pt-1 text-center">Position: </div>
-                    <div class="col-md-3">
-                      <input class="form-control" type="text" placeholder="Position" aria-label="default input" required/>
+                  <div class="row mb-2">
+                    <div class="col-md-2 pt-2 text-center">Dose 1:</div>
+                    <div class="col-md-1">
+                        <input class="form-control" type="text" placeholder="" aria-label="default input" required/>
                     </div>
+                    <div class="col-md-2 pt-2 text-center">months from birth</div>
                   </div>
     
-                  <div class="row mb-4 mt-5 justify-content-center text-center">
-                    <div class="col-md-3 col-lg-2 mt-1">
-                      <a href="{{ url('/user') }}"><button type="button" class="btn btn-secondary cancelButton">Cancel</button></a>
+                  <div class="row mb-4 justify-content-center text-center">
+                    <div class="col-lg-2 mt-1">
+                      <a href="{{ url('/addVaccine') }}"><button type="button" class="btn btn-secondary cancelButton">Cancel</button></a>
                     </div>
-                    <div class="col-md-3 col-lg-2 mt-1">
+                    <div class="col-lg-2 mt-1">
                       <button type="button" class="btn submitButton">Submit</button>
                     </div>
                   </div>
