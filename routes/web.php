@@ -4,6 +4,8 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\UserController;
 
+use App\Http\Controllers\DashboardController; //sample
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -52,6 +54,9 @@ Route::get('/user/infant', [UserController::class,'infantUser']);
 Route::get('/user/viewInfant', [UserController::class,'viewInfantUser']);
 Route::get('/user/upcoming', [UserController::class,'upcomingUser']);
 Route::get('/user/missed', [UserController::class,'missedUser']);
+
+Route::get('/dashboard1', [DashboardController::class, 'index'])->name('dashboard'); //sample
+
 
 
 
