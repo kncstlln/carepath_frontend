@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
-class WebController extends Controller
+class AdminController extends Controller
 {
 
     public function main()
@@ -12,106 +12,112 @@ class WebController extends Controller
   
         return view('main');
     }
+
+    public function login()
+    {
+  
+        return view('login');
+    }
     
     public function index()
     {
   
-        return view('dashboard');
+        return view('admin/dashboard');
     }
 
     public function barangay()
     {
-        return view('web_barangay/barangay');
+        return view('admin/web_barangay/barangay');
     }
 
     public function addBarangay()
     {
-        return view('web_barangay/addBarangay');
+        return view('admin/web_barangay/addBarangay');
     }
 
     public function addHistory()
     {
-        return view('web_history/addHistory');
+        return view('admin/web_history/addHistory');
     }
 
     public function editHistory()
     {
-        return view('web_history/editHistory');
+        return view('admin/web_history/editHistory');
     }
 
     public function history()
     {
-        return view('web_history/history');
+        return view('admin/web_history/history');
     }
 
     public function viewHistory()
     {
-        return view('web_history/viewHistory');
+        return view('admin/web_history/viewHistory');
     }
 
     public function addInfant()
     {
-        return view('web_infant/addInfant');
+        return view('admin/web_infant/addInfant');
     }
 
     public function editInfant()
     {
-        return view('web_infant/editInfant');
+        return view('admin/web_infant/editInfant');
     }
 
     public function infant()
     {
-        return view('web_infant/infant');
+        return view('admin/web_infant/infant');
     }
 
     public function viewInfant()
     {
-        return view('web_infant/viewInfant');
+        return view('admin/web_infant/viewInfant');
     }
 
     public function addUser()
     {
-        return view('web_user/addUser');
+        return view('admin/web_user/addUser');
     }
 
     public function editUser()
     {
-        return view('web_user/editUser');
+        return view('admin/web_user/editUser');
     }
 
     public function user()
     {
-        return view('web_user/user');
+        return view('admin/web_user/user');
     }
 
     public function addVaccine()
     {
-        return view('web_vaccine/addVaccine');
+        return view('admin/web_vaccine/addVaccine');
     }
 
     public function editVaccine()
     {
-        return view('web_vaccine/editVaccine');
+        return view('admin/web_vaccine/editVaccine');
     }
 
     public function vaccine()
     {
-        return view('web_vaccine/vaccine');
+        return view('admin/web_vaccine/vaccine');
     }
 
     public function viewVaccine()
     {
-        return view('web_vaccine/viewVaccine');
+        return view('admin/web_vaccine/viewVaccine');
     }
 
     public function upcoming()
     {
-        return view('upcoming');
+        return view('admin/upcoming');
     }
 
     public function missed()
     {
-        return view('missed');
+        return view('admin/missed');
     }
 
 

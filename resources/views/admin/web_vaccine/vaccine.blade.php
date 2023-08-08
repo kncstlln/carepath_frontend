@@ -4,24 +4,24 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
-    <link href="../css/sidebar.css" rel="stylesheet"/>
-    <script src="../js/sidebar.js" defer></script>
-    <link href="../css/dashboard.css" rel="stylesheet"/>
-    <link href="../css/vaccine.css" rel="stylesheet"/>
+    <link href="css/admin/sidebar.css" rel="stylesheet"/>
+    <script src="js/sidebar.js" defer></script>
+    <link href="css/admin/dashboard.css" rel="stylesheet"/>
+    <link href="css/admin/vaccine.css" rel="stylesheet"/>
     <link flex href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet" />
     <script src="https://kit.fontawesome.com/2eead9cc17.js" crossorigin="anonymous"></script>
-    <script src="../js/dashboard.js"></script>
+    <script src="js/dashboard.js"></script>
     <title>Vaccine List</title>
 </head>
 <body>
-@include('sidebar')
+@include('admin/sidebar')
     <div class="container-sm mt-4" id="targetclientlist">
         <div class="row mb-2">
-            <div class="col-sm" id="infantsTxt">List of Vaccines</div>
+            <div class="col-sm" id="VaccinesTxt">List of Vaccines</div>
         </div>
         <div class="row">
             <div class="col-sm">
-              <a class="btn btn-primary btn-lg float-end mb-4" href="{{ url('/addVaccine') }}addVaccine.html" role="button" id="button-add">Add New +</a>
+              <a class="btn btn-primary btn-lg float-end mb-4" href="{{ url('/addVaccine') }}" role="button" id="button-add">Add New +</a>
             </div>
         </div>
       </div>
@@ -48,7 +48,15 @@
                         <option value="2">Inactive</option>
                     </select>
                 </td>
-                <td class="align-middle"><a href="viewVaccine.html"><i class="fa-solid fa-eye me-2"></i></a><a href="editVaccine.html"><i class='bx bxs-pencil me-2'></i></a><i class="fa-solid fa-trash"></i></td>
+                <td class="align-middle">
+                  <table>
+                    <tr>
+                      <td class="align-middle"><a href="viewVaccine"><i class="fa-solid fa-eye me-2"></i></a></td>
+                      <td class="align-middle"><a href="editVaccine"><i class='bx bxs-pencil me-2'></i></a></td>
+                      <td class="align-middle"><i class="fa-solid fa-trash"></i></td>
+                    </tr>
+                  </table>
+                </td>             
               </tr>
               <tr>
                 <th scope="row">2</th>
@@ -60,7 +68,15 @@
                     <option value="2">Inactive</option>
                   </select>
                 </td>
-                <td class="align-middle"><a href="viewVaccine.html"><i class="fa-solid fa-eye me-2"></i></a><a href="editVaccine.html"><i class='bx bxs-pencil me-2'></i></a><i class="fa-solid fa-trash"></i></td>
+                <td class="align-middle">
+                  <table>
+                    <tr>
+                      <td class=><a href="viewVaccine"><i class="fa-solid fa-eye me-2"></i></a></td>
+                      <td class=><a href="editVaccine"><i class='bx bxs-pencil me-2'></i></a></td>
+                      <td class=><i class="fa-solid fa-trash"></i></td>
+                    </tr>
+                  </table>
+                </td>
               </tr>
               <tr>
                 <th scope="row">3</th>
@@ -72,7 +88,15 @@
                     <option value="2">Inactive</option>
                   </select>
                 </td>
-                <td class="align-middle"><a href="viewVaccine.html"><i class="fa-solid fa-eye me-2"></i></a><a href="editVaccine.html"><i class='bx bxs-pencil me-2'></i></a><i class="fa-solid fa-trash"></i></td>
+                <td class="align-middle">
+                  <table>
+                    <tr>
+                      <td class=><a href="viewVaccine"><i class="fa-solid fa-eye me-2"></i></a></td>
+                      <td class=><a href="editVaccine"><i class='bx bxs-pencil me-2'></i></a></td>
+                      <td class=><i class="fa-solid fa-trash"></i></td>
+                    </tr>
+                  </table>
+                </td>
               </tr>
             </tbody>
           </table>

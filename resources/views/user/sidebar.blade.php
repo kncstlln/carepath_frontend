@@ -4,18 +4,18 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
-    <link href="css/sidebar.css" rel="stylesheet"/>
-    <script src="js/sidebar.js" defer></script>
-    <link href="css/dashboard.css" rel="stylesheet"/>
+    <link href="{{ asset('css/user/sidebar.css') }}" rel="stylesheet"/>
+    <script src="{{ asset('css/user/sidebar.js') }}" defer></script>
+    <link href="{{ asset('css/user/dashboard.css') }}" rel="stylesheet"/>
     <link flex href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet" />
-    <script src="js/dashboard.js"></script>
+    <script src="{{ asset('css/user/dashboard.js') }}"></script>
     <title>Dashboard</title>
 </head>
 <body>
   <nav class="sidebar locked z-2">
     <div class="logo_items flex">
       <span class="nav_image">
-        <img src="images/logo.png" alt="logo_img" />
+        <img src="{{ asset('images/logo.png') }}" alt="logo_img" />
       </span>
       <span class="logo_name">Carepath</span>
       <i class="bx bx-lock-alt" id="lock-icon" title="Unlock Sidebar"></i>
@@ -25,19 +25,19 @@
       <div class="menu_items">
         <ul class="menu_item" style="padding-left:0%;">
           <li class="item">
-            <a href="dashboard.html" class="link flex">
+            <a href="/user/dashboard" class="link flex">
               <i class="bx bx-home-alt homeicon"></i>
               <span>Dashboard</span>
             </a>
           </li>
           <li class="item">
-            <a href="web_infant/infant.html" class="link flex">
+            <a href="/user/infant" class="link flex">
               <i class="bx bx-grid-alt"></i>
               <span>Target Client List</span>
             </a>
           </li>
           <li class="item">
-            <a href="web_history/history.html" class="link flex">
+            <a href="/user/history" class="link flex">
               <i class='bx bx-history'></i>
               <span>Vaccination History</span>
             </a>
@@ -47,13 +47,13 @@
             <span class="line"></span>
           </div>
           <li class="item">
-            <a href="upcoming.html" class="link flex">
+            <a href="/user/upcoming" class="link flex">
               <i class="bx bx-flag"></i>
               <span>Upcoming Vaccination</span>
             </a>
           </li>
           <li class="item">
-            <a href="missed.html" class="link flex">
+            <a href="/user/missed" class="link flex">
               <i class='bx bx-calendar-exclamation' ></i>
               <span>Missed Vaccination</span>
             </a>

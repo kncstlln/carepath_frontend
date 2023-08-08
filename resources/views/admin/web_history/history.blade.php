@@ -4,37 +4,39 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
-    <link href="../css/sidebar.css" rel="stylesheet"/>
-    <script src="../js/sidebar.js" defer></script>
-    <link href="../css/dashboard.css" rel="stylesheet"/>
-    <link href="../css/history.css" rel="stylesheet"/>
-    <link href="../css/brgySelect.css" rel="stylesheet"/>
+    <link href="css/admin/sidebar.css" rel="stylesheet"/>
+    <script src="js/sidebar.js" defer></script>
+    <link href="css/admin/history.css" rel="stylesheet"/>
+    <link href="css/admin/brgySelect.css" rel="stylesheet"/>
     <link flex href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet" />
     <script src="https://kit.fontawesome.com/2eead9cc17.js" crossorigin="anonymous"></script>
-    <script src="../js/dashboard.js"></script>
     <title>Dashboard</title>
 </head>
 <body>
-@include('sidebar')
+@include('admin/sidebar')
     <div class="container-sm mt-4" id="targetclientlist">
         <div class="row mb-2">
             <div class="col-sm" id="infantsTxt">History of Vaccinations</div>
         </div>
         <div class="row mb-5">
-          <select class="form-select form-select-lg mb-3 selectSize" aria-label=".form-select-lg example">
-              <option selected value="1">Lourdes NorthWest</option>
-              <option value="2">Ninoy Aquino(Marisol)</option>
-              <option value="3">Salapungan</option>
-          </select>
-          <select class="form-select form-select-lg ms-5 mb-3 selectDate" aria-label=".form-select-lg example">
-            <option selected value="1">2024</option>
-            <option value="2">2023</option>
-            <option value="3">2022</option>
-        </select>
+            <div class="col-3 w-auto">
+            <select class="form-select mb-3 " aria-label=".form-select-lg example">
+                <option selected value="1">Lourdes NorthWest</option>
+                <option value="2">Ninoy Aquino(Marisol)</option>
+                <option value="3">Salapungan</option>
+            </select>
+          </div>
+          <div class="col-6 w-auto">
+            <select class="form-select mb-3 " aria-label=".form-select-lg example">
+              <option selected value="1">2024</option>
+              <option value="2">2023</option>
+              <option value="3">2022</option>
+            </select>
+          </div>
         </div>
-        <div class="row">
-            <div class="col-sm">
-              <a class="btn btn-primary btn-lg float-end mb-4" href="{{ url('/addHistory') }}" role="button" id="button-add">Create New +</a>
+        <div class="row d-flex justify-content-end" >
+            <div class="col-9 d-flex justify-content-end">
+              <a class="btn btn-lg mb-4 addButton" href="addHistory" role="button" id="button-add">Create History +</a>
             </div>
         </div>
       </div>
@@ -60,7 +62,7 @@
                 <td class="table-secondary">DPT-Hib-HepB
                 <td>2nd dose</td>
                 <td class="table-secondary">administrator</td>
-                <td><a href="viewHistory.html"><i class="fa-solid fa-eye me-2"></i></a><a href="editHistory.html"><i class='bx bxs-pencil me-2'></i></a><i class="fa-solid fa-trash"></i></td>
+                <td><a href="viewHistory"><i class="fa-solid fa-eye me-2"></i></a><a href="editHistory"><i class='bx bxs-pencil me-2'></i></a><i class="fa-solid fa-trash"></i></td>
               </tr>
               <tr>
                 <th scope="row">2</th>
@@ -69,7 +71,7 @@
                 <td class="table-secondary">OPV</td>
                 <td>2nd dose</td>
                 <td class="table-secondary">administrator</td>
-                <td><a href="viewHistory.html"><i class="fa-solid fa-eye me-2"></i></a><a href="editHistory.html"><i class='bx bxs-pencil me-2'></i></a><i class="fa-solid fa-trash"></i></td>
+                <td><a href="viewHistory"><i class="fa-solid fa-eye me-2"></i></a><a href="editHistory"><i class='bx bxs-pencil me-2'></i></a><i class="fa-solid fa-trash"></i></td>
               </tr>
               <tr>
                 <th scope="row">3</th>
@@ -78,7 +80,7 @@
                 <td class="table-secondary">PCV</td>
                 <td>1st dose</td>
                 <td class="table-secondary">User was deleted</td>
-                <td><a href="viewHistory.html"><i class="fa-solid fa-eye me-2"></i></a><a href="editHistory.html"><i class='bx bxs-pencil me-2'></i></a><i class="fa-solid fa-trash"></i></td>
+                <td><a href="viewHistory"><i class="fa-solid fa-eye me-2"></i></a><a href="editHistory"><i class='bx bxs-pencil me-2'></i></a><i class="fa-solid fa-trash"></i></td>
               </tr>
             </tbody>
           </table>

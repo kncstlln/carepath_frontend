@@ -13,7 +13,7 @@
   <nav class="sidebar locked z-2">
       <div class="logo_items flex">
         <span class="nav_image">
-          <img src="../images/logo.png" alt="logo_img" />
+          <img src="images/logo.png" alt="logo_img" />
         </span>
         <span class="logo_name">Carepath</span>
         <i class="bx bx-lock-alt" id="lock-icon" title="Unlock Sidebar"></i>
@@ -57,7 +57,7 @@
               </a>
             </li>
             <li class="item">
-              <a href="/user" class="link flex">
+              <a href="/userlist" class="link flex">
                 <i class='bx bx-user'></i>
                 <span>User List</span>
               </a>

@@ -1,7 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\WebController;
+use App\Http\Controllers\AdminController;
+use App\Http\Controllers\UserController;
 
 /*
 |--------------------------------------------------------------------------
@@ -15,26 +16,42 @@ use App\Http\Controllers\WebController;
 */
 
 
-Route::get('/', [WebController::class,'main']);
-Route::get('/dashboard', [WebController::class,'index']);
-Route::get('/barangay', [WebController::class,'barangay']);
-Route::get('/addBarangay', [WebController::class,'addBarangay']);
-Route::get('/addHistory', [WebController::class,'addHistory']);
-Route::get('/editHistory', [WebController::class,'editHistory']);
-Route::get('/history', [WebController::class,'history']);
-Route::get('/viewHistory', [WebController::class,'viewHistory']);
-Route::get('/addInfant', [WebController::class,'addInfant']);
-Route::get('/editInfant', [WebController::class,'editInfant']);
-Route::get('/infant', [WebController::class,'infant']);
-Route::get('/viewInfant', [WebController::class,'viewInfant']);
-Route::get('/addUser', [WebController::class,'addUser']);
-Route::get('/editUser', [WebController::class,'editUser']);
-Route::get('/user', [WebController::class,'user']);
-Route::get('/addVaccine', [WebController::class,'addVaccine']);
-Route::get('/editVaccine', [WebController::class,'editVaccine']);
-Route::get('/vaccine', [WebController::class,'vaccine']);
-Route::get('/viewVaccine', [WebController::class,'viewVaccine']);
-Route::get('/upcoming', [WebController::class,'upcoming']);
-Route::get('/missed', [WebController::class,'missed']);
+
+Route::get('/', [AdminController::class,'main']);
+Route::get('/login', [AdminController::class,'login']);
+Route::get('/dashboard', [AdminController::class,'index']);
+Route::get('/barangay', [AdminController::class,'barangay']);
+Route::get('/addBarangay', [AdminController::class,'addBarangay']);
+Route::get('/addHistory', [AdminController::class,'addHistory']);
+Route::get('/editHistory', [AdminController::class,'editHistory']);
+Route::get('/history', [AdminController::class,'history']);
+Route::get('/viewHistory', [AdminController::class,'viewHistory']);
+Route::get('/addInfant', [AdminController::class,'addInfant']);
+Route::get('/editInfant', [AdminController::class,'editInfant']);
+Route::get('/infant', [AdminController::class,'infant']);
+Route::get('/viewInfant', [AdminController::class,'viewInfant']);
+Route::get('/addUser', [AdminController::class,'addUser']);
+Route::get('/editUser', [AdminController::class,'editUser']);
+Route::get('/userlist', [AdminController::class,'user']);
+Route::get('/addVaccine', [AdminController::class,'addVaccine']);
+Route::get('/editVaccine', [AdminController::class,'editVaccine']);
+Route::get('/vaccine', [AdminController::class,'vaccine']);
+Route::get('/viewVaccine', [AdminController::class,'viewVaccine']);
+Route::get('/upcoming', [AdminController::class,'upcoming']);
+Route::get('/missed', [AdminController::class,'missed']);
+
+
+Route::get('/user/dashboard', [UserController::class,'indexUser']);
+Route::get('/user/addHistory', [UserController::class,'addHistoryUser']);
+Route::get('/user/editHistory', [UserController::class,'editHistoryUser']);
+Route::get('/user/history', [UserController::class,'historyUser']);
+Route::get('/user/viewHistory', [UserController::class,'viewHistoryUser']);
+Route::get('/user/addInfant', [UserController::class,'addInfantUser']);
+Route::get('/user/editInfant', [UserController::class,'editInfantUser']);
+Route::get('/user/infant', [UserController::class,'infantUser']);
+Route::get('/user/viewInfant', [UserController::class,'viewInfantUser']);
+Route::get('/user/upcoming', [UserController::class,'upcomingUser']);
+Route::get('/user/missed', [UserController::class,'missedUser']);
+
 
 

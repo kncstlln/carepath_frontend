@@ -17,8 +17,8 @@
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
     />
-    <link href="main.css" rel="stylesheet" />
-    <script src="main.js"></script>
+    <link href="css/main.css" rel="stylesheet" />
+    <script src="css/main.js"></script>
     <title>CarePath</title>
   </head>
   <body>
@@ -46,14 +46,14 @@
             </li>
           </ul>
    
-            <a class="btn rounded btnColor" href="#" role="button">Login</a>
+          <a class="btn btn-primary btnColor" href="/login" role="button">Login</a>
 
         </div>
       </div>
     </nav>
 
 
-    <img class="img-fluid" alt="Child getting vaccine" src="jumbotron2.png"/>
+    <img class="img-fluid" alt="Child getting vaccine" src="images/jumbotron2.png"/>
 
 
     <div class="container">
@@ -164,22 +164,22 @@
         </div>
         <div class="col ms-5 ps-5 image">
           <img
-            src="banner.png"
+            src="images/banner.png"
             class="img-fluid"
             width="250"
           />
           <img
-            src="banner1.JPG"
+            src="images/banner1.JPG"
             class="img-fluid"
             width="250"
           />
           <img
-            src="banner2.png"
+            src="images/banner2.png"
             class="img-fluid third"
             width="250"
           />
           <img
-            src="banner2.png"
+            src="images/banner2.png"
             class="img-fluid fourth"
             width="250"
           />
@@ -199,7 +199,7 @@
         <div class="row">
           <div class="col-md mt-2 d-flex justify-content-center">
             <div class="card animate__animated animate__fadeInLeft" style="width: 18rem;">
-              <img src="banner.png" class="card-img-top" alt="...">
+              <img src="images/banner.png" class="card-img-top" alt="...">
               <div class="card-body">
                 <h5 class="card-title first">SMS-based Immunization Reminders</h5>
                 <p class="card-text">Timely SMS notifications for parents about upcoming immunizations, reducing missed vaccinations.</p>
@@ -208,7 +208,7 @@
           </div>
           <div class="col-md mt-2 d-flex justify-content-center">
             <div class="card animate__animated animate__fadeInLeft" style="width: 18rem;">
-              <img src="banner1.JPG" class="card-img-top" alt="...">
+              <img src="images/banner1.JPG" class="card-img-top" alt="...">
               <div class="card-body">
                 <h5 class="card-title">Online Registration & Tracking</h5>
                 <p class="card-text">Easy web portal for registering infants and tracking vaccination history, ensuring accurate data for healthcare providers.</p>
@@ -217,7 +217,7 @@
           </div>
           <div class="col-md mt-2 d-flex justify-content-center">
             <div class="card animate__animated animate__fadeInRight" style="width: 18rem;">
-              <img src="banner2.png" class="card-img-top" alt="...">
+              <img src="images/banner2.png" class="card-img-top" alt="...">
               <div class="card-body pb-5">
                 <h5 class="card-title pb-3">Data Analytics & Reporting:</h5>
                 <p class="card-text">Real-time insights on immunization rates and trends, aiding decision-making and targeted interventions.</p>
@@ -226,7 +226,7 @@
           </div>
           <div class="col-md mt-2 d-flex justify-content-center">
             <div class="card animate__animated animate__fadeInRight" style="width: 18rem;">
-              <img src="banner.png" class="card-img-top" alt="...">
+              <img src="images/banner.png" class="card-img-top" alt="...">
               <div class="card-body">
                 <h5 class="card-title">Community Outreach & Education:</h5>
                 <p class="card-text">Engaging community with educational resources to raise awareness about infant immunization.</p>

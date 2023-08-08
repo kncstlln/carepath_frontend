@@ -9,20 +9,20 @@
 }
 
 
-.btnColor{
-    width:100px;
-    color:white;
+.btnColor {
+    width: 100px; 
+    color: white;
     background-color: #980B0B;
+    transition: none; 
+}
+
+.btnColor:hover {
+    color: white;
+    background-color: #7a0909;
 }
 
 .btnToggle{
     background-color: gray;
-}
-
-.btnColor:hover{
-    width:100px;
-    color:white;
-    background-color: #7a0909;
 }
 
 .nav-link{
