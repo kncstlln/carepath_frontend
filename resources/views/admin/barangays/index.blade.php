@@ -21,9 +21,9 @@
             <div class="col-sm" id="infantsTxt">List of Barangay</div>
         </div>
         <div class="row">
-            <div class="col-sm">
-              <a class="btn btn-primary btn-lg float-end mb-4" href="{{ url('/addBarangay') }}" role="button" id="button-add">Add New +</a>
-            </div>
+          <div class="col-sm">
+            <a class="btn btn-primary btn-lg float-end mb-4" href="{{ route('admin.barangays.add') }}" role="button" id="button-add">Add New +</a>
+          </div>
         </div>
       </div>
       <div class="container-md">
@@ -32,49 +32,31 @@
             <thead>
               <tr class="table-danger">
                 <th scope="col">No.</th>
-                <th scope="col">Date Created</th>
+                <th scope="col">Barangay</th>
                 <th scope="col">Location</th>
                 <th scope="col">Status</th>
                 <th scope="col">Action</th>
               </tr>
             </thead>
             <tbody class="table-group-divider">
+              @foreach($barangays as $barangay)
               <tr>
-                <th scope="row">1</th>
-                <td class="table-secondary align-middle">01/13/2023</td>
-                <td class="align-middle">Salapungan Health Center</td>
-                <td class="table-secondary tableSize">
-                    <select class="form-select" aria-label="Default select example">
-                        <option value="1">Active</option>
-                        <option value="2">Inactive</option>
-                    </select>
-                </td>
-                <td class="align-middle"><i class="fa-solid fa-trash"></i></td>
+                  <th scope="row">{{ $loop->iteration }}</th>
+                  <td class="table-secondary align-middle">{{ $barangay['name'] }}</td>
+                  <td class="align-middle">{{ $barangay['location'] }}</td>
+                  <td class="table-secondary tableSize">
+                      <form action="{{ route('admin.barangays.update-status', $barangay['id']) }}" method="POST">
+                          @csrf
+                          @method('PUT')
+                          <select name="status" class="form-select" aria-label="Default select example" onchange="this.form.submit()">
+                              <option value="1" {{ $barangay['status'] == 1 ? 'selected' : '' }}>Active</option>
+                              <option value="0" {{ $barangay['status'] == 0 ? 'selected' : '' }}>Inactive</option>
+                          </select>
+                      </form>
+                  </td>
+                  <td class="align-middle"><i class="fa-solid fa-trash"></i></td>
               </tr>
-              <tr>
-                <th scope="row">2</th>
-                <td class="table-secondary align-middle">01/13/2023</td>
-                <td class="align-middle">Brgy. Ninoy Aquino Health Center</td>
-                <td class="table-secondary">
-                    <select class="form-select" aria-label="Default select example">
-                    <option selected value="1">Active</option>
-                    <option value="2">Inactive</option>
-                  </select>
-                </td>
-                <td class="align-middle"><i class="fa-solid fa-trash"></i></td>              
-            </tr>
-              <tr>
-                <th scope="row">3</th>
-                <td class="table-secondary align-middle">01/13/2023</td>
-                <td class="align-middle">Lourdes Northwest Health Center</td>
-                <td class="table-secondary">
-                   <select class="form-select" aria-label="Default select example">
-                    <option value="1">Active</option>
-                    <option value="2">Inactive</option>
-                  </select>
-                </td>
-                <td class="align-middle"><i class="fa-solid fa-trash"></i></td>
-              </tr>
+              @endforeach
             </tbody>
           </table>
         </div>

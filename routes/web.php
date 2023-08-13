@@ -6,9 +6,11 @@ use App\Http\Controllers\MainController;
 // use App\Http\Controllers\UserController;
 
 use App\Http\Controllers\Admin\AdminDashboardController;
+use App\Http\Controllers\Admin\AdminBarangayController;
+use App\Http\Controllers\Admin\AdminVaccineController;
 use App\Http\Controllers\User\UserDashboardController;
 use App\Http\Controllers\AuthController;
-use App\Http\Controllers\DashboardController; //sample
+
 
 Route::get('/', [MainController::class, 'index']);
 Route::get('/login', [AuthController::class, 'showLoginForm'])->name('login');
@@ -18,6 +20,16 @@ Route::get('/logout', [AuthController::class, 'logout'])->name('logout');
 // Routes accessible only by user_type 0 (admin)
 Route::middleware(['check.user_type:0'])->prefix('admin')->group(function () {
 Route::get('/dashboard', [AdminDashboardController::class, 'index'])->name('admin.dashboard');
+
+Route::get('/barangays', [AdminBarangayController::class, 'index'])->name('admin.barangays.index');
+Route::put('/barangays/{id}/update-status', [AdminBarangayController::class, 'updateStatus'])->name('admin.barangays.update-status');
+Route::get('/barangays/add', [AdminBarangayController::class, 'create'])->name('admin.barangays.add');
+Route::post('/barangays/add', [AdminBarangayController::class, 'store'])->name('admin.barangays.store');
+
+Route::get('/vaccines', [AdminVaccineController::class, 'index'])->name('admin.vaccines.index');
+Route::put('/vaccines/{id}/update-status', [AdminVaccineController::class, 'updateStatus'])->name('admin.vaccines.update-status');
+Route::get('/vaccines/add', [AdminVaccineController::class, 'add'])->name('admin.vaccines.add');
+
 });
 
 // Routes accessible only by user_type 1 (regular user)

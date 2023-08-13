@@ -9,6 +9,13 @@ class AuthController extends Controller
 {
     public function showLoginForm(Request $request)
     {
+        // Check if the user is already logged in with a specific user_type
+        $userType = $request->session()->get('user_type');
+        if ($userType === 0) {
+            return redirect()->route('admin.dashboard');
+        } elseif ($userType === 1) {
+            return redirect()->route('user.dashboard');
+        }
         
         $errorMessage = $request->session()->get('error');
         return view('login', compact('errorMessage'));

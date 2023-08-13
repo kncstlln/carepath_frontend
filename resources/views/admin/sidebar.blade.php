@@ -7,7 +7,7 @@
     <title>Dashboard</title>
     <link rel="stylesheet" href="css/sidebar.css" />
     <link flex href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet" />
-    <script src="js/sidebar.js" defer></script>
+    <script src="{{ asset('js/sidebar.js') }}" defer></script>
   </head>
   <body>
   <nav class="sidebar locked z-2">
@@ -23,7 +23,7 @@
         <div class="menu_items">
           <ul class="menu_item" style="padding-left:0%;">
             <li class="item">
-              <a href="/dashboard" class="link flex">
+              <a href="/admin/dashboard" class="link flex">
                 <i class="bx bx-home-alt homeicon"></i>
                 <span>Dashboard</span>
               </a>
@@ -45,13 +45,13 @@
               <span class="line"></span>
             </div>
             <li class="item">
-              <a href="/vaccine" class="link flex">
+              <a href="/admin/vaccines" class="link flex">
                 <i class='bx bx-injection'></i>
                 <span>Vaccine List</span>
               </a>
             </li>
             <li class="item">
-              <a href="/barangay" class="link flex">
+              <a href="/admin/barangays" class="link flex">
                 <i class='bx bx-building-house'></i>
                 <span>Barangay List</span>
               </a>
