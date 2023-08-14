@@ -54,7 +54,11 @@
                           <tr>
                               <td class="align-middle"><a href="viewVaccine/{{ $vaccine['id'] }}"><i class="fa-solid fa-eye me-2"></i></a></td>
                               <td class="align-middle"><a href="editVaccine/{{ $vaccine['id'] }}"><i class='bx bxs-pencil me-2'></i></a></td>
-                              <td class="align-middle"><i class="fa-solid fa-trash"></i></td>
+                              <td class="align-middle">
+                                  <a href="{{ route('admin.vaccines.delete', ['id' => $vaccine['id']]) }}" class="delete-vaccine" onclick="return confirm('Are you sure you want to delete this vaccine?');">
+                                      <i class="fa-solid fa-trash"></i>
+                                  </a>
+                              </td>
                           </tr>
                       </table>
                   </td>

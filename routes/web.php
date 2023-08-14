@@ -29,6 +29,8 @@ Route::post('/barangays/add', [AdminBarangayController::class, 'store'])->name('
 Route::get('/vaccines', [AdminVaccineController::class, 'index'])->name('admin.vaccines.index');
 Route::put('/vaccines/{id}/update-status', [AdminVaccineController::class, 'updateStatus'])->name('admin.vaccines.update-status');
 Route::get('/vaccines/add', [AdminVaccineController::class, 'add'])->name('admin.vaccines.add');
+Route::post('/vaccines/store', [AdminVaccineController::class, 'store'])->name('admin.vaccines.store');
+Route::get('/vaccines/{id}/delete', [AdminVaccineController::class, 'delete'])->name('admin.vaccines.delete');
 
 });
 
