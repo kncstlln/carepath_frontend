@@ -31,6 +31,9 @@ Route::put('/vaccines/{id}/update-status', [AdminVaccineController::class, 'upda
 Route::get('/vaccines/add', [AdminVaccineController::class, 'add'])->name('admin.vaccines.add');
 Route::post('/vaccines/store', [AdminVaccineController::class, 'store'])->name('admin.vaccines.store');
 Route::get('/vaccines/{id}/delete', [AdminVaccineController::class, 'delete'])->name('admin.vaccines.delete');
+Route::get('/vaccines/{id}', [AdminVaccineController::class, 'view'])->name('admin.vaccines.view');
+Route::get('/vaccines/edit/{id}', [AdminVaccineController::class, 'edit'])->name('admin.vaccines.edit');
+Route::put('/vaccines/{id}', [AdminVaccineController::class, 'update'])->name('admin.vaccines.update');
 
 });
 
