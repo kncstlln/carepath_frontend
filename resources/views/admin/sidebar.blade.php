@@ -57,7 +57,7 @@
               </a>
             </li>
             <li class="item">
-              <a href="/userlist" class="link flex">
+              <a href="/admin/users" class="link flex">
                 <i class='bx bx-user'></i>
                 <span>User List</span>
               </a>

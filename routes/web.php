@@ -8,7 +8,10 @@ use App\Http\Controllers\MainController;
 use App\Http\Controllers\Admin\AdminDashboardController;
 use App\Http\Controllers\Admin\AdminBarangayController;
 use App\Http\Controllers\Admin\AdminVaccineController;
+use App\Http\Controllers\Admin\AdminUserController;
+
 use App\Http\Controllers\User\UserDashboardController;
+
 use App\Http\Controllers\AuthController;
 
 
@@ -35,6 +38,10 @@ Route::get('/vaccines/{id}', [AdminVaccineController::class, 'view'])->name('adm
 Route::get('/vaccines/edit/{id}', [AdminVaccineController::class, 'edit'])->name('admin.vaccines.edit');
 Route::put('/vaccines/{id}', [AdminVaccineController::class, 'update'])->name('admin.vaccines.update');
 
+Route::get('/users', [AdminUserController::class, 'index'])->name('admin.users.index');
+Route::get('/users/add', [AdminUserController::class, 'add'])->name('admin.users.add');
+Route::post('/users/register', [AdminUserController::class, 'register'])->name('admin.users.register');
+Route::get('/users/edit/{id}', [AdminUserController::class, 'edit'])->name('admin.users.edit');
 });
 
 // Routes accessible only by user_type 1 (regular user)

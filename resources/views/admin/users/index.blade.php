@@ -4,13 +4,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
-    <link href="css/admin/sidebar.css" rel="stylesheet"/>
-    <script src="js/sidebar.js" defer></script>
-    <link href="css/admin/dashboard.css" rel="stylesheet"/>
-    <link href="css/admin/vaccine.css" rel="stylesheet"/>
+    <link href="{{ asset('css/admin/sidebar.css') }}" rel="stylesheet"/>
+    <script src="{{ asset('js/sidebar.js') }}" defer></script>
+    <link href="{{ asset('css/admin/dashboard.css') }}" rel="stylesheet"/>
+    <link href="{{ asset('css/admin/vaccine.css') }}" rel="stylesheet"/>
     <link flex href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet" />
     <script src="https://kit.fontawesome.com/2eead9cc17.js" crossorigin="anonymous"></script>
-    <script src="js/dashboard.js"></script>
+    <script src="{{ asset('js/dashboard.js') }}"></script>
     <title>Vaccine List</title>
 </head>
 <body>
@@ -21,7 +21,7 @@
         </div>
         <div class="row">
             <div class="col-sm">
-              <a class="btn btn-primary btn-lg float-end mb-4" href="{{ url('/addUser') }}" role="button" id="button-add">Add New +</a>
+              <a class="btn btn-primary btn-lg float-end mb-4" href="{{ route('admin.users.add') }}" role="button" id="button-add">Add New +</a>
             </div>
         </div>
       </div>
@@ -31,34 +31,27 @@
             <thead>
               <tr class="table-danger">
                 <th scope="col">No.</th>
-                <th scope="col">Name</th>
                 <th scope="col">Location</th>
+                <th scope="col">Name</th>
+                <th scope="col">Email</th>
                 <th scope="col">Position</th>
                 <th scope="col">Action</th>
               </tr>
             </thead>
             <tbody class="table-group-divider">
-              <tr>
-                <th scope="row">1</th>
-                <td class="table-secondary align-middle">Kane Castillano</td>
-                <td class="align-middle">Salapungan Health Center</td>
-                <td class="table-secondary">Staff</td>
-                <td class="align-middle"><a href="editUser"><i class='bx bxs-pencil me-2'></i></a><i class="fa-solid fa-trash"></i></td>
-              </tr>
-              <tr>
-                <th scope="row">2</th>
-                <td class="table-secondary align-middle">Jello P. Mangune</td>
-                <td class="align-middle">Brgy. Ninoy Aquino Health Center</td>
-                <td class="table-secondary">Midwife</td>
-                <td class="align-middle"><a href="editUser"><i class='bx bxs-pencil me-2'></i></a><i class="fa-solid fa-trash"></i></td>            
-            </tr>
-            <tr>
-                <th scope="row">3</th>
-                <td class="table-secondary align-middle">Nathaniel T. Allapitan</td>
-                <td class="align-middle">Brgy. Ninoy Aquino Health Center</td>
-                <td class="table-secondary">Midwife</td>
-                <td class="align-middle"><a href="editUser"><i class='bx bxs-pencil me-2'></i></a><i class="fa-solid fa-trash"></i></td>            
-            </tr>
+              @foreach($users as $key => $user)
+                  <tr>
+                      <th scope="row">{{ $key + 1 }}</th>
+                      <td class="align-middle">{{ $user['barangay']['name'] }}</td>
+                      <td class="table-secondary align-middle">{{ $user['name'] }}</td>
+                      <td class="table-secondary align-middle">{{ $user['email'] }}</td>
+                      <td class="table-secondary">{{ $user['user_type'] === 10 ? 'Admin' : 'Health Worker' }}</td>
+                      <td class="align-middle">
+                          <a href="{{ route('admin.users.edit', ['id' => $user['id']]) }}"><i class='bx bxs-pencil me-2'></i></a>
+                          <a href="#"><i class="fa-solid fa-trash"></i></a>
+                      </td>
+                  </tr>
+              @endforeach
             </tbody>
           </table>
         </div>

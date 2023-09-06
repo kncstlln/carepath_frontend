@@ -4,11 +4,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
-    <link href="{{ asset('css/admin//sidebar.css') }}" rel="stylesheet"/>
+    <link href="{{ asset('css/admin/sidebar.css') }}" rel="stylesheet"/>
     <link href="{{ asset('css/admin/index.css') }}" rel="stylesheet"/>
     <link href="{{ asset('css/admin/addVaccine.css') }}" rel="stylesheet"/>
     <link flex href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet" />
-    <script src="https://kit.fontawesome.com/2eead9cc17.js" crossorigin="anonymous"></script>
+    <script src="https://kit.fontawesome.com/2eead9cc17.js" crossorigin="anonymous"></script> 
     <title>Add Barangay</title>    
 </head>
 <body>
