@@ -48,7 +48,11 @@
                       <td class="table-secondary">{{ $user['user_type'] === 10 ? 'Admin' : 'Health Worker' }}</td>
                       <td class="align-middle">
                           <a href="{{ route('admin.users.edit', ['id' => $user['id']]) }}"><i class='bx bxs-pencil me-2'></i></a>
-                          <a href="#"><i class="fa-solid fa-trash"></i></a>
+                          <form action="{{ route('admin.users.delete', ['id' => $user['id']]) }}" method="POST" style="display: inline;">
+                              @csrf
+                              @method('DELETE')
+                              <button type="submit" class="btn btn-link" onclick="return confirm('Are you sure you want to delete this user?')"><i class="fa-solid fa-trash" style="color: black;"></i></button>
+                          </form>
                       </td>
                   </tr>
               @endforeach

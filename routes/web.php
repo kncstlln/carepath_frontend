@@ -42,6 +42,9 @@ Route::get('/users', [AdminUserController::class, 'index'])->name('admin.users.i
 Route::get('/users/add', [AdminUserController::class, 'add'])->name('admin.users.add');
 Route::post('/users/register', [AdminUserController::class, 'register'])->name('admin.users.register');
 Route::get('/users/edit/{id}', [AdminUserController::class, 'edit'])->name('admin.users.edit');
+Route::put('/users/update/{id}', [AdminUserController::class, 'update'])->name('admin.users.update');
+Route::delete('/users/delete/{id}', [AdminUserController::class, 'delete'])->name('admin.users.delete');
+
 });
 
 // Routes accessible only by user_type 1 (regular user)

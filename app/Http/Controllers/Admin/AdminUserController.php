@@ -84,5 +84,47 @@ class AdminUserController extends Controller
         return view('admin.users.edit', compact('user', 'barangays'));
     }
 
+    public function update(Request $request, $id)
+    {
+        // Prepare the user data to be sent in the PUT request
+        $userData = [
+            'name' => $request->input('name'),
+            'username' => $request->input('username'),
+            'email' => $request->input('email'),
+            'barangay_id' => $request->input('barangay_id'),
+            'user_type' => $request->input('user_type'),
+        ];
+
+        // Include password fields only if they are not empty
+        if (!empty($request->input('password'))) {
+            $userData['password'] = $request->input('password');
+            $userData['password_confirmation'] = $request->input('password_confirmation');
+        }
+
+        $response = $this->apiService->put("/users/{$id}", $userData, session('token'));
+
+        if (isset($response['data'])) {
+            // Redirect to the user list page or any other appropriate page
+            return redirect()->route('admin.users.index')->with('success', 'User updated successfully');
+        } else {
+            // Handle the error, you can redirect back to the edit page with an error message
+            return redirect()->route('admin.users.edit', ['id' => $id])->with('error', 'User update failed. Please try again.');
+        }
+    }
+
+    public function delete($id)
+    {
+        // Make an API request to delete the user with the given ID
+        $response = $this->apiService->delete("/users/{$id}", session('token'));
+
+        if (isset($response['data'])) {
+            // Redirect to the user list page with a success message
+            return redirect()->route('admin.users.index')->with('success', 'User deleted successfully');
+        } else {
+            // Handle the error, you can redirect back to the user list with an error message
+            return redirect()->route('admin.users.index')->with('error', 'User deletion failed. Please try again.');
+        }
+    }
+
 
 }

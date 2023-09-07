@@ -11,7 +11,7 @@
     <script src="{{ asset('js/index.js') }}"></script>
     <link flex href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet" />
     <script src="https://kit.fontawesome.com/2eead9cc17.js" crossorigin="anonymous"></script>
-    <title>Add Infant</title>    
+    <title>Edit User</title>    
 </head>
 <body>
 @include('admin/sidebar')
@@ -23,8 +23,9 @@
           <div class="row">
               <div class="col h2 mb-5 mt-3 text-center">Edit User</div>
           </div>
-          <form action="" method="PUT">
+          <form action="{{ route('admin.users.update', ['id' => $user['id']]) }}" method="POST">
               @csrf
+              @method('PUT')
               <div class="row mb-4">
                   <div class="col-md-2 pt-1 text-center">Full Name:</div>
                   <div class="col-md-3">
