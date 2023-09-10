@@ -29,7 +29,7 @@
               </a>
             </li>
             <li class="item">
-              <a href="/infant" class="link flex">
+              <a href="/admin/infants" class="link flex">
                 <i class="bx bx-grid-alt"></i>
                 <span>Target Client List</span>
               </a>

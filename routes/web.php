@@ -9,6 +9,7 @@ use App\Http\Controllers\Admin\AdminDashboardController;
 use App\Http\Controllers\Admin\AdminBarangayController;
 use App\Http\Controllers\Admin\AdminVaccineController;
 use App\Http\Controllers\Admin\AdminUserController;
+use App\Http\Controllers\Admin\AdminTCLController;
 
 use App\Http\Controllers\User\UserDashboardController;
 
@@ -44,6 +45,9 @@ Route::post('/users/register', [AdminUserController::class, 'register'])->name('
 Route::get('/users/edit/{id}', [AdminUserController::class, 'edit'])->name('admin.users.edit');
 Route::put('/users/update/{id}', [AdminUserController::class, 'update'])->name('admin.users.update');
 Route::delete('/users/delete/{id}', [AdminUserController::class, 'delete'])->name('admin.users.delete');
+
+Route::get('/infants', [AdminTCLController::class, 'index'])->name('admin.infants.index');
+Route::get('/getFilteredInfants/{barangay_id}/{year?}', [AdminTCLController::class, 'getFilteredInfants']);
 
 });
 
