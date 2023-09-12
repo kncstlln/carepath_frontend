@@ -38,7 +38,7 @@
     </div>
     <div class="row d-flex justify-content-end">
         <div class="col-7 d-flex justify-content-end">
-            <a class="btn btn-lg mb-4 addButton" href="addInfant" role="button" id="button-add">Add Infant +</a>
+            <a class="btn btn-lg mb-4 addButton" href="{{ route('admin.infants.add') }}" role="button" id="button-add">Add Infant +</a>
         </div>
     </div>
 </div>
@@ -77,6 +77,9 @@
                   // Generate HTML for the table
                   const tableHtml = generateTableHtml(data);
                   filteredInfantsDiv.innerHTML = tableHtml;
+
+                  // Attach click event listeners to delete buttons
+                  attachDeleteButtonListeners();
               })
               .catch(error => {
                   console.error('Error:', error);
@@ -103,7 +106,7 @@
                     <tbody>
             `;
 
-            if (Array.isArray(data.data) && data.data.length > 0) { // Access data.data here
+            if (Array.isArray(data.data) && data.data.length > 0) {
                 data.data.forEach((infant, index) => {
                     tableHtml += `
                         <tr>
@@ -120,7 +123,8 @@
                                     <tr>
                                         <td class="text-center align-middle"><a href="viewInfant"><i class="fa-solid fa-eye me-2"></i></a></td>
                                         <td class="text-center align-middle"><a href="editInfant"><i class='bx bxs-pencil me-2'></i></a></td>
-                                        <td class="text-center align-middle"><i class="fa-solid fa-trash"></i></td>
+                                        
+                                        <td class="text-center align-middle"><button class="deleteButton" data-infant-id="${infant.id}"><i class="fa-solid fa-trash"></i></button></td>
                                     </tr>
                                 </table>
                             </td>
@@ -141,6 +145,39 @@
             `;
 
             return tableHtml;
+        }
+
+        // Function to attach click event listeners to delete buttons
+        function attachDeleteButtonListeners() {
+            const deleteButtons = document.querySelectorAll('.deleteButton');
+            deleteButtons.forEach(button => {
+                button.addEventListener('click', function () {
+                    const infantId = this.getAttribute('data-infant-id');
+                    
+                    if (confirm('Are you sure you want to delete this infant record?')) {
+                        // Make an AJAX request to delete the infant record
+                        fetch(`/admin/infants/delete/${infantId}`, {
+                            method: 'DELETE',
+                            headers: {
+                                'X-CSRF-TOKEN': '{{ csrf_token() }}',
+                            },
+                        })
+                        .then(response => response.json())
+                        .then(data => {
+                            if (data.success) {
+                                // Remove the row from the table
+                                const grandparentRow = this.closest('tr').closest('table').closest('tr');
+                                grandparentRow.remove();
+                            } else {
+                                alert('Failed to delete infant record. Please try again.');
+                            }
+                        })
+                        .catch(error => {
+                            console.error('Error:', error);
+                        });
+                    }
+                });
+            });
         }
 
         // Event listener for the barangayDropdown change
@@ -165,5 +202,8 @@
         fetchFilteredInfants(0, '');
     });
 </script>
+
+
+
 </body>
 </html>

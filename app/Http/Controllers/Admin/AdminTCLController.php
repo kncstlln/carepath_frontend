@@ -115,6 +115,76 @@ class AdminTCLController extends Controller
         }
     }
 
+    public function add()
+    {
+        $response = $this->apiService->get('/barangays', session('token'));
+
+        if (isset($response['data'])) {
+            $barangays = $response['data'];
+        } else {
+            $barangays = [];
+        }
+        
+        return view('admin.infants.add', compact('barangays'));
+    }
+
+
+    public function store(Request $request)
+    {
+        try {
+            // Validate the incoming request data
+            $request->validate([
+                'name' => 'required',
+                'sex' => 'required',
+                'birth_date' => 'required',
+                'family_serial_number' => 'nullable',
+                'barangay_id' => 'required',
+                'weight' => 'nullable',
+                'length' => 'nullable',
+                'father_name' => 'nullable',
+                'mother_name' => 'nullable',
+                'contact_number' => 'nullable',
+                'complete_address' => 'nullable',
+            ]);
+
+            // Prepare the data to be sent to the API
+            $data = $request->all();
+
+            // Format the birth_date field as "Y-m-d" (e.g., "2023-09-01")
+            $data['birth_date'] = date('Y-m-d', strtotime($data['birth_date']));
+
+            // Make a POST request to create the infant record
+            $response = $this->apiService->post('/infants', $data, session('token'));
+
+            // Check if the request was successful
+            if (isset($response['data'])) {
+                return redirect()->route('admin.infants.index')->with('success', 'Infant record created successfully.');
+            } else {
+                return redirect()->back()->with('error', 'Failed to create infant record. Please try again.');
+            }
+        } catch (\Exception $e) {
+            return redirect()->back()->with('error', 'An error occurred while creating the infant record. Please try again.');
+        }
+    }
+
+    public function delete($id)
+    {
+        try {
+            // Make an API request to delete the infant record with the given ID
+            $response = $this->apiService->delete("/infants/{$id}", session('token'));
+
+            if (isset($response['data'])) {
+                // Return a JSON response indicating success
+                return response()->json(['success' => true], 200);
+            } else {
+                // Handle the error, you can return an error response as needed
+                return response()->json(['success' => false, 'message' => 'Failed to delete infant record.'], 500);
+            }
+        } catch (\Exception $e) {
+            // Handle exceptions, you can return an error response here as well
+            return response()->json(['success' => false, 'message' => 'An error occurred while deleting the infant record.'], 500);
+        }
+    }
 
 
 
