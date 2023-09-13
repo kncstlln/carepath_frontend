@@ -121,9 +121,12 @@
                             <td>
                                 <table>
                                     <tr>
-                                        <td class="text-center align-middle"><a href="viewInfant"><i class="fa-solid fa-eye me-2"></i></a></td>
-                                        <td class="text-center align-middle"><a href="editInfant"><i class='bx bxs-pencil me-2'></i></a></td>
-                                        
+                                        <td class="text-center align-middle"><a href="/admin/infants/${infant.id}"><i class="fa-solid fa-eye me-2"></i></a></td>
+                                        <td class="text-center align-middle">
+                                            <a href="/admin/infants/edit/${infant.id}">
+                                                <i class='bx bxs-pencil me-2'></i>
+                                            </a>
+                                        </td>
                                         <td class="text-center align-middle"><button class="deleteButton" data-infant-id="${infant.id}"><i class="fa-solid fa-trash"></i></button></td>
                                     </tr>
                                 </table>

@@ -186,6 +186,89 @@ class AdminTCLController extends Controller
         }
     }
 
+    public function edit($id)
+    {
+        // Fetch the infant data for editing using the ApiService
+        $userResponse = $this->apiService->get("/infants/{$id}", session('token'));
+        $barangayResponse = $this->apiService->get('/barangays', session('token'));
+    
+        if (isset($userResponse['data'])) {
+            $infant = $userResponse['data'];
+        } else {
+            return redirect()->route('admin.infant.index')->with('error', 'Infant not found');
+        }
+    
+        // Extract barangay data from the response
+        $barangays = isset($barangayResponse['data']) ? $barangayResponse['data'] : [];
+    
+        return view('admin.infants.edit', compact('infant', 'barangays'));
+    }
+    
 
+    public function update(Request $request, $id)
+    {
+        // Validate the incoming data
+        $validatedData = $request->validate([
+            'name' => 'required',
+            'barangay_id' => 'required',
+            'sex' => 'required',
+            'birth_date' => 'required',
+            'family_serial_number' => 'nullable',
+            'weight' => 'nullable',
+            'length' => 'nullable',
+            'father_name' => 'required',
+            'mother_name' => 'required',
+            'contact_number' => 'required',
+            'complete_address' => 'nullable',
+        ]);
+
+        // Use the ApiService to update the infant data
+        $response = $this->apiService->put("/infants/{$id}", $validatedData, session('token'));
+
+        if (isset($response['data'])) {
+            return redirect()->route('admin.infants.index')->with('success', 'Infant record updated successfully');
+        } else {
+            return redirect()->route('admin.infant.edit')->with('error', 'Failed to update infant record');
+        }
+    }
+
+    public function view($id)
+    {
+        try {
+            // Fetch the infant data for the provided ID
+            $responseInfant = $this->apiService->get("/infants/{$id}", session('token'));
+
+            // Fetch the infant's immunization records
+            $responseImmunizations = $this->apiService->get("/infants/{$id}/immunization-history", session('token'));
+
+            $infant = [];
+            $immunizations = [];
+            $barangays = []; // Define the $barangays variable
+
+            // Fetch the list of barangays (assuming you need it for the view)
+            $responseBarangays = $this->apiService->get('/barangays', session('token'));
+
+            if (isset($responseInfant['data'])) {
+                $infant = $responseInfant['data'];
+
+                // Format the birth_date field as "Month day, year" (e.g., "September 5, 2023")
+                $birthDate = date('F j, Y', strtotime($infant['birth_date']));
+                $infant['birth_date'] = $birthDate;
+            }
+
+            if (isset($responseImmunizations['data'])) {
+                $immunizations = $responseImmunizations['data'];
+            }
+
+            if (isset($responseBarangays['data'])) {
+                $barangays = $responseBarangays['data']; // Assign the list of barangays
+            }
+
+            // Pass the infant, immunization, and barangays data to the Blade view
+            return view('admin.infants.view', compact('infant', 'immunizations', 'barangays'));
+        } catch (\Exception $e) {
+            return redirect()->back()->with('error', 'An error occurred while fetching data.');
+        }
+    }
 
 }

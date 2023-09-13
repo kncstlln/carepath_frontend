@@ -35,7 +35,7 @@
               </a>
             </li>
             <li class="item">
-              <a href="/history" class="link flex">
+              <a href="/admin/history" class="link flex">
                 <i class='bx bx-history'></i>
                 <span>Vaccination History</span>
               </a>

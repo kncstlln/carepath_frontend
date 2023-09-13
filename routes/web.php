@@ -10,6 +10,7 @@ use App\Http\Controllers\Admin\AdminBarangayController;
 use App\Http\Controllers\Admin\AdminVaccineController;
 use App\Http\Controllers\Admin\AdminUserController;
 use App\Http\Controllers\Admin\AdminTCLController;
+use App\Http\Controllers\Admin\AdminVaccineHistoryController;
 
 use App\Http\Controllers\User\UserDashboardController;
 
@@ -51,7 +52,11 @@ Route::get('/getFilteredInfants/{barangay_id}/{year?}', [AdminTCLController::cla
 Route::get('/infants/add', [AdminTCLController::class, 'add'])->name('admin.infants.add');
 Route::post('/infants', [AdminTCLController::class, 'store'])->name('admin.infants.store');
 Route::delete('/infants/delete/{id}', [AdminTCLController::class, 'delete'])->name('admin.infants.delete');
+Route::get('/infants/edit/{id}', [AdminTCLController::class, 'edit'])->name('admin.infants.edit');
+Route::put('/infants/update/{id}', [AdminTCLController::class, 'update'])->name('admin.infants.update');
+Route::get('/infants/{id}', [AdminTCLController::class, 'view'])->name('admin.infants.view');
 
+Route::get('/history', [AdminVaccineHistoryController::class, 'index'])->name('admin.history.index');
 
 });
 

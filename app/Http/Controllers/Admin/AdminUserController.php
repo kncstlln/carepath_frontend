@@ -75,7 +75,7 @@ class AdminUserController extends Controller
         if (isset($userResponse['data'])) {
             $user = $userResponse['data'];
         } else {
-            //return redirect()->route('admin.users.index')->with('error', 'User not found');
+            return redirect()->route('admin.users.index')->with('error', 'User not found');
         }
 
         // Extract barangay data from the response
