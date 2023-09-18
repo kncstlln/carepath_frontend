@@ -121,6 +121,7 @@
                             <td>
                                 <table>
                                     <tr>
+                                        <td class="text-center align-middle"><a href="/admin/history/add/${infant.id}"><i class="fa-solid fa-syringe me-2"></i></a>
                                         <td class="text-center align-middle"><a href="/admin/infants/${infant.id}"><i class="fa-solid fa-eye me-2"></i></a></td>
                                         <td class="text-center align-middle">
                                             <a href="/admin/infants/edit/${infant.id}">

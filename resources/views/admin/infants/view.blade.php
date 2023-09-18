@@ -73,6 +73,11 @@
                           <div class="col-md-4 pt-2"><strong>Complete Address: </strong> </div>
                           <div class="col-md-10 pt-2">{{ $infant['complete_address'] }}</div>
                         </div>
+                        <div class="row d-flex justify-content-end">
+                            <div class="col-7 d-flex justify-content-end">
+                                <a class="btn btn-lg mb-4 addButton" href="{{ route('admin.history.add', ['id' => $infant['id']]) }}" role="button" id="button-add">Vaccinate Infant</a>
+                            </div>
+                        </div>
                         <div class="table-responsive-lg text-center">
                         <table class="table table-striped">
                           <thead>

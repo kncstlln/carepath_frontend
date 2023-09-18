@@ -57,6 +57,10 @@ Route::put('/infants/update/{id}', [AdminTCLController::class, 'update'])->name(
 Route::get('/infants/{id}', [AdminTCLController::class, 'view'])->name('admin.infants.view');
 
 Route::get('/history', [AdminVaccineHistoryController::class, 'index'])->name('admin.history.index');
+Route::get('/history/filtered-records/{barangay_id}/{year?}', [AdminVaccineHistoryController::class, 'getFilteredImmunizationRecords']);
+Route::get('/history/add/{id}', [AdminVaccineHistoryController::class, 'add'])->name('admin.history.add');
+Route::post('/history', [AdminVaccineHistoryController::class, 'store'])->name('admin.history.store');
+
 
 });
 
