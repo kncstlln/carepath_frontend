@@ -8,7 +8,12 @@ use App\Http\Controllers\MainController;
 use App\Http\Controllers\Admin\AdminDashboardController;
 use App\Http\Controllers\Admin\AdminBarangayController;
 use App\Http\Controllers\Admin\AdminVaccineController;
+use App\Http\Controllers\Admin\AdminUserController;
+use App\Http\Controllers\Admin\AdminTCLController;
+use App\Http\Controllers\Admin\AdminVaccineHistoryController;
+
 use App\Http\Controllers\User\UserDashboardController;
+
 use App\Http\Controllers\AuthController;
 
 
@@ -31,6 +36,31 @@ Route::put('/vaccines/{id}/update-status', [AdminVaccineController::class, 'upda
 Route::get('/vaccines/add', [AdminVaccineController::class, 'add'])->name('admin.vaccines.add');
 Route::post('/vaccines/store', [AdminVaccineController::class, 'store'])->name('admin.vaccines.store');
 Route::get('/vaccines/{id}/delete', [AdminVaccineController::class, 'delete'])->name('admin.vaccines.delete');
+Route::get('/vaccines/{id}', [AdminVaccineController::class, 'view'])->name('admin.vaccines.view');
+Route::get('/vaccines/edit/{id}', [AdminVaccineController::class, 'edit'])->name('admin.vaccines.edit');
+Route::put('/vaccines/{id}', [AdminVaccineController::class, 'update'])->name('admin.vaccines.update');
+
+Route::get('/users', [AdminUserController::class, 'index'])->name('admin.users.index');
+Route::get('/users/add', [AdminUserController::class, 'add'])->name('admin.users.add');
+Route::post('/users/register', [AdminUserController::class, 'register'])->name('admin.users.register');
+Route::get('/users/edit/{id}', [AdminUserController::class, 'edit'])->name('admin.users.edit');
+Route::put('/users/update/{id}', [AdminUserController::class, 'update'])->name('admin.users.update');
+Route::delete('/users/delete/{id}', [AdminUserController::class, 'delete'])->name('admin.users.delete');
+
+Route::get('/infants', [AdminTCLController::class, 'index'])->name('admin.infants.index');
+Route::get('/getFilteredInfants/{barangay_id}/{year?}', [AdminTCLController::class, 'getFilteredInfants']);
+Route::get('/infants/add', [AdminTCLController::class, 'add'])->name('admin.infants.add');
+Route::post('/infants', [AdminTCLController::class, 'store'])->name('admin.infants.store');
+Route::delete('/infants/delete/{id}', [AdminTCLController::class, 'delete'])->name('admin.infants.delete');
+Route::get('/infants/edit/{id}', [AdminTCLController::class, 'edit'])->name('admin.infants.edit');
+Route::put('/infants/update/{id}', [AdminTCLController::class, 'update'])->name('admin.infants.update');
+Route::get('/infants/{id}', [AdminTCLController::class, 'view'])->name('admin.infants.view');
+
+Route::get('/history', [AdminVaccineHistoryController::class, 'index'])->name('admin.history.index');
+Route::get('/history/filtered-records/{barangay_id}/{year?}', [AdminVaccineHistoryController::class, 'getFilteredImmunizationRecords']);
+Route::get('/history/add/{id}', [AdminVaccineHistoryController::class, 'add'])->name('admin.history.add');
+Route::post('/history', [AdminVaccineHistoryController::class, 'store'])->name('admin.history.store');
+
 
 });
 

@@ -29,13 +29,13 @@
               </a>
             </li>
             <li class="item">
-              <a href="/infant" class="link flex">
+              <a href="/admin/infants" class="link flex">
                 <i class="bx bx-grid-alt"></i>
                 <span>Target Client List</span>
               </a>
             </li>
             <li class="item">
-              <a href="/history" class="link flex">
+              <a href="/admin/history" class="link flex">
                 <i class='bx bx-history'></i>
                 <span>Vaccination History</span>
               </a>
@@ -57,7 +57,7 @@
               </a>
             </li>
             <li class="item">
-              <a href="/userlist" class="link flex">
+              <a href="/admin/users" class="link flex">
                 <i class='bx bx-user'></i>
                 <span>User List</span>
               </a>
