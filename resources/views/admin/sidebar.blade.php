@@ -13,7 +13,7 @@
   <nav class="sidebar locked z-2">
       <div class="logo_items flex">
         <span class="nav_image">
-          <img src="images/logo.png" alt="logo_img" />
+          <img src="{{ asset('images/logo.png') }}" alt="logo_img" />
         </span>
         <span class="logo_name">Carepath</span>
         <i class="bx bx-lock-alt" id="lock-icon" title="Unlock Sidebar"></i>
