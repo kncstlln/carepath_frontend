@@ -11,7 +11,8 @@
     <script src="{{ asset('js/index.js') }}"></script>
     <link flex href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet" />
     <script src="https://kit.fontawesome.com/2eead9cc17.js" crossorigin="anonymous"></script>
-    <title>Add Infant</title>    
+    <link rel="icon" type="image/x-icon" href="{{ asset('/images/logo.png') }}">
+    <title>View Vaccine</title>    
 </head>
 <body>
 @include('admin/sidebar')

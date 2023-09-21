@@ -11,7 +11,8 @@
     <link flex href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet" />
     <script src="https://kit.fontawesome.com/2eead9cc17.js" crossorigin="anonymous"></script>
     <script src="{{ asset('js/admin/dashboard.js') }}"></script>
-    <title>Vaccine List</title>
+    <link rel="icon" type="image/x-icon" href="{{ asset('/images/logo.png') }}">
+    <title>Barangay List</title>
 </head>
 <body>
 @include('admin/sidebar')
@@ -20,10 +21,10 @@
         <div class="row mb-2">
             <div class="col-sm" id="infantsTxt">List of Barangay</div>
         </div>
-        <div class="row">
-          <div class="col-sm">
-            <a class="btn btn-primary btn-lg float-end mb-4" href="{{ route('admin.barangays.add') }}" role="button" id="button-add">Add New +</a>
-          </div>
+        <div class="row justify-content-end mt-5">
+            <div class="col-12 col-sm-8 col-md-5 col-lg-3 col-xl-2 mb-2">
+                <a class="btn addButton w-100" href="{{ route('admin.barangays.add') }}" role="button" id="button-add">Add Barangay +</a>
+            </div>
         </div>
       </div>
       <div class="container-md">
@@ -35,7 +36,6 @@
                 <th scope="col">Barangay</th>
                 <th scope="col">Location</th>
                 <th scope="col">Status</th>
-                <th scope="col">Action</th>
               </tr>
             </thead>
             <tbody class="table-group-divider">
@@ -54,7 +54,6 @@
                           </select>
                       </form>
                   </td>
-                  <td class="align-middle"><i class="fa-solid fa-trash"></i></td>
               </tr>
               @endforeach
             </tbody>

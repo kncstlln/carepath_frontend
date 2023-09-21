@@ -7,6 +7,7 @@
     <link href="{{ asset('css/admin/sidebar.css') }}" rel="stylesheet"/>
     <script src="{{ asset('js/sidebar.js') }}" defer></script>
     <link href="{{ asset('css/admin/index.css') }}" rel="stylesheet"/>
+    <link rel="icon" type="image/x-icon" href="{{ asset('/images/logo.png') }}">
     <link flex href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet" />
     <script src="https://kit.fontawesome.com/2eead9cc17.js" crossorigin="anonymous"></script>
     <script src="{{ asset('js/index.js') }}"></script>
@@ -38,6 +39,12 @@
     </div>
 </div>
 <div class="container-md">
+    <div class="row justify-content-sm-center justify-content-lg-between">
+        <div class="col-12 col-sm-8 col-md-6 col-lg-4 col-xl-3 mb-4">
+            <input class="form-control" type="text" placeholder="Search.." aria-label="default input example">
+        </div>
+
+    </div>
     <div class="table-responsive-lg text-center align-middle" id="filteredImmunizationRecords">
         <!-- Filtered immunization records will be displayed here -->
     </div>
@@ -88,7 +95,7 @@
                     tableHtml += `
                         <tr>
                             <td>${record.immunization_date}</td>
-                            <td>${record.infant_name}</td>
+                            <td class="text-uppercase">${record.infant_name}</td>
                             <td>${record.vaccine_name}</td>
                             <td>${record.dose_number}</td>
                             <td>${record.administered_by}</td>

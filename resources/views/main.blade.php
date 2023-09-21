@@ -17,8 +17,9 @@
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
     />
-    <link href="css/main.css" rel="stylesheet" />
-    <script src="css/main.js"></script>
+    <link href="{{ asset('css/main.css') }}" rel="stylesheet" />
+    <script src="{{ asset('js/main.js') }}"></script>
+    <link rel="icon" type="image/x-icon" href="{{ asset('/images/logo.png') }}">
     <title>CarePath</title>
   </head>
   <body>
@@ -33,7 +34,7 @@
         <div class="collapse navbar-collapse" id="navbarToggler">
           <ul class="navbar-nav ms-auto me-auto">
             <li class="nav-item">
-              <a class="nav-link" href="#home">Home</a>
+              <a class="nav-link" href="">Home</a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="#about">About Us</a>
@@ -75,7 +76,7 @@
             </div>
           </div>
         </div>
-        <div class="col-2 position-relative placement">
+        <div class="col-2 position-relative placement" style="border:1px solid blue;">
           <div class="row pt-3">
             <div class="col-5">
               <i
@@ -102,7 +103,7 @@
             </div>
             <div class="col title">
               Parent Education and Engagement
-              <div class="col sub">
+              <div class="col sub" id="about">
                 Aims to educate and engage parents or caregivers in the
                 vaccination process.
               </div>
@@ -112,7 +113,9 @@
       </div>
     </div>
 
-    <div class="container aboutUs" id="about">
+ 
+
+    <div class="container aboutUs">
       <div class="row observe mb-5">
         <div class="col-md-6 position-relative start">
           <span class="about-us-title">CAREPATH</span>
@@ -129,7 +132,7 @@
           <div class="row mt-4">
             <div class="col">
               <div class="row">
-                <div class="col-3">
+                <div class="col-12 col-lg-3 d-flex justify-content-center justify-content-lg-start">
                   <i
                     class="fa-solid fa-chart-line medIcon mt-3"
                     style="color: #b81414"
@@ -146,7 +149,7 @@
             </div>
             <div class="col">
               <div class="row">
-                <div class="col-3">
+                <div class="col-12 col-lg-3 d-flex justify-content-center justify-content-lg-start">
                   <i
                     class="fa-solid fa-comment-sms medIcon mt-3"
                     style="color: #b81414"
@@ -186,6 +189,7 @@
         </div>
       </div>
     </div>
+  
     <section class="services min-vh-100 pb-5 position-relative" id="services" >
       <div class="custom-shape-divider-top-1690472653">
         <svg data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none">

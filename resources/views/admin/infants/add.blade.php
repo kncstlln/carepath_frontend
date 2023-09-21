@@ -6,33 +6,35 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
     <link href="{{ asset('css/admin/sidebar.css') }}" rel="stylesheet"/>
     <link href="{{ asset('css/admin/index.css') }}" rel="stylesheet"/>
-    <link href="{{ asset('css/admin/addInfant.css') }}" rel="stylesheet"/>
     <script src="{{ asset('js/sidebar.js') }}" defer></script>
     <script src="{{ asset('js/index.js') }}"></script>
     <link flex href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet" />
     <script src="https://kit.fontawesome.com/2eead9cc17.js" crossorigin="anonymous"></script>
+    <link rel="icon" type="image/x-icon" href="{{ asset('/images/logo.png') }}">
     <title>Add Infant</title>    
 </head>
 <body>
 @include('admin.sidebar')
 
-<div class="container-sm mt-4">
+<div class="container mt-4 mb-5">
     <div class="row">
         <div class="col-sm mb-5" id="infantsTxt">Create New Infant Record</div>
     </div>
-    <div class="container-sm createRecord">
+    <div class="container-sm createRecord" >
         <div class="row">
             <div class="col h2 mb-5 mt-3 text-center">Create Infant Record</div>
         </div>
         <form method="POST" action="{{ route('admin.infants.store') }}">
           @csrf
-            <div class="row mb-2 mb-md-4">
-                <div class="col-md-2 col-lg-1 pt-1 text-center"> Name:</div>
-                <div class="col-md-5 col-lg-4">
-                    <input class="form-control" name="name" type="text" placeholder="Full Name" aria-label="default input" required/>
+            <div class="row mb-2 mb-md-3 align-items-center">
+                <div class="col-12 col-md-auto">
+                    <label for="name" class="col-form-label">Name: </label>
                 </div>
-                <div class="col-md-4 col-lg-6 col-xl-3 p-2 text-center"> Barangay:</div>
-                <div class="col-md-3 col-lg-2">
+                <div class="col-12 col-md-auto">
+                    <input class="form-control" id="name" name="name" type="text" placeholder="Full Name" aria-label="default input" required/>
+                </div>
+                <div class="col-12 col-md-auto"> Barangay:</div>
+                <div class="col-12 col-md-auto">
                     <select class="form-select" name="barangay_id" required>
                         <option value="" disabled selected>Select Barangay</option>
                         @foreach($barangays as $barangay)
@@ -42,9 +44,9 @@
                 </div>
             </div>
 
-            <div class="row mb-4">
-                <div class="col-md-2 col-lg-1 mt-2 text-center">Sex:</div>
-                <div class="col-md-1 ms-md-1 me-md-3 mt-2 d-flex justify-content-center">
+            <div class="row mb-4 align-items-center">
+                <div class="col-md-auto text-center">Sex:</div>
+                <div class="col-md-auto ">
                     <div class="form-check">
                         <input class="form-check-input" type="radio" name="sex" id="male" value="Male" required>
                         <label class="form-check-label" for="male">
@@ -53,7 +55,7 @@
                     </div>
                 </div>
 
-                <div class="col-md-1 me-md-3 mt-2 ms-2 ps-3 d-flex justify-content-center">
+                <div class="col-md-auto ">
                     <div class="form-check">
                         <input class="form-check-input" type="radio" name="sex" id="female" value="Female" required>
                         <label class="form-check-label" for="female">
@@ -62,15 +64,17 @@
                     </div>
                 </div>
 
-                <div class="col-md-2 col-lg-2 ms-md-auto ms-lg-0 pt-2 text-center">Birth date:</div>
-                <div class="col-md-4 col-lg-2">
+                <div class="col-md-auto ms-md-5 ps-md-5 text-center">Birth date:</div>
+                <div class="col-md-auto">
                     <div class="input-group date" id="datepicker">
                         <input type="date" name="birth_date" class="form-control" required/>
                     </div>
                 </div>
-                <div class="col-md-4 col-lg-2 mt-md-2 mt-lg-0 pt-2 text-center "> Family Serial Number: </div>
-                <div class="col-md-3 col-lg-2 mt-md-2 mt-lg-0">
-                    <input class="form-control" type="number" name="family_serial_number" placeholder="Number" aria-label="default input"/>
+                <div class="col-md-auto mt-md-2 text-center"> 
+                    <label for="family-serial" class="col-form-label">Family Serial Number: </label>
+                </div>
+                <div class="col-md-auto mt-md-2">
+                    <input class="form-control" id="family-serial" type="number" name="family_serial_number" placeholder="Number" aria-label="default input"/>
                 </div>
             </div>
 

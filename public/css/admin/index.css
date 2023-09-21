@@ -32,6 +32,11 @@ a {
     color: white;
 }
 
+#button-add:hover{
+    background-color:#642c2c;
+    color: white;
+}
+
 #table-margin{
   padding-left: 300px;
 }
@@ -59,3 +64,31 @@ a {
 .selectDate{
     width:150px;
 }
+
+.createRecord{
+    border:1px solid black;
+    border-radius: 20px;
+}
+
+td.text-uppercase{
+    text-transform:uppercase;
+}
+
+.cancelButton{
+    height: 50px;
+    width: 150px;
+}
+
+.submitButton{
+    height: 50px;
+    width: 150px;
+    background-color:#980B0B;
+    color:white;
+}
+
+.submitButton:hover{
+    height: 50px;
+    background-color:#680c0c;
+    color:white;
+}
+

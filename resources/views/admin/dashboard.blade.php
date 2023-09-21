@@ -8,6 +8,7 @@
     <script src="{{ asset('js/sidebar.js') }}" defer></script>
     <link href="{{ asset('css/admin/dashboard.css') }}" rel="stylesheet"/>
     <script src="{{ asset('js/dashboard.js') }}"></script>
+    <link rel="icon" type="image/x-icon" href="{{ asset('/images/logo.png') }}">
     <link flex href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet" />
     <title>Dashboard</title>
 </head>

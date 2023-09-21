@@ -8,9 +8,10 @@
     <script src="{{ asset('js/sidebar.js') }}" defer></script>
     <link href="{{ asset('css/admin/index.css') }}" rel="stylesheet"/>
     <link flex href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet" />
+    <link rel="icon" type="image/x-icon" href="{{ asset('/images/logo.png') }}">
     <script src="https://kit.fontawesome.com/2eead9cc17.js" crossorigin="anonymous"></script>
     <script src="{{ asset('js/index.js') }}"></script>
-    <title>Dashboard</title>
+    <title>Infants</title>
 </head>
 <body>
 @include('admin.sidebar')
@@ -36,16 +37,20 @@
             </select>
         </div>
     </div>
-    <div class="row d-flex justify-content-end">
-        <div class="col-7 d-flex justify-content-end">
-            <a class="btn btn-lg mb-4 addButton" href="{{ route('admin.infants.add') }}" role="button" id="button-add">Add Infant +</a>
+        <div class="row justify-content-sm-center justify-content-lg-between">
+            <div class="col-12 col-sm-8 col-md-6 col-lg-4 col-xl-3 mb-4">
+                <input class="form-control" type="text" placeholder="Search.." aria-label="default input example">
+            </div>
+
+            <div class="col-12 col-sm-8 col-md-5 col-lg-3 col-xl-2 mb-2 me-2" cstyle="border:1px solid red;">
+                <a class="btn addButton w-100" href="{{ route('admin.infants.add') }}" role="button" id="button-add">Add Infant +</a>
+            </div>
         </div>
-    </div>
-</div>
-<div class="container-md">
-    <div class="table-responsive-lg text-center align-middle" id="filteredInfants">
+    <div class="container-md">
+        <div class="table-responsive-lg text-center align-middle" id="filteredInfants">
         <!-- Filtered infants will be displayed here -->
     </div>
+    
     <nav aria-label="Page navigation">
         <ul class="pagination justify-content-center justify-content-md-end mt-4">
             <li class="page-item disabled">
@@ -111,7 +116,7 @@
                     tableHtml += `
                         <tr>
                             <th scope="row">${index + 1}</th>
-                            <td class="table-secondary">${infant.name}</td>
+                            <td class="table-secondary text-uppercase">${infant.name}</td>
                             <td>${infant.birth_date}</td>
                             <td class="table-secondary">${infant.created_at}</td>
                             <td>${infant.family_serial_number}</td>
@@ -128,7 +133,7 @@
                                                 <i class='bx bxs-pencil me-2'></i>
                                             </a>
                                         </td>
-                                        <td class="text-center align-middle"><button class="deleteButton" data-infant-id="${infant.id}"><i class="fa-solid fa-trash"></i></button></td>
+                                        <td class="text-center align-middle"><button data-infant-id="${infant.id}"><i class="fa-solid fa-trash"></i></button></td>
                                     </tr>
                                 </table>
                             </td>
