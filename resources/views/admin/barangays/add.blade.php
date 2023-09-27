@@ -9,6 +9,7 @@
     <link href="{{ asset('css/admin/addVaccine.css') }}" rel="stylesheet"/>
     <link flex href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet" />
     <script src="https://kit.fontawesome.com/2eead9cc17.js" crossorigin="anonymous"></script> 
+    <link rel="icon" type="image/x-icon" href="{{ asset('/images/logo.png') }}">
     <title>Add Barangay</title>    
 </head>
 <body>
@@ -24,7 +25,7 @@
             <form action="{{ route('admin.barangays.store') }}" method="POST">
                 @csrf
                 <div class="row mb-4">
-                    <div class="col-md-4 col-lg-3 pt-1 text-center">Name of Barangay: </div>
+                    <div class="col-md-4 col-lg-3 pt-1 text-center">Name of Barangay:<span style="color:red;"> *</span></div>
                     <div class="col-md-4 col-lg-3">
                         <input class="form-control" type="text" name="name" placeholder="Barangay Name" aria-label="default input" required/>
                     </div>

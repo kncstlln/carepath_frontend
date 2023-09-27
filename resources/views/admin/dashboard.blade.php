@@ -8,10 +8,12 @@
     <script src="{{ asset('js/sidebar.js') }}" defer></script>
     <link href="{{ asset('css/admin/dashboard.css') }}" rel="stylesheet"/>
     <script src="{{ asset('js/dashboard.js') }}"></script>
+    <link rel="icon" type="image/x-icon" href="{{ asset('/images/logo.png') }}">
     <link flex href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet" />
     <title>Dashboard</title>
 </head>
-<body>
+<body id="dashboard">
+  @include('admin.profile')
   @include('admin.sidebar')
       <div class="container"> 
         <div class="row mt-3 mb-5" id="rectangle">
@@ -22,7 +24,7 @@
               </div>
             </div>
           </div>
-          <div class="col-sm-2 mt-2 d-none d-lg-block"><img src="images/AC_LOGO.png" width="139px" height="139px"/></div>
+          <div class="col-sm-2 mt-2 d-none d-lg-block"><img src="{{ asset('images/AC_LOGO.png') }}" width="139px" height="139px"/></div>
         </div>
           <div class="row g-4 mb-5 text-center">
             <div class="col-6 col-md-3">

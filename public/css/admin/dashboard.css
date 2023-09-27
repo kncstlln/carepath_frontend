@@ -10,6 +10,16 @@
     margin-top:33px;
 }
 
+.buttonProfile{
+    background-color:#ffffff;
+}
+
+.buttonProfile:focus, .buttonProfile:active, .buttonProfile:hover{
+    background-color:#ffffff;
+}
+
+
+
 #subtitle{
     color:#D4E3F0;
     font-size:16px;
@@ -49,4 +59,10 @@
     border-radius: 8px;
     border-color:#980B0B;
     background-color: #FFF
+}
+
+@media (min-width: 1300px){
+    #dashboard{
+        overflow-y:hidden;
+    }    
 }

@@ -41,6 +41,15 @@ body {
   width: calc(55px + 20px);
 }
 
+.content {
+  margin-left: 0;
+  transition: margin-left 0.3s ease;
+}
+
+.content.shifted {
+  margin-left: 300px; 
+}
+
 .logo_name {
   font-size: 22px;
   color:  #980B0B;

@@ -10,6 +10,7 @@
     <link href="{{ asset('css/admin/vaccine.css') }}" rel="stylesheet"/>
     <link flex href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet" />
     <script src="https://kit.fontawesome.com/2eead9cc17.js" crossorigin="anonymous"></script>
+    <link rel="icon" type="image/x-icon" href="{{ asset('/images/logo.png') }}">
     <script src="js/dashboard.js"></script>
     <title>Vaccine List</title>
 </head>
@@ -19,9 +20,9 @@
         <div class="row mb-2">
             <div class="col-sm" id="VaccinesTxt">List of Vaccines</div>
         </div>
-        <div class="row">
-            <div class="col-sm">
-            <a class="btn btn-primary btn-lg float-end mb-4" href="{{ route('admin.vaccines.add') }}" role="button" id="button-add">Add New +</a>
+        <div class="row justify-content-center justify-content-md-end mt-5">
+            <div class="col-12 col-sm-8 col-md-5 col-lg-3 col-xl-2 mb-2">
+                <a class="btn addButton w-100" href="{{ route('admin.vaccines.add') }}" role="button" id="button-add">Add Vaccines +</a>
             </div>
         </div>
       </div>
@@ -50,20 +51,20 @@
                       </select>
                   </td>
                   <td class="align-middle">
-                      <table>
-                          <tr>
-                              <td class="align-middle">
-                                  <a href="{{ route('admin.vaccines.view', ['id' => $vaccine['id']]) }}"><i class="fa-solid fa-eye me-2"></i></a>
-                              </td>
-                              <td class="align-middle">
-                                  <a href="{{ route('admin.vaccines.edit', ['id' => $vaccine['id']]) }}"><i class='bx bxs-pencil me-2'></i></a>
-                              </td>
-                              <td class="align-middle">
-                                  <a href="{{ route('admin.vaccines.delete', ['id' => $vaccine['id']]) }}" class="delete-vaccine" onclick="return confirm('Are you sure you want to delete this vaccine?');">
-                                      <i class="fa-solid fa-trash"></i>
-                                  </a>
-                              </td>
-                          </tr>
+                      <table style="margin: 0 auto;">
+                            <tr >
+                                <td class="align-middle" style="text-align: center;">
+                                    <a href="{{ route('admin.vaccines.view', ['id' => $vaccine['id']]) }}"><i class="fa-solid fa-eye me-2"></i></a>
+                                </td>
+                                <td class="align-middle" style="text-align: center;">
+                                    <a href="{{ route('admin.vaccines.edit', ['id' => $vaccine['id']]) }}"><i class='bx bxs-pencil me-2'></i></a>
+                                </td>
+                                <td class="align-middle" style="text-align: center;">
+                                    <a href="{{ route('admin.vaccines.delete', ['id' => $vaccine['id']]) }}" class="delete-vaccine" onclick="return confirm('Are you sure you want to delete this vaccine?');">
+                                        <i class="fa-solid fa-trash"></i>
+                                    </a>
+                                </td>
+                            </tr>
                       </table>
                   </td>
               </tr>

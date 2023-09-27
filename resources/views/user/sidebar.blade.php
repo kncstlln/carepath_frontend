@@ -12,14 +12,14 @@
     <title>Dashboard</title>
 </head>
 <body>
-  <nav class="sidebar locked z-2">
+  <nav class="sidebar z-2">
     <div class="logo_items flex">
       <span class="nav_image">
         <img src="{{ asset('images/logo.png') }}" alt="logo_img" />
       </span>
       <span class="logo_name">Carepath</span>
-      <i class="bx bx-lock-alt" id="lock-icon" title="Unlock Sidebar"></i>
-      <i class="bx bx-x" id="sidebar-close"></i>
+      <!-- <i class="bx bx-lock-alt" id="lock-icon" title="Unlock Sidebar"></i>
+      <i class="bx bx-x" id="sidebar-close"></i> -->
     </div>
     <div class="menu_container">
       <div class="menu_items">
