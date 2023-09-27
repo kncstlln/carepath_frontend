@@ -12,7 +12,8 @@
     <link flex href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet" />
     <title>Dashboard</title>
 </head>
-<body>
+<body id="dashboard">
+  @include('admin.profile')
   @include('admin.sidebar')
       <div class="container"> 
         <div class="row mt-3 mb-5" id="rectangle">

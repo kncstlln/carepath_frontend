@@ -26,31 +26,34 @@
         </div>
         <form action="{{ route('admin.history.store') }}" method="post">
           @csrf
-            <div class="row mb-4">
-                <div class="col-md-1 pt-1 text-center"> Name:</div>
-                <div class="col-md-5 me-4">
+            <div class="row mb-4 align-items-center">
+                <div class="col-md-1 col-lg-auto pt-1 text-center"> Name:</div>
+                <div class="col-md-5 col-lg-auto me-4">
                     <input class="form-control" type="text" placeholder="Full Name" aria-label="default input" required value="{{ $infantData['name'] }}" disabled/>
                 </div>
-                <div class="col-md-2 p-2 text-center"> Tracking Number:</div>
-                <div class="col-md-3 me-4">
+                <div class="col-md-2 col-lg-auto p-2 text-center"> Tracking Number:</div>
+                <div class="col-md-3 col-lg-auto">
                     <input class="form-control" type="number" placeholder="Tracking Number" aria-label="default input" required value="{{ $infantData['tracking_number'] }}" disabled />
+                </div>
+                <div class="col-md-1 col-lg-auto">Sex: </div>
+                <div class="col-md-1 col-lg-auto">
+                    <input class="form-control" type="text" value="{{ $infantData['sex'] }}" disabled />
                 </div>
             </div>
             <div class="row mb-4">
-                <div class="col-md-1 mt-2">Sex: </div>
-                <div class="col-md-1 mt-2 me-5">
-                    <input class="form-control" type="text" value="{{ $infantData['sex'] }}" disabled />
-                </div>
-                <div class="col-md-2 pt-2">Birth date: </div>
-                <div class="col-md-2 me-4">
+                
+               
+                <div class="col-md-2 col-lg-auto pt-2">Birth date: </div>
+                <div class="col-md-2 col-lg-auto">
                     <input class="form-control" type="text" value="{{ $infantData['birth_date'] }}" disabled />
                 </div>
-                <div class="col-md-3 pt-2"> Barangay: {{ $barangayName }}</div>
+                <div class="col-md-3 col-lg-auto pt-2"> Barangay: {{ $barangayName }}</div>
+                
+                <div class="col-md-3 col-lg-auto pt-2">Weight (kg): {{ $infantData['weight'] }}</div>
+                <div class="col-md-3 col-lg-auto pt-2">Length (cm): {{ $infantData['length'] }}</div>
             </div>
-            <div class="row mb-5">
-                <div class="col-md-3 pt-2">Weight (kg): {{ $infantData['weight'] }}</div>
-                <div class="col-md-3 pt-2">Length (cm): {{ $infantData['length'] }}</div>
-            </div>
+    
+      
             <div class="row mb-2">
                 <div class="col-md-2 pt-2 text-center">Vaccine Used:</div>
                 <div class="col-md-5">

@@ -27,7 +27,7 @@
             <form action="{{ route('admin.vaccines.store') }}" method="post">
                 @csrf
                 <div class="row mb-4">
-                    <div class="col-md-3 pt-1 text-center">Name of Vaccine: </div>
+                    <div class="col-md-3 pt-1 text-center">Name of Vaccine:<span style="color:red;"> *</span></div>
                     <div class="col-md-4">
                         <input class="form-control" type="text" name="name" placeholder="Vaccine Name" aria-label="default input" required/>
                     </div>
@@ -39,7 +39,7 @@
                     </div>
                 </div>
                 <div class="row mb-2">
-                    <div class="col-md-4 col-xl-3 pt-2 text-center text-md-start ps-md-3 ps-lg-5">Vaccination Doses:</div>
+                    <div class="col-md-4 col-xl-3 pt-2 text-center text-md-start ps-md-3 ps-lg-5">Vaccination Doses:<span style="color:red;"> *</span></div>
                     <div class="col-md-2">
                         <input class="form-control" type="number" id="doseCount" name="dose_count" placeholder="Enter Dose Count" aria-label="default input" required/>
                     </div>

@@ -51,20 +51,20 @@
                       </select>
                   </td>
                   <td class="align-middle">
-                      <table>
-                          <tr>
-                              <td class="align-middle">
-                                  <a href="{{ route('admin.vaccines.view', ['id' => $vaccine['id']]) }}"><i class="fa-solid fa-eye me-2"></i></a>
-                              </td>
-                              <td class="align-middle">
-                                  <a href="{{ route('admin.vaccines.edit', ['id' => $vaccine['id']]) }}"><i class='bx bxs-pencil me-2'></i></a>
-                              </td>
-                              <td class="align-middle">
-                                  <a href="{{ route('admin.vaccines.delete', ['id' => $vaccine['id']]) }}" class="delete-vaccine" onclick="return confirm('Are you sure you want to delete this vaccine?');">
-                                      <i class="fa-solid fa-trash"></i>
-                                  </a>
-                              </td>
-                          </tr>
+                      <table style="margin: 0 auto;">
+                            <tr >
+                                <td class="align-middle" style="text-align: center;">
+                                    <a href="{{ route('admin.vaccines.view', ['id' => $vaccine['id']]) }}"><i class="fa-solid fa-eye me-2"></i></a>
+                                </td>
+                                <td class="align-middle" style="text-align: center;">
+                                    <a href="{{ route('admin.vaccines.edit', ['id' => $vaccine['id']]) }}"><i class='bx bxs-pencil me-2'></i></a>
+                                </td>
+                                <td class="align-middle" style="text-align: center;">
+                                    <a href="{{ route('admin.vaccines.delete', ['id' => $vaccine['id']]) }}" class="delete-vaccine" onclick="return confirm('Are you sure you want to delete this vaccine?');">
+                                        <i class="fa-solid fa-trash"></i>
+                                    </a>
+                                </td>
+                            </tr>
                       </table>
                   </td>
               </tr>

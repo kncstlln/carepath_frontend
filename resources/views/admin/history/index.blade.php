@@ -101,15 +101,15 @@
                             <td>${record.administered_by}</td>
                             <td>${record.remarks || '-'}</td>
                             <td>
-                                <table>
+                                <table style="margin: 0 auto;">
                                     <tr>
-                                        <td class="text-center align-middle"><a href=""><i class="fa-solid fa-eye me-2"></i></a></td>
-                                        <td class="text-center align-middle">
+                                        <td class="text-center align-middle" style="text-align: center;"><a href=""><i class="fa-solid fa-eye me-2"></i></a></td>
+                                        <td class="text-center align-middle" style="text-align: center;">
                                             <a href="">
                                                 <i class='bx bxs-pencil me-2'></i>
                                             </a>
                                         </td>
-                                        <td class="text-center align-middle"><button class="deleteButton" data-infant-id=""><i class="fa-solid fa-trash"></i></button></td>
+                                        <td class="text-center align-middle" style="text-align: center;"><button class="deleteButton" data-infant-id="" style="border: none; background-color: transparent;"><i class="fa-solid fa-trash"></i></button></td>
                                     </tr>
                                 </table>
                             </td>

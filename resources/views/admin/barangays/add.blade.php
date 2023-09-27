@@ -25,7 +25,7 @@
             <form action="{{ route('admin.barangays.store') }}" method="POST">
                 @csrf
                 <div class="row mb-4">
-                    <div class="col-md-4 col-lg-3 pt-1 text-center">Name of Barangay: </div>
+                    <div class="col-md-4 col-lg-3 pt-1 text-center">Name of Barangay:<span style="color:red;"> *</span></div>
                     <div class="col-md-4 col-lg-3">
                         <input class="form-control" type="text" name="name" placeholder="Barangay Name" aria-label="default input" required/>
                     </div>

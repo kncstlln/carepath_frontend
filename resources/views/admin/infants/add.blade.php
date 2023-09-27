@@ -13,6 +13,7 @@
     <link rel="icon" type="image/x-icon" href="{{ asset('/images/logo.png') }}">
     <title>Add Infant</title>    
 </head>
+
 <body>
 @include('admin.sidebar')
 
@@ -26,101 +27,95 @@
         </div>
         <form method="POST" action="{{ route('admin.infants.store') }}">
           @csrf
-            <div class="row mb-2 mb-md-3 align-items-center">
-                <div class="col-12 col-md-auto">
-                    <label for="name" class="col-form-label">Name: </label>
+
+
+            <div class="row g-3">
+
+                <div class="col-md-6 ">
+                    <label for="name" class="form-label">Name: <span style="color:red">*</span></label>
+                    <input type="text" class="form-control" id="name" placeholder="Juan Dela Cruz">
                 </div>
-                <div class="col-12 col-md-auto">
-                    <input class="form-control" id="name" name="name" type="text" placeholder="Full Name" aria-label="default input" required/>
-                </div>
-                <div class="col-12 col-md-auto"> Barangay:</div>
-                <div class="col-12 col-md-auto">
-                    <select class="form-select" name="barangay_id" required>
+
+                <div class="col-md-6 col-xl-4"> 
+                    <label for="barangay" class="form-label">Barangay:<span style="color:red;"> *</span></label>
+                    <select class="form-select" id="barangay" name="barangay_id" required>
                         <option value="" disabled selected>Select Barangay</option>
                         @foreach($barangays as $barangay)
                             <option value="{{ $barangay['id'] }}">{{ $barangay['name'] }}</option>
                         @endforeach
                     </select>
                 </div>
-            </div>
 
-            <div class="row mb-4 align-items-center">
-                <div class="col-md-auto text-center">Sex:</div>
-                <div class="col-md-auto ">
-                    <div class="form-check">
-                        <input class="form-check-input" type="radio" name="sex" id="male" value="Male" required>
-                        <label class="form-check-label" for="male">
-                            Male
-                        </label>
-                    </div>
+                <div class="col-md-3"> 
+                    <label for="weight" class="form-label">Weight (kg):</label>
+                    <input class="form-control" id="weight" name="weight" type="number" placeholder="kg" aria-label="default input" min="1" max="50"/>
                 </div>
 
-                <div class="col-md-auto ">
-                    <div class="form-check">
-                        <input class="form-check-input" type="radio" name="sex" id="female" value="Female" required>
-                        <label class="form-check-label" for="female">
-                            Female
-                        </label>
-                    </div>
+                <div class="col-md-3">
+                    <label for="height" class="form-label">Length (cm):</label>
+                    <input class="form-control" id="length" name="length" type="number" placeholder="cm" aria-label="default input" min="1" max="50"/>
                 </div>
 
-                <div class="col-md-auto ms-md-5 ps-md-5 text-center">Birth date:</div>
-                <div class="col-md-auto">
+                <div class="col-md-6">
+                        <div>Sex:<span style="color:red"> *</span></div>
+                        <div class="form-check form-check-inline mt-2" id="sex">
+                            <input class="form-check-input" type="radio" name="sex" id="male" value="Male" required>
+                            <label class="form-check-label" for="male">Male</label>
+                        </div>
+        
+                        <div class="form-check form-check-inline mt-2">
+                            <input class="form-check-input" type="radio" name="sex" id="female" value="Female" required>
+                            <label class="form-check-label" for="female">Female</label>
+                        </div>                 
+                </div>
+
+                <div class="col-md-6 col-xl-3">
+                    <div>Birth date:<span style="color:red;"> *</span></div>
                     <div class="input-group date" id="datepicker">
                         <input type="date" name="birth_date" class="form-control" required/>
                     </div>
                 </div>
-                <div class="col-md-auto mt-md-2 text-center"> 
+
+                <div class="col-md-6 col-xl-3 mt-1">
                     <label for="family-serial" class="col-form-label">Family Serial Number: </label>
-                </div>
-                <div class="col-md-auto mt-md-2">
                     <input class="form-control" id="family-serial" type="number" name="family_serial_number" placeholder="Number" aria-label="default input"/>
                 </div>
-            </div>
+ 
 
-            <div class="row d-flex justify-content-center justify-content-md-start mb-5">
-                <div class="col-sm-3 col-lg-2 pt-2 text-center">Weight (kg): </div>
-                <div class="col-sm-2 col-lg-2 col-xl-1">
-                    <input class="form-control" name="weight" type="number" placeholder="kg" aria-label="default input" min="1" max="50"/>
+            </div>
+        
+       
+            <div class="row g-3 mt-3">
+
+                <div class="col-12 h3 text-center text-md-start">
+                    Parents Information
                 </div>
-                <div class="col-sm-3 col-lg-2 pt-2 text-center">Length (cm):</div>
-                <div class="col-sm-2 col-lg-2 col-xl-1">
-                    <input class="form-control" name="length" type="number" placeholder="cm" aria-label="default input" min="1" max="50"/>
+         
+                <div class="col-md-6">
+                    <label for="father" class="form-label">Father's Name:<span style="color:red;"> *</span></label>
+                    <input class="form-control" id="father" name="father_name" type="text" placeholder="Full Name" aria-label="default input" required/>
                 </div>
-            </div>
+        
 
-            <div class="row mb-4">
-                <div class="col-md-5 ps-md-4 h4 text-center text-md-start">Parents Information</div>
-            </div>
-
-            <div class="row mb-2">
-                <div class="col-md-3 col-lg-2 pt-2 text-center">Father's Name:</div>
-                <div class="col-md-5">
-                    <input class="form-control" name="father_name" type="text" placeholder="Full Name" aria-label="default input" required/>
-                </div>
-            </div>
-
-            <div class="row mb-2 ">
-                <div class="col-md-3 col-lg-2 pt-2 text-center">Mother's Name:</div>
-                <div class="col-md-5">
+                <div class="col-md-6">
+                    <label for="mother" class="form-label">Mother's Name:<span style="color:red;"> *</span></label>
                     <input class="form-control" name="mother_name" type="text" placeholder="Full Name" aria-label="default input" required/>
                 </div>
-            </div>
 
-            <div class="row mb-5">
-                <div class="col-md-3 col-lg-2 ps-lg-2 pe-lg-0 pt-2 text-center text-md-start text-lg-center">
-                    Contact Number: 
-                </div>
-                <div class="col-md-3">
+                <div class="col-md-6 col-lg-4">
+                    <label for="contact" class="form-label">Contact Number:<span style="color:red;"> *</span></label>
                     <input class="form-control" name="contact_number" type="tel" placeholder="Contact Number" id="telephone" placeholder="Contact Number" aria-label="default input" required/>
                 </div>
+
             </div>
 
-            <div class="row mb-4">
-                <div class="col-md-5 h4 text-center text-md-start ps-md-4">Complete Address:</div>
+            <div class="row mb-4 mt-3">
+
+                <div class="col-md-5 h4 text-center text-md-start ps-md-4">Complete Address:<span style="color:red;"> *</span></div>
                 <div class="mb-3">
                     <textarea class="form-control" name="complete_address" rows="2"></textarea>
                 </div>
+
             </div>
 
             <div class="row mb-4 justify-content-center text-center">
@@ -131,10 +126,14 @@
                     <button type="submit" class="btn submitButton">Submit</button>
                 </div>
             </div>
+
+            
         </form>
     </div>
 </div>
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
+
+
 </body>
 </html>

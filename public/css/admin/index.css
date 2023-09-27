@@ -41,6 +41,11 @@ a {
   padding-left: 300px;
 }
 
+input[placeholder]::before {
+    content: '* ';
+    color: red;
+}
+
 .paginationTxt{
     color:#980B0B;
 }
@@ -77,6 +82,7 @@ td.text-uppercase{
 .cancelButton{
     height: 50px;
     width: 150px;
+    
 }
 
 .submitButton{

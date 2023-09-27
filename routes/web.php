@@ -55,6 +55,8 @@ Route::delete('/infants/delete/{id}', [AdminTCLController::class, 'delete'])->na
 Route::get('/infants/edit/{id}', [AdminTCLController::class, 'edit'])->name('admin.infants.edit');
 Route::put('/infants/update/{id}', [AdminTCLController::class, 'update'])->name('admin.infants.update');
 Route::get('/infants/{id}', [AdminTCLController::class, 'view'])->name('admin.infants.view');
+Route::get('/infants/success', [AdminTCLController::class, 'success'])->name('admin.infants.success');
+
 
 Route::get('/history', [AdminVaccineHistoryController::class, 'index'])->name('admin.history.index');
 Route::get('/history/filtered-records/{barangay_id}/{year?}', [AdminVaccineHistoryController::class, 'getFilteredImmunizationRecords']);
