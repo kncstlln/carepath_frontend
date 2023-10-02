@@ -18,7 +18,7 @@ class AdminBarangayController extends Controller
     public function index()
     {
         // Fetch data from the API endpoint
-        $response = $this->apiService->get('/barangays', session('token')); // Assuming 'token' is stored in the session
+        $response = $this->apiService->get('/fetch-all-barangays', session('token')); // Assuming 'token' is stored in the session
 
         if (isset($response['data'])) {
             $barangays = $response['data'];

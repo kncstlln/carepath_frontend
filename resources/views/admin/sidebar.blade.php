@@ -85,8 +85,8 @@
             <img src="{{ asset('images/profile.jpg') }}" alt="logo_img" />
           </span>
           <div class="data_text">
-            <span class="name d-inline-block text-truncate">Kane Castillano</span>
-            <span class="d-inline-block text-truncate" style="max-width: 190px;">castillano.kaneerryl@auf.edu.ph</span>
+            <span class="name d-inline-block text-truncate">{{ session('username') }}</span>
+            <span class="d-inline-block text-truncate" style="max-width: 190px;">{{ session('name') }}</span>
           </div>
         </div>
       </div>

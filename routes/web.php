@@ -62,7 +62,7 @@ Route::get('/history', [AdminVaccineHistoryController::class, 'index'])->name('a
 Route::get('/history/filtered-records/{barangay_id}/{year?}', [AdminVaccineHistoryController::class, 'getFilteredImmunizationRecords']);
 Route::get('/history/add/{id}', [AdminVaccineHistoryController::class, 'add'])->name('admin.history.add');
 Route::post('/history', [AdminVaccineHistoryController::class, 'store'])->name('admin.history.store');
-
+Route::delete('/history/delete/{id}', [AdminVaccineHistoryController::class, 'delete'])->name('admin.history.delete');
 
 });
 

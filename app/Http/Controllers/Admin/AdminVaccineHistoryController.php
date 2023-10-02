@@ -124,12 +124,15 @@ class AdminVaccineHistoryController extends Controller
 
             $response = $this->apiService->post('/immunization-records', $data, session('token'));
 
-            if (isset($response['data'])) {
-                // Successfully stored the data
-                return redirect()->route('admin.history.index')->with('success', 'Immunization record added successfully');
-            } else if (isset($response['error'])) {
+            if (isset($response['error'])) {
                 // Handle the error response from the API
                 return back()->with('error', $response['error']);
+            } else if (isset($response['data'])) {
+                // Successfully stored the data, extract the infant_id from the response
+                $infantId = $response['data']['infant_id'];
+
+                // Redirect to the admin/infants/{infant_id} route
+                return redirect()->route('admin.infants.view', ['id' => $infantId])->with('success', 'Immunization record added successfully');
             } else {
                 return back()->with('error', 'Failed to store immunization record.');
             }
@@ -138,9 +141,24 @@ class AdminVaccineHistoryController extends Controller
         }
     }
 
+    public function delete($id)
+    {
+        try {
+            // Send a request to your API to delete the immunization record with the provided ID
+            $response = $this->apiService->delete("/immunization-records/{$id}", session('token'));
 
-
-
+            if (isset($response['data'])) {
+                // Return a JSON response indicating success
+                return response()->json(['success' => true], 200);
+            } else {
+                // Handle the error, you can return an error response as needed
+                return response()->json(['success' => false, 'message' => 'Failed to delete immunization record.'], 500);
+            }
+        } catch (\Exception $e) {
+            // Handle exceptions if they occur during the API request
+            return response()->json(['success' => false, 'message' => 'An error occurred while deleting the infant record.'], 500);
+        }
+    }
 
 
 }

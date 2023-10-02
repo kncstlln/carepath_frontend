@@ -132,8 +132,8 @@
                                             <a href="/admin/infants/edit/${infant.id}">
                                                 <i class='bx bxs-pencil me-2'></i>
                                             </a>
-                                        </td>
-                                        <td class="text-center align-middle"><button data-infant-id="${infant.id}" style="border: none; background-color: transparent;"><i class="fa-solid fa-trash"></i></button></td>
+                                        </td>    
+                                        <td class="text-center align-middle"><button class="deleteButton" data-infant-id="${infant.id}" style="border:none"><i class="fa-solid fa-trash"></i></button></td>
                                     </tr>
                                 </table>
                             </td>

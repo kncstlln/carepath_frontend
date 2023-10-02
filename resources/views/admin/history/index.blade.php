@@ -56,6 +56,13 @@
         const yearDropdown = document.querySelector('#yearDropdown');
         const filteredImmunizationRecordsDiv = document.querySelector('#filteredImmunizationRecords');
 
+        const barangayNameMapping = {
+            @foreach($allBarangays as $barangayId => $barangayName)
+                {{ $barangayId }}: "{{ $barangayName }}",
+            @endforeach
+        };
+
+        // Function to fetch filtered immunization records and update the table
         // Function to fetch filtered immunization records and update the table
         function fetchFilteredImmunizationRecords(barangayId, year) {
             const url = `/admin/history/filtered-records/${barangayId}/${year}`;
@@ -66,6 +73,8 @@
                     // Generate HTML for the table
                     const tableHtml = generateTableHtml(data);
                     filteredImmunizationRecordsDiv.innerHTML = tableHtml;
+
+                    attachDeleteButtonListeners(); // Add this line to attach the listeners
                 })
                 .catch(error => {
                     console.error('Error:', error);
@@ -82,6 +91,7 @@
                             <th scope="col">Name</th>
                             <th scope="col">Vaccine</th>
                             <th scope="col">Dose Number</th>
+                            <th scope="col">Administered In</th>
                             <th scope="col">Administered By</th>
                             <th scope="col">Remarks</th>
                             <th scope="col">Action</th>
@@ -92,24 +102,20 @@
 
             if (Array.isArray(data.data) && data.data.length > 0) {
                 data.data.forEach(record => {
+                    const barangayName = barangayNameMapping[record.barangay_id] || 'N/A';
                     tableHtml += `
                         <tr>
                             <td>${record.immunization_date}</td>
-                            <td class="text-uppercase">${record.infant_name}</td>
+                            <td class="text-uppercase"><b>${record.infant_name}</b></td>
                             <td>${record.vaccine_name}</td>
                             <td>${record.dose_number}</td>
+                            <td>${barangayName}</td>
                             <td>${record.administered_by}</td>
                             <td>${record.remarks || '-'}</td>
                             <td>
                                 <table style="margin: 0 auto;">
                                     <tr>
-                                        <td class="text-center align-middle" style="text-align: center;"><a href=""><i class="fa-solid fa-eye me-2"></i></a></td>
-                                        <td class="text-center align-middle" style="text-align: center;">
-                                            <a href="">
-                                                <i class='bx bxs-pencil me-2'></i>
-                                            </a>
-                                        </td>
-                                        <td class="text-center align-middle" style="text-align: center;"><button class="deleteButton" data-infant-id="" style="border: none; background-color: transparent;"><i class="fa-solid fa-trash"></i></button></td>
+                                    <td class="text-center align-middle"><button class="deleteButton" data-record-id="${record.id}" style="border:none"><i class="fa-solid fa-trash"></i></button></td>   
                                     </tr>
                                 </table>
                             </td>
@@ -152,7 +158,40 @@
 
         // Initial load with all data
         fetchFilteredImmunizationRecords(0, '');
-    });
+
+        });
+
+        function attachDeleteButtonListeners() {
+            const deleteButtons = document.querySelectorAll('.deleteButton');
+            deleteButtons.forEach(button => {
+                button.addEventListener('click', function () {
+                    const recordId = this.getAttribute('data-record-id');
+                    
+                    if (confirm('Are you sure you want to delete this history record?')) {
+                        // Make an AJAX request to delete the infant record
+                        fetch(`/admin/history/delete/${recordId}`, {
+                            method: 'DELETE',
+                            headers: {
+                                'X-CSRF-TOKEN': '{{ csrf_token() }}',
+                            },
+                        })
+                        .then(response => response.json())
+                        .then(data => {
+                            if (data.success) {
+                                // Remove the row from the table
+                                const grandparentRow = this.closest('tr').closest('table').closest('tr');
+                                grandparentRow.remove();
+                            } else {
+                                alert('Failed to delete infant record. Please try again.');
+                            }
+                        })
+                        .catch(error => {
+                            console.error('Error:', error);
+                        });
+                    }
+                });
+            });
+        }
 </script>
 </body>
 </html>

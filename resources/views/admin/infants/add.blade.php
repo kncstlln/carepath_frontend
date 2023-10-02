@@ -33,7 +33,7 @@
 
                 <div class="col-md-6 ">
                     <label for="name" class="form-label">Name: <span style="color:red">*</span></label>
-                    <input type="text" class="form-control" id="name" placeholder="Juan Dela Cruz">
+                    <input type="text" name="name" class="form-control" id="name" placeholder="Juan Dela Cruz">
                 </div>
 
                 <div class="col-md-6 col-xl-4"> 

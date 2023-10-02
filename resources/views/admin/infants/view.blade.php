@@ -86,8 +86,10 @@
                                   <th>Immunization Date</th>
                                   <th>Vaccine Name</th>
                                   <th>Vaccine Dose</th>
+                                  <th>Administered in</th>
                                   <th>Administered By</th>
                                   <th>Remarks</th>
+                                  <th>Action</th>
                               </tr>
                           </thead>
                           <tbody>
@@ -97,8 +99,20 @@
                                           <td>{{ $immunization['Immunization Date'] }}</td>
                                           <td>{{ $immunization['Vaccine Name'] }}</td>
                                           <td>{{ $immunization['Vaccine Dose'] }}</td>
+                                          <td>
+                                            @foreach ($barangays as $barangay)
+                                                @if ($barangay['id'] == $immunization['Vaccination Location'])
+                                                    {{ $barangay['name'] }}
+                                                @endif
+                                            @endforeach
+                                          </td>
                                           <td>{{ $immunization['Administered By'] }}</td>
                                           <td>{{ $immunization['Remarks'] }}</td>
+                                          <td class="text-center align-middle">
+                                            <button class="deleteButton" data-record-id="{{ $immunization['Id'] }}" style="border:none">
+                                                <i class="fa-solid fa-trash"></i>
+                                            </button>
+                                          </td>
                                       </tr>
                                   @endforeach
                               @else
@@ -114,5 +128,47 @@
                 </div>
             </div>
         </div>
+        <script>
+            document.addEventListener('DOMContentLoaded', function () {
+                // Attach click event listeners to delete buttons
+                attachDeleteButtonListeners();
+
+                // Your existing JavaScript code here
+                // ...
+            });
+
+            // Function to attach click event listeners to delete buttons
+            function attachDeleteButtonListeners() {
+                const deleteButtons = document.querySelectorAll('.deleteButton');
+                deleteButtons.forEach(button => {
+                    button.addEventListener('click', function () {
+                        const recordId = this.getAttribute('data-record-id');
+
+                        if (confirm('Are you sure you want to delete this immunization record?')) {
+                            // Make an AJAX request to delete the immunization record
+                            fetch(`/admin/history/delete/${recordId}`, {
+                                method: 'DELETE',
+                                headers: {
+                                    'X-CSRF-TOKEN': '{{ csrf_token() }}',
+                                },
+                            })
+                            .then(response => response.json())
+                            .then(data => {
+                                if (data.success) {
+                                    // Remove the row from the table
+                                    const row = this.parentElement.parentElement;
+                                    row.remove();
+                                } else {
+                                    alert('Failed to delete immunization record. Please try again.');
+                                }
+                            })
+                            .catch(error => {
+                                console.error('Error:', error);
+                            });
+                        }
+                    });
+                });
+            }
+        </script>
   </body>
 </html>
