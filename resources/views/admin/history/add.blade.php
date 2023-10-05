@@ -16,7 +16,11 @@
 </head>
 <body>
 @include('admin/sidebar')
+<<<<<<< HEAD
 <div class="container-sm content mt-4">
+=======
+<div class="container-sm mt-4">
+>>>>>>> 96828c2464f64cf741bac2c2a2016169154c37c3
     <div class="row">
         <div class="col-sm mb-5" id="infantsTxt">Vaccinate Infant</div>
     </div>

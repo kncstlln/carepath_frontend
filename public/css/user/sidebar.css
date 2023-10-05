@@ -115,7 +115,6 @@ body {
 .sidebar.close .line {
   opacity: 1;
 }
-
 .item {
   list-style: none;
 }
@@ -148,13 +147,14 @@ body {
   gap: 15px;
   border-top: 2px solid rgba(0, 0, 0, 0.1);
 }
-
 .sidebar_profile .name {
+  font-size: 18px;
+  color: #333;
+}
+.sidebar_profile .email {
   font-size: 15px;
   color: #333;
-} 
-
-
+}
 
 /* Navbar */
 .navbar {

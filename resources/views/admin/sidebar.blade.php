@@ -86,6 +86,7 @@
             <img src="{{ asset('images/profile.jpg') }}" alt="logo_img" />
           </span>
           <div class="data_text">
+<<<<<<< HEAD
             <div class="row">
               <div class="col-12 name">
               {{ session('name') }}
@@ -98,6 +99,10 @@
               </div>
    
             <!-- {{ session('name') }} -->
+=======
+            <span class="name d-inline-block text-truncate">{{ session('username') }}</span>
+            <span class="d-inline-block text-truncate" style="max-width: 190px;">{{ session('name') }}</span>
+>>>>>>> 96828c2464f64cf741bac2c2a2016169154c37c3
           </div>
         </div>
       </div>
