@@ -1,0 +1,100 @@
+body{
+    overflow-x: hidden;
+}
+
+a {
+    color: inherit;
+}
+
+#infantsTxt{
+    color: #8F92A1;
+}
+
+#dropdown1{
+    background-color:#980B0B;
+}
+
+#dropdown2{
+    background-color:#980B0B;
+}
+
+.homeicon{
+    padding-left:0%;
+}
+
+.dropdown-color:hover{
+    background-color:#980B0B;
+    color: white;
+}
+
+#button-add{
+    background-color:#863A3A;
+    color: white;
+}
+
+#button-add:hover{
+    background-color:#642c2c;
+    color: white;
+}
+
+#table-margin{
+  padding-left: 300px;
+}
+
+input[placeholder]::before {
+    content: '* ';
+    color: red;
+}
+
+.paginationTxt{
+    color:#980B0B;
+}
+
+.paginationTxt:hover{
+    color:#980B0B;
+}
+
+.paginationTxt:focus{
+    color:#980B0B;
+}
+
+.paginationTxt:active{
+    color:#980B0B;
+}
+
+.selectSize{
+    width:300px;
+}
+
+.selectDate{
+    width:150px;
+}
+
+.createRecord{
+    border:1px solid black;
+    border-radius: 20px;
+}
+
+td.text-uppercase{
+    text-transform:uppercase;
+}
+
+.cancelButton{
+    height: 50px;
+    width: 150px;
+    
+}
+
+.submitButton{
+    height: 50px;
+    width: 150px;
+    background-color:#980B0B;
+    color:white;
+}
+
+.submitButton:hover{
+    height: 50px;
+    background-color:#680c0c;
+    color:white;
+}
+

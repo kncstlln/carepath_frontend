@@ -1,0 +1,231 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Noto+Serif:ital@1&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@1,300&family=Poppins&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@1,300&display=swap');
+
+.navbar{
+    background-color: #161853;
+}
+
+
+.btnColor {
+    width: 100px; 
+    color: white;
+    background-color: #980B0B;
+    transition: none; 
+}
+
+.btnColor:hover {
+    color: white;
+    background-color: #7a0909;
+}
+
+.btnToggle{
+    background-color: gray;
+}
+
+.nav-link{
+    color: white;
+}
+
+.nav-link:hover{
+    color: white;
+    text-decoration: 2px underline #980B0B;
+}
+
+.row .col-2{
+    height: 135px;
+    width: 360px;
+    background-color: #FAEDF0;
+    box-shadow: 0px 4px 4px 0px rgba(185, 15, 60, 0.25);
+    border-radius: 20px;
+}
+
+
+.placement{
+    top: -50px;
+
+}
+
+.title{
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 800;
+}
+
+.blockquote{
+    margin-top: 100px;
+    font-family: 'Montserrat', sans-serif;
+    font-size:36px;
+}
+
+.blockquote-footer{
+    color:#867b7e;
+}
+
+.card-title{
+    font-family: 'Montserrat', sans-serif;
+    font-size: 18px;
+}
+
+
+.card-text{
+    font-family: 'Noto Sans', sans-serif;
+}
+
+.sub{
+    font-family: 'Montserrat', sans-serif;
+    font-size:12px;
+    font-weight: 400;
+
+}
+
+.titleAbout{
+    color:#161853;
+}
+
+.bigIcon{
+    font-size: 85px;
+}
+
+.medIcon{
+    font-size: 55px;
+}
+
+.aboutUs{
+    margin-top: 100px;
+}
+
+.transition{
+    animation-name:slide-in;
+    animation-duration: 1.5s;
+    animation-timing-function: linear;
+}
+
+.fade{
+    animation-name:fade-in;
+    animation-duration: 1.5s;
+    animation-fill-mode: forwards;
+    animation-timing-function: linear;
+}
+
+.about-us-title{
+    font-family: 'Montserrat', sans-serif;
+    font-size:36px;
+    font-weight: 400;
+    color:#B90F3C;
+    text-align: justify;
+
+   
+}
+
+.subtitle{
+    font-family: 'Noto Serif', serif;
+    font-size: 28px;
+    text-align: justify;
+    color:  #161853;
+
+}
+
+.start{
+    margin-bottom: 150px;
+}
+
+.img1{
+    top: 1%;
+}
+
+.img2{
+    left: -10%;
+    top: 25%;
+
+}
+
+.img3{
+    left: 50%;
+    bottom: 60%;
+}
+
+.custom-shape-divider-top-1690472653 {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    overflow: hidden;
+    line-height: 0;
+}
+
+.custom-shape-divider-top-1690472653 svg {
+    position: relative;
+    display: block;
+    width: calc(100% + 1.3px);
+    height: 118px;
+}
+
+.custom-shape-divider-top-1690472653 .shape-fill {
+    fill: #FFFFFF;
+}
+
+
+.services{
+    padding-top:57px;
+    color:white;
+    background: rgb(79,31,35);
+    background: linear-gradient(90deg, rgba(79,31,35,1) 0%, rgba(159,40,40,1) 50%, rgba(121,22,24,0.8603816526610644) 100%);
+}
+
+.serviceTitle{
+    font-family: 'Poppins', sans-serif;
+    font-size: 78px;
+}
+
+.footer-head{
+    font-family: 'Poppins', sans-serif;
+}
+
+.footer-text{
+    font-family: 'Montserrat', sans-serif;
+}
+
+
+footer{
+    background-color: #414144;
+    max-width: auto;
+    height: 400px;
+    color: white;
+}
+
+
+
+@keyframes slide-in{
+    0% {position:absolute; left: -30px;}
+    25% {position:absolute; left:-20px;}
+    50% {position:absolute;left:-10px;}
+    75% {position:absolute;left:0px;}
+    100% {}
+}
+
+@keyframes fade-in{
+    0% {opacity:0%}
+    100% {opacity:100%}
+}
+
+@media (min-width: 1200px) {
+    .image {
+      display: block;
+    }
+  }
+  
+  /* For screens 1199px and below, hide the column */
+  @media (max-width: 1199px) {
+    .third, .fourth{
+      display: none;
+    }
+  }
+
+  @media (max-width: 767px) {
+    .image{
+      display: none;
+    }
+  }
+

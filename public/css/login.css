@@ -1,0 +1,24 @@
+
+
+.container .btn.buttonColor{
+    background-color:#980B0B;
+    color:white;
+    width:150px;
+    height:50px;
+}
+
+.container .btn.buttonColor:hover{
+    background-color:#630808;
+    color:white;
+    width:150px;
+    height:50px;
+}
+
+/* .background{
+    background-color:antiquewhite;
+    border:1px solid #630808;
+    padding-bottom: 150px;
+    padding-top: 50px;
+    border-radius: 10%;
+
+} */
