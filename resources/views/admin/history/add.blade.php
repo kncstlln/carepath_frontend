@@ -16,7 +16,11 @@
 </head>
 <body>
 @include('admin/sidebar')
+<<<<<<< HEAD
+<div class="container-sm content mt-4">
+=======
 <div class="container-sm mt-4">
+>>>>>>> 96828c2464f64cf741bac2c2a2016169154c37c3
     <div class="row">
         <div class="col-sm mb-5" id="infantsTxt">Vaccinate Infant</div>
     </div>
@@ -26,32 +30,49 @@
         </div>
         <form action="{{ route('admin.history.store') }}" method="post">
           @csrf
+          
             <div class="row mb-4 align-items-center">
-                <div class="col-md-1 col-lg-auto pt-1 text-center"> Name:</div>
-                <div class="col-md-5 col-lg-auto me-4">
-                    <input class="form-control" type="text" placeholder="Full Name" aria-label="default input" required value="{{ $infantData['name'] }}" disabled/>
+
+                <div class="col-md-6 col-xl-4">
+                    <label for="name" class="form-label">Name:</label>
+                    <input type="text" name="name" class="form-control" id="name" value="{{ $infantData['name'] }}" disabled>
                 </div>
-                <div class="col-md-2 col-lg-auto p-2 text-center"> Tracking Number:</div>
-                <div class="col-md-3 col-lg-auto">
-                    <input class="form-control" type="number" placeholder="Tracking Number" aria-label="default input" required value="{{ $infantData['tracking_number'] }}" disabled />
+
+                <div class="col-md-6 col-xl-4">
+                    <label for="tracking" class="form-label">Tracking Number:</label>
+                    <input type="text" name="tracking" class="form-control" id="tracking" value="{{ $infantData['tracking_number'] }}" disabled>
                 </div>
-                <div class="col-md-1 col-lg-auto">Sex: </div>
-                <div class="col-md-1 col-lg-auto">
-                    <input class="form-control" type="text" value="{{ $infantData['sex'] }}" disabled />
+
+
+                <div class="col-md-3 col-xl-1 mt-2">
+                    <label for="sex" class="form-label">Sex:</label>
+                    <input type="text" name="sex" class="form-control" id="sex" value="{{ $infantData['sex'] }}" disabled>
                 </div>
-            </div>
-            <div class="row mb-4">
+
+                <div class="col-md-3 col-xl-2 mt-2">
+                    <label for="birthdate" class="form-label">Birth date:</label>
+                    <input type="text" name="birthdate" class="form-control" id="birthdate" value="{{ $infantData['birth_date'] }}" disabled>
+                </div>
+
+                <div class="col-md-6 col-xl-4 mt-2">
+                    <label for="barangay" class="form-label">Barangay:</label>
+                    <input type="text" name="barangay" class="form-control" id="barangay" value="{{ $barangayName }}" disabled>
+                </div>
+
+                <div class="col-md-3 col-xl-1 order-xl-3 mt-2">
+                    <label for="weight" class="form-label">Weight:</label>
+                    <input type="text" name="weight" class="form-control" id="weight" value="{{ $infantData['weight'] }}" disabled>
+                </div>
+
+                <div class="col-md-3 col-xl-1 order-xl-4 mt-2">
+                    <label for="length" class="form-label">Length:</label>
+                    <input type="text" name="length" class="form-control" id="length" value="{{ $infantData['length'] }}" disabled>
+                </div>
+
                 
-               
-                <div class="col-md-2 col-lg-auto pt-2">Birth date: </div>
-                <div class="col-md-2 col-lg-auto">
-                    <input class="form-control" type="text" value="{{ $infantData['birth_date'] }}" disabled />
-                </div>
-                <div class="col-md-3 col-lg-auto pt-2"> Barangay: {{ $barangayName }}</div>
-                
-                <div class="col-md-3 col-lg-auto pt-2">Weight (kg): {{ $infantData['weight'] }}</div>
-                <div class="col-md-3 col-lg-auto pt-2">Length (cm): {{ $infantData['length'] }}</div>
             </div>
+
+     
     
       
             <div class="row mb-2">

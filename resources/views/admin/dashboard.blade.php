@@ -13,9 +13,8 @@
     <title>Dashboard</title>
 </head>
 <body id="dashboard">
-  @include('admin.profile')
   @include('admin.sidebar')
-      <div class="container"> 
+      <div class="container content"> 
         <div class="row mt-3 mb-5" id="rectangle">
           <div class="col-sm-10" id="user">Hello {{ session('name') }},
             <div class="row">

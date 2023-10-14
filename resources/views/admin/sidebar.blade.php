@@ -5,7 +5,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Dashboard</title>
-    <link rel="stylesheet" href="css/sidebar.css" />
+    <link rel="stylesheet" href="{{ asset('css/admin/sidebar.css') }}" />
+    <script src="https://kit.fontawesome.com/2eead9cc17.js" crossorigin="anonymous"></script>
     <link flex href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet" />
     <script src="{{ asset('js/sidebar.js') }}" defer></script>
   </head>
@@ -85,8 +86,23 @@
             <img src="{{ asset('images/profile.jpg') }}" alt="logo_img" />
           </span>
           <div class="data_text">
+<<<<<<< HEAD
+            <div class="row">
+              <div class="col-12 name">
+              {{ session('name') }}
+              </div>
+            </div>
+            <div class="row" style=" width:300px">
+          
+              <div class="col-auto">
+                <a href="">Logout</a> 
+              </div>
+   
+            <!-- {{ session('name') }} -->
+=======
             <span class="name d-inline-block text-truncate">{{ session('username') }}</span>
             <span class="d-inline-block text-truncate" style="max-width: 190px;">{{ session('name') }}</span>
+>>>>>>> 96828c2464f64cf741bac2c2a2016169154c37c3
           </div>
         </div>
       </div>

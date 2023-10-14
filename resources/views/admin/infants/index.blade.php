@@ -15,7 +15,7 @@
 </head>
 <body>
 @include('admin.sidebar')
-<div class="container-sm mt-4" id="targetclientlist">
+<div class="container-sm mt-4 content" id="targetclientlist">
     <div class="row mb-2">
         <div class="col-sm" id="infantsTxt">List of Infants</div>
     </div>
@@ -133,7 +133,11 @@
                                                 <i class='bx bxs-pencil me-2'></i>
                                             </a>
                                         </td>    
+<<<<<<< HEAD
+                                        <td class="text-center align-middle"><button class="deleteButton" data-infant-id="${infant.id}" style="border:none; background: transparent;"><i class="fa-solid fa-trash"></i></button></td>
+=======
                                         <td class="text-center align-middle"><button class="deleteButton" data-infant-id="${infant.id}" style="border:none"><i class="fa-solid fa-trash"></i></button></td>
+>>>>>>> 96828c2464f64cf741bac2c2a2016169154c37c3
                                     </tr>
                                 </table>
                             </td>

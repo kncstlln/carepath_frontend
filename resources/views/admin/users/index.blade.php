@@ -52,7 +52,7 @@
                           <form action="{{ route('admin.users.delete', ['id' => $user['id']]) }}" method="POST" style="display: inline;">
                               @csrf
                               @method('DELETE')
-                              <button type="submit" class="btn btn-link" onclick="return confirm('Are you sure you want to delete this user?')"><i class="fa-solid fa-trash" style="color: black;"></i></button>
+                              <button type="submit" class="btn btn-link" onclick="return confirm('Are you sure you want to delete this user?')"><i class="fa-solid fa-trash" style="color: black; "></i></button>
                           </form>
                       </td>
                   </tr>

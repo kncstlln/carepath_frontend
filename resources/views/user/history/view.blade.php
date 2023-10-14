@@ -4,25 +4,24 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
-    <link href="css/admin/sidebar.css" rel="stylesheet"/>
-    <link href="css/admin/index.css" rel="stylesheet"/>
-    <link href="css/admin/viewInfant.css" rel="stylesheet"/>
-    <script src="js/sidebar.js" defer></script>
-    <script src="js/index.js"></script>
+    <link href="{{ asset('css/user/sidebar.css') }}" rel="stylesheet"/>
+    <link href="{{ asset('css/user/index.css') }}" rel="stylesheet"/>
+    <link href="{{ asset('css/user/viewInfant.css') }}" rel="stylesheet"/>
+    <script src="{{ asset('js/sidebar.js') }}" defer></script>
+    <script src="{{ asset('js/index.js') }}"></script>
     <link flex href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet" />
     <script src="https://kit.fontawesome.com/2eead9cc17.js" crossorigin="anonymous"></script>
-    <link rel="icon" type="image/x-icon" href="{{ asset('/images/logo.png') }}">
-    <title>View History</title>    
+    <title>Add Infant</title>    
 </head>
   <body>
-  @include('admin/sidebar')
-        <div class="container-sm content mt-4">
+  @include('user.sidebar')
+        <div class="container-sm mt-4">
             <div class="row">
                 <div class="col-sm mb-5" id="infantsTxt">View Vaccination History Record</div>
             </div>
             <div class="container-sm ps-4 createRecord">
                 <div class="row">
-                    <div class="col-1 col-md-1 mt-3"><a href="{{ url('/history') }}"><i class="fa-solid fa-angle-up fa-rotate-270 fa-2xl"></i></a></div>
+                    <div class="col-1 col-md-1 mt-3"><a href="{{ url('user/history') }}"><i class="fa-solid fa-angle-up fa-rotate-270 fa-2xl" style="color: black;"></i></a></div>
                     <div class="col-10 col-md-10 h2 mb-5 mt-3 text-center">View Vaccination History Record</div>
                 </div>
                 <div>

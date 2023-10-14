@@ -15,7 +15,7 @@
 </head>
 <body>
 @include('admin.sidebar')
-<div class="container-sm mt-4" id="vaccineHistory">
+<div class="container-sm content mt-4" id="vaccineHistory">
     <div class="row mb-2">
         <div class="col-sm" id="vaccineHistoryTxt">Vaccine History</div>
     </div>

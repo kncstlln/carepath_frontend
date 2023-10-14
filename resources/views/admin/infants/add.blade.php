@@ -17,7 +17,7 @@
 <body>
 @include('admin.sidebar')
 
-<div class="container mt-4 mb-5">
+<div class="container content mt-4 mb-5">
     <div class="row">
         <div class="col-sm mb-5" id="infantsTxt">Create New Infant Record</div>
     </div>
