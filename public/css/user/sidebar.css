@@ -25,6 +25,33 @@ body {
   width: 40px;
 }
 
+.sidebar_profile {
+  padding-top: 15px;
+  margin-top: 15px;
+  gap: 15px;
+  border-top: 2px solid rgba(0, 0, 0, 0.1);
+}
+.sidebar_profile div.name {
+  font-size: 18px;
+  color: #333;
+  pointer-events:none;
+}
+
+div.data_text div.col-auto a{
+  text-decoration:none;
+  color:black;
+} 
+
+div.data_text div.col-auto a:hover{
+  color: white;
+} 
+
+div.data_text div.col-auto:hover{
+  background-color:#980B0B;
+  border-radius:5px;
+  color: white;
+} 
+
 /* Sidebar */
 .sidebar {
   position: fixed;
@@ -42,7 +69,7 @@ body {
 }
 
 .content {
-  margin-left: 0;
+  margin-left: 10;
   transition: margin-left 0.3s ease;
 }
 
@@ -188,6 +215,8 @@ body {
   .navbar {
     left: 65%;
   }
+
+  
 }
 @media screen and (max-width: 800px) {
   .sidebar {

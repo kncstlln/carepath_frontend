@@ -13,7 +13,7 @@
 </head>
 <body>
   @include('user.sidebar')
-      <div class="container"> 
+      <div class="container content"> 
         <div class="row mt-3 mb-5" id="rectangle">
           <div class="col-sm-10" id="user">Hello Kane,
             <div class="row">
@@ -22,7 +22,7 @@
               </div>
             </div>
           </div>
-          <div class="col-sm-2 mt-2 d-none d-lg-block"><img src="{{ asset('user/images/AC_LOGO.png') }}" width="139px" height="139px"/></div>
+          <div class="col-sm-2 mt-2 d-none d-lg-block"><img src="{{ asset('images/AC_LOGO.png') }}" width="139px" height="139px"/></div>
         </div>
           <div class="row g-4 mb-5 text-center">
             <div class="col-6 col-md-3">

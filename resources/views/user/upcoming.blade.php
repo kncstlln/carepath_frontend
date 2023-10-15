@@ -16,7 +16,7 @@
 </head>
 <body>
 @include('user.sidebar')
-    <div class="container-sm mt-4" id="targetclientlist">
+    <div class="container-sm content mt-4" id="targetclientlist">
         <div class="row mb-2">
             <div class="col-sm" id="infantsTxt">Upcoming Vaccinations</div>
         </div>
@@ -27,8 +27,6 @@
                 <option value="3">Salapungan</option>
             </select>
         </div>
-      </div>
-      <div class="container-md">
         <div class="table-responsive-lg text-center">
           <table class="table table-striped">
             <thead>
@@ -101,7 +99,7 @@
             </li>
           </ul>
         </nav>
-      </div>
+    </div>
   </body>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
 </html>
