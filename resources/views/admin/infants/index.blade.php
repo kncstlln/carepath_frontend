@@ -84,6 +84,8 @@
 
                   // Attach click event listeners to delete buttons
                   attachDeleteButtonListeners();
+
+                  $('#myTable').DataTable();
               })
               .catch(error => {
                   console.error('Error:', error);
