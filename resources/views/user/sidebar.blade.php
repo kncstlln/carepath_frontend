@@ -60,9 +60,28 @@
           </li>
         </ul>
       </div>
-      <!-- Navbar -->
-            <nav class="navbar flex">
-                <i class="bx bx-menu" id="sidebar-open"></i>
-            </nav>
+      <div class="sidebar_profile flex">
+          <span class="nav_image">
+            <img src="{{ asset('images/profile.jpg') }}" alt="logo_img" />
+          </span>
+          <div class="data_text">
+            <div class="row">
+              <div class="col-12 name">
+              {{ session('name') }}
+              </div>
+            </div>
+            <div class="row" style=" width:300px">
+          
+              <div class="col-auto">
+                <a href="">Logout</a> 
+              </div>
+   
+            <!-- {{ session('name') }} -->
+          </div>
         </div>
+          <nav class="navbar flex">
+              <i class="bx bx-menu" id="sidebar-open"></i>
+          </nav>
+      </div>
+    </div>
     </nav>

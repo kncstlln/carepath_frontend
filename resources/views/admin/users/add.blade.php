@@ -20,7 +20,7 @@
 </head>
     <body>
         @include('admin/sidebar')
-        <div class="container-sm mt-4">
+        <div class="container-sm content mt-4">
             <div class="row">
                 <div class="col-sm mb-5" id="infantsTxt">Add User</div>
             </div>

@@ -16,7 +16,7 @@
 </head>
 <body>
   @include('user.sidebar')
-    <div class="container-sm mt-4" id="targetclientlist">
+    <div class="container-sm content mt-4" id="targetclientlist">
         <div class="row mb-2">
             <div class="col-sm" id="infantsTxt">Missed Vaccinations</div>
         </div>

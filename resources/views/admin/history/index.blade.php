@@ -37,8 +37,8 @@
             </select>
         </div>
     </div>
-</div>
-<div class="container-md">
+
+
     <div class="row justify-content-sm-center justify-content-lg-between">
         <div class="col-12 col-sm-8 col-md-6 col-lg-4 col-xl-3 mb-4">
             <input class="form-control" type="text" placeholder="Search.." aria-label="default input example">
@@ -115,7 +115,7 @@
                             <td>
                                 <table style="margin: 0 auto;">
                                     <tr>
-                                    <td class="text-center align-middle"><button class="deleteButton" data-record-id="${record.id}" style="border:none"><i class="fa-solid fa-trash"></i></button></td>   
+                                    <td class="text-center align-middle"><button class="deleteButton" data-record-id="${record.id}" style="border:none; background:transparent "><i class="fa-solid fa-trash"></i></button></td>   
                                     </tr>
                                 </table>
                             </td>

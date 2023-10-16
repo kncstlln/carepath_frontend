@@ -25,8 +25,6 @@
                 <a class="btn addButton w-100" href="{{ route('admin.vaccines.add') }}" role="button" id="button-add">Add Vaccines +</a>
             </div>
         </div>
-      </div>
-      <div class="container-md">
         <div class="table-responsive-lg text-center">
           <table class="table table-striped">
             <thead>

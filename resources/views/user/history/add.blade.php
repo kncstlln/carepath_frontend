@@ -14,7 +14,7 @@
 </head>
   <body>
   @include('user.sidebar')
-        <div class="container-sm mt-4">
+        <div class="container-sm content mt-4">
             <div class="row">
                 <div class="col-sm mb-5" id="infantsTxt">Create Vaccination History Record</div>
             </div>

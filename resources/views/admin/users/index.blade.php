@@ -16,7 +16,7 @@
 </head>
 <body>
 @include('admin/sidebar')
-    <div class="container-sm mt-4" id="targetclientlist">
+    <div class="container-sm content mt-4" id="targetclientlist">
         <div class="row mb-2">
             <div class="col-sm" id="infantsTxt">List of User</div>
         </div>
@@ -25,8 +25,6 @@
                 <a class="btn addButton w-100" href="{{ route('admin.users.add') }}" role="button" id="button-add">Add Users +</a>
             </div>
         </div>
-      </div>
-      <div class="container-md">
         <div class="table-responsive-lg text-center">
           <table class="table table-striped">
             <thead>

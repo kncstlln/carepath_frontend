@@ -8,13 +8,14 @@
     <script src="{{ asset('js/sidebar.js') }}" defer></script>
     <link href="{{ asset('css/user/index.css') }}" rel="stylesheet"/>
     <link flex href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet" />
+    <link href="https://cdn.datatables.net/v/bs5/dt-1.13.6/r-2.5.0/datatables.min.css" rel="stylesheet">
     <script src="https://kit.fontawesome.com/2eead9cc17.js" crossorigin="anonymous"></script>
     <script src="{{ asset('js/index.js') }}"></script>
     <title>Dashboard</title>
 </head>
   <body>
     @include('user.sidebar')
-      <div class="container-sm mt-4" id="targetclientlist">
+      <div class="container-sm content mt-4" id="targetclientlist">
         <div class="row mb-2">
             <div class="col-sm" id="infantsTxt">List of Infants</div>
         </div>
@@ -39,8 +40,6 @@
               <a class="btn btn-lg mb-4 addButton" href="addInfant" role="button" id="button-add">Add Infant +</a>
             </div>
         </div>
-      </div>
-      <div class="container-md">
         <div class="table-responsive-lg text-center  align-middle">
           <table class="table table-striped">
             <thead>
@@ -133,4 +132,13 @@
       </div>
   </body>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
-</html>
+  <script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
+  <script src="https://cdn.datatables.net/v/bs5/dt-1.13.6/r-2.5.0/datatables.min.js"></script>
+
+  <script>
+      $(document).ready( function () {
+      $('#myTable').DataTable();
+  } );ç
+  </script>
+
+  </html>
