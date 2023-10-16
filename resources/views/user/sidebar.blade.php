@@ -73,7 +73,7 @@
             <div class="row" style=" width:300px">
           
               <div class="col-auto">
-                <a href="">Logout</a> 
+                <a href="{{ route('logout') }}">Logout</a> 
               </div>
    
             <!-- {{ session('name') }} -->

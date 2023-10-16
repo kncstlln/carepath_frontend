@@ -16,7 +16,7 @@
 </head>
 <body>
 @include('admin.sidebar')
-<div class="container-sm mt-4 content" id="targetclientlist" style="border:1px solid red">
+<div class="container-sm mt-4 content" id="targetclientlist">
 
     <div class="row mb-2">
         <div class="col-sm" id="infantsTxt">List of Infants</div>
@@ -63,54 +63,36 @@
             </tr>
         </thead>
         <tbody>
+            @foreach($infants as $index => $infant)
             <tr>
-                <th scope="row">${index + 1}</th>
-                <td class="table-secondary text-uppercase">kane ERRYL GARCIA CASTILLANO</td>
-                <td>${infant.birth_date}</td>
-                <td class="table-secondary">${infant.created_at}</td>
-                <td>12312</td>
-                <td class="table-secondary">Female</td>
-                <td>${infant.tracking_number}</td>
-                <td class="table-secondary">${infant.status}</td>
+                <th scope="row">{{ $index + 1 }}</th>
+                <td class="table-secondary text-uppercase">{{ $infant['name'] }}</td>
+                <td>{{ $infant['birth_date'] }}</td>
+                <td class="table-secondary">{{ $infant['created_at'] }}</td>
+                <td>{{ $infant['family_serial_number'] }}</td>
+                <td class="table-secondary">{{ $infant['sex'] }}</td>
+                <td>{{ $infant['tracking_number'] }}</td>
+                <td class="table-secondary">{{ $infant['status'] }}</td>
                 <td>
                     <table>
                         <tr>
-                            <td class="text-center align-middle"><a href="/admin/history/add/${infant.id}"><i class="fa-solid fa-syringe me-2"></i></a>
-                            <td class="text-center align-middle"><a href="/admin/infants/${infant.id}"><i class="fa-solid fa-eye me-2"></i></a></td>
+                            <td class="text-center align-middle"><a href="/admin/history/add/{{ $infant['id'] }}"><i class="fa-solid fa-syringe me-2"></i></a></td>
+                            <td class="text-center align-middle"><a href="/admin/infants/{{ $infant['id'] }}"><i class="fa-solid fa-eye me-2"></i></a></td>
                             <td class="text-center align-middle">
-                                <a href="/admin/infants/edit/${infant.id}">
+                                <a href="/admin/infants/edit/{{ $infant['id'] }}">
                                     <i class='bx bxs-pencil me-2'></i>
                                 </a>
                             </td>    
-                            <td class="text-center align-middle"><button class="deleteButton" data-infant-id="${infant.id}" style="border:none; background: transparent;"><i class="fa-solid fa-trash"></i></button></td>
+                            <td class="text-center align-middle">
+                                <button class="deleteButton" data-infant-id="{{ $infant['id'] }}" style="border: none; background: transparent;">
+                                    <i class="fa-solid fa-trash"></i>
+                                </button>
+                            </td>
                         </tr>
                     </table>
                 </td>
             </tr>
-            <tr>
-                <th scope="row">${index + 1}</th>
-                <td class="table-secondary text-uppercase">kane ERRYL GARCIA CASTILLANO</td>
-                <td>${infant.birth_date}</td>
-                <td class="table-secondary">${infant.created_at}</td>
-                <td>12312</td>
-                <td class="table-secondary">Female</td>
-                <td>${infant.tracking_number}</td>
-                <td class="table-secondary">${infant.status}</td>
-                <td>
-                    <table>
-                        <tr>
-                            <td class="text-center align-middle"><a href="/admin/history/add/${infant.id}"><i class="fa-solid fa-syringe me-2"></i></a>
-                            <td class="text-center align-middle"><a href="/admin/infants/${infant.id}"><i class="fa-solid fa-eye me-2"></i></a></td>
-                            <td class="text-center align-middle">
-                                <a href="/admin/infants/edit/${infant.id}">
-                                    <i class='bx bxs-pencil me-2'></i>
-                                </a>
-                            </td>    
-                            <td class="text-center align-middle"><button class="deleteButton" data-infant-id="${infant.id}" style="border:none; background: transparent;"><i class="fa-solid fa-trash"></i></button></td>
-                        </tr>
-                    </table>
-                </td>
-            </tr> 
+            @endforeach
         </tbody>
     </table>
         

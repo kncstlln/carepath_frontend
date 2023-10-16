@@ -73,47 +73,47 @@ class AdminTCLController extends Controller
         return view('admin.infants.index', compact('infants', 'barangays', 'uniqueBirthYears'));
     }
 
-    public function getFilteredInfants($barangay_id, $year = null)
-    {
-        try {
-            $endpoint = "/getFilteredInfants/{$barangay_id}/{$year}";
+    // public function getFilteredInfants($barangay_id, $year = null)
+    // {
+    //     try {
+    //         $endpoint = "/getFilteredInfants/{$barangay_id}/{$year}";
 
-            $filteredInfants = $this->apiService->get($endpoint, session('token'));
-            $infantsData = isset($filteredInfants['data']) ? (array) $filteredInfants['data'] : [];
+    //         $filteredInfants = $this->apiService->get($endpoint, session('token'));
+    //         $infantsData = isset($filteredInfants['data']) ? (array) $filteredInfants['data'] : [];
 
-            if (!empty($infantsData)) {
-                // Format dates, abbreviate sex, and map status values
-                $formattedInfants = array_map(function ($infant) {
-                    // Format date to "Month day, year"
-                    $birthDate = date('F d, Y', strtotime($infant['birth_date']));
-                    $createdDate = date('F d, Y', strtotime($infant['created_at']));
+    //         if (!empty($infantsData)) {
+    //             // Format dates, abbreviate sex, and map status values
+    //             $formattedInfants = array_map(function ($infant) {
+    //                 // Format date to "Month day, year"
+    //                 $birthDate = date('F d, Y', strtotime($infant['birth_date']));
+    //                 $createdDate = date('F d, Y', strtotime($infant['created_at']));
 
-                    // Abbreviate sex
-                    $infant['sex'] = ($infant['sex'] === 'Male') ? 'M' : 'F';
+    //                 // Abbreviate sex
+    //                 $infant['sex'] = ($infant['sex'] === 'Male') ? 'M' : 'F';
 
-                    // Map status values
-                    $statusText = [
-                        '0' => 'Not Vaccinated',
-                        '1' => 'Partially Vaccinated',
-                        '2' => 'Fully Vaccinated',
-                    ];
-                    $infant['status'] = $statusText[$infant['status']] ?? '';
+    //                 // Map status values
+    //                 $statusText = [
+    //                     '0' => 'Not Vaccinated',
+    //                     '1' => 'Partially Vaccinated',
+    //                     '2' => 'Fully Vaccinated',
+    //                 ];
+    //                 $infant['status'] = $statusText[$infant['status']] ?? '';
 
-                    // Assign the formatted values
-                    $infant['birth_date'] = $birthDate;
-                    $infant['created_at'] = $createdDate;
+    //                 // Assign the formatted values
+    //                 $infant['birth_date'] = $birthDate;
+    //                 $infant['created_at'] = $createdDate;
 
-                    return $infant;
-                }, $infantsData);
+    //                 return $infant;
+    //             }, $infantsData);
 
-                return response()->json(['data' => $formattedInfants], 200);
-            } else {
-                return response()->json(['error' => 'No valid data received'], 404);
-            }
-        } catch (\Exception $e) {
-            return response()->json(['error' => 'An error occurred'], 500);
-        }
-    }
+    //             return response()->json(['data' => $formattedInfants], 200);
+    //         } else {
+    //             return response()->json(['error' => 'No valid data received'], 404);
+    //         }
+    //     } catch (\Exception $e) {
+    //         return response()->json(['error' => 'An error occurred'], 500);
+    //     }
+    // }
 
     public function add()
     {
