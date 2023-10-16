@@ -1,12 +1,12 @@
 <?php
 
-namespace App\Http\Controllers\Admin;
+namespace App\Http\Controllers\User;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Services\ApiService;
 
-class AdminVaccineHistoryController extends Controller
+class UserVaccineHistoryController extends Controller
 {
     protected $apiService;
 
@@ -17,6 +17,7 @@ class AdminVaccineHistoryController extends Controller
 
     public function index()
     {
+        // Fetch the list of immunization records
         $responseRecords = $this->apiService->get('/immunization-records', session('token'));
 
         // Fetch the list of barangays
@@ -42,24 +43,9 @@ class AdminVaccineHistoryController extends Controller
             }
         }
 
-        return view('admin.history.index', compact('allBarangays', 'uniqueImmunizationYears'));
+        return view('user.history.index', compact('allBarangays', 'uniqueImmunizationYears'));
     }
 
-    public function getFilteredImmunizationRecords($barangay_id, $year = null)
-    {
-        try {
-            $filteredRecords = $this->apiService->get("/filtered-immunization-records/{$barangay_id}/{$year}", session('token'));
-
-            if (isset($filteredRecords['data'])) {
-                return response()->json(['data' => $filteredRecords['data']], 200);
-            } else {
-                return response()->json(['error' => 'No valid data received'], 404);
-            }
-        } catch (\Exception $e) {
-            return response()->json(['error' => $e->getMessage()], 500);
-        }
-    }
-    
     public function add($id)
     {
         try {
@@ -94,7 +80,7 @@ class AdminVaccineHistoryController extends Controller
                     $vaccinesResponse = $this->apiService->get('/vaccines', session('token'));
                     $vaccines = isset($vaccinesResponse['data']) ? $vaccinesResponse['data'] : [];
 
-                    return view('admin.history.add', compact('infantData', 'barangayName', 'barangays', 'vaccineDoses', 'vaccines'));
+                    return view('user.history.add', compact('infantData', 'barangayName', 'barangays', 'vaccineDoses', 'vaccines'));
                 }
             }
 
@@ -131,7 +117,7 @@ class AdminVaccineHistoryController extends Controller
                 $infantId = $response['data']['infant_id'];
 
                 // Redirect to the admin/infants/{infant_id} route
-                return redirect()->route('admin.infants.view', ['id' => $infantId])->with('success', 'Immunization record added successfully');
+                return redirect()->route('user.infants.view', ['id' => $infantId])->with('success', 'Immunization record added successfully');
             } else {
                 return back()->with('error', 'Failed to store immunization record.');
             }
@@ -158,6 +144,4 @@ class AdminVaccineHistoryController extends Controller
             return response()->json(['success' => false, 'message' => 'An error occurred while deleting the infant record.'], 500);
         }
     }
-
-
 }

@@ -64,13 +64,7 @@
                     <label for="length" class="form-label">Length:</label>
                     <input type="text" name="length" class="form-control" id="length" value="{{ $infantData['length'] }}" disabled>
                 </div>
-
-                
             </div>
-
-     
-    
-      
             <div class="row mb-2">
                 <div class="col-md-2 pt-2 text-center">Vaccine Used:</div>
                 <div class="col-md-5">

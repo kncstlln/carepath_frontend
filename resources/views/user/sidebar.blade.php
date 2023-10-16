@@ -31,7 +31,7 @@
             </a>
           </li>
           <li class="item">
-            <a href="/user/infant" class="link flex">
+            <a href="/user/infants" class="link flex">
               <i class="bx bx-grid-alt"></i>
               <span>Target Client List</span>
             </a>

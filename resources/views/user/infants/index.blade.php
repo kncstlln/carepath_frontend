@@ -13,124 +13,103 @@
     <script src="{{ asset('js/index.js') }}"></script>
     <title>Dashboard</title>
 </head>
-  <body>
-    @include('user.sidebar')
-      <div class="container-sm content mt-4" id="targetclientlist">
-        <div class="row mb-2">
-            <div class="col-sm" id="infantsTxt">List of Infants</div>
-        </div>
-        <div class="row mb-5">
-            <div class="col-3 w-auto">
-            <select class="form-select mb-3 " aria-label=".form-select-lg example">
-                <option selected value="1">Lourdes NorthWest</option>
-                <option value="2">Ninoy Aquino(Marisol)</option>
-                <option value="3">Salapungan</option>
-            </select>
+<body>
+  @include('user.sidebar')
+  <div class="container-sm mt-4 content" id="targetclientlist">
+
+      <div class="row mb-2">
+          <div class="col-sm" id="infantsTxt">List of Infants</div>
+      </div>
+
+      <div class="row mb-5">
+          <div class="col-3 w-auto">
+              <select class="form-select mb-3" id="barangayDropdown" aria-label=".form-select-lg example">
+                  <option value="0">All Barangays</option>
+                  @foreach($barangays as $barangay)
+                      <option value="{{ $barangay['id'] }}">{{ $barangay['name'] }}</option>
+                  @endforeach
+              </select>
           </div>
           <div class="col-6 w-auto">
-            <select class="form-select mb-3 " aria-label=".form-select-lg example">
-              <option selected value="1">2024</option>
-              <option value="2">2023</option>
-              <option value="3">2022</option>
-            </select>
+              <select class="form-select mb-3" id="yearDropdown" aria-label=".form-select-lg example">
+                  <option value="">All Years</option>
+                  @foreach($uniqueBirthYears as $year)
+                      <option value="{{ $year }}">{{ $year }}</option>
+                  @endforeach
+              </select>
           </div>
-        </div>
-        <div class="row d-flex justify-content-end" >
-            <div class="col-7 d-flex justify-content-end">
-              <a class="btn btn-lg mb-4 addButton" href="addInfant" role="button" id="button-add">Add Infant +</a>
-            </div>
-        </div>
-        <div class="table-responsive-lg text-center  align-middle">
-          <table class="table table-striped">
-            <thead>
-              <tr class="table-danger">
-                <th scope="col">No.</th>
-                <th scope="col">Family Serial Number</th>
-                <th scope="col">Birth Date</th>
-                <th scope="col">Date of Registration</th>
-                <th scope="col">Name of Child</th>
-                <th scope="col">Sex</th>
-                <th scope="col">Tracking Number</th>
-                <th scope="col">Status</th>
-                <th scope="col">Action</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <th scope="row">1</th>
-                <td class="table-secondary">312</td>
-                <td>06/15/2002</td>
-                <td class="table-secondary">06/15/2023</td>
-                <td>Kane Erryl G. Castillano</td>
-                <td class="table-secondary">M</td>
-                <td>123131289</td>
-                <td class="table-secondary">Fully Vaccinated</td>
-                <td>
-                  <table>
-                    <tr>
-                      <td class="text-center  align-middle"><a href="viewInfant"><i class="fa-solid fa-eye me-2" style="color: black"></i></a></td>
-                      <td class="text-center  align-middle"><a href="editInfant"><i class='bx bxs-pencil me-2' style="color: black"></i></a></td>
-                      <td class="text-center  align-middle"><i class="fa-solid fa-trash"></i></td>
-                    </tr>
-                  </table>
-                </td>
-              </tr>
-              <tr>
-                <th scope="row">2</th>
-                <td class="table-secondary">908</td>
-                <td>06/15/2021</td>
-                <td class="table-secondary">09/12/2023</td>
-                <td>Jello P. Mangune</td>
-                <td class="table-secondary">Dog</td>
-                <td>123678093</td>
-                <td class="table-secondary">Rabies Vaccinated</td>
-                <td>
-                  <table>
-                    <tr>
-                      <td class="text-center align-middle"><a href="viewInfant"><i class="fa-solid fa-eye me-2" style="color: black"></i></a></td>
-                      <td class="text-center align-middle"><a href="editInfant"><i class='bx bxs-pencil me-2'  style="color: black"></i></a></td>
-                      <td class="text-center align-middle"><i class="fa-solid fa-trash"></i></td>
-                    </tr>
-                  </table>
-                </td>              
-              </tr>
-              <tr>
-                <th scope="row">3</th>
-                <td class="table-secondary">912</td>
-                <td>07/23/2022</td>
-                <td class="table-secondary">10/31/2023</td>
-                <td>Nathaniel T. Allapitan</td>
-                <td class="table-secondary">M</td>
-                <td>456978312</td>
-                <td class="table-secondary">Not Vaccinated</td>
-                <td>
-                  <table>
-                    <tr>
-                      <td class="text-center align-middle"><a href="viewInfant"><i class="fa-solid fa-eye me-2" style="color: black"></i></a></td>
-                      <td class="text-center align-middle"><a href="editInfant"><i class='bx bxs-pencil me-2' style="color: black"></i></a></td>
-                      <td class="text-center align-middle"><i class="fa-solid fa-trash"></i></td>
-                    </tr>
-                  </table>
-                </td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-        <nav aria-label="Page navigation">
-          <ul class="pagination justify-content-center justify-content-md-end mt-4">
-            <li class="page-item disabled">
-              <a class="page-link paginationTxts">Previous</a>
-            </li>
-            <li class="page-item"><a class="page-link paginationTxts" href="#">1</a></li>
-            <li class="page-item"><a class="page-link paginationTxts" href="#">2</a></li>
-            <li class="page-item"><a class="page-link paginationTxts" href="#">3</a></li>
-            <li class="page-item">
-              <a class="page-link paginationTxts" href="#">Next</a>
-            </li>
-          </ul>
-        </nav>
       </div>
-  </body>
+
+      <div class="row d-flex justify-content-center justify-content-md-end">
+          <div class="col-12 col-sm-8 col-md-5 col-lg-3 col-xl-2 mb-3 me-2" style="border:1px solid red">
+              <a class="btn addButton w-100" href="{{ route('user.infants.add') }}" role="button" id="button-add">Add Infant +</a>
+          </div>
+      </div>
+
+      <div class="table-responsive-xl">
+      <table class="table table-striped" id="myTable">
+          <thead>
+              <tr class="table-danger">
+                  <th scope="col">No.</th>
+                  <th scope="col">Barangay</th>
+                  <th scope="col">Name</th>
+                  <th scope="col">Birth Date</th>
+                  <th scope="col">Date of Registration</th>
+                  <th scope="col">Family Serial Number</th>
+                  <th scope="col">Sex</th>
+                  <th scope="col">Tracking Number</th>
+                  <th scope="col">Status</th>
+                  <th scope="col">Action</th>
+              </tr>
+          </thead>
+          <tbody>
+              @foreach($infants as $index => $infant)
+              <tr>
+                  <th scope="row">{{ $index + 1 }}</th>
+                  <td scope="row">
+                      @foreach($barangays as $barangay)
+                          @if($barangay['id'] === $infant['barangay_id'])
+                              {{ $barangay['name'] }}
+                          @endif
+                      @endforeach
+                  </td>
+                  <td class="table-secondary text-uppercase">{{ $infant['name'] }}</td>
+                  <td>{{ $infant['birth_date'] }}</td>
+                  <td class="table-secondary">{{ $infant['created_at'] }}</td>
+                  <td>{{ $infant['family_serial_number'] }}</td>
+                  <td class="table-secondary">{{ $infant['sex'] }}</td>
+                  <td>{{ $infant['tracking_number'] }}</td>
+                  <td class="table-secondary">{{ $infant['status'] }}</td>
+                  <td>
+                      <table>
+                          <tr>
+                              <td class="text-center align-middle"><a href="/user/history/add/{{ $infant['id'] }}"><i class="fa-solid fa-syringe me-2"></i></a></td>
+                              <td class="text-center align-middle"><a href="/user/infants/{{ $infant['id'] }}"><i class="fa-solid fa-eye me-2"></i></a></td>
+                              <td class="text-center align-middle">
+                                  <a href="{{ route('user.infants.edit', ['id' => $infant['id']]) }}">
+                                      <i class='bx bxs-pencil me-2'></i>
+                                  </a>
+                              </td>    
+                              <td>
+                                  <form method="POST" action="{{ route('user.infants.delete', ['id' => $infant['id']]) }}">
+                                      @csrf
+                                      @method('DELETE')
+                                      <button type="submit" class="delete-infant" onclick="return confirm('Are you sure you want to delete the data of this infant?');">
+                                          <i class="fa-solid fa-trash"></i>
+                                      </button>
+                                  </form>
+                              </td>
+                          </tr>
+                      </table>
+                  </td>
+              </tr>
+              @endforeach 
+          </tbody>
+      </table>
+          
+  
+
+  </div>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
   <script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
   <script src="https://cdn.datatables.net/v/bs5/dt-1.13.6/r-2.5.0/datatables.min.js"></script>
@@ -141,4 +120,6 @@
   } );ç
   </script>
 
-  </html>
+
+</body>
+</html>

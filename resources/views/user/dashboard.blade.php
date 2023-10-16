@@ -15,7 +15,7 @@
   @include('user.sidebar')
       <div class="container content"> 
         <div class="row mt-3 mb-5" id="rectangle">
-          <div class="col-sm-10" id="user">Hello Kane,
+          <div class="col-sm-10" id="user">Hello {{ session('name') }},
             <div class="row">
               <div class="col-sm" id="subtitle">
                 Have a nice day and do not forget to take care of your health!

@@ -1,12 +1,12 @@
 <?php
 
-namespace App\Http\Controllers\Admin;
+namespace App\Http\Controllers\User;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Services\ApiService;
 
-class AdminTCLController extends Controller
+class UserTCLController extends Controller
 {
     protected $apiService;
 
@@ -70,50 +70,8 @@ class AdminTCLController extends Controller
             $barangays = $responseBarangays['data'];
         }
 
-        return view('admin.infants.index', compact('infants', 'barangays', 'uniqueBirthYears'));
+        return view('user.infants.index', compact('infants', 'barangays', 'uniqueBirthYears'));
     }
-
-    // public function getFilteredInfants($barangay_id, $year = null)
-    // {
-    //     try {
-    //         $endpoint = "/getFilteredInfants/{$barangay_id}/{$year}";
-
-    //         $filteredInfants = $this->apiService->get($endpoint, session('token'));
-    //         $infantsData = isset($filteredInfants['data']) ? (array) $filteredInfants['data'] : [];
-
-    //         if (!empty($infantsData)) {
-    //             // Format dates, abbreviate sex, and map status values
-    //             $formattedInfants = array_map(function ($infant) {
-    //                 // Format date to "Month day, year"
-    //                 $birthDate = date('F d, Y', strtotime($infant['birth_date']));
-    //                 $createdDate = date('F d, Y', strtotime($infant['created_at']));
-
-    //                 // Abbreviate sex
-    //                 $infant['sex'] = ($infant['sex'] === 'Male') ? 'M' : 'F';
-
-    //                 // Map status values
-    //                 $statusText = [
-    //                     '0' => 'Not Vaccinated',
-    //                     '1' => 'Partially Vaccinated',
-    //                     '2' => 'Fully Vaccinated',
-    //                 ];
-    //                 $infant['status'] = $statusText[$infant['status']] ?? '';
-
-    //                 // Assign the formatted values
-    //                 $infant['birth_date'] = $birthDate;
-    //                 $infant['created_at'] = $createdDate;
-
-    //                 return $infant;
-    //             }, $infantsData);
-
-    //             return response()->json(['data' => $formattedInfants], 200);
-    //         } else {
-    //             return response()->json(['error' => 'No valid data received'], 404);
-    //         }
-    //     } catch (\Exception $e) {
-    //         return response()->json(['error' => 'An error occurred'], 500);
-    //     }
-    // }
 
     public function add()
     {
@@ -125,9 +83,8 @@ class AdminTCLController extends Controller
             $barangays = [];
         }
         
-        return view('admin.infants.add', compact('barangays'));
+        return view('user.infants.add', compact('barangays'));
     }
-
 
     public function store(Request $request)
     {
@@ -158,7 +115,7 @@ class AdminTCLController extends Controller
 
             // Check if the request was successful
             if (isset($response['data'])) {
-                return redirect()->route('admin.infants.index')->with('success', 'Infant record created successfully.');
+                return redirect()->route('user.infants.index')->with('success', 'Infant record created successfully.');
             } else {
                 return redirect()->back()->with('error', 'Failed to create infant record. Please try again.');
             }
@@ -174,9 +131,9 @@ class AdminTCLController extends Controller
             $response = $this->apiService->delete("/infants/{$id}", session('token'));
 
             if (isset($response['data'])) {
-                return redirect()->route('admin.infants.index')->with('success', 'Vaccine deleted successfully.');
+                return redirect()->route('user.infants.index')->with('success', 'Vaccine deleted successfully.');
             } else {
-                return redirect()->route('admin.infants.index')->with('error', 'An error occurred while deleting the vaccine.');
+                return redirect()->route('user.infants.index')->with('error', 'An error occurred while deleting the vaccine.');
             }
         } catch (\Exception $e) {
             // Handle exceptions, you can return an error response here as well
@@ -193,15 +150,14 @@ class AdminTCLController extends Controller
         if (isset($userResponse['data'])) {
             $infant = $userResponse['data'];
         } else {
-            return redirect()->route('admin.infant.index')->with('error', 'Infant not found');
+            return redirect()->route('user.infant.index')->with('error', 'Infant not found');
         }
     
         // Extract barangay data from the response
         $barangays = isset($barangayResponse['data']) ? $barangayResponse['data'] : [];
     
-        return view('admin.infants.edit', compact('infant', 'barangays'));
+        return view('user.infants.edit', compact('infant', 'barangays'));
     }
-    
 
     public function update(Request $request, $id)
     {
@@ -224,9 +180,9 @@ class AdminTCLController extends Controller
         $response = $this->apiService->put("/infants/{$id}", $validatedData, session('token'));
 
         if (isset($response['data'])) {
-            return redirect()->route('admin.infants.index')->with('success', 'Infant record updated successfully');
+            return redirect()->route('user.infants.index')->with('success', 'Infant record updated successfully');
         } else {
-            return redirect()->route('admin.infant.edit')->with('error', 'Failed to update infant record');
+            return redirect()->route('user.infants.edit')->with('error', 'Failed to update infant record');
         }
     }
 
@@ -263,10 +219,9 @@ class AdminTCLController extends Controller
             }
 
             // Pass the infant, immunization, and barangays data to the Blade view
-            return view('admin.infants.view', compact('infant', 'immunizations', 'barangays'));
+            return view('user.infants.view', compact('infant', 'immunizations', 'barangays'));
         } catch (\Exception $e) {
             return redirect()->back()->with('error', 'An error occurred while fetching data.');
         }
     }
-
 }

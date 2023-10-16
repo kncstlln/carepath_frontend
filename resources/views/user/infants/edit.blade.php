@@ -25,26 +25,25 @@
         <div class="row">
             <div class="col h2 mb-5 mt-3 text-center">Edit Infant Record</div>
         </div>
-        <form method="POST" action="{{ route('admin.infants.update', $infant['id']) }}">
+        <form method="POST" action="{{ route('user.infants.update', $infant['id']) }}">
             @csrf
             @method('PUT') <!-- Use the PUT method for updating -->
-
-            
             <div class="row g-3">
 
                 <div class="col-md-6 ">
                     <label for="name" class="form-label">Name: <span style="color:red">*</span></label>
-                    <input type="text" class="form-control" id="name" value="{{ $infant['name'] }}">
+                    <input type="text" class="form-control" id="name" name="name" value="{{ $infant['name'] }}">
                 </div>
 
                 <div class="col-md-6 col-xl-4"> 
                     <label for="barangay" class="form-label">Barangay:<span style="color:red;"> *</span></label>
-                    <select class="form-select" name="barangay_id" required>
+                    <select class="form-select" name="barangay" required disabled>
                         <option value="" disabled>Select Barangay</option>
                         @foreach($barangays as $barangay)
                             <option value="{{ $barangay['id'] }}" {{ $infant['barangay_id'] == $barangay['id'] ? 'selected' : '' }}>{{ $barangay['name'] }}</option>
                         @endforeach
                     </select>
+                    <input type="hidden" name="barangay_id" value="{{ $infant['barangay_id'] }}">
                 </div>
 
                 <div class="col-md-3"> 
@@ -126,7 +125,7 @@
 
             <div class="row mb-4 justify-content-center text-center">
                 <div class="col-md-3 col-lg-2 mt-1">
-                    <a href="{{ route('admin.infants.index') }}"><button type="button" class="btn btn-secondary cancelButton">Cancel</button></a>
+                    <a href="{{ route('user.infants.index') }}"><button type="button" class="btn btn-secondary cancelButton">Cancel</button></a>
                 </div>
                 <div class="col-md-3 col-lg-2 mt-1">
                     <button type="submit" class="btn submitButton">Submit</button>

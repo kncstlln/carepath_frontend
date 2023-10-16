@@ -13,7 +13,6 @@
     <link rel="icon" type="image/x-icon" href="{{ asset('/images/logo.png') }}">
     <title>Add Infant</title>    
 </head>
-
 <body>
 @include('user.sidebar')
 
@@ -25,12 +24,9 @@
         <div class="row">
             <div class="col h2 mb-5 mt-3 text-center">Create Infant Record</div>
         </div>
-        <form method="POST" action="{{ route('admin.infants.store') }}">
+        <form method="POST" action="{{ route('user.infants.store') }}">
           @csrf
-
-
             <div class="row g-3">
-
                 <div class="col-md-6 ">
                     <label for="name" class="form-label">Name: <span style="color:red">*</span></label>
                     <input type="text" name="name" class="form-control" id="name" placeholder="Juan Dela Cruz">
@@ -38,12 +34,17 @@
 
                 <div class="col-md-6 col-xl-4"> 
                     <label for="barangay" class="form-label">Barangay:<span style="color:red;"> *</span></label>
-                    <select class="form-select" id="barangay" name="barangay_id" required>
-                        <option value="" disabled selected>Select Barangay</option>
-                        @foreach($barangays as $barangay)
-                            <option value="{{ $barangay['id'] }}">{{ $barangay['name'] }}</option>
-                        @endforeach
-                    </select>
+                    @php
+                        $selectedBarangay = '';
+                        foreach($barangays as $barangay) {
+                            if($barangay['id'] === session('barangay_id')) {
+                                $selectedBarangay = $barangay['name'];
+                                break;
+                            }
+                        }
+                    @endphp
+                    <input type="text" class="form-control" id="barangay" value="{{ $selectedBarangay }}" readonly>
+                    <input type="hidden" name="barangay_id" value="{{ session('barangay_id') }}">
                 </div>
 
                 <div class="col-md-3"> 
@@ -120,7 +121,7 @@
 
             <div class="row mb-4 justify-content-center text-center">
                 <div class="col-md-3 col-lg-2 mt-1">
-                    <a href="{{ route('admin.infants.index') }}"><button type="button" class="btn btn-secondary cancelButton">Cancel</button></a>
+                    <a href="{{ route('user.infants.index') }}"><button type="button" class="btn btn-secondary cancelButton">Cancel</button></a>
                 </div>
                 <div class="col-md-3 col-lg-2 mt-1">
                     <button type="submit" class="btn submitButton">Submit</button>
