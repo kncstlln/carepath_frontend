@@ -34,7 +34,7 @@
 
                 <div class="col-md-6 ">
                     <label for="name" class="form-label">Name: <span style="color:red">*</span></label>
-                    <input type="text" class="form-control" id="name" value="{{ $infant['name'] }}">
+                    <input type="text" class="form-control" id="name" value="{{ $infant['name'] }}" maxlength="40">
                 </div>
 
                 <div class="col-md-6 col-xl-4"> 
@@ -99,18 +99,18 @@
          
                 <div class="col-md-6">
                     <label for="father" class="form-label">Father's Name:</label>
-                    <input class="form-control" id="father" name="father_name" type="text" aria-label="default input" value="{{ $infant['father_name'] }}" required/>
+                    <input class="form-control" id="father" name="father_name" type="text" aria-label="default input" value="{{ $infant['father_name'] }}" maxlength="40"/>
                 </div>
         
 
                 <div class="col-md-6">
                     <label for="mother" class="form-label">Mother's Name:</label>
-                    <input class="form-control" name="mother_name" type="text" placeholder="Full Name" aria-label="default input" value="{{ $infant['mother_name'] }}" required/>
+                    <input class="form-control" name="mother_name" type="text" placeholder="Full Name" aria-label="default input" value="{{ $infant['mother_name'] }}" maxlength="40"/>
                 </div>
 
                 <div class="col-md-6 col-lg-4">
                     <label for="contact" class="form-label">Contact Number:</label>
-                    <input class="form-control" name="contact_number" type="tel" placeholder="Contact Number" id="telephone" placeholder="Contact Number" aria-label="default input" value="{{ $infant['contact_number'] }}" required/>
+                    <input class="form-control" name="contact_number" type="tel" placeholder="Contact Number" id="telephone" placeholder="Contact Number" aria-label="default input" value="{{ $infant['contact_number'] }}"/>
                 </div>
 
             </div>

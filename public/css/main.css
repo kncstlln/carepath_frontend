@@ -8,6 +8,11 @@
     background-color: #161853;
 }
 
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
 
 .btnColor {
     width: 100px; 

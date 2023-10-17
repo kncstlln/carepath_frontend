@@ -8,6 +8,7 @@
     <script src="{{ asset('js/sidebar.js') }}" defer></script>
     <link href="{{ asset('css/admin/index.css') }}" rel="stylesheet"/>
     <link rel="icon" type="image/x-icon" href="{{ asset('/images/logo.png') }}">
+    <link href="https://cdn.datatables.net/v/bs5/dt-1.13.6/r-2.5.0/datatables.min.css" rel="stylesheet">
     <link flex href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet" />
     <script src="https://kit.fontawesome.com/2eead9cc17.js" crossorigin="anonymous"></script>
     <script src="{{ asset('js/index.js') }}"></script>
@@ -38,18 +39,22 @@
         </div>
     </div>
 
-
-    <div class="row justify-content-sm-center justify-content-lg-between">
-        <div class="col-12 col-sm-8 col-md-6 col-lg-4 col-xl-3 mb-4">
-            <input class="form-control" type="text" placeholder="Search.." aria-label="default input example">
-        </div>
-
-    </div>
-    <div class="table-responsive-lg text-center align-middle" id="filteredImmunizationRecords">
+    <div class="table-responsive-lg" id="filteredImmunizationRecords">
         <!-- Filtered immunization records will be displayed here -->
     </div>
 </div>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
+<script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
+<script src="https://cdn.datatables.net/v/bs5/dt-1.13.6/r-2.5.0/datatables.min.js"></script>
+
+<script>
+    $(document).ready( function () {
+    $('#myHistory').DataTable();
+    });
+</script>
+
+
 <script>
     document.addEventListener('DOMContentLoaded', function () {
         const barangayDropdown = document.querySelector('#barangayDropdown');
@@ -75,6 +80,8 @@
                     filteredImmunizationRecordsDiv.innerHTML = tableHtml;
 
                     attachDeleteButtonListeners(); // Add this line to attach the listeners
+
+                    $('#myHistory').DataTable();
                 })
                 .catch(error => {
                     console.error('Error:', error);
@@ -84,7 +91,7 @@
         // Function to generate HTML for the table
         function generateTableHtml(data) {
             let tableHtml = `
-                <table class="table table-striped">
+                <table class="table table-striped align-middle" id="myHistory">
                     <thead>
                         <tr class="table-danger">
                             <th scope="col">Immunization Date</th>

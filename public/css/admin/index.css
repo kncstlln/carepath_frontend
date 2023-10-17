@@ -1,3 +1,16 @@
+/* Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+input[type=number] {
+   appearance: textfield;
+  -moz-appearance: textfield;
+}
+
 body{
     overflow-x: hidden;
 }
@@ -97,4 +110,7 @@ td.text-uppercase{
     background-color:#680c0c;
     color:white;
 }
+
+.pagination > li > a, .pagination > li > span{background-color:white; }
+.pagination > li.active > a, .pagination > li.active > span{background-color:#980B0B; border-color: transparent}
 

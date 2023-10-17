@@ -51,7 +51,7 @@ Route::put('/users/update/{id}', [AdminUserController::class, 'update'])->name('
 Route::delete('/users/delete/{id}', [AdminUserController::class, 'delete'])->name('admin.users.delete');
 
 Route::get('/infants', [AdminTCLController::class, 'index'])->name('admin.infants.index');
-//Route::get('/getFilteredInfants/{barangay_id}/{year?}', [AdminTCLController::class, 'getFilteredInfants']);
+Route::get('/getFilteredInfants/{barangay_id}/{year?}', [AdminTCLController::class, 'getFilteredInfants']);
 Route::get('/infants/add', [AdminTCLController::class, 'add'])->name('admin.infants.add');
 Route::post('/infants', [AdminTCLController::class, 'store'])->name('admin.infants.store');
 Route::delete('/infants/delete/{id}', [AdminTCLController::class, 'delete'])->name('admin.infants.delete');

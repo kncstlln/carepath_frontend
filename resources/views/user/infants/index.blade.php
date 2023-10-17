@@ -41,7 +41,7 @@
       </div>
 
       <div class="row d-flex justify-content-center justify-content-md-end">
-          <div class="col-12 col-sm-8 col-md-5 col-lg-3 col-xl-2 mb-3 me-2" style="border:1px solid red">
+          <div class="col-12 col-sm-8 col-md-5 col-lg-3 col-xl-2 mb-3 me-2">
               <a class="btn addButton w-100" href="{{ route('user.infants.add') }}" role="button" id="button-add">Add Infant +</a>
           </div>
       </div>
@@ -83,10 +83,10 @@
                   <td>
                       <table>
                           <tr>
-                              <td class="text-center align-middle"><a href="/user/history/add/{{ $infant['id'] }}"><i class="fa-solid fa-syringe me-2"></i></a></td>
-                              <td class="text-center align-middle"><a href="/user/infants/{{ $infant['id'] }}"><i class="fa-solid fa-eye me-2"></i></a></td>
+                              <td class="text-center align-middle"><a href="/user/history/add/{{ $infant['id'] }}" style="color: black;"><i class="fa-solid fa-syringe me-2"></i></a></td>
+                              <td class="text-center align-middle"><a href="/user/infants/{{ $infant['id'] }}" style="color: black;"><i class="fa-solid fa-eye me-2"></i></a></td>
                               <td class="text-center align-middle">
-                                  <a href="{{ route('user.infants.edit', ['id' => $infant['id']]) }}">
+                                  <a href="{{ route('user.infants.edit', ['id' => $infant['id']]) }}" style="color: black;">
                                       <i class='bx bxs-pencil me-2'></i>
                                   </a>
                               </td>    
