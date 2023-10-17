@@ -15,6 +15,11 @@
 </head>
 
 <body>
+<div class="spinner-container text-center d-none" id="loading-spinner">
+    <div class="spinner-border" role="status">
+        <span class="visually-hidden">Loading...</span>
+    </div>
+</div>
 @include('admin.sidebar')
 
 <div class="container content mt-4 mb-5">
@@ -33,7 +38,7 @@
 
                 <div class="col-md-6 ">
                     <label for="name" class="form-label">Name: <span style="color:red">*</span></label>
-                    <input type="text" name="name" class="form-control" id="name" placeholder="Juan Dela Cruz">
+                    <input type="text" name="name" class="form-control" id="name" placeholder="Juan Dela Cruz" maxlength="40" required>
                 </div>
 
                 <div class="col-md-6 col-xl-4"> 
@@ -72,7 +77,7 @@
                 <div class="col-md-6 col-xl-3">
                     <div>Birth date:<span style="color:red;"> *</span></div>
                     <div class="input-group date" id="datepicker">
-                        <input type="date" name="birth_date" class="form-control" required/>
+                        <input type="date" name="birth_date" class="form-control" id="birthDate" required />
                     </div>
                 </div>
 
@@ -93,18 +98,18 @@
          
                 <div class="col-md-6">
                     <label for="father" class="form-label">Father's Name:</label>
-                    <input class="form-control" id="father" name="father_name" type="text" placeholder="Full Name" aria-label="default input" required/>
+                    <input class="form-control" id="father" name="father_name" type="text" placeholder="Full Name" aria-label="default input" maxlength="40"/>
                 </div>
         
 
                 <div class="col-md-6">
                     <label for="mother" class="form-label">Mother's Name:</label>
-                    <input class="form-control" name="mother_name" type="text" placeholder="Full Name" aria-label="default input" required/>
+                    <input class="form-control" name="mother_name" type="text" placeholder="Full Name" aria-label="default input" maxlength="40"/>
                 </div>
 
                 <div class="col-md-6 col-lg-4">
                     <label for="contact" class="form-label">Contact Number:</label>
-                    <input class="form-control" name="contact_number" type="tel" placeholder="Contact Number" id="telephone" placeholder="Contact Number" aria-label="default input" required/>
+                    <input class="form-control" name="contact_number" type="tel" placeholder="Contact Number" id="telephone" placeholder="Contact Number" aria-label="default input"accordion />
                 </div>
 
             </div>
@@ -133,6 +138,24 @@
 </div>
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
+
+<script>
+    // Get the current date
+    var today = new Date();
+    var dd = today.getDate();
+    var mm = today.getMonth() + 1; // January is 0
+    var yyyy = today.getFullYear();
+
+    if (dd < 10) {
+        dd = '0' + dd;
+    }
+    if (mm < 10) {
+        mm = '0' + mm;
+    }
+
+    today = yyyy + '-' + mm + '-' + dd;
+
+</script>
 
 
 </body>
