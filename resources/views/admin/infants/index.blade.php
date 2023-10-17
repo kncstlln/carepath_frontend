@@ -16,7 +16,7 @@
 </head>
 <body>
 @include('admin.sidebar')
-<div class="container-sm mt-4 content" id="targetclientlist" style="border:1px solid red">
+<div class="container-sm mt-4 content" id="targetclientlist">
 
     <div class="row mb-2">
         <div class="col-sm" id="infantsTxt">List of Infants</div>
@@ -42,7 +42,7 @@
     </div>
 
     <div class="row d-flex justify-content-center justify-content-md-end">
-        <div class="col-12 col-sm-8 col-md-5 col-lg-3 col-xl-2 mb-3 me-2" style="border:1px solid red">
+        <div class="col-12 col-sm-8 col-md-5 col-lg-3 col-xl-2 mb-3 me-2">
             <a class="btn addButton w-100" href="{{ route('admin.infants.add') }}" role="button" id="button-add">Add Infant +</a>
         </div>
     </div>
@@ -75,21 +75,22 @@
         function fetchFilteredInfants(barangayId, year) {
             const url = `/admin/getFilteredInfants/${barangayId}/${year}`;
             fetch(url)
-              .then(response => response.json()) // Parsing JSON response
-              .then(data => {
-                  console.log('Received data:', data);
-                  // Generate HTML for the table
-                  const tableHtml = generateTableHtml(data);
-                  filteredInfantsDiv.innerHTML = tableHtml;
+                .then(response => response.json()) // Parsing JSON response
+                .then(data => {
+                    console.log('Received data:', data);
+                    // Generate HTML for the table
+                    const tableHtml = generateTableHtml(data);
+                    filteredInfantsDiv.innerHTML = tableHtml;
 
-                  // Attach click event listeners to delete buttons
-                  attachDeleteButtonListeners();
 
-                  $('#myTable').DataTable();
-              })
-              .catch(error => {
-                  console.error('Error:', error);
-            });
+                    // Attach click event listeners to delete buttons
+                    attachDeleteButtonListeners();
+
+                    $('#myTable').DataTable();
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                });
         }
 
         // Function to generate HTML for the table
@@ -117,11 +118,11 @@
                     tableHtml += `
                     <tr>
                         <th scope="row">${index + 1}</th>
-                        <td class="table-secondary text-uppercase">kane ERRYL GARCIA CASTILLANO</td>
+                        <td class="table-secondary text-uppercase">${infant.name}</td>
                         <td>${infant.birth_date}</td>
                         <td class="table-secondary">${infant.created_at}</td>
-                        <td>12312</td>
-                        <td class="table-secondary">Female</td>
+                        <td>${infant.family_serial_number}</td>
+                        <td class="table-secondary">${infant.sex}</td>
                         <td>${infant.tracking_number}</td>
                         <td class="table-secondary">${infant.status}</td>
                         <td>
