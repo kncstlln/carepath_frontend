@@ -15,11 +15,6 @@
 </head>
 
 <body>
-<div class="spinner-container text-center d-none" id="loading-spinner">
-    <div class="spinner-border" role="status">
-        <span class="visually-hidden">Loading...</span>
-    </div>
-</div>
 @include('admin.sidebar')
 
 <div class="container content mt-4 mb-5">
@@ -109,7 +104,7 @@
 
                 <div class="col-md-6 col-lg-4">
                     <label for="contact" class="form-label">Contact Number:</label>
-                    <input class="form-control" name="contact_number" type="tel" placeholder="Contact Number" id="telephone" placeholder="Contact Number" aria-label="default input"accordion />
+                    <input class="form-control" name="contact_number" type="tel" placeholder="Contact Number" id="telephone" placeholder="Contact Number" aria-label="default input"/>
                 </div>
 
             </div>
@@ -143,7 +138,7 @@
     // Get the current date
     var today = new Date();
     var dd = today.getDate();
-    var mm = today.getMonth() + 1; // January is 0
+    var mm = today.getMonth() + 1;
     var yyyy = today.getFullYear();
 
     if (dd < 10) {
@@ -155,6 +150,8 @@
 
     today = yyyy + '-' + mm + '-' + dd;
 
+    // Set the min attribute of the date input to today's date
+    document.getElementById('birthDate').setAttribute('max', today);
 </script>
 
 
