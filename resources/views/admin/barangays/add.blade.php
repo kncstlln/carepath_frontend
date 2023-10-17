@@ -31,7 +31,7 @@
                     </div>
                 </div>
                 <div class="row mb-2">
-                    <div class="col-md-4 col-lg-3 pt-2 text-center">Location:</div>
+                    <div class="col-md-4 col-lg-3 pt-2 text-center">Location:<span style="color:red;"> *</span></div>
                     <div class="col-md-4 col-lg-3">
                         <input class="form-control" type="text" name="location" placeholder="Location" aria-label="default input" required/>
                     </div>

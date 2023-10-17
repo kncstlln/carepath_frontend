@@ -30,13 +30,13 @@
                   <div class="row mb-4">
                       <div class="col-md-3 pt-1 text-center">Name of Vaccine: </div>
                       <div class="col-md-4">
-                          <input class="form-control" type="text" name="name" value="{{ $vaccine['name'] }}" aria-label="default input" required />
+                          <input class="form-control" type="text" name="name" value="{{ $vaccine['name'] }}" aria-label="default input" maxlength="50" required />
                       </div>
                   </div>
                   <div class="row mb-4">
                       <div class="col-md-3 pt-1 text-center">Short Name: </div>
                       <div class="col-md-4">
-                          <input class="form-control" type="text" name="short_name" value="{{ $vaccine['short_name'] }}" aria-label="default input" required />
+                          <input class="form-control" type="text" name="short_name" value="{{ $vaccine['short_name'] }}" aria-label="default input"/>
                       </div>
                   </div>
                   <div class="row mb-2">
