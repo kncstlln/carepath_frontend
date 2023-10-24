@@ -50,11 +50,9 @@
       <table class="table table-striped" id="myTable">
           <thead>
               <tr class="table-danger">
-                  <th scope="col">No.</th>
-                  <th scope="col">Barangay</th>
-                  <th scope="col">Name</th>
                   <th scope="col">Birth Date</th>
-                  <th scope="col">Date of Registration</th>
+                  <th scope="col">Name</th>
+                  <!--<th scope="col">Date of Registration</th>-->
                   <th scope="col">Family Serial Number</th>
                   <th scope="col">Sex</th>
                   <th scope="col">Tracking Number</th>
@@ -65,17 +63,9 @@
           <tbody>
               @foreach($infants as $index => $infant)
               <tr>
-                  <th scope="row">{{ $index + 1 }}</th>
-                  <td scope="row">
-                      @foreach($barangays as $barangay)
-                          @if($barangay['id'] === $infant['barangay_id'])
-                              {{ $barangay['name'] }}
-                          @endif
-                      @endforeach
-                  </td>
-                  <td class="table-secondary text-uppercase">{{ $infant['name'] }}</td>
                   <td>{{ $infant['birth_date'] }}</td>
-                  <td class="table-secondary">{{ $infant['created_at'] }}</td>
+                  <td class="table-secondary text-uppercase"><b>{{ $infant['name'] }}</b></td>
+                  <!--<td class="table-secondary">{{ $infant['created_at'] }}</td>-->
                   <td>{{ $infant['family_serial_number'] }}</td>
                   <td class="table-secondary">{{ $infant['sex'] }}</td>
                   <td>{{ $infant['tracking_number'] }}</td>
@@ -116,7 +106,11 @@
 
   <script>
       $(document).ready( function () {
-      $('#myTable').DataTable();
+      $('#myTable').DataTable({
+            "order": [
+                [0, "desc"],
+                [1, "asc"],
+        ]});
   } );ç
   </script>
 

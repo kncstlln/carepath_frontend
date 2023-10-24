@@ -70,6 +70,11 @@
         const barangayDropdown = document.querySelector('#barangayDropdown');
         const yearDropdown = document.querySelector('#yearDropdown');
         const filteredInfantsDiv = document.querySelector('#filteredInfants');
+        const barangayNameMapping = {
+            @foreach($barangays as $barangay)
+                {{ $barangay['id'] }}: "{{ $barangay['name'] }}",
+            @endforeach
+        };
 
         // Function to fetch filtered infants and update the table
         function fetchFilteredInfants(barangayId, year) {
@@ -86,7 +91,13 @@
                     // Attach click event listeners to delete buttons
                     attachDeleteButtonListeners();
 
-                    $('#myTable').DataTable();
+                    $('#myTable').DataTable({
+                        "order": [
+                            [0, "asc"],
+                            [1, "desc"]
+                        ]
+                    });
+
                 })
                 .catch(error => {
                     console.error('Error:', error);
@@ -99,10 +110,10 @@
                 <table class="table table-striped" id="myTable">
                     <thead>
                         <tr class="table-danger">
-                            <th scope="col">No.</th>
-                            <th scope="col">Name</th>
+                            <th scope="col">Barangay</th>
                             <th scope="col">Birth Date</th>
-                            <th scope="col">Date of Registration</th>
+                            <th scope="col">Name</th>
+                            <!-- <th scope="col">Date of Registration</th> -->
                             <th scope="col">Family Serial Number</th>
                             <th scope="col">Sex</th>
                             <th scope="col">Tracking Number</th>
@@ -117,15 +128,15 @@
                 data.data.forEach((infant, index) => {
                     tableHtml += `
                     <tr>
-                        <th scope="row">${index + 1}</th>
-                        <td class="table-secondary text-uppercase">${infant.name}</td>
-                        <td>${infant.birth_date}</td>
-                        <td class="table-secondary">${infant.created_at}</td>
-                        <td>${infant.family_serial_number}</td>
-                        <td class="table-secondary">${infant.sex}</td>
-                        <td>${infant.tracking_number}</td>
-                        <td class="table-secondary">${infant.status}</td>
-                        <td>
+                        <td scope="row">${barangayNameMapping[infant.barangay_id]}</td>
+                        <td class="table-secondary">${infant.birth_date}</td>
+                        <td class="text-uppercase"><b>${infant.name}</b></td>
+                        <!-- <td class="table-secondary">${infant.created_at}</td>  -->
+                        <td class="table-secondary">${infant.family_serial_number}</td>
+                        <td>${infant.sex}</td>
+                        <td class="table-secondary">${infant.tracking_number}</td>
+                        <td>${infant.status}</td>
+                        <td class="table-secondary">
                             <table>
                                 <tr>
                                     <td class="text-center align-middle"><a href="/admin/history/add/${infant.id}"><i class="fa-solid fa-syringe me-2"></i></a>

@@ -205,6 +205,7 @@ class AdminTCLController extends Controller
 
     public function update(Request $request, $id)
     {
+        
         // Validate the incoming data
         $validatedData = $request->validate([
             'name' => 'required',

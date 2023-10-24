@@ -79,7 +79,7 @@ Route::get('/infants/edit/{id}', [UserTCLController::class, 'edit'])->name('user
 Route::put('/infants/update{id}', [UserTCLController::class, 'update'])->name('user.infants.update');
 Route::get('/infants/{id}', [UserTCLController::class, 'view'])->name('user.infants.view');
 
-//Route::get('/history', [UserVaccineHistoryController::class, 'index'])->name('user.history.index');
+Route::get('/history', [UserVaccineHistoryController::class, 'index'])->name('user.history.index');
 Route::get('/history/add/{id}', [UserVaccineHistoryController::class, 'add'])->name('user.history.add');
 Route::post('/history', [UserVaccineHistoryController::class, 'store'])->name('user.history.store');
 Route::delete('/history/delete/{id}', [UserVaccineHistoryController::class, 'delete'])->name('user.history.delete');

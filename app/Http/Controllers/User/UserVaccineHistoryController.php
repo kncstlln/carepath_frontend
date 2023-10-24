@@ -19,7 +19,6 @@ class UserVaccineHistoryController extends Controller
     {
         // Fetch the list of immunization records
         $responseRecords = $this->apiService->get('/immunization-records', session('token'));
-
         // Fetch the list of barangays
         $responseBarangays = $this->apiService->get('/barangays', session('token'));
 
@@ -43,7 +42,7 @@ class UserVaccineHistoryController extends Controller
             }
         }
 
-        return view('user.history.index', compact('allBarangays', 'uniqueImmunizationYears'));
+        return view('user.history.index', compact('allBarangays', 'uniqueImmunizationYears', 'responseRecords'));
     }
 
     public function add($id)

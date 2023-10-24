@@ -34,7 +34,7 @@
 
                 <div class="col-md-6 ">
                     <label for="name" class="form-label">Name: <span style="color:red">*</span></label>
-                    <input type="text" class="form-control" id="name" value="{{ $infant['name'] }}" maxlength="40">
+                    <input type="text" class="form-control" name="name" id="name" value="{{ $infant['name'] }}" maxlength="40">
                 </div>
 
                 <div class="col-md-6 col-xl-4"> 
