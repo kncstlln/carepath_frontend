@@ -68,13 +68,13 @@
               <span class="line"></span>
             </div>
             <li class="item">
-              <a href="/upcoming" class="link flex">
+              <a href="/admin/upcoming-vaccinations" class="link flex">
                 <i class="bx bx-flag"></i>
                 <span>Upcoming Vaccination</span>
               </a>
             </li>
             <li class="item">
-              <a href="/missed" class="link flex">
+              <a href="/admin/missed-vaccinations" class="link flex">
                 <i class='bx bx-calendar-exclamation' ></i>
                 <span>Missed Vaccination</span>
               </a>

@@ -174,8 +174,10 @@ class AdminTCLController extends Controller
             $response = $this->apiService->delete("/infants/{$id}", session('token'));
 
             if (isset($response['data'])) {
+                return response()->json(['success' => true], 200);
                 return redirect()->route('admin.infants.index')->with('success', 'Vaccine deleted successfully.');
             } else {
+                return response()->json(['success' => false, 'message' => 'Failed to delete immunization record.'], 500);
                 return redirect()->route('admin.infants.index')->with('error', 'An error occurred while deleting the vaccine.');
             }
         } catch (\Exception $e) {

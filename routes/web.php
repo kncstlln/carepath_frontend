@@ -11,6 +11,7 @@ use App\Http\Controllers\Admin\AdminVaccineController;
 use App\Http\Controllers\Admin\AdminUserController;
 use App\Http\Controllers\Admin\AdminTCLController;
 use App\Http\Controllers\Admin\AdminVaccineHistoryController;
+use App\Http\Controllers\Admin\AdminUpcomingVaccination;
 
 use App\Http\Controllers\User\UserDashboardController;
 use App\Http\Controllers\User\UserTCLController;
@@ -66,6 +67,8 @@ Route::get('/history/add/{id}', [AdminVaccineHistoryController::class, 'add'])->
 Route::post('/history', [AdminVaccineHistoryController::class, 'store'])->name('admin.history.store');
 Route::delete('/history/delete/{id}', [AdminVaccineHistoryController::class, 'delete'])->name('admin.history.delete');
 
+Route::get('/upcoming-vaccinations', [AdminUpcomingVaccination::class, 'index'])->name('admin.upcoming');
+Route::get('/missed-vaccinations', [AdminUpcomingVaccination::class, 'missedVaccinations'])->name('admin.missed');
 });
 
 // Routes accessible only by user_type 1 (regular user)

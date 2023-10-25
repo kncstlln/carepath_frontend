@@ -21,7 +21,7 @@
         <div class="col-sm" id="vaccineHistoryTxt">Vaccine History</div>
     </div>
     <div class="row mb-5">
-        <div class="col-3 w-auto">
+        <!-- <div class="col-3 w-auto">
             <select class="form-select mb-3" id="barangayDropdown" aria-label=".form-select-lg example">
                 <option value="0">All Barangays</option>
                 @foreach($allBarangays as $barangayId => $barangayName)
@@ -36,7 +36,7 @@
                     <option value="{{ $year }}">{{ $year }}</option>
                 @endforeach
             </select>
-        </div>
+        </div> -->
     </div>
 
     <div class="table-responsive-lg" id="filteredImmunizationRecords">

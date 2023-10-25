@@ -186,6 +186,7 @@
                         })
                         .then(response => response.json())
                         .then(data => {
+                            console.log('Response from server:', data);
                             if (data.success) {
                                 // Remove the row from the table
                                 const grandparentRow = this.closest('tr').closest('table').closest('tr');
