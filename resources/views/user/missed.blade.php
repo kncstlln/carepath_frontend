@@ -21,52 +21,38 @@
             <div class="col-sm" id="infantsTxt">Missed Vaccinations</div>
         </div>
         <div class="row mb-5">
-            <select class="form-select form-select-lg mb-3 selectSize" aria-label=".form-select-lg example">
+            <!-- <select class="form-select form-select-lg mb-3 selectSize" aria-label=".form-select-lg example">
                 <option selected value="1">Lourdes NorthWest</option>
                 <option value="2">Ninoy Aquino(Marisol)</option>
                 <option value="3">Salapungan</option>
-            </select>
+            </select> -->
         </div>
       </div>
       <div class="container-md">
         <div class="table-responsive-lg text-center">
           <table class="table table-striped">
-            <thead>
-              <tr class="table-danger">
-                <th scope="col">No.</th>
-                <th scope="col">Birth Date</th>
-                <th scope="col">Individual</th>
-                <th scope="col">Vaccine/s</th>
-                <th scope="col">Vaccination Day</th>
-                <th scope="col">Action</th>
-              </tr>
-            </thead>
-            <tbody class="table-group-divider">
-              <tr>
-                <th scope="row">1</th>
-                <td class="table-secondary align-middle">01/13/2023</td>
-                <td class="align-middle">Kane Castillano</td>
-                <td class="table-secondary align-middle">Pentavalent Vaccine, OPV, PCV</td>
-                <td class="align-middle">06/15/2023</td>
-                <td class="align-middle table-secondary"><i class="fa-solid fa-check fa-lg me-2"></i><i class="fa-solid fa-xmark fa-lg"></i></td>
-              </tr>
-              <tr>
-                <th scope="row">1</th>
-                <td class="table-secondary align-middle">01/13/2023</td>
-                <td class="align-middle">Kane Castillano</td>
-                <td class="table-secondary align-middle">Pentavalent Vaccine, OPV, PCV</td>
-                <td class="align-middle">06/15/2023</td>
-                <td class="align-middle table-secondary"><i class="fa-solid fa-check fa-lg me-2"></i><i class="fa-solid fa-xmark fa-lg"></i></td>
-              </tr>
-              <tr>
-                <th scope="row">1</th>
-                <td class="table-secondary align-middle">01/13/2023</td>
-                <td class="align-middle">Kane Castillano</td>
-                <td class="table-secondary align-middle">Pentavalent Vaccine, OPV, PCV</td>
-                <td class="align-middle">06/15/2023</td>
-                <td class="align-middle table-secondary"><i class="fa-solid fa-check fa-lg me-2"></i><i class="fa-solid fa-xmark fa-lg"></i></td>
-              </tr>
-            </tbody>
+              <thead>
+                  <tr class="table-danger">
+                      <th scope="col">Barangay</th>
+                      <th scope="col">Infant</th>
+                      <th scope="col">Birth Date</th>
+                      <th scope="col">Vaccine/s</th>
+                      <th scope="col">Dose</th>
+                      <th scope="col">Vaccination Day</th>
+                  </tr>
+              </thead>
+              <tbody class="table-group-divider">
+                  @foreach ($missedVaccination as $vaccination)
+                  <tr>
+                      <td class="align-middle">{{ $vaccination['barangay_name'] }}</td>
+                      <td class="table-secondary align-middle"><b>{{ $vaccination['infant_name'] }}</b></td>
+                      <td class="align-middle">{{ $vaccination['birth_date'] }}</td>
+                      <td class="table-secondary align-middle">{{ $vaccination['vaccine_name'] }}</td>
+                      <td class="align-middle">{{ $vaccination['dose_number'] }}</td>
+                      <td class="table-secondary align-middle">{{ $vaccination['vaccination_date'] }}</td>
+                  </tr>
+                  @endforeach
+              </tbody>
           </table>
         </div>
         <nav aria-label="Page navigation">

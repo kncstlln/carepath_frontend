@@ -16,7 +16,7 @@ use App\Http\Controllers\Admin\AdminUpcomingVaccination;
 use App\Http\Controllers\User\UserDashboardController;
 use App\Http\Controllers\User\UserTCLController;
 use App\Http\Controllers\User\UserVaccineHistoryController;
-
+use App\Http\Controllers\User\UserUpcomingVaccination;
 
 use App\Http\Controllers\AuthController;
 
@@ -86,6 +86,8 @@ Route::get('/history', [UserVaccineHistoryController::class, 'index'])->name('us
 Route::get('/history/add/{id}', [UserVaccineHistoryController::class, 'add'])->name('user.history.add');
 Route::post('/history', [UserVaccineHistoryController::class, 'store'])->name('user.history.store');
 Route::delete('/history/delete/{id}', [UserVaccineHistoryController::class, 'delete'])->name('user.history.delete');
+Route::get('/upcoming-vaccinations', [UserUpcomingVaccination::class, 'index'])->name('user.upcoming');
+Route::get('/missed-vaccinations', [UserUpcomingVaccination::class, 'missedVaccinations'])->name('user.missed');
 });
 
 
