@@ -25,6 +25,15 @@ Route::get('/', [MainController::class, 'index']);
 Route::get('/login', [AuthController::class, 'showLoginForm'])->name('login');
 Route::post('/login', [AuthController::class, 'login']);
 Route::get('/logout', [AuthController::class, 'logout'])->name('logout');
+Route::get('/account', function () {
+    return view('admin.account');
+});
+Route::get('/changePassword', function () {
+    return view('admin.password');
+});
+Route::get('/forgotPassword', function () {
+    return view('forgot');
+});
 
 // Routes accessible only by user_type 0 (admin)
 Route::middleware(['check.user_type:0'])->prefix('admin')->group(function () {
