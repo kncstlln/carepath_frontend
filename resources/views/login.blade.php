@@ -27,7 +27,7 @@
         <form action="{{ route('login') }}" method="POST">
             @csrf
             <div class="row justify-content-center mt-5">
-                <div class="col-10 col-md-6 col-lg-5">
+                <div class="col-10 col-md-7 col-lg-5">
                     <div class="mb-3">
                         <label for="username" class="form-label">Username</label>
                         <input type="text" class="form-control" id="username" name="username" placeholder="Username">
@@ -36,14 +36,24 @@
                 </div>
             </div>
             <div class="row justify-content-center">
-                <div class="col-10 col-md-6 col-lg-5">
+                <div class="col-10 col-md-7 col-lg-5">
                     <div class="mb-3">
                         <label for="password" class="form-label">Password</label>
                         <input type="password" class="form-control" id="password" name="password" placeholder="Password">
                         <p id="passwordError" style="color: red; display: none;">Please enter a valid password.</p>
                     </div>
                 </div>
-            </div>  
+                <div class="col-12 col-md-7 d-lg-none text-center text-md-start">
+                    <a href="forgotPassword">Forgot Password?</a>
+                </div>
+            </div> 
+            <div class="d-none d-lg-block">
+                <div class="row justify-content-center">
+                    <div class="col-lg-5">
+                        <a href="forgotPassword">Forgot Password?</a>
+                    </div>
+                </div>
+            </div>
             <div class="col d-flex mt-3 justify-content-center">
                 <button class="btn justify-content-center buttonColor" type="submit">Login</button>
             </div>

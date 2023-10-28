@@ -14,7 +14,17 @@ body {
 .flex {
   display: flex;
   align-items: center;
+
 }
+
+/* a.userAccount{
+  color: white;
+}
+
+a.userAccount:hover{
+  background-color: #980B0B;
+} */
+
 .nav_image {
   display: flex;
   min-width: 55px;
@@ -43,14 +53,11 @@ div.data_text div.col-auto a{
 } 
 
 div.data_text div.col-auto a:hover{
-  color: white;
+  color: #980B0B;
 } 
 
-div.data_text div.col-auto:hover{
-  background-color:#980B0B;
-  border-radius:5px;
-  color: white;
-} 
+
+
 
 /* Sidebar */
 .sidebar {

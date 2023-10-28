@@ -61,6 +61,7 @@
         </ul>
       </div>
       <div class="sidebar_profile flex">
+      <a href="/account" class="userAccount" style="text-decoration:none;">
           <span class="nav_image">
             <img src="{{ asset('images/profile.jpg') }}" alt="logo_img" />
           </span>
@@ -78,7 +79,7 @@
    
             <!-- {{ session('name') }} -->
           </div>
-        </div>
+      </a>
           <nav class="navbar flex">
               <i class="bx bx-menu" id="sidebar-open"></i>
           </nav>
