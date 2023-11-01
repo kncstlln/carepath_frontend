@@ -36,15 +36,19 @@ class AuthController extends Controller
             $userType = $response['user_type'];
             $name = $response['name'];
             $username = $response['username'];
+            $email = $response['email'];
             $token = $response['token'];
-            $barangay_id = $response['barangay_id']; // Assuming the API response provides a 'token' field
+            $barangay_id = $response['barangay_id'];
+            $barangay_name = $response['barangay_name'];
 
             // Set session values
             $request->session()->put('user_type', $userType);
             $request->session()->put('name', $name);
             $request->session()->put('username', $username);
+            $request->session()->put('email', $email);
             $request->session()->put('token', $token); // Store the token in the session
             $request->session()->put('barangay_id', $barangay_id);
+            $request->session()->put('barangay_name', $barangay_name);
 
             if ($userType === 0) {
                 return redirect()->route('admin.dashboard');

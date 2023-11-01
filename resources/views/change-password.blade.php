@@ -17,14 +17,21 @@
             </div>
         </div>
         <div class="row">
-                <p style="text-align: justify;">Type in your username in the provided text field. Make sure you enter it correctly. After entering your username, find and click the "Reset Password" button on the page. Please check your email.</p>
+                <p style="text-align: justify;">Change your password.</p>
         </div>
-        <form action="{{ route('forgot-password') }}" method="POST">
+        <form action="{{ route('update-password') }}" method="POST">
             @csrf
             <div class="row">
                 <div class="col-12 col-md-6 mb-3">
-                    <label for="email" class="form-label">Email:</label>
-                    <input class="form-control" type="email" name="email" placeholder="Email" aria-label="email">
+                    <input type="hidden" name="password_reset_token" value="{{ $token }}">
+                    <label for="password" class="form-label">Password</label>
+                    <input class="form-control" type="password" name="password" placeholder="Password" aria-label="password">
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-12 col-md-6 mb-3">
+                    <label for="password" class="form-label">Confirm Password</label>
+                    <input class="form-control" type="password" name="password_confirmation" placeholder="Confirm Password" aria-label="password">
                 </div>
             </div>
             <div class="row mb-4 mt-5 justify-content-center text-center">

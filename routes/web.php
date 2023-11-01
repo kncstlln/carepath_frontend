@@ -12,28 +12,40 @@ use App\Http\Controllers\Admin\AdminUserController;
 use App\Http\Controllers\Admin\AdminTCLController;
 use App\Http\Controllers\Admin\AdminVaccineHistoryController;
 use App\Http\Controllers\Admin\AdminUpcomingVaccination;
+use App\Http\Controllers\Admin\AdminAccountController;
 
 use App\Http\Controllers\User\UserDashboardController;
 use App\Http\Controllers\User\UserTCLController;
 use App\Http\Controllers\User\UserVaccineHistoryController;
 use App\Http\Controllers\User\UserUpcomingVaccination;
+use App\Http\Controllers\User\UserAccountController;
 
 use App\Http\Controllers\AuthController;
-
+use App\Http\Controllers\ForgotPasswordController;
 
 Route::get('/', [MainController::class, 'index']);
 Route::get('/login', [AuthController::class, 'showLoginForm'])->name('login');
 Route::post('/login', [AuthController::class, 'login']);
 Route::get('/logout', [AuthController::class, 'logout'])->name('logout');
-Route::get('/account', function () {
-    return view('admin.account');
+
+Route::get('/forgot-password', function () {
+    return view('forgot');
 });
+
+Route::post('/forgot-password', [ForgotPasswordController::class, 'forgotPassword'])->name('forgot-password');
+Route::get('/change-password', [ForgotPasswordController::class, 'index']);
+Route::post('/update-password', [ForgotPasswordController::class, 'updatePassword'])->name('update-password');
+
+
+
+
+
 Route::get('/changePassword', function () {
     return view('admin.password');
 });
-Route::get('/forgotPassword', function () {
-    return view('forgot');
-});
+
+
+
 
 // Routes accessible only by user_type 0 (admin)
 Route::middleware(['check.user_type:0'])->prefix('admin')->group(function () {
@@ -78,6 +90,10 @@ Route::delete('/history/delete/{id}', [AdminVaccineHistoryController::class, 'de
 
 Route::get('/upcoming-vaccinations', [AdminUpcomingVaccination::class, 'index'])->name('admin.upcoming');
 Route::get('/missed-vaccinations', [AdminUpcomingVaccination::class, 'missedVaccinations'])->name('admin.missed');
+
+Route::get('/account', [AdminAccountController::class, 'index'])->name('admin.account');
+Route::get('/change-password', [AdminAccountController::class, 'changePassword'])->name('admin.change-password');
+Route::put('/update-password', [AdminAccountController::class, 'updatePassword'])->name('admin.update-password');
 });
 
 // Routes accessible only by user_type 1 (regular user)
@@ -97,6 +113,10 @@ Route::post('/history', [UserVaccineHistoryController::class, 'store'])->name('u
 Route::delete('/history/delete/{id}', [UserVaccineHistoryController::class, 'delete'])->name('user.history.delete');
 Route::get('/upcoming-vaccinations', [UserUpcomingVaccination::class, 'index'])->name('user.upcoming');
 Route::get('/missed-vaccinations', [UserUpcomingVaccination::class, 'missedVaccinations'])->name('user.missed');
+
+Route::get('/account', [UserAccountController::class, 'index'])->name('user.account');
+Route::get('/change-password', [UserAccountController::class, 'changePassword'])->name('user.change-password');
+Route::put('/update-password', [UserAccountController::class, 'updatePassword'])->name('user.update-password');
 });
 
 

@@ -44,13 +44,13 @@
                     </div>
                 </div>
                 <div class="col-12 col-md-7 d-lg-none text-center text-md-start">
-                    <a href="forgotPassword">Forgot Password?</a>
+                    <a href="forgot-password">Forgot Password?</a>
                 </div>
             </div> 
             <div class="d-none d-lg-block">
                 <div class="row justify-content-center">
                     <div class="col-lg-5">
-                        <a href="forgotPassword">Forgot Password?</a>
+                        <a href="forgot-password">Forgot Password?</a>
                     </div>
                 </div>
             </div>

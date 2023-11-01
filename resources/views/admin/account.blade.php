@@ -22,20 +22,24 @@
             </div>
         </div>
         <div class="row">
+        <div class="col-12 col-md-7 mb-3">
+                <label for="username" class="form-label">Name</label>
+                <input class="form-control" type="text" value="{{session('name')}}" aria-label="disabledUsername" disabled readonly>
+            </div>
             <div class="col-12 col-md-7 mb-3">
                 <label for="username" class="form-label">Username</label>
-                <input class="form-control" type="text" value="PLACE USERNAME" aria-label="disabledUsername" disabled readonly>
+                <input class="form-control" type="text" value="{{session('username')}}" aria-label="disabledUsername" disabled readonly>
             </div>
             <div class="col-12 col-md-7 mb-3">
                 <label for="emailAccount" class="form-label">Email address</label>
-                <input class="form-control" type="text" value="PLACE EMAIL HERE!!" aria-label="disabledEmail" disabled readonly>
+                <input class="form-control" type="text" value="{{session('email')}}" aria-label="disabledEmail" disabled readonly>
             </div>
             <div class="col-12 col-md-7 mb-4">
                 <label for="role" class="form-label">Role</label>
-                <input class="form-control" type="text" value="PLACE ROLE!!" aria-label="disabledRole" disabled readonly>
+                <input class="form-control" type="text" value="ADMIN" aria-label="disabledRole" disabled readonly>
             </div>
             <div class="col-12 col-md-7 text-center text-lg-start mb-3">
-                <a class="btn btn-danger" href="changePassword" role="button">Change Password</a>
+                <a class="btn btn-danger" href="{{ route('admin.change-password') }}" role="button">Change Password</a>
             </div>
         </div>
     </div>
