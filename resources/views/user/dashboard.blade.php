@@ -9,6 +9,7 @@
     <link flex href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet" />
     <script src="{{ asset('js/sidebar.js') }}" defer></script>
     <script src="{{ asset('js/dashboard.js') }}"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <title>Dashboard</title>
 </head>
 <body>
@@ -25,24 +26,63 @@
           <div class="col-sm-2 mt-2 d-none d-lg-block"><img src="{{ asset('images/AC_LOGO.png') }}" width="139px" height="139px"/></div>
         </div>
           <div class="row g-4 mb-5 text-center">
-            <div class="col-6 col-md-3">
-              <div class="p-1 pt-4" id="listbox1"><i class='bx bx-injection'></i>  Vaccine Listed</div>
+          <div class="col-6 col-md-3">
+              <div class="p-1 pt-4" id="listbox2">Barangay {{session('barangay_name')}}</div>
             </div>
             <div class="col-6 col-md-3">
-              <div class="p-1 pt-4" id="listbox2">Barangay List</div>
+              <div class="p-1 pt-4" id="listbox1"><i class='bx bx-injection'></i> {{ $dashboard['vaccine_count'] }} Vaccine Listed</div>
             </div>
             <div class="col-6 col-md-3">
-              <div class="p-1 pt-4" id="listbox3">Partially Vaccinated</div>
+              <div class="p-1 pt-4" id="listbox3">{{ $dashboard['partially_vaccinated_count'] }} Partially Vaccinated</div>
             </div>
             <div class="col-6 col-md-3">
-              <div class="p-1 pt-4" id="listbox4">Fully Vaccinated</div>
+              <div class="p-1 pt-4" id="listbox4">{{ $dashboard['fully_vaccinated_count'] }} Fully Vaccinated</div>
             </div>
           </div>
           <div class="row g-2" style="border:1px solid red;">
-            <div class="col-sm-9 p-3" style="border:1px solid blue;">Column</div>
-            <div class="col-sm-3 p-3" style="border:1px solid blue;">Column</div>
+            <div class="col-sm-9 p-3" style="border:1px solid blue;">
+              <canvas id="lineChart"></canvas>
+            </div>
           </div>
       </div>
+
+<script>
+// Check if the script executes
+console.log('Chart Script Executed');
+
+// Get the data from the PHP variable $dashboard and convert it to JavaScript object
+const dashboardData = @json($dashboard);
+
+// Extract month names and counts from the received data
+const months = Object.keys(dashboardData.records_by_month);
+const counts = Object.values(dashboardData.records_by_month);
+
+// Get the current year
+const currentYear = new Date().getFullYear();
+
+// Create the Chart.js line chart
+const ctx = document.getElementById('lineChart').getContext('2d');
+const lineChart = new Chart(ctx, {
+    type: 'line',
+    data: {
+        labels: months.map(month => `${month} in ${currentYear}`),
+        datasets: [{
+            label: 'Vaccination Count',
+            data: counts,
+            fill: false,
+            borderColor: 'rgb(75, 192, 192)',
+            tension: 0.1
+        }]
+    },
+    options: {
+        scales: {
+            y: {
+                beginAtZero: true
+            }
+        }
+    }
+});
+</script>
 </body>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
 </html>
