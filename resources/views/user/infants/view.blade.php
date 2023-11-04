@@ -15,13 +15,13 @@
 </head>
 <body>
 @include('user.sidebar')
-    <div class="container-sm content mt-4">
+    <div class="container-sm content mt-4 mb-5">
         <div class="row">
             <div class="col-sm mb-5" id="infantsTxt">View Infant Record</div>
         </div>
         <div class="container-sm ps-4 createRecord">
             <div class="row">
-                <div class="col-1 col-md-1 mt-3"><a href="{{ route('user.infants.index') }}"><i class="fa-solid fa-angle-up fa-rotate-270 fa-2xl"></i></a></div>
+                <div class="col-1 col-md-1 mt-3"><a href="{{ route('user.infants.index') }}"><i class="fa-solid fa-angle-up fa-rotate-270 fa-2xl" style="color:black"></i></a></div>
                 <div class="col-9 col-md-10 h2 mb-5 mt-3 text-center">View Infant Record</div>
             </div>
             <div>
@@ -108,7 +108,7 @@
                                       <td>{{ $immunization['Administered By'] }}</td>
                                       <td>{{ $immunization['Remarks'] }}</td>
                                       <td class="text-center align-middle">
-                                        <button class="deleteButton" data-record-id="{{ $immunization['Id'] }}" style="border:none">
+                                        <button class="deleteButton" data-record-id="{{ $immunization['Id'] }}" style="border:none; background: transparent;">
                                             <i class="fa-solid fa-trash"></i>
                                         </button>
                                       </td>

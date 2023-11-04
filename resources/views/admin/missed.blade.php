@@ -29,7 +29,7 @@
                 <option value="3">Salapungan</option>
             </select> -->
         </div>
-        <div class="table-responsive-lg" style="border: 1px solid red">
+        <div class="table-responsive-lg">
           <table class="table table-striped" id="missedTable" >
               <thead>
                   <tr class="table-danger">

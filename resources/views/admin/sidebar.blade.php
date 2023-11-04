@@ -82,7 +82,7 @@
           </ul>
         </div>
         <div class="sidebar_profile flex">
-          <a href="/admin/account" class="userAccount">
+          <a href="/admin/account" class="userAccount" style="text-decoration:none">
             <span class="nav_image">
             <i class="fa-solid fa-user fa-2xl"></i>
             </span>
