@@ -20,7 +20,7 @@
 </head>
     <body>
         @include('admin/sidebar')
-        <div class="container-sm content mt-4">
+        <div class="container-sm content mt-4 mb-5">
             <div class="row">
                 <div class="col-sm mb-5" id="infantsTxt">Add User</div>
             </div>
@@ -68,26 +68,26 @@
                       </div>
                   </div>
                   <div class="row mb-4">
-                      <div class="col-md-2 pt-1 text-center">Barangay:</div>
-                      <div class="col-md-3">
-                          <select class="form-select" name="barangay_id">
-                              <option value="">Select Barangay</option>
-                              @foreach($barangays as $barangay)
-                                  <option value="{{ $barangay['id'] }}">{{ $barangay['name'] }}</option>
-                              @endforeach
-                          </select>
-                      </div>
-                  </div>
-                  <div class="row mb-4">
                       <div class="col-md-2 pt-1 text-center">Position:<span style="color:red;"> *</span></div>
                       <div class="col-md-3">
-                          <select class="form-select" name="user_type" required>
+                          <select class="form-select" id="position" name="user_type" required>
                               <option value="">Select Position</option>
                               <option value="1">Health Worker</option>
                               <option value="0">Admin</option>
                           </select>
                       </div>
                   </div>
+                  <div class="row mb-4">
+                    <div class="col-md-2 pt-1 text-center" id="barangayRow" style="display: none;">Barangay:</div>
+                    <div class="col-md-3" id="selectBarangay" style="display: none;">
+                        <select class="form-select" name="barangay_id" >
+                            <option value="">Select Barangay</option>
+                            @foreach($barangays as $barangay)
+                                <option value="{{ $barangay['id'] }}">{{ $barangay['name'] }}</option>
+                            @endforeach
+                        </select>
+                    </div>
+                </div>
                   <div class="row mb-4 mt-5 justify-content-center text-center">
                       <div class="col-md-3 col-lg-2 mt-1">
                           <a href="{{ route('admin.users.index') }}"><button type="button" class="btn btn-secondary cancelButton">Cancel</button></a>
@@ -121,8 +121,22 @@
 
         return true;
     }
+</script>
 
+<script>
+    const positionSelect = document.getElementById('position');
+    const barangayRow = document.getElementById('barangayRow');
+    const barangaySelect = document.getElementById('selectBarangay');
 
+    positionSelect.addEventListener('change', function() {
+        if (positionSelect.value === '1') {
+            barangayRow.style.display = 'block';
+            barangaySelect.style.display = 'block';
+        } else {
+            barangayRow.style.display = 'none';
+            barangaySelect.style.display = 'none';
+        }
+    });
 </script>
 
 
