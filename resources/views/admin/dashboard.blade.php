@@ -28,20 +28,25 @@
         </div>
           <div class="row g-4 mb-5 text-center">
             <div class="col-6 col-md-3">
-              <div class="p-1 pt-4" id="listbox1"><i class='bx bx-injection'></i> {{ $dashboard['vaccine_count'] }}  Vaccine Listed</div>
+              <div class="p-3" id="listbox1">
+                <span style="font-size:1.5rem">{{ $dashboard['vaccine_count'] }}</span>  Vaccine Listed
+              </div>
             </div>
             <div class="col-6 col-md-3">
-              <div class="p-1 pt-4" id="listbox2">{{ $dashboard['barangay_count'] }} Barangay List</div>
+              <div class="p-3" id="listbox2">
+              <span style="font-size:1.5rem">{{ $dashboard['barangay_count'] }}</span> Barangay List</div>
             </div>
             <div class="col-6 col-md-3">
-              <div class="p-1 pt-4" id="listbox3">{{ $dashboard['partially_vaccinated_count'] }} Partially Vaccinated</div>
+              <div class="p-3" id="listbox3">
+              <span style="font-size:1.5rem">{{ $dashboard['partially_vaccinated_count'] }}</span> Partially Vaccinated</div>
             </div>
             <div class="col-6 col-md-3">
-              <div class="p-1 pt-4" id="listbox4">{{ $dashboard['fully_vaccinated_count'] }} Fully Vaccinated</div>
+              <div class="p-3" id="listbox4">
+              <span style="font-size:1.5rem">{{ $dashboard['fully_vaccinated_count'] }}</span> Fully Vaccinated</div>
             </div>
           </div>
-          <div class="row g-2" style="border:1px solid red;">
-              <div class="col-sm-9 p-3" id="lineChartCanvas">
+          <div class="row">
+              <div class="col-12 p-3" id="lineChartCanvas">
                   <canvas id="lineChart"></canvas>
             </div>
           </div>

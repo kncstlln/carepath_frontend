@@ -11,6 +11,7 @@
     <link href="css/admin/vaccine.css" rel="stylesheet"/>
     <link href="css/admin/brgySelect.css" rel="stylesheet"/>
     <link flex href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet" />
+    <link rel="icon" type="image/x-icon" href="{{ asset('/images/logo.png') }}">
     <script src="https://kit.fontawesome.com/2eead9cc17.js" crossorigin="anonymous"></script>
     <script src="js/dashboard.js"></script>
     <title>Upcoming Vaccination</title>

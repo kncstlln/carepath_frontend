@@ -54,7 +54,6 @@ class AdminUserController extends Controller
             'barangay_id' => $request->input('barangay_id'),
             'user_type' => $request->input('user_type'),
         ];
-
         $response = $this->apiService->post('/register', $userData, session('token'));
 
         if (isset($response['data'])) {

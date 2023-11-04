@@ -7,6 +7,7 @@
     <link href="{{ asset('css/user/sidebar.css') }}" rel="stylesheet"/>
     <script src="{{ asset('css/user/sidebar.js') }}" defer></script>
     <link href="{{ asset('css/user/dashboard.css') }}" rel="stylesheet"/>
+    <script src="https://kit.fontawesome.com/2eead9cc17.js" crossorigin="anonymous"></script>
     <link flex href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet" />
     <script src="{{ asset('css/user/dashboard.js') }}"></script>
     <title>Dashboard</title>
@@ -63,7 +64,7 @@
       <div class="sidebar_profile flex">
       <a href="/user/account" class="userAccount" style="text-decoration:none;">
           <span class="nav_image">
-            <img src="{{ asset('images/profile.jpg') }}" alt="logo_img" />
+          <i class="fa-solid fa-user-nurse fa-2xl" style="color: black"></i>
           </span>
           <div class="data_text">
             <div class="row">

@@ -82,9 +82,9 @@
           </ul>
         </div>
         <div class="sidebar_profile flex">
-          <a href="/admin/account" class="userAccount" style="text-decoration:none;">
+          <a href="/admin/account" class="userAccount" style="text-decoration:none; color: black">
             <span class="nav_image">
-              <img src="{{ asset('images/profile.jpg') }}" alt="logo_img" />
+            <i class="fa-solid fa-user fa-2xl"></i>
             </span>
             <div class="data_text">
               <div class="row">
