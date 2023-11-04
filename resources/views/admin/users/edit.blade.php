@@ -63,7 +63,7 @@
                       <select class="form-select" name="user_type" required>
                           <option value="">Select Position</option>
                           <option value="1" {{ $user['user_type'] === 1 ? 'selected' : '' }}>Health Worker</option>
-                          <option value="10" {{ $user['user_type'] === 10 ? 'selected' : '' }}>Admin</option>
+                          <option value="0" {{ $user['user_type'] === 10 ? 'selected' : '' }}>Admin</option>
                       </select>
                   </div>
               </div>

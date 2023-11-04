@@ -50,21 +50,18 @@
                   </div>
                   <div class="row mb-4">
                       <div class="col-md-2  pt-2 text-center">Password:<span style="color:red;"> *</span></div>
-                      <div class="col-md-5 pt-2 text-center">
+                      <div class="col-md-5 col-lg-3 pt-2 text-center">
                           <input type="password" name="password" id="inputPassword" class="form-control" aria-labelledby="passwordHelpBlock"required/>
                           <div id="passwordHelpBlock" class="form-text">
-                              Your password must be 8-20 characters long, contain letters and numbers, and must not contain spaces, special characters, or emoji.
+                              Your password must be 8-20 characters long, contain letters and numbers, and must not contain spaces or emoji.
                           </div>
                       </div>
                   </div>
 
                   <div class="row mb-4">
                       <div class="col-md-2  pt-2 text-center">Confirm Password:<span style="color:red;"> *</span></div>
-                      <div class="col-md-5 pt-2 text-center">
+                      <div class="col-md-5 col-lg-3 pt-2 text-center">
                           <input type="password" name="password_confirmation" id="confirmPassword" class="form-control" aria-labelledby="passwordHelpBlock" data-toggle="tooltip" data-placement="top" title="Passwords do not match" required/>
-                          <div id="passwordHelpBlock" class="form-text">
-                              Your password must be 8-20 characters long, contain letters and numbers, and must not contain spaces, special characters, or emoji.
-                          </div>
                       </div>
                       <div class="col-md-5 text-center text-md-start mt-3">
                         <div id="errorText" style="color: red; display: none">Passwords do not match</div>

@@ -82,7 +82,7 @@
           </ul>
         </div>
         <div class="sidebar_profile flex">
-          <a href="/admin/account" class="userAccount" style="text-decoration:none; color: black">
+          <a href="/admin/account" class="userAccount">
             <span class="nav_image">
             <i class="fa-solid fa-user fa-2xl"></i>
             </span>
@@ -94,8 +94,8 @@
               </div>
               <div class="row" style=" width:300px">
             
-                <div class="col-auto">
-                  <a href="{{ route('logout') }}">Logout</a> 
+                <div class="col-2">
+                  <a class="btn btn-sm" role="button" href="{{ route('logout') }}">Logout</a> 
                 </div>
     
               </div>

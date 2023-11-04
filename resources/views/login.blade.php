@@ -11,7 +11,7 @@
 </head>
 <body style="background-color:#F2F8FD;">
     <div class="container pt-5 px-5">
-        <img src="images/AC_logo.png" class="rounded mx-auto d-block mt-5" height="250" alt="Angeles City logo">
+        <img src="{{ asset('/images/aclogo.png') }}" class="rounded mx-auto d-block mt-5" height="250" alt="Angeles City logo">
         
         <!-- Display error message if it exists -->
         @if($errorMessage)
