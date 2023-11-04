@@ -89,3 +89,13 @@ a {
     border: none !important;
     padding: 0 !important; 
 }
+
+
+.pagination > li > a, .pagination > li > span{
+    background-color:white; 
+}
+
+.pagination > li.active > a, .pagination > li.active > span{
+    background-color:#980B0B; 
+    border-color: transparent
+}

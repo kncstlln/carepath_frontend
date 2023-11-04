@@ -64,7 +64,7 @@
       <div class="sidebar_profile flex">
       <a href="/user/account" class="userAccount" style="text-decoration:none;">
           <span class="nav_image">
-          <i class="fa-solid fa-user-nurse fa-2xl" style="color: black"></i>
+            <i class="fa-solid fa-user-nurse fa-2xl"></i>
           </span>
           <div class="data_text">
             <div class="row">
@@ -74,9 +74,9 @@
             </div>
             <div class="row" style=" width:300px">
           
-              <div class="col-auto">
-                <a href="{{ route('logout') }}">Logout</a> 
-              </div>
+            <div class="col-2">
+              <a class="btn btn-sm" role="button" href="{{ route('logout') }}">Logout</a> 
+            </div>
    
             <!-- {{ session('name') }} -->
           </div>

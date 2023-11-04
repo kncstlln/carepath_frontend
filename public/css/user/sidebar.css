@@ -37,20 +37,24 @@ body {
   pointer-events:none;
 }
 
-div.data_text div.col-auto a{
+div.data_text div.col-2 a{
   text-decoration:none;
   color:black;
 } 
 
-div.data_text div.col-auto a:hover{
+div.data_text div.col-2 a:hover{
   color: white;
+  background-color:#980B0B;
 } 
 
-div.data_text div.col-auto:hover{
-  background-color:#980B0B;
-  border-radius:5px;
-  color: white;
-} 
+i.fa-user-nurse{
+  color: black
+}
+
+i.fa-user-nurse:hover{
+  color: #980B0B
+}
+
 
 /* Sidebar */
 .sidebar {
