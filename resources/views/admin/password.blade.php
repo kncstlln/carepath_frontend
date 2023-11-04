@@ -22,11 +22,11 @@
         @csrf
         @method('PUT')
         <div class="row">
-            <div class="col-12 col-md-6 mb-3">
+            <div class="col-12 col-md-7 mb-3">
                 <label for="currentPassword" class="form-label">New Password:</label>
                 <input class="form-control" type="password" name="password" placeholder="Password" aria-label="currentPassword">
             </div>
-            <div class="col-12 col-md-6 mb-3">
+            <div class="col-12 col-md-7 mb-3">
                 <label for="currentPassword" class="form-label">Confirm Password:</label>
                 <input class="form-control" type="password" name="password_confirmation" placeholder="Confirm Password" aria-label="currentPassword">
             </div>

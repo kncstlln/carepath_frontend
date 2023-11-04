@@ -43,7 +43,7 @@
                       </div>
                   </div>
                   <div class="row mb-4">
-                      <div class="col-md-2 pt-1 text-center">Email:</div>
+                      <div class="col-md-2 pt-1 text-center">Email:<span style="color:red;"> *</span></div>
                       <div class="col-md-3">
                           <input class="form-control" name="email" type="email" placeholder="Email" aria-label="default input" required/>
                       </div>
@@ -71,9 +71,9 @@
                       </div>
                   </div>
                   <div class="row mb-4">
-                      <div class="col-md-2 pt-1 text-center">Barangay:<span style="color:red;"> *</span></div>
+                      <div class="col-md-2 pt-1 text-center">Barangay:</div>
                       <div class="col-md-3">
-                          <select class="form-select" name="barangay_id" required>
+                          <select class="form-select" name="barangay_id">
                               <option value="">Select Barangay</option>
                               @foreach($barangays as $barangay)
                                   <option value="{{ $barangay['id'] }}">{{ $barangay['name'] }}</option>
@@ -87,7 +87,7 @@
                           <select class="form-select" name="user_type" required>
                               <option value="">Select Position</option>
                               <option value="1">Health Worker</option>
-                              <option value="10">Admin</option>
+                              <option value="0">Admin</option>
                           </select>
                       </div>
                   </div>

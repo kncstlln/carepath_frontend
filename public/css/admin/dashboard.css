@@ -60,9 +60,3 @@
     border-color:#980B0B;
     background-color: #FFF
 }
-
-@media (min-width: 1300px){
-    #dashboard{
-        overflow-y:hidden;
-    }    
-}
