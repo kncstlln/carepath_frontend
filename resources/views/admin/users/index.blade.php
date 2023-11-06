@@ -34,6 +34,7 @@
               <th scope="col">No.</th>
               <th scope="col">Location</th>
               <th scope="col">Name</th>
+              <th scope="col">Username</th>
               <th scope="col">Email</th>
               <th scope="col">Position</th>
               <th scope="col">Action</th>
@@ -43,10 +44,17 @@
             @foreach($users as $key => $user)
                 <tr>
                     <th scope="row">{{ $key + 1 }}</th>
-                    <td class="align-middle">{{ $user['barangay']['name'] }}</td>
+                    <td class="align-middle">
+                        @if(isset($user['barangay']))
+                            {{ $user['barangay']['name'] }}
+                        @else
+                            <!-- Leave it as a blank -->
+                        @endif
+                    </td>
+                    <td class="table-secondary align-middle">{{ $user['username'] }}</td>
                     <td class="table-secondary align-middle">{{ $user['name'] }}</td>
                     <td class="table-secondary align-middle">{{ $user['email'] }}</td>
-                    <td class="table-secondary">{{ $user['user_type'] === 10 ? 'Admin' : 'Health Worker' }}</td>
+                    <td class="table-secondary">{{ $user['user_type'] === 0 ? 'Admin' : 'Health Worker' }}</td>
                     <td class="align-middle d-flex justify-content-center">
                         <a href="{{ route('admin.users.edit', ['id' => $user['id']]) }}" class="my-auto"><i class='bx bxs-pencil me-2'></i></a>
                         <form action="{{ route('admin.users.delete', ['id' => $user['id']]) }}" method="POST" style="display: inline;">

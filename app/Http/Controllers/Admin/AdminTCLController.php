@@ -233,6 +233,25 @@ class AdminTCLController extends Controller
         }
     }
 
+    public function updateStatus(Request $request, $id)
+    {
+        // Validate the incoming data
+        $data = [
+            'status' => $request->input('status')
+        ];
+
+        // Use the ApiService to update the infant data
+        $response = $this->apiService->put("/infants/{$id}", $data, session('token'));
+
+        if (isset($response['data'])) {
+            return redirect()->route('admin.infants.index')->with('success', 'Infant record updated successfully');
+        } else {
+            // Log the error response for debugging
+            \Log::error('API Update Error: ' . json_encode($response));
+            return redirect()->route('admin.infant.edit')->with('error', 'Failed to update infant record');
+        }
+    }
+
     public function view($id)
     {
         try {
@@ -269,6 +288,19 @@ class AdminTCLController extends Controller
             return view('admin.infants.view', compact('infant', 'immunizations', 'barangays'));
         } catch (\Exception $e) {
             return redirect()->back()->with('error', 'An error occurred while fetching data.');
+        }
+    }
+
+    public function exportToExcel($year)
+    {
+        $response = $this->apiService->get("/infants-spreadsheet/{$year}", session('token')); // Assuming 'token' is stored in the session
+
+        if (isset($response['data'])) {
+            $infants = $response['data'];
+
+            return response()->json($infants);
+        } else {
+            return response()->json(['message' => 'No data available for the selected year'], 404);
         }
     }
 

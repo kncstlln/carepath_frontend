@@ -93,15 +93,15 @@ class AdminUserController extends Controller
             'barangay_id' => $request->input('barangay_id'),
             'user_type' => $request->input('user_type'),
         ];
-
+        
         // Include password fields only if they are not empty
         if (!empty($request->input('password'))) {
             $userData['password'] = $request->input('password');
             $userData['password_confirmation'] = $request->input('password_confirmation');
         }
 
-        $response = $this->apiService->put("/users/{$id}", $userData, session('token'));
-
+        $response = $this->apiService->put("/users-update/{$id}", $userData, session('token'));
+        
         if (isset($response['data'])) {
             // Redirect to the user list page or any other appropriate page
             return redirect()->route('admin.users.index')->with('success', 'User updated successfully');

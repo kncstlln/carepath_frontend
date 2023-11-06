@@ -74,6 +74,13 @@
                       <div class="col-md-10 pt-2">{{ $infant['complete_address'] }}</div>
                     </div>
                     <div class="row d-flex justify-content-end">
+                        <div class="col-4 d-flex">
+                                <select class="form-select btn btn-lg mb-4 addButton" id="status" role="button" id="button-add">
+                                    <option value="0" {{ $infant['status'] === 0 ? 'selected' : '' }}>Not Vaccinated</option>
+                                    <option value="1" {{ $infant['status'] === 1 ? 'selected' : '' }}>Partially Vaccinated</option>
+                                    <option value="2" {{ $infant['status'] === 2 ? 'selected' : '' }}>Fully Vaccinated</option>
+                                </select>
+                            </div>
                         <div class="col-7 d-flex justify-content-end">
                             <a class="btn btn-lg mb-4 addButton" href="{{ route('user.history.add', ['id' => $infant['id']]) }}" role="button" id="button-add">Vaccinate Infant</a>
                         </div>
@@ -129,11 +136,45 @@
     </div>
     <script>
         document.addEventListener('DOMContentLoaded', function () {
-            // Attach click event listeners to delete buttons
-            attachDeleteButtonListeners();
+            const selectStatus = document.getElementById('status'); // Assuming this is the select element for the infant status
 
-            // Your existing JavaScript code here
-            // ...
+                selectStatus.addEventListener('change', function () {
+                    const newStatus = selectStatus.value;
+                    const infantId = {!! json_encode($infant['id']) !!}; // Get the infant ID from PHP
+
+                    // Fetch to update infant status
+                    fetch(`/user/infants/update-status/${infantId}`, {
+                        method: 'PUT',
+                        headers: {
+                            'X-CSRF-TOKEN': '{{ csrf_token() }}',
+                            'Content-Type': 'application/json',
+                            'Accept': 'application/json',
+                        },
+                        body: JSON.stringify({
+                            status: newStatus
+                        })
+                    })
+                    .then(response => {
+                        if (response.ok) {
+                            // Optionally, you can handle success (if needed)
+                            return response.json();
+                        } else {
+                            // Handle the failure case
+                            throw new Error('Failed to update infant status');
+                        }
+                    })
+                    .then(data => {
+                        // Handle response data if necessary
+                        console.log('Infant status updated successfully:', data);
+                        // You might want to refresh the page or update the UI after the successful update
+                    })
+                    .catch(error => {
+                        console.error('Error:', error);
+                        // Handle error in updating infant status
+                    });
+                });
+
+            attachDeleteButtonListeners();
         });
 
         // Function to attach click event listeners to delete buttons

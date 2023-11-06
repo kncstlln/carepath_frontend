@@ -81,6 +81,8 @@ Route::get('/infants/edit/{id}', [AdminTCLController::class, 'edit'])->name('adm
 Route::put('/infants/update/{id}', [AdminTCLController::class, 'update'])->name('admin.infants.update');
 Route::get('/infants/{id}', [AdminTCLController::class, 'view'])->name('admin.infants.view');
 Route::get('/infants/success', [AdminTCLController::class, 'success'])->name('admin.infants.success');
+Route::put('/infants/update-status/{id}', [AdminTCLController::class, 'updateStatus'])->name('admin.infants.update-status');
+Route::get('/get-excel-data/{year}', [AdminTCLController::class, 'exportToExcel'])->name('admin.infants.export');
 
 Route::get('/history', [AdminVaccineHistoryController::class, 'index'])->name('admin.history.index');
 Route::get('/history/filtered-records/{barangay_id}/{year?}', [AdminVaccineHistoryController::class, 'getFilteredImmunizationRecords']);
@@ -106,6 +108,8 @@ Route::delete('/infants/delete{id}', [UserTCLController::class, 'delete'])->name
 Route::get('/infants/edit/{id}', [UserTCLController::class, 'edit'])->name('user.infants.edit');
 Route::put('/infants/update{id}', [UserTCLController::class, 'update'])->name('user.infants.update');
 Route::get('/infants/{id}', [UserTCLController::class, 'view'])->name('user.infants.view');
+Route::put('/infants/update-status/{id}', [UserTCLController::class, 'updateStatus'])->name('user.infants.update-status');
+Route::get('/get-excel-data/{year}', [UserTCLController::class, 'exportToExcel'])->name('user.infants.export');
 
 Route::get('/history', [UserVaccineHistoryController::class, 'index'])->name('user.history.index');
 Route::get('/history/add/{id}', [UserVaccineHistoryController::class, 'add'])->name('user.history.add');

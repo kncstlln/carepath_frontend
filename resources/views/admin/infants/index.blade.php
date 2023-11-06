@@ -12,6 +12,7 @@
     <link rel="icon" type="image/x-icon" href="{{ asset('/images/logo.png') }}">
     <script src="https://kit.fontawesome.com/2eead9cc17.js" crossorigin="anonymous"></script>
     <script src="{{ asset('js/index.js') }}"></script>
+
     <title>Infants</title>
 </head>
 <body>
@@ -40,6 +41,11 @@
             </select>
         </div>
     </div>
+    <div class="row mb-7">
+        <div class="col-12 col-sm-8 col-md-5 col-lg-3 col-xl-2 mb-3 me-2">
+            <a class="btn addButton w-100" role="button" id="button-export" style="border:solid">Export To Excel</a>
+        </div>
+    </div>
 
     <div class="row d-flex justify-content-center justify-content-md-end">
         <div class="col-12 col-sm-8 col-md-5 col-lg-3 col-xl-2 mb-3 me-2">
@@ -66,6 +72,110 @@
 </script>
 
 <script>
+
+document.getElementById('button-export').addEventListener('click', function () {
+    const year = prompt('Please enter the year for data export:', '');
+    if (year !== null) {
+        fetch(`/admin/get-excel-data/${year}`)
+            .then(response => response.json())
+            .then(data => {
+                if (data && data.length > 0) {
+                    // Here, convert the response data to CSV format
+                    const csvContent = convertJSONToCSV(data);
+                    downloadCSV(csvContent, `Infants_${year}.csv`);
+                } else {
+                    alert('No data available for the selected year.');
+                }
+            })
+            .catch(error => {
+                console.error('Error fetching data:', error);
+            });
+    }
+});
+
+function getImmunizationHeaders(immunizationRecords) {
+    const headers = new Set();
+
+    // Construct headers based on vaccine names and doses
+    immunizationRecords.forEach(record => {
+        const header = `${record.vaccine_name} Dose ${record.vaccine_dose}`;
+        headers.add(header);
+    });
+
+    return Array.from(headers);
+}
+
+function convertJSONToCSV(data) {
+    const csvRows = [];
+
+    // Set the headers for the CSV
+    const headers = [
+        'Name',
+        'Tracking Number',
+        'Sex',
+        'Birth Date',
+        'Family Serial Number',
+        'Barangay',
+        'Weight',
+        'Length',
+        'Father Name',
+        'Mother Name',
+        'Contact Number',
+        'Complete Address',
+        ...getImmunizationHeaders(data[0].immunization_records),
+    ];
+    csvRows.push(headers.join(','));
+
+    // Convert data to CSV rows
+    data.forEach(item => {
+        const infant = item.infant;
+        const barangay = item.infant.barangay;
+        const immunizationRecords = item.immunization_records;
+
+        const row = [
+            infant.name,
+            infant.tracking_number,
+            infant.sex,
+            infant.birth_date,
+            infant.family_serial_number,
+            barangay.name,
+            infant.weight,
+            infant.length,
+            infant.father_name,
+            infant.mother_name,
+            infant.contact_number,
+            // Enclose 'Complete Address' within double quotes to prevent splitting at commas
+            `"${infant.complete_address}"`,
+        ];
+
+        const immunizationColumns = {};
+
+        // Prepare the columns for immunization records
+        immunizationRecords.forEach(record => {
+            immunizationColumns[record.vaccine_name + ' Dose ' + record.vaccine_dose] = record.immunization_date;
+        });
+
+        // Add the values for immunization columns in the row
+        headers.slice(12).forEach(header => {
+            row.push(immunizationColumns[header]);
+        });
+
+        csvRows.push(row.join(','));
+    });
+
+    return csvRows.join('\n');
+}
+
+function downloadCSV(content, fileName) {
+    const encodedUri = encodeURI(`data:text/csv;charset=utf-8,${content}`);
+    const link = document.createElement('a');
+    link.setAttribute('href', encodedUri);
+    link.setAttribute('download', fileName);
+    document.body.appendChild(link);
+    link.click();
+}
+
+
     document.addEventListener('DOMContentLoaded', function () {
         const barangayDropdown = document.querySelector('#barangayDropdown');
         const yearDropdown = document.querySelector('#yearDropdown');
