@@ -29,7 +29,7 @@
             <div class="row g-3">
                 <div class="col-md-6 ">
                     <label for="name" class="form-label">Name: <span style="color:red">*</span></label>
-                    <input type="text" name="name" class="form-control" id="name" placeholder="Juan Dela Cruz">
+                    <input type="text" name="name" class="form-control" id="name" placeholder="Juan Dela Cruz" value="{{ $data['name'] ?? '' }}">
                 </div>
 
                 <div class="col-md-6 col-xl-4"> 
@@ -49,12 +49,12 @@
 
                 <div class="col-md-3"> 
                     <label for="weight" class="form-label">Weight (kg):</label>
-                    <input class="form-control" id="weight" name="weight" type="number" placeholder="kg" aria-label="default input" min="1" max="50"/>
+                    <input class="form-control" id="weight" name="weight" type="number" placeholder="kg" aria-label="default input" min="1" max="50" value="{{ $data['weight'] ?? '' }}"/>
                 </div>
 
                 <div class="col-md-3">
                     <label for="height" class="form-label">Length (cm):</label>
-                    <input class="form-control" id="length" name="length" type="number" placeholder="cm" aria-label="default input" min="1" max="50"/>
+                    <input class="form-control" id="length" name="length" type="number" placeholder="cm" aria-label="default input" min="1" max="50" value="{{ $data['length'] ?? '' }}"/>
                 </div>
 
                 <div class="col-md-6">
@@ -73,7 +73,7 @@
                 <div class="col-md-6 col-xl-3">
                     <div>Birth date:<span style="color:red;"> *</span></div>
                     <div class="input-group date" id="datepicker">
-                        <input type="date" name="birth_date" class="form-control" required/>
+                        <input type="date" name="birth_date" class="form-control" value="{{ $data['birth_date'] ?? '' }}" required/>
                     </div>
                 </div>
 
@@ -94,18 +94,18 @@
          
                 <div class="col-md-6">
                     <label for="father" class="form-label">Father's Name:<span style="color:red;"> *</span></label>
-                    <input class="form-control" id="father" name="father_name" type="text" placeholder="Full Name" aria-label="default input" required/>
+                    <input class="form-control" id="father" name="father_name" type="text" placeholder="Full Name" aria-label="default input" value="{{ $data['father_name'] ?? '' }}" required/>
                 </div>
         
 
                 <div class="col-md-6">
                     <label for="mother" class="form-label">Mother's Name:<span style="color:red;"> *</span></label>
-                    <input class="form-control" name="mother_name" type="text" placeholder="Full Name" aria-label="default input" required/>
+                    <input class="form-control" name="mother_name" type="text" placeholder="Full Name" aria-label="default input" value="{{ $data['mother_name'] ?? '' }}" required/>
                 </div>
 
                 <div class="col-md-6 col-lg-4">
                     <label for="contact" class="form-label">Contact Number:<span style="color:red;"> *</span></label>
-                    <input class="form-control" name="contact_number" type="tel" placeholder="Contact Number" id="telephone" placeholder="Contact Number" aria-label="default input" required/>
+                    <input class="form-control" name="contact_number" type="tel" placeholder="Contact Number" id="telephone" placeholder="Contact Number" aria-label="default input" value="{{ $data['contact_number'] ?? '' }}" required/>
                 </div>
 
             </div>
@@ -132,7 +132,18 @@
         </form>
     </div>
 </div>
-
+<script>
+    const data = {!! json_encode($data ?? []) !!};
+    document.addEventListener('DOMContentLoaded', () => {
+        // Gender
+        if (data.gender === 'm') {
+            document.getElementById('male').checked = true;
+        } else if (data.gender === 'f') {
+            document.getElementById('female').checked = true;
+        }
+        // ... Additional form field population
+    });
+</script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
 
 

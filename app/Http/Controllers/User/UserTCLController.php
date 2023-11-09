@@ -73,8 +73,10 @@ class UserTCLController extends Controller
         return view('user.infants.index', compact('infants', 'barangays', 'uniqueBirthYears'));
     }
 
-    public function add()
+    public function add(Request $request)
     {
+        $data = $request->query();
+
         $response = $this->apiService->get('/barangays', session('token'));
 
         if (isset($response['data'])) {
@@ -83,7 +85,7 @@ class UserTCLController extends Controller
             $barangays = [];
         }
         
-        return view('user.infants.add', compact('barangays'));
+        return view('user.infants.add', compact('barangays', 'data'));
     }
 
     public function store(Request $request)

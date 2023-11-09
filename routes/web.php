@@ -19,6 +19,7 @@ use App\Http\Controllers\User\UserTCLController;
 use App\Http\Controllers\User\UserVaccineHistoryController;
 use App\Http\Controllers\User\UserUpcomingVaccination;
 use App\Http\Controllers\User\UserAccountController;
+use App\Http\Controllers\User\QRScannerController;
 
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\ForgotPasswordController;
@@ -121,6 +122,9 @@ Route::get('/missed-vaccinations', [UserUpcomingVaccination::class, 'missedVacci
 Route::get('/account', [UserAccountController::class, 'index'])->name('user.account');
 Route::get('/change-password', [UserAccountController::class, 'changePassword'])->name('user.change-password');
 Route::put('/update-password', [UserAccountController::class, 'updatePassword'])->name('user.update-password');
+
+Route::get('/add-qr-scan', [QRScannerController::class, 'getCamera']);
+Route::post('/handle-qr-code-data', [QRScannerController::class, 'handleQrCodeData']);
 });
 
 

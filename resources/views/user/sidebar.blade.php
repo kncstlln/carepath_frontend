@@ -59,6 +59,16 @@
               <span>Missed Vaccination</span>
             </a>
           </li>
+          <div class="menu_title flex">
+            <span class="title">QRScanner</span>
+            <span class="line"></span>
+          </div>
+          <li class="item">
+            <a href="/user/add-qr-scan" class="link flex">
+              <i class="bx bx-qr"></i>
+              <span>Add Infant QR Code</span>
+            </a>
+          </li>
         </ul>
       </div>
       <div class="sidebar_profile flex">
