@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\MainController;
+use App\Events\RegisterNotifications;
 // use App\Http\Controllers\AdminController;
 // use App\Http\Controllers\UserController;
 

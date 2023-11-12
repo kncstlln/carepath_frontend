@@ -5,13 +5,12 @@
 </head>
 <body>
     @include('user/sidebar')
-    <div class="container content createRecord mt-5">
-        <div class="row mb-5 mt-3">
-            <!-- Your existing code -->
-        </div>
-        <div class="row">
-            <select id="cameraSelect"></select>
-            <video id="preview" willReadFrequently></video>
+    <div class="container content createRecord">
+        <div class="row justify-content-center mt-5">
+            <div class="col-12 col-md-8 col-lg-6 justify-content-center">
+                <select id="cameraSelect"></select>
+                <video id="preview" willReadFrequently></video>
+            </div>
         </div>
     </div>
 

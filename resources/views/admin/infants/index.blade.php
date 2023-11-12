@@ -11,6 +11,8 @@
     <link href="https://cdn.datatables.net/v/bs5/dt-1.13.6/r-2.5.0/datatables.min.css" rel="stylesheet">
     <link rel="icon" type="image/x-icon" href="{{ asset('/images/logo.png') }}">
     <script src="https://kit.fontawesome.com/2eead9cc17.js" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
     <script src="{{ asset('js/index.js') }}"></script>
 
     <title>Infants</title>
@@ -53,17 +55,47 @@
         </div>
     </div>
 
+
+    @if(session('success'))
+    <div class="alert alert-success" id="success-message">
+        {{ session('success') }}
+    </div>
+
+    <script>
+        setTimeout(function() {
+            document.getElementById('success-message').style.display = 'none';
+        }, 3000);
+    </script>
+    @endif
+
+
     <div class="table-responsive-xl" id="filteredInfants">
 
     </div>
-    
+
         
  
 
 </div>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
-<script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
 <script src="https://cdn.datatables.net/v/bs5/dt-1.13.6/r-2.5.0/datatables.min.js"></script>
+
+<script src="https://js.pusher.com/8.2.0/pusher.min.js"></script>
+  <script>
+
+    // Enable pusher logging - don't include this in production
+    Pusher.logToConsole = true;
+
+    var pusher = new Pusher('bb0c9d0d4ed3167f1d79', {
+      cluster: 'ap1'
+    });
+
+    var channel = pusher.subscribe('popup-channel');
+    channel.bind('user-register', function(data) {
+      alert(JSON.stringify(data));
+    });
+  </script>
+
 
 <script>
     $(document).ready( function () {
@@ -111,10 +143,9 @@ function convertJSONToCSV(data) {
     // Set the headers for the CSV
     const headers = [
         'Name',
-        'Tracking Number',
+        'Patient Number',
         'Sex',
         'Birth Date',
-        'Family Serial Number',
         'Barangay',
         'Weight',
         'Length',
@@ -137,7 +168,6 @@ function convertJSONToCSV(data) {
             infant.tracking_number,
             infant.sex,
             infant.birth_date,
-            infant.family_serial_number,
             barangay.name,
             infant.weight,
             infant.length,
@@ -224,9 +254,8 @@ function downloadCSV(content, fileName) {
                             <th scope="col">Birth Date</th>
                             <th scope="col">Name</th>
                             <!-- <th scope="col">Date of Registration</th> -->
-                            <th scope="col">Family Serial Number</th>
                             <th scope="col">Sex</th>
-                            <th scope="col">Tracking Number</th>
+                            <th scope="col">Patient Number</th>
                             <th scope="col">Status</th>
                             <th scope="col">Action</th>
                         </tr>
@@ -241,12 +270,10 @@ function downloadCSV(content, fileName) {
                         <td scope="row">${barangayNameMapping[infant.barangay_id]}</td>
                         <td class="table-secondary">${infant.birth_date}</td>
                         <td class="text-uppercase"><b>${infant.name}</b></td>
-                        <!-- <td class="table-secondary">${infant.created_at}</td>  -->
-                        <td class="table-secondary">${infant.family_serial_number}</td>
-                        <td>${infant.sex}</td>
-                        <td class="table-secondary">${infant.tracking_number}</td>
-                        <td>${infant.status}</td>
-                        <td class="table-secondary">
+                        <td class="table-secondary">${infant.sex}</td>
+                        <td>${infant.tracking_number}</td>
+                        <td class="table-secondary">${infant.status}</td>
+                        <td>
                             <table>
                                 <tr>
                                     <td class="text-center align-middle"><a href="/admin/history/add/${infant.id}"><i class="fa-solid fa-syringe me-2"></i></a>
@@ -335,6 +362,8 @@ function downloadCSV(content, fileName) {
         fetchFilteredInfants(0, '');
     });
 </script>
+
+
 
 
 </body>

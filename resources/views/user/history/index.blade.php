@@ -20,24 +20,6 @@
     <div class="row mb-2">
         <div class="col-sm" id="vaccineHistoryTxt">Vaccine History</div>
     </div>
-    <div class="row mb-5">
-        <!-- <div class="col-3 w-auto">
-            <select class="form-select mb-3" id="barangayDropdown" aria-label=".form-select-lg example">
-                <option value="0">All Barangays</option>
-                @foreach($allBarangays as $barangayId => $barangayName)
-                    <option value="{{ $barangayId }}">{{ $barangayName }}</option>
-                @endforeach
-            </select>
-        </div>
-        <div class="col-6 w-auto">
-            <select class="form-select mb-3" id="yearDropdown" aria-label=".form-select-lg example">
-                <option value="">All Years</option>
-                @foreach($uniqueImmunizationYears as $year)
-                    <option value="{{ $year }}">{{ $year }}</option>
-                @endforeach
-            </select>
-        </div> -->
-    </div>
 
     <div class="table-responsive-lg" id="filteredImmunizationRecords">
         <table class="table table-striped align-middle" id="myHistory">
@@ -80,7 +62,7 @@
                     @endforeach
                 @else
                     <tr>
-                        <td colspan="5">No data available.</td>
+                        <td colspan="8">No data available.</td>
                     </tr>
                 @endif
             </tbody>

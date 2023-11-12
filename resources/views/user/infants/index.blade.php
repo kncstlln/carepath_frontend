@@ -21,24 +21,6 @@
           <div class="col-sm" id="infantsTxt">List of Infants</div>
       </div>
 
-      <div class="row mb-5">
-          <!-- <div class="col-3 w-auto">
-              <select class="form-select mb-3" id="barangayDropdown" aria-label=".form-select-lg example">
-                  <option value="0">All Barangays</option>
-                  @foreach($barangays as $barangay)
-                      <option value="{{ $barangay['id'] }}">{{ $barangay['name'] }}</option>
-                  @endforeach
-              </select>
-          </div>
-          <div class="col-6 w-auto">
-              <select class="form-select mb-3" id="yearDropdown" aria-label=".form-select-lg example">
-                  <option value="">All Years</option>
-                  @foreach($uniqueBirthYears as $year)
-                      <option value="{{ $year }}">{{ $year }}</option>
-                  @endforeach
-              </select>
-          </div> -->
-      </div>
       <div class="row mb-7">
         <div class="col-12 col-sm-8 col-md-5 col-lg-3 col-xl-2 mb-3 me-2">
             <a class="btn addButton w-100" role="button" id="button-export" style="border:solid">Export To Excel</a>
@@ -51,6 +33,19 @@
           </div>
       </div>
 
+      @if(session('success'))
+    <div class="alert alert-success" id="success-message">
+        {{ session('success') }}
+    </div>
+
+    <script>
+        setTimeout(function() {
+            document.getElementById('success-message').style.display = 'none';
+        }, 3000);
+    </script>
+    @endif
+
+
       <div class="table-responsive-xl">
       <table class="table table-striped" id="myTable">
           <thead>
@@ -58,9 +53,8 @@
                   <th scope="col">Birth Date</th>
                   <th scope="col">Name</th>
                   <!--<th scope="col">Date of Registration</th>-->
-                  <th scope="col">Family Serial Number</th>
                   <th scope="col">Sex</th>
-                  <th scope="col">Tracking Number</th>
+                  <th scope="col">Patient Number</th>
                   <th scope="col">Status</th>
                   <th scope="col">Action</th>
               </tr>
@@ -71,11 +65,10 @@
                   <td>{{ $infant['birth_date'] }}</td>
                   <td class="table-secondary text-uppercase"><b>{{ $infant['name'] }}</b></td>
                   <!--<td class="table-secondary">{{ $infant['created_at'] }}</td>-->
-                  <td>{{ $infant['family_serial_number'] }}</td>
-                  <td class="table-secondary">{{ $infant['sex'] }}</td>
-                  <td>{{ $infant['tracking_number'] }}</td>
-                  <td class="table-secondary">{{ $infant['status'] }}</td>
-                  <td>
+                  <td>{{ $infant['sex'] }}</td>
+                  <td  class="table-secondary">{{ $infant['tracking_number'] }}</td>
+                  <td >{{ $infant['status'] }}</td>
+                  <td  class="table-secondary">
                       <table>
                           <tr>
                               <td class="text-center align-middle"><a href="/user/history/add/{{ $infant['id'] }}" style="color: black;"><i class="fa-solid fa-syringe me-2"></i></a></td>

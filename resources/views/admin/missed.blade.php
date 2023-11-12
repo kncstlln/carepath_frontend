@@ -7,6 +7,7 @@
     <link href="https://cdn.datatables.net/v/bs5/dt-1.13.6/r-2.5.0/datatables.min.css" rel="stylesheet">
     <link href="css/admin/sidebar.css" rel="stylesheet"/>
     <script src="js/sidebar.js" defer></script>
+    <link href="{{ asset('css/admin/index.css') }}" rel="stylesheet"/>
     <link href="css/admin/dashboard.css" rel="stylesheet"/>
     <link href="css/admin/vaccine.css" rel="stylesheet"/>
     <link href="css/admin/brgySelect.css" rel="stylesheet"/>

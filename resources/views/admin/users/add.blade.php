@@ -33,7 +33,7 @@
                   <div class="row mb-4">
                       <div class="col-md-2 pt-1 text-center">Full Name:<span style="color:red;"> *</span></div>
                       <div class="col-md-3">
-                          <input class="form-control" name="name" type="text" placeholder="Name" aria-label="default input" required/>
+                          <input class="form-control" name="name" min="" type="text" placeholder="Name" aria-label="default input" required/>
                       </div>
                   </div>
                   <div class="row mb-4">
@@ -78,9 +78,9 @@
                       </div>
                   </div>
                   <div class="row mb-4">
-                    <div class="col-md-2 pt-1 text-center" id="barangayRow" style="display: none;">Barangay:</div>
+                    <div class="col-md-2 pt-1 text-center" id="barangayRow" style="display: none;">Barangay:<span style="color:red;"> *</span></div>
                     <div class="col-md-3" id="selectBarangay" style="display: none;">
-                        <select class="form-select" name="barangay_id" >
+                        <select class="form-select" name="barangay_id">
                             <option value="">Select Barangay</option>
                             @foreach($barangays as $barangay)
                                 <option value="{{ $barangay['id'] }}">{{ $barangay['name'] }}</option>
@@ -103,27 +103,6 @@
     </body>
 
 <script>
-    function validateForm() {
-        var password = document.getElementById("inputPassword");
-        var confirmPassword = document.getElementById("confirmPassword");
-        var errorText = document.getElementById("errorText");
-
-        if (password.value !== confirmPassword.value) {
-            password.classList.add("error");
-            confirmPassword.classList.add("error");
-            errorText.style.display = "block";
-            return false;
-        } else {
-            password.classList.remove("error");
-            confirmPassword.classList.remove("error");
-            errorText.style.display = "none"; 
-        }
-
-        return true;
-    }
-</script>
-
-<script>
     const positionSelect = document.getElementById('position');
     const barangayRow = document.getElementById('barangayRow');
     const barangaySelect = document.getElementById('selectBarangay');
@@ -138,6 +117,57 @@
         }
     });
 </script>
+
+<script>
+function validatePassword() {
+  var passwordInput = document.getElementById("inputPassword");
+  var confirmPasswordInput = document.getElementById("confirmPassword");
+  var errorText = document.getElementById("errorText");
+  var password = passwordInput.value;
+  var confirmPassword = confirmPasswordInput.value;
+
+  // Define regular expressions for letters and numbers
+  var letterRegex = /[a-zA-Z]/;
+  var numberRegex = /[0-9]/;
+  var spaceRegex = /\s/; // Regular expression to check for spaces
+  var emojiRegex = /[\uD800-\uDBFF][\uDC00-\uDFFF]/; // Regular expression to check for emojis
+
+  // Check if passwords match
+  if (password === confirmPassword) {
+    // Passwords match, remove focus ring and message
+    confirmPasswordInput.style.borderColor = "";
+    errorText.style.display = "none";
+  } else {
+    // Passwords don't match, add focus ring and display message
+    confirmPasswordInput.style.borderColor = "red";
+    errorText.style.display = "block";
+  }
+
+  // Your existing password validation code here
+
+  // Check other password criteria
+  if (password.length >= 8 && password.length <= 20 && letterRegex.test(password) && numberRegex.test(password) && !spaceRegex.test(password) && !emojiRegex.test(password)) {
+    // Password meets all criteria
+    return true;
+  } else {
+    // Password does not meet the criteria
+    alert("Your password must be 8-20 characters long, contain letters and numbers, and must not contain spaces or emoji.");
+    passwordInput.value = ""; // Clear the input field
+    return false;
+  }
+}
+
+// Add an event listener to the form to call the validatePassword function when the form is submitted
+document.querySelector("form").addEventListener("submit", function(event) {
+  if (!validatePassword()) {
+    event.preventDefault(); 
+  }
+});
+
+// Add an event listener to the confirmPassword input to call the validatePassword function when its value changes
+document.getElementById("confirmPassword").addEventListener("input", validatePassword);
+</script>
+
 
 
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"> </script>

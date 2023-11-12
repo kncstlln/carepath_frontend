@@ -27,7 +27,7 @@
         </div>
         <form method="POST" action="{{ route('user.infants.update', $infant['id']) }}">
             @csrf
-            @method('PUT') <!-- Use the PUT method for updating -->
+
             <div class="row g-3">
 
                 <div class="col-md-6 ">
@@ -46,7 +46,7 @@
                     <input type="hidden" name="barangay_id" value="{{ $infant['barangay_id'] }}">
                 </div>
 
-                <div class="col-md-3"> 
+                <div class="col-md-3">
                     <label for="weight" class="form-label">Weight (kg):</label>
                     <input class="form-control" name="weight" type="number" placeholder="kg" aria-label="default input" min="1" max="50" value="{{ $infant['weight'] }}"/>
                 </div>
@@ -98,18 +98,18 @@
          
                 <div class="col-md-6">
                     <label for="father" class="form-label">Father's Name:</label>
-                    <input class="form-control" id="father" name="father_name" type="text" aria-label="default input" value="{{ $infant['father_name'] }}" required/>
+                    <input class="form-control" id="father" name="father_name" type="text" aria-label="default input" value="{{ $infant['father_name'] }}"/>
                 </div>
         
 
                 <div class="col-md-6">
                     <label for="mother" class="form-label">Mother's Name:</label>
-                    <input class="form-control" name="mother_name" type="text" placeholder="Full Name" aria-label="default input" value="{{ $infant['mother_name'] }}" required/>
+                    <input class="form-control" name="mother_name" type="text" placeholder="Full Name" aria-label="default input" value="{{ $infant['mother_name'] }}"/>
                 </div>
 
                 <div class="col-md-6 col-lg-4">
                     <label for="contact" class="form-label">Contact Number:</label>
-                    <input class="form-control" name="contact_number" type="tel" placeholder="Contact Number" id="telephone" placeholder="Contact Number" aria-label="default input" value="{{ $infant['contact_number'] }}" required/>
+                    <input class="form-control" name="contact_number" type="tel" placeholder="Contact Number" id="telephone" placeholder="Contact Number" aria-label="default input" value="{{ $infant['contact_number'] }}"/>
                 </div>
 
             </div>
