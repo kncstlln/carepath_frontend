@@ -47,12 +47,6 @@
 <script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
 <script src="https://cdn.datatables.net/v/bs5/dt-1.13.6/r-2.5.0/datatables.min.js"></script>
 
-<script>
-    $(document).ready( function () {
-    $('#myHistory').DataTable();
-    });
-</script>
-
 
 <script>
     document.addEventListener('DOMContentLoaded', function () {
@@ -66,19 +60,17 @@
             @endforeach
         };
 
-        // Function to fetch filtered immunization records and update the table
-        // Function to fetch filtered immunization records and update the table
         function fetchFilteredImmunizationRecords(barangayId, year) {
             const url = `/admin/history/filtered-records/${barangayId}/${year}`;
             fetch(url)
-                .then(response => response.json()) // Parsing JSON response
+                .then(response => response.json()) 
                 .then(data => {
                     console.log('Received data:', data);
-                    // Generate HTML for the table
+           
                     const tableHtml = generateTableHtml(data);
                     filteredImmunizationRecordsDiv.innerHTML = tableHtml;
 
-                    attachDeleteButtonListeners(); // Add this line to attach the listeners
+                    attachDeleteButtonListeners();
 
                     $('#myHistory').DataTable({
                         "order": [
@@ -92,7 +84,7 @@
                 });
         }
 
-        // Function to generate HTML for the table
+        
         function generateTableHtml(data) {
             let tableHtml = `
                 <table class="table table-striped align-middle" id="myHistory">
@@ -136,7 +128,7 @@
             } else {
                 tableHtml += `
                     <tr>
-                        <td colspan="5">No data available.</td>
+                        <td colspan="8">No data available.</td>
                     </tr>
                 `;
             }
@@ -149,25 +141,25 @@
             return tableHtml;
         }
 
-        // Event listener for the barangayDropdown change
+        
         barangayDropdown.addEventListener('change', function () {
             const selectedBarangayId = this.value;
-            const selectedYear = yearDropdown.value; // Get the selected year
+            const selectedYear = yearDropdown.value; 
 
-            // Fetch filtered immunization records based on the selected barangay and year
+      
             fetchFilteredImmunizationRecords(selectedBarangayId, selectedYear);
         });
 
-        // Event listener for the yearDropdown change
+
         yearDropdown.addEventListener('change', function () {
             const selectedYear = this.value;
-            const selectedBarangayId = barangayDropdown.value; // Get the selected barangay
+            const selectedBarangayId = barangayDropdown.value; 
 
-            // Fetch filtered immunization records based on the selected barangay and year
+
             fetchFilteredImmunizationRecords(selectedBarangayId, selectedYear);
         });
 
-        // Initial load with all data
+
         fetchFilteredImmunizationRecords(0, '');
 
         });
@@ -179,7 +171,7 @@
                     const recordId = this.getAttribute('data-record-id');
                     
                     if (confirm('Are you sure you want to delete this history record?')) {
-                        // Make an AJAX request to delete the infant record
+                  
                         fetch(`/admin/history/delete/${recordId}`, {
                             method: 'DELETE',
                             headers: {
@@ -189,9 +181,16 @@
                         .then(response => response.json())
                         .then(data => {
                             if (data.success) {
-                                // Remove the row from the table
+                           
                                 const grandparentRow = this.closest('tr').closest('table').closest('tr');
                                 grandparentRow.remove();
+
+                                $('#myHistory').DataTable({
+                            "order": [
+                                [0, "desc"],
+                                [4, "asc"]
+                            ]
+                        });
                             } else {
                                 alert('Failed to delete infant record. Please try again.');
                             }
@@ -204,5 +203,7 @@
             });
         }
 </script>
+
+
 </body>
 </html>

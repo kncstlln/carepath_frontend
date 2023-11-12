@@ -54,7 +54,6 @@ class AdminBarangayController extends Controller
         $data = $request->validate([
             'name' => 'required',
             'location' => 'required',
-            // ... other validation rules ...
         ]);
 
         // Assuming your ApiService has a method like `post` to create a resource

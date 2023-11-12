@@ -33,9 +33,9 @@
                     </div>
                 </div>
                 <div class="row mb-4">
-                    <div class="col-md-3 pt-1 text-center">Short Name: </div>
+                    <div class="col-md-3 pt-1 text-center">Short Name:<span style="color:red;"> *</span></div>
                     <div class="col-md-4">
-                        <input class="form-control" type="text" name="short_name" placeholder="Short Name" aria-label="default input"/>
+                        <input class="form-control" type="text" name="short_name" placeholder="Short Name" aria-label="default input" required/>
                     </div>
                 </div>
                 <div class="row mb-2">

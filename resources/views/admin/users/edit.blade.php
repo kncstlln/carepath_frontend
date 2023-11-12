@@ -45,7 +45,16 @@
                       <input class="form-control" name="email" type="email" placeholder="Email" aria-label="default input" value="{{ $user['email'] }}" required/>
                   </div>
               </div>
-              <!-- ... (other form fields) ... -->
+              <div class="row mb-4">
+                  <div class="col-md-2 pt-1 text-center">Position:</div>
+                  <div class="col-md-3">
+                      <select class="form-select" name="user_type" required>
+                          <option value="">Select Position</option>
+                          <option value="1" {{ $user['user_type'] === 1 ? 'selected' : '' }}>Health Worker</option>
+                          <option value="0" {{ $user['user_type'] === 10 ? 'selected' : '' }}>Admin</option>
+                      </select>
+                  </div>
+              </div>
               <div class="row mb-4">
                   <div class="col-md-2 pt-1 text-center">Barangay:</div>
                   <div class="col-md-3">

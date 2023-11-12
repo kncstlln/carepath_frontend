@@ -27,7 +27,18 @@
         </div>
         <form method="POST" action="{{ route('admin.infants.store') }}">
           @csrf
+            
+          @if(session('error'))
+            <div class="alert alert-danger" id="error-message">
+                {{ session('error') }}
+            </div>
 
+            <script>
+                setTimeout(function() {
+                    document.getElementById('error-message').style.display = 'none';
+                }, 3000);
+            </script>
+        @endif
 
             <div class="row g-3">
 
@@ -57,16 +68,16 @@
                 </div>
 
                 <div class="col-md-6">
-                        <div>Sex:<span style="color:red"> *</span></div>
-                        <div class="form-check form-check-inline mt-2" id="sex">
-                            <input class="form-check-input" type="radio" name="sex" id="male" value="Male" required>
-                            <label class="form-check-label" for="male">Male</label>
-                        </div>
-        
-                        <div class="form-check form-check-inline mt-2">
-                            <input class="form-check-input" type="radio" name="sex" id="female" value="Female" required>
-                            <label class="form-check-label" for="female">Female</label>
-                        </div>                 
+                    <div>Sex:<span style="color:red"> *</span></div>
+                    <div class="form-check form-check-inline mt-2" id="sex">
+                        <input class="form-check-input" type="radio" name="sex" id="male" value="Male" required>
+                        <label class="form-check-label" for="male">Male</label>
+                    </div>
+    
+                    <div class="form-check form-check-inline mt-2">
+                        <input class="form-check-input" type="radio" name="sex" id="female" value="Female" required>
+                        <label class="form-check-label" for="female">Female</label>
+                    </div>                 
                 </div>
 
                 <div class="col-md-6 col-xl-3">
@@ -123,16 +134,27 @@
                     <a href="{{ route('admin.infants.index') }}"><button type="button" class="btn btn-secondary cancelButton">Cancel</button></a>
                 </div>
                 <div class="col-md-3 col-lg-2 mt-1">
-                    <button type="submit" class="btn submitButton">Submit</button>
+                    <button type="submit" id="liveToastBtn" class="btn submitButton">Submit</button>
                 </div>
-            </div>
+            </div>  
 
-            
         </form>
     </div>
 </div>
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
+
+<script>
+    const toastTrigger = document.getElementById('liveToastBtn')
+    const toastLiveExample = document.getElementById('liveToast')
+
+    if (toastTrigger) {
+    const toastBootstrap = bootstrap.Toast.getOrCreateInstance(toastLiveExample)
+    toastTrigger.addEventListener('click', () => {
+        toastBootstrap.show()
+    })
+    }
+</script>
 
 <script>
     // Get the current date
@@ -153,7 +175,6 @@
     // Set the min attribute of the date input to today's date
     document.getElementById('birthDate').setAttribute('max', today);
 </script>
-
 
 </body>
 </html>

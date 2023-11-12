@@ -69,7 +69,9 @@
             </div>
             <li class="item">
               <a href="/admin/upcoming-vaccinations" class="link flex">
-                <i class="bx bx-flag"></i>
+                <i class="bx bx-flag position-relative">
+                <span class="position-absolute top-0 end-0 translate-middle p-2 bg-danger border border-light rounded-circle">               
+                </i>
                 <span>Upcoming Vaccination</span>
               </a>
             </li>

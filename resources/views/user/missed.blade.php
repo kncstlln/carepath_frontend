@@ -8,6 +8,7 @@
     <link href="{{ asset('css/user/sidebar.css') }}" rel="stylesheet"/>
     <link href="{{ asset('css/user/dashboard.css') }}" rel="stylesheet"/>
     <link href="{{ asset('css/user/vaccine.css') }}" rel="stylesheet"/>
+    <link href="{{ asset('css/user/index.css') }}" rel="stylesheet"/>
     <link href="{{ asset('css/user/brgySelect.css') }}" rel="stylesheet"/>
     <link flex href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet" />
     <script src="https://kit.fontawesome.com/2eead9cc17.js" crossorigin="anonymous"></script>

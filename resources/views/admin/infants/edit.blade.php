@@ -27,7 +27,19 @@
         </div>
         <form method="POST" action="{{ route('admin.infants.update', $infant['id']) }}">
             @csrf
-            @method('PUT') <!-- Use the PUT method for updating -->
+            @method('PUT')
+
+            @if(session('error'))
+            <div class="alert alert-danger" id="error-message">
+                {{ session('error') }}
+            </div>
+
+            <script>
+                setTimeout(function() {
+                    document.getElementById('error-message').style.display = 'none';
+                }, 3000);
+            </script>
+            @endif
 
             
             <div class="row g-3">
@@ -133,7 +145,7 @@
                 </div>
             </div>
 
-  <!-- Your existing scripts -->
+
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
 </body>
 </html>

@@ -23,7 +23,7 @@
         <div class="row mb-2">
             <div class="col-sm" id="infantsTxt">List of Barangay</div>
         </div>
-        <div class="row justify-content-end mt-5">
+        <div class="row justify-content-center justify-content-lg-end mt-5">
             <div class="col-12 col-sm-8 col-md-5 col-lg-3 col-xl-2 mb-2">
                 <a class="btn addButton w-100" href="{{ route('admin.barangays.add') }}" role="button" id="button-add">Add Barangay +</a>
             </div>

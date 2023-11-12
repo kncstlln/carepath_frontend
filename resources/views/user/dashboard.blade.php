@@ -30,13 +30,13 @@
               <div class="p-3 pt-4" id="listbox2"><span style="font-size:1rem">Barangay {{session('barangay_name')}}</span></div>
             </div>
             <div class="col-6 col-md-3">
-              <div class="p-3" id="listbox1"><span style="font-size:1.5rem">{{ $dashboard['vaccine_count'] }}</span> Vaccine Listed</div>
+              <div class="p-2" id="listbox1"><span style="font-size:2rem; margin-right: 50px">{{ $dashboard['vaccine_count'] }}</span> Vaccine Listed</div>
             </div>
             <div class="col-6 col-md-3">
-              <div class="p-3" id="listbox3"><span style="font-size:1.5rem">{{ $dashboard['partially_vaccinated_count'] }}</span> Partially Vaccinated</div>
+              <div class="p-2" id="listbox3"><span style="font-size:2rem; margin-right: 50px">{{ $dashboard['partially_vaccinated_count'] }}</span> Partially Vaccinated</div>
             </div>
             <div class="col-6 col-md-3">
-              <div class="p-3" id="listbox4"><span style="font-size:1.5rem">{{ $dashboard['fully_vaccinated_count'] }}</span> Fully Vaccinated</div>
+              <div class="p-2" id="listbox4"><span style="font-size:2rem; margin-right: 50px">{{ $dashboard['fully_vaccinated_count'] }}</span> Fully Vaccinated</div>
             </div>
           </div>
           <div class="row">

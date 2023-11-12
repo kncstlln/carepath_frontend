@@ -48,7 +48,7 @@ class AdminUserController extends Controller
         $userData = [
             'name' => $request->input('name'),
             'username' => $request->input('username'),
-            'email' => $request->input('email'), // Add the email field
+            'email' => $request->input('email'),
             'password' => $request->input('password'),
             'password_confirmation' => $request->input('password_confirmation'),
             'barangay_id' => $request->input('barangay_id'),

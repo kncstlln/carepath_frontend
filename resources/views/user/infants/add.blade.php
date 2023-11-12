@@ -29,7 +29,7 @@
             <div class="row g-3">
                 <div class="col-md-6 ">
                     <label for="name" class="form-label">Name: <span style="color:red">*</span></label>
-                    <input type="text" name="name" class="form-control" id="name" placeholder="Juan Dela Cruz" value="{{ $data['name'] ?? '' }}">
+                    <input type="text" name="name" class="form-control" id="name" placeholder="Juan Dela Cruz" value="{{ $data['name'] ?? '' }}" required>
                 </div>
 
                 <div class="col-md-6 col-xl-4"> 
@@ -43,7 +43,7 @@
                             }
                         }
                     @endphp
-                    <input type="text" class="form-control" id="barangay" value="{{ $selectedBarangay }}" readonly>
+                    <input type="text" class="form-control" id="barangay" value="{{ $selectedBarangay }}" readonly disabled>
                     <input type="hidden" name="barangay_id" value="{{ session('barangay_id') }}">
                 </div>
 
@@ -93,26 +93,26 @@
                 </div>
          
                 <div class="col-md-6">
-                    <label for="father" class="form-label">Father's Name:<span style="color:red;"> *</span></label>
-                    <input class="form-control" id="father" name="father_name" type="text" placeholder="Full Name" aria-label="default input" value="{{ $data['father_name'] ?? '' }}" required/>
+                    <label for="father" class="form-label">Father's Name:</label>
+                    <input class="form-control" id="father" name="father_name" type="text" placeholder="Full Name" aria-label="default input" value="{{ $data['father_name'] ?? '' }}"/>
                 </div>
         
 
                 <div class="col-md-6">
-                    <label for="mother" class="form-label">Mother's Name:<span style="color:red;"> *</span></label>
-                    <input class="form-control" name="mother_name" type="text" placeholder="Full Name" aria-label="default input" value="{{ $data['mother_name'] ?? '' }}" required/>
+                    <label for="mother" class="form-label">Mother's Name:</label>
+                    <input class="form-control" name="mother_name" type="text" placeholder="Full Name" aria-label="default input" value="{{ $data['mother_name'] ?? '' }}"/>
                 </div>
 
                 <div class="col-md-6 col-lg-4">
-                    <label for="contact" class="form-label">Contact Number:<span style="color:red;"> *</span></label>
-                    <input class="form-control" name="contact_number" type="tel" placeholder="Contact Number" id="telephone" placeholder="Contact Number" aria-label="default input" value="{{ $data['contact_number'] ?? '' }}" required/>
+                    <label for="contact" class="form-label">Contact Number:</label>
+                    <input class="form-control" name="contact_number" type="tel" placeholder="Contact Number" id="telephone" placeholder="Contact Number" aria-label="default input" value="{{ $data['contact_number'] ?? '' }}"/>
                 </div>
 
             </div>
 
             <div class="row mb-4 mt-3">
 
-                <div class="col-md-5 h4 text-center text-md-start ps-md-4">Complete Address:<span style="color:red;"> *</span></div>
+                <div class="col-md-5 h4 text-center text-md-start ps-md-4">Complete Address:</div>
                 <div class="mb-3">
                     <textarea class="form-control" name="complete_address" rows="2"></textarea>
                 </div>

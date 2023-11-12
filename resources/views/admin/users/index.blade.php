@@ -27,6 +27,18 @@
               <a class="btn addButton w-100" href="{{ route('admin.users.add') }}" role="button" id="button-add">Add Users +</a>
           </div>
       </div>
+
+      @if(session('success'))
+      <div class="alert alert-success" id="success-message">
+          {{ session('success') }}
+      </div>
+
+      <script>
+          setTimeout(function() {
+              document.getElementById('success-message').style.display = 'none';
+          }, 3000);
+      </script>
+      @endif
       <div class="table-responsive-xl">
         <table class="table table-striped" id="userList">
           <thead>

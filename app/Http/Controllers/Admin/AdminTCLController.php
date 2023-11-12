@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Services\ApiService;
+use App\Events\RegisterNotifications;
 
 class AdminTCLController extends Controller
 {
@@ -17,6 +18,7 @@ class AdminTCLController extends Controller
 
     public function index()
     {
+
         // Fetch the list of infants
         $responseInfants = $this->apiService->get('/infants', session('token'));
 
@@ -158,7 +160,7 @@ class AdminTCLController extends Controller
 
             // Check if the request was successful
             if (isset($response['data'])) {
-                return redirect()->route('admin.infants.index')->with('success', 'Infant record created successfully.');
+                return redirect()->route('admin.infants.index')->with('success', 'You have added an infant successfully!');;
             } else {
                 return redirect()->back()->with('error', 'Failed to create infant record. Please try again.');
             }
@@ -188,7 +190,7 @@ class AdminTCLController extends Controller
 
     public function edit($id)
     {
-        // Fetch the infant data for editing using the ApiService
+    
         $userResponse = $this->apiService->get("/infants/{$id}", session('token'));
         $barangayResponse = $this->apiService->get('/barangays', session('token'));
     
@@ -198,7 +200,6 @@ class AdminTCLController extends Controller
             return redirect()->route('admin.infant.index')->with('error', 'Infant not found');
         }
     
-        // Extract barangay data from the response
         $barangays = isset($barangayResponse['data']) ? $barangayResponse['data'] : [];
     
         return view('admin.infants.edit', compact('infant', 'barangays'));

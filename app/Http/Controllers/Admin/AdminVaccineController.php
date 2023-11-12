@@ -79,7 +79,7 @@ class AdminVaccineController extends Controller
             }
 
             // Redirect to the vaccines index page with a success message
-            return redirect()->route('admin.vaccines.index')->with('success', 'Vaccine and doses added successfully.');
+            return redirect()->route('admin.vaccines.index')->with('success', 'Vaccine added successfully.');
         }
 
         // Handle error cases
