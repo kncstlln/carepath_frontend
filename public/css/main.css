@@ -19,12 +19,17 @@ input::-webkit-inner-spin-button {
     color: white;
     background-color: #980B0B;
     transition: none; 
+    display: inline-block;
 }
 
-.btnColor:hover {
+.btnColor:hover,
+.btnColor:active,
+.btnColor:focus {
+
     color: white;
     background-color: #7a0909;
 }
+
 
 .btnToggle{
     background-color: gray;

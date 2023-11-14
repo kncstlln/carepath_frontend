@@ -15,6 +15,17 @@
 <body>
   @include('user.sidebar')
       <div class="container content"> 
+      @if(session('error'))
+                <div class="alert alert-danger" id="error-message">
+                    {{ session('error') }}
+                </div>
+
+                <script>
+                    setTimeout(function() {
+                        document.getElementById('error-message').style.display = 'none';
+                    }, 3000);
+                </script>
+            @endif
         <div class="row mt-3 mb-5" id="rectangle">
           <div class="col-sm-10" id="user">Hello {{ session('name') }},
             <div class="row">

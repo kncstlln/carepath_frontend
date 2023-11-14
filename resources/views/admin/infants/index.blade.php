@@ -43,13 +43,12 @@
             </select>
         </div>
     </div>
-    <div class="row mb-7">
+
+
+    <div class="row justify-content-center justify-content-md-between">
         <div class="col-12 col-sm-8 col-md-5 col-lg-3 col-xl-2 mb-3 me-2">
             <a class="btn addButton w-100" role="button" id="button-export" style="border:solid">Export To Excel</a>
         </div>
-    </div>
-
-    <div class="row d-flex justify-content-center justify-content-md-end">
         <div class="col-12 col-sm-8 col-md-5 col-lg-3 col-xl-2 mb-3 me-2">
             <a class="btn addButton w-100" href="{{ route('admin.infants.add') }}" role="button" id="button-add">Add Infant +</a>
         </div>

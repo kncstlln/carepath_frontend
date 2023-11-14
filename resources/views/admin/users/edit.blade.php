@@ -27,6 +27,17 @@
           <form action="{{ route('admin.users.update', ['id' => $user['id']]) }}" method="POST">
               @csrf
               @method('PUT')
+              @if(session('error'))
+                    <div class="alert alert-danger" id="error-message">
+                        {{ session('error') }}
+                    </div>
+
+                    <script>
+                        setTimeout(function() {
+                            document.getElementById('error-message').style.display = 'none';
+                        }, 3000);
+                    </script>
+                @endif
               <div class="row mb-4">
                   <div class="col-md-2 pt-1 text-center">Full Name:</div>
                   <div class="col-md-3">

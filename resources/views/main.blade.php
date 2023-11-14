@@ -47,7 +47,7 @@
             </li>
           </ul>
    
-          <a class="btn btn-primary btnColor" href="/login" role="button">Login</a>
+          <a class="btn btnColor" href="/login" role="button">Login</a>
 
         </div>
       </div>
@@ -299,10 +299,6 @@
     src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"
     integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz"
     crossorigin="anonymous"
-  ></script>
-  <script
-    type="text/javascript"
-    src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/6.4.0/mdb.min.js"
   ></script>
   <script>
     const observer = new IntersectionObserver((entries) => {

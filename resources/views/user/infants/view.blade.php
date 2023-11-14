@@ -24,7 +24,17 @@
                 <div class="col-1 col-md-1 mt-3"><a href="{{ route('user.infants.index') }}"><i class="fa-solid fa-angle-up fa-rotate-270 fa-2xl" style="color:black"></i></a></div>
                 <div class="col-9 col-md-10 h2 mb-5 mt-3 text-center">View Infant Record</div>
             </div>
-            <div>
+            @if(session('success'))
+            <div class="alert alert-success" id="success-message">
+                {{ session('success') }}
+            </div>
+
+            <script>
+                setTimeout(function() {
+                    document.getElementById('success-message').style.display = 'none';
+                }, 3000);
+            </script>
+            @endif
                 <form>
                     <div class="row mb-4">
                         <div class="col-2 col-md-1 pt-1"><strong> Name: </strong></div>
