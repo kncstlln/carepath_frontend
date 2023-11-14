@@ -21,6 +21,17 @@
         </div>
         <form action="{{ route('forgot-password') }}" method="POST">
             @csrf
+            @if(session('success'))
+            <div class="alert alert-success" id="success-message">
+                {{ session('success') }}
+            </div>
+
+            <script>
+                setTimeout(function() {
+                    document.getElementById('success-message').style.display = 'none';
+                }, 3000);
+            </script>
+            @endif
             <div class="row">
                 <div class="col-12 col-md-6 mb-3">
                     <label for="email" class="form-label">Email:</label>

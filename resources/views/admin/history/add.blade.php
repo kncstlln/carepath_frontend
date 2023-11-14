@@ -26,7 +26,17 @@
         </div>
         <form action="{{ route('admin.history.store') }}" method="post">
           @csrf
-          
+            @if(session('error'))
+                <div class="alert alert-danger" id="error-message">
+                    {{ session('error') }}
+                </div>
+
+                <script>
+                    setTimeout(function() {
+                        document.getElementById('error-message').style.display = 'none';
+                    }, 3000);
+                </script>
+            @endif
             <div class="row mb-4 align-items-center">
 
                 <div class="col-md-6 col-xl-4">

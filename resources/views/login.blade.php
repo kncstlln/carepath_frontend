@@ -12,21 +12,25 @@
 <body style="background-color:#F2F8FD;">
     <div class="container pt-5 px-5">
         <img src="{{ asset('/images/aclogo.png') }}" class="rounded mx-auto d-block mt-5" height="250" alt="Angeles City logo">
-        
-        <!-- Display error message if it exists -->
-        @if($errorMessage)
-        <div class="row justify-content-center">
-            <div class="col-10 col-md-6 col-lg-5">
-                <div class="alert alert-danger" role="alert">
-                    {{ $errorMessage }}
+        <div class="row mt-3 justify-content-center ">
+            <div class="col-6">
+        @if(session('error'))
+                <div class="alert alert-danger" id="error-message">
+                    {{ session('error') }}
                 </div>
+
+                <script>
+                    setTimeout(function() {
+                        document.getElementById('error-message').style.display = 'none';
+                    }, 3000);
+                </script>
+            @endif
             </div>
         </div>
-        @endif
         
         <form action="{{ route('login') }}" method="POST">
             @csrf
-            <div class="row justify-content-center mt-5">
+            <div class="row justify-content-center mt-3">
                 <div class="col-10 col-md-7 col-lg-5">
                     <div class="mb-3">
                         <label for="username" class="form-label">Username</label>

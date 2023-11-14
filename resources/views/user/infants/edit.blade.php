@@ -27,7 +27,17 @@
         </div>
         <form method="POST" action="{{ route('user.infants.update', $infant['id']) }}">
             @csrf
+            @if(session('error'))
+                    <div class="alert alert-danger" id="error-message">
+                        {{ session('error') }}
+                    </div>
 
+                    <script>
+                        setTimeout(function() {
+                            document.getElementById('error-message').style.display = 'none';
+                        }, 3000);
+                    </script>
+                @endif
             <div class="row g-3">
 
                 <div class="col-md-6 ">

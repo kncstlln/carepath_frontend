@@ -23,13 +23,7 @@
         <div class="row mb-2">
             <div class="col-sm" id="infantsTxt">Missed Vaccinations</div>
         </div>
-        <div class="row mb-5">
-            <!-- <select class="form-select form-select-lg mb-3 selectSize" aria-label=".form-select-lg example">
-                <option selected value="1">Lourdes NorthWest</option>
-                <option value="2">Ninoy Aquino(Marisol)</option>
-                <option value="3">Salapungan</option>
-            </select> -->
-        </div>
+
         <div class="table-responsive-lg">
           <table class="table table-striped" id="missedTable" >
               <thead>

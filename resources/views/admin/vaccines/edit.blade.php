@@ -26,6 +26,17 @@
                 </div>
                 <form action="{{ route('admin.vaccines.update', ['id' => $vaccine['id']]) }}" method="post">
                   @csrf
+                  @if(session('error'))
+                    <div class="alert alert-danger" id="error-message">
+                        {{ session('error') }}
+                    </div>
+
+                    <script>
+                        setTimeout(function() {
+                            document.getElementById('error-message').style.display = 'none';
+                        }, 3000);
+                    </script>
+                    @endif
                   @method('PUT')
                   <div class="row mb-4">
                       <div class="col-md-3 pt-1 text-center">Name of Vaccine: </div>

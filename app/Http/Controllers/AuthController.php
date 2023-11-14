@@ -55,13 +55,11 @@ class AuthController extends Controller
             } elseif ($userType === 1) {
                 return redirect()->route('user.dashboard');
             }
+        } else {
+            
+            // Redirect back in case of login failure
+            return redirect()->route('login')->with('error', "Wrong username or password!");
         }
-
-        // Handle the case where 'user_type' is not present in the response
-        $errorMessage = $response['message'] ?? 'Wrong username or password!.';
-        
-        // Redirect back in case of login failure
-        return redirect()->route('login')->with('error', $errorMessage);
     }
 
     public function logout(Request $request, ApiService $apiService)

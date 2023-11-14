@@ -19,6 +19,7 @@
 <body>
 @include('admin/sidebar')
          
+
     <div class="container-sm content mt-4" id="targetclientlist">
         <div class="row mb-2">
             <div class="col-sm" id="infantsTxt">List of Barangay</div>
@@ -28,6 +29,17 @@
                 <a class="btn addButton w-100" href="{{ route('admin.barangays.add') }}" role="button" id="button-add">Add Barangay +</a>
             </div>
         </div>
+        @if(session('error'))
+            <div class="alert alert-danger" id="error-message">
+                {{ session('error') }}
+            </div>
+
+            <script>
+                setTimeout(function() {
+                    document.getElementById('error-message').style.display = 'none';
+                }, 3000);
+            </script>
+        @endif
         <div class="table-responsive-xl">
           <table class="table table-striped" id="barangayList">
             <thead>
