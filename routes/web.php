@@ -37,16 +37,12 @@ Route::get('/forgot-password', function () {
 Route::post('/forgot-password', [ForgotPasswordController::class, 'forgotPassword'])->name('forgot-password');
 Route::get('/change-password', [ForgotPasswordController::class, 'index']);
 Route::post('/update-password', [ForgotPasswordController::class, 'updatePassword'])->name('update-password');
-
-
-
+Route::get('/send-sms-upcoming2', [AdminUpcomingVaccination::class, 'sendSMS']);
 
 
 Route::get('/changePassword', function () {
     return view('admin.password');
 });
-
-
 
 
 // Routes accessible only by user_type 0 (admin)
@@ -94,6 +90,7 @@ Route::delete('/history/delete/{id}', [AdminVaccineHistoryController::class, 'de
 
 Route::get('/upcoming-vaccinations', [AdminUpcomingVaccination::class, 'index'])->name('admin.upcoming');
 Route::get('/missed-vaccinations', [AdminUpcomingVaccination::class, 'missedVaccinations'])->name('admin.missed');
+Route::get('/send-sms-upcoming', [AdminUpcomingVaccination::class, 'sendSMSButton'])->name('admin.send-sms-upcoming');
 
 Route::get('/account', [AdminAccountController::class, 'index'])->name('admin.account');
 Route::get('/change-password', [AdminAccountController::class, 'changePassword'])->name('admin.change-password');
