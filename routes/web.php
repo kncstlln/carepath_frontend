@@ -14,6 +14,7 @@ use App\Http\Controllers\Admin\AdminTCLController;
 use App\Http\Controllers\Admin\AdminVaccineHistoryController;
 use App\Http\Controllers\Admin\AdminUpcomingVaccination;
 use App\Http\Controllers\Admin\AdminAccountController;
+use App\Http\Controllers\Admin\AdminQRScannerController;
 
 use App\Http\Controllers\User\UserDashboardController;
 use App\Http\Controllers\User\UserTCLController;
@@ -95,6 +96,9 @@ Route::get('/send-sms-upcoming', [AdminUpcomingVaccination::class, 'sendSMSButto
 Route::get('/account', [AdminAccountController::class, 'index'])->name('admin.account');
 Route::get('/change-password', [AdminAccountController::class, 'changePassword'])->name('admin.change-password');
 Route::put('/update-password', [AdminAccountController::class, 'updatePassword'])->name('admin.update-password');
+
+Route::get('/add-qr-scan', [AdminQRScannerController::class, 'getCamera']);
+
 });
 
 // Routes accessible only by user_type 1 (regular user)
@@ -114,6 +118,8 @@ Route::get('/history', [UserVaccineHistoryController::class, 'index'])->name('us
 Route::get('/history/add/{id}', [UserVaccineHistoryController::class, 'add'])->name('user.history.add');
 Route::post('/history', [UserVaccineHistoryController::class, 'store'])->name('user.history.store');
 Route::delete('/history/delete/{id}', [UserVaccineHistoryController::class, 'delete'])->name('user.history.delete');
+Route::get('/other-barangay-infants', [UserVaccineHistoryController::class, 'viewOtherBarangay'])->name('user.other-barangay-infants');
+
 Route::get('/upcoming-vaccinations', [UserUpcomingVaccination::class, 'index'])->name('user.upcoming');
 Route::get('/missed-vaccinations', [UserUpcomingVaccination::class, 'missedVaccinations'])->name('user.missed');
 

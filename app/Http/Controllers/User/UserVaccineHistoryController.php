@@ -143,4 +143,62 @@ class UserVaccineHistoryController extends Controller
             return response()->json(['success' => false, 'message' => 'An error occurred while deleting the infant record.'], 500);
         }
     }
+
+    public function viewOtherBarangay()
+    {
+        // Fetch the list of infants
+        $responseInfants = $this->apiService->get('/other-barangay-infants', session('token'));
+
+        // Fetch the list of barangays
+        $responseBarangays = $this->apiService->get('/barangays', session('token'));
+
+        // Extract unique birth years from the infants' birth dates
+        $uniqueBirthYears = [];
+
+        if (isset($responseInfants['data'])) {
+            foreach ($responseInfants['data'] as $infant) {
+                $birthYear = date('Y', strtotime($infant['birth_date']));
+                if (!in_array($birthYear, $uniqueBirthYears)) {
+                    $uniqueBirthYears[] = $birthYear;
+                }
+            }
+        }
+
+        $infants = [];
+        $barangays = [];
+
+        if (isset($responseInfants['data'])) {
+            foreach ($responseInfants['data'] as $infant) {
+                // Convert date format to "Month day, year" format
+                $birthDate = new \DateTime($infant['birth_date']);
+                $infant['birth_date'] = $birthDate->format('F d, Y');
+
+                $createdAt = new \DateTime($infant['created_at']);
+                $infant['created_at'] = $createdAt->format('F d, Y');
+
+                if ($infant['sex'] === 'Male') {
+                    $infant['sex'] = 'M';
+                } elseif ($infant['sex'] === 'Female') {
+                    $infant['sex'] = 'F';
+                }
+
+                $statusText = [
+                    '0' => 'Not Vaccinated',
+                    '1' => 'Partially Vaccinated',
+                    '2' => 'Fully Vaccinated',
+                ];
+                $infant['status'] = $statusText[$infant['status']] ?? '';
+
+                $infants[] = $infant;
+            }
+        }
+
+        if (isset($responseBarangays['data'])) {
+            // Assuming the API response for barangays has 'name' as the display name
+            // and 'id' as the value for the dropdown options
+            $barangays = $responseBarangays['data'];
+        }
+
+        return view('user.history.other-barangay-infant', compact('infants', 'barangays', 'uniqueBirthYears'));
+    }
 }

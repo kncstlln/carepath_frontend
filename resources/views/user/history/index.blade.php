@@ -32,6 +32,12 @@
                 }, 3000);
             </script>
             @endif
+    <div class="row d-flex justify-content-center justify-content-md-end">
+        <div class="col-12 col-sm-8 col-md-5 col-lg-3 col-xl-2 mb-3 me-2">
+            <a class="btn addButton w-100" href="{{ route('user.other-barangay-infants') }}" role="button" id="button-add">Vaccinate Other Barangay's Infant</a>
+        </div>
+    </div>
+
     <div class="table-responsive-lg" id="filteredImmunizationRecords">
         <table class="table table-striped align-middle" id="myHistory">
             <thead>
