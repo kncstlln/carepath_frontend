@@ -101,7 +101,7 @@
             <div class="row mb-2">
                 <div class="col-md-2 pt-2 text-center">Vaccination Location:</div>
                 <div class="col-md-5">
-                    <select class="form-select" name="barangay_id" aria-label="Default select example">
+                    <select class="form-select" name="barangay_id" aria-label="Default select example" required>
                         <option selected></option>
                         @foreach ($barangays as $barangay)
                             <option value="{{ $barangay['id'] }}">{{ $barangay['name'] }}</option>

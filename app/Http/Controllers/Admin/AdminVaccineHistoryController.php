@@ -87,7 +87,7 @@ class AdminVaccineHistoryController extends Controller
                     }
 
                     // Fetch vaccine doses from your API
-                    $vaccineDosesResponse = $this->apiService->get('/vaccine-doses', session('token'));
+                    $vaccineDosesResponse = $this->apiService->get("/filtered-vaccine-doses/{$id}", session('token'));
                     $vaccineDoses = isset($vaccineDosesResponse['data']) ? $vaccineDosesResponse['data'] : [];
 
                     // Fetch vaccines from your API

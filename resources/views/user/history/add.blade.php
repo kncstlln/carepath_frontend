@@ -126,7 +126,7 @@
             <div class="row mb-4">
                 <div class="col-md-2 text-center">Immunization Date: </div>
                 <div class="col-md-4 mb-3">
-                  <input type="date" name="immunization_date" class="form-control" required/>
+                  <input type="date" name="immunization_date" class="form-control" id="immunization_date" required/>
                 </div>
             </div>   
             <div class="row mb-4">
@@ -178,6 +178,15 @@
         });
     });
 </script>
+
+
+<script>
+  const immunizationDateInput = document.getElementById("immunization_date");
+  const currentDate = new Date();
+  const formattedDate = currentDate.toISOString().split('T')[0];
+  immunizationDateInput.value = formattedDate;
+</script>
+
 
 </body>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"> </script>
