@@ -21,8 +21,6 @@
         <div class="col-sm" id="vaccineHistoryTxt">Vaccine History</div>
     </div>
 
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
     @if(session('success'))
             <div class="alert alert-success" id="success-message">
                 {{ session('success') }}
@@ -34,10 +32,7 @@
                 }, 3000);
             </script>
             @endif
-=======
->>>>>>> Stashed changes
-=======
->>>>>>> Stashed changes
+
     <div class="row d-flex justify-content-center justify-content-md-end">
         <div class="col-12 col-sm-8 col-md-5 col-lg-3 col-xl-2 mb-3 me-2">
             <a class="btn addButton w-100" href="{{ route('user.other-barangay-infants') }}" role="button" id="button-add">Vaccinate Other Barangay's Infant</a>
