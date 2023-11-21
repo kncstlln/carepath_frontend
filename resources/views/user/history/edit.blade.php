@@ -19,6 +19,17 @@
             <div class="row">
                 <div class="col-sm mb-5" id="infantsTxt">Edit Vaccination History Record</div>
             </div>
+            @if(session('error'))
+                <div class="alert alert-danger" id="error-message">
+                    {{ session('error') }}
+                </div>
+
+                <script>
+                    setTimeout(function() {
+                        document.getElementById('error-message').style.display = 'none';
+                    }, 3000);
+                </script>
+            @endif
             <div class="container-sm createRecord">
                 <div class="row">
                     <div class="col h2 mb-5 mt-3 text-center">Edit Vaccination History Record</div>

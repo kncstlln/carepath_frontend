@@ -39,6 +39,19 @@
         </div>
     </div>
 
+
+    @if(session('success'))
+    <div class="alert alert-success" id="success-message">
+        {{ session('success') }}
+    </div>
+
+    <script>
+        setTimeout(function() {
+            document.getElementById('success-message').style.display = 'none';
+        }, 3000);
+    </script>
+    @endif
+
     <div class="table-responsive-lg" id="filteredImmunizationRecords">
         <!-- Filtered immunization records will be displayed here -->
     </div>
@@ -128,7 +141,14 @@
             } else {
                 tableHtml += `
                     <tr>
-                        <td colspan="8">No data available.</td>
+                        <td>No data available.</td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
                     </tr>
                 `;
             }

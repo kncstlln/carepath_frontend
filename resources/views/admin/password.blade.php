@@ -21,6 +21,17 @@
         <form action="{{ route('admin.update-password') }}" method="POST">
         @csrf
         @method('PUT')
+        @if(session('error'))
+                    <div class="alert alert-danger" id="error-message">
+                        {{ session('error') }}
+                    </div>
+
+                    <script>
+                        setTimeout(function() {
+                            document.getElementById('error-message').style.display = 'none';
+                        }, 3000);
+                    </script>
+                @endif
         <div class="row">
             <div class="col-12 col-md-7 mb-3">
                 <label for="currentPassword" class="form-label">New Password:</label>

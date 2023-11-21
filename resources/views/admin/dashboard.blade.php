@@ -71,7 +71,7 @@ const ctx = document.getElementById('lineChart').getContext('2d');
 const lineChart = new Chart(ctx, {
     type: 'line',
     data: {
-        labels: months.map(month => `${month} in ${currentYear}`),
+        labels: months.map(month => `${month} ${currentYear}`),
         datasets: [{
             label: 'Vaccination Count',
             data: counts,

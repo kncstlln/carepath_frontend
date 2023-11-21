@@ -79,21 +79,7 @@
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
 <script src="https://cdn.datatables.net/v/bs5/dt-1.13.6/r-2.5.0/datatables.min.js"></script>
 
-<script src="https://js.pusher.com/8.2.0/pusher.min.js"></script>
-  <script>
 
-    // Enable pusher logging - don't include this in production
-    Pusher.logToConsole = true;
-
-    var pusher = new Pusher('bb0c9d0d4ed3167f1d79', {
-      cluster: 'ap1'
-    });
-
-    var channel = pusher.subscribe('popup-channel');
-    channel.bind('user-register', function(data) {
-      alert(JSON.stringify(data));
-    });
-  </script>
 
 
 <script>
@@ -252,7 +238,6 @@ function downloadCSV(content, fileName) {
                             <th scope="col">Barangay</th>
                             <th scope="col">Birth Date</th>
                             <th scope="col">Name</th>
-                            <!-- <th scope="col">Date of Registration</th> -->
                             <th scope="col">Sex</th>
                             <th scope="col">Patient Number</th>
                             <th scope="col">Status</th>
@@ -292,7 +277,13 @@ function downloadCSV(content, fileName) {
             } else {
                 tableHtml += `
                     <tr>
-                        <td colspan="9">No data available.</td>
+                        <td>No data available.</td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
                     </tr>
                 `;
             }

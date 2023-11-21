@@ -108,7 +108,7 @@ class AdminUpcomingVaccination extends Controller
 
 
     public function sendSMS(){
-        $response = $this->apiService->get('/upcoming-vaccinations', "4DpMIUvcpMGVt5UL1XqkZTP1aUtgTLS2GgKjjwEt");
+        $response = $this->apiService->get('/upcoming-vaccinations', "Do3Xje0oDPkHOb1cFyjglr3xJiKYjnnwIuOzB8Wo080a184a");
         if (isset($response['data'])) {
             $upcomingVaccination = $response['data'];
     
@@ -157,7 +157,7 @@ class AdminUpcomingVaccination extends Controller
                 $vaccine_names = implode(' and ', $vaccineMessages);
     
 
-                $message = "Please be reminded that $infant_name's $vaccine_names vaccination is scheduled for $vaccination_date. Please visit your nearest health center.\n\nNote: You can view the details of the infant's vaccine using this Patient Number: $infant_tracking_number. Thank you!";
+                $message = "Pakitandaan na ang pagbabakuna sa $vaccine_names ni $infant_name ay naka-iskedyul sa $vaccination_date. Mangyaring bisitahin ang iyong pinakamalapit na health center.\n\nTandaan: Maaaring tingnan ang mga detalye ng bakuna ng sanggol gamit ang Patient Number na ito:            $infant_tracking_number. Salamat!";
     
                 //UNCOMMENT KAPAG GAGAMITIN SMS
                 $ch = curl_init();
@@ -165,7 +165,7 @@ class AdminUpcomingVaccination extends Controller
                     'apikey' => '0db11047c1b3d3fee5f69e788e27d8af',
                     'number' => $infant_contact_number,
                     'message' => $message,
-                    'sendername' => 'SEMAPHORE',
+                    'sendername' => 'CAREPATH',
                 ];
     
                 curl_setopt($ch, CURLOPT_URL, 'https://semaphore.co/api/v4/priority');
@@ -233,14 +233,14 @@ class AdminUpcomingVaccination extends Controller
                 $vaccine_names = implode(' and ', $vaccineMessages);
     
 
-                $message = "Please be reminded that $infant_name's $vaccine_names vaccination is scheduled for $vaccination_date. Please visit your nearest health center.\n\nNote: You can view the details of the infant's vaccine using this Patient Number: $infant_tracking_number. Thank you!";
+                $message = "Pakitandaan na ang pagbabakuna sa $vaccine_names ni $infant_name ay naka-iskedyul sa $vaccination_date. Mangyaring bisitahin ang iyong pinakamalapit na health center.\n\nTandaan: Maaaring tingnan ang mga detalye ng bakuna ng sanggol gamit ang Patient Number na ito: $infant_tracking_number. Salamat!";
     
                 $ch = curl_init();
                 $parameters = [
                     'apikey' => '0db11047c1b3d3fee5f69e788e27d8af',
                     'number' => $infant_contact_number,
                     'message' => $message,
-                    'sendername' => 'SEMAPHORE',
+                    'sendername' => 'CAREPATH',
                 ];
     
                 curl_setopt($ch, CURLOPT_URL, 'https://semaphore.co/api/v4/priority');
