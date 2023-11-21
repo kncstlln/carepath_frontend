@@ -19,6 +19,17 @@
             <div class="row">
                 <div class="col-sm mb-5" id="infantsTxt">View Vaccination History Record</div>
             </div>
+            @if(session('success'))
+            <div class="alert alert-success" id="success-message">
+                {{ session('success') }}
+            </div>
+
+            <script>
+                setTimeout(function() {
+                    document.getElementById('success-message').style.display = 'none';
+                }, 3000);
+            </script>
+            @endif
             <div class="container-sm ps-4 createRecord">
                 <div class="row">
                     <div class="col-1 col-md-1 mt-3"><a href="{{ url('user/history') }}"><i class="fa-solid fa-angle-up fa-rotate-270 fa-2xl" style="color: black;"></i></a></div>

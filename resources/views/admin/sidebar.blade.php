@@ -17,8 +17,8 @@
           <img src="{{ asset('images/logo.png') }}" alt="logo_img" />
         </span>
         <span class="logo_name">Carepath</span>
-        <!-- <i class="bx bx-lock-alt" id="lock-icon" title="Unlock Sidebar"></i>
-        <i class="bx bx-x" id="sidebar-close"></i> -->
+        <i class="bx bx-lock-alt" id="lock-icon" title="Unlock Sidebar"></i>
+        <i class="bx bx-x" id="sidebar-close"></i>
       </div>
       <div class="menu_container">
         <div class="menu_items">
@@ -107,9 +107,9 @@
       </div>
   </nav>
 
-              <nav class="navbar flex">
-                  <i class="bx bx-menu" id="sidebar-open"></i>
-              </nav>
+  <nav class="navbar flex">
+      <i class="bx bx-menu" id="sidebar-open"></i>
+  </nav>
  
       
   </body>

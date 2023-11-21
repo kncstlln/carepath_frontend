@@ -60,8 +60,8 @@
                 </div>
 
                 <div class="col-md-3"> 
-                    <label for="weight" class="form-label">Weight (kg):</label>
-                    <input class="form-control" name="weight" type="number" placeholder="kg" aria-label="default input" min="1" max="50" value="{{ $infant['weight'] }}"/>
+                    <label for="weight" class="form-label">Weight (kg): <span style="color:red">*</span></label>
+                    <input class="form-control" required name="weight" type="number" placeholder="kg" aria-label="default input" min="1" max="50" value="{{ $infant['weight'] }}"/>
                 </div>
 
                 <div class="col-md-3">

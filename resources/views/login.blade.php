@@ -13,7 +13,7 @@
     <div class="container pt-5 px-5">
         <img src="{{ asset('/images/aclogo.png') }}" class="rounded mx-auto d-block mt-5" height="250" alt="Angeles City logo">
         <div class="row mt-3 justify-content-center ">
-            <div class="col-6">
+            <div class="col-12 col-md-6 col-lg-5">
         @if(session('error'))
                 <div class="alert alert-danger" id="error-message">
                     {{ session('error') }}

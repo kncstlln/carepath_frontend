@@ -42,12 +42,22 @@
 
             <div class="row g-3">
 
-                <div class="col-md-6 ">
-                    <label for="name" class="form-label">Name: <span style="color:red">*</span></label>
-                    <input type="text" name="name" class="form-control" id="name" placeholder="Juan Dela Cruz" maxlength="40" required>
+                <div class="col-md-3 ">
+                    <label for="firstname" class="form-label">First Name: <span style="color:red">*</span></label>
+                    <input type="text" name="firstname" class="form-control" id="firstname" placeholder="Juan" maxlength="40" required>
                 </div>
 
-                <div class="col-md-6 col-xl-4"> 
+                <div class="col-md-3 ">
+                    <label for="middlename" class="form-label">Middle Name:</label>
+                    <input type="text" name="middlename" class="form-control" id="middlename" placeholder="Dela" maxlength="40">
+                </div>
+
+                <div class="col-md-3 me-1">
+                    <label for="lastname" class="form-label">Last Name: <span style="color:red">*</span></label>
+                    <input type="text" name="lastname" class="form-control" id="lastname" placeholder="Cruz" maxlength="40" required>
+                </div>
+
+                <div class="col-md-6 col-xl-3"> 
                     <label for="barangay" class="form-label">Barangay:<span style="color:red;"> *</span></label>
                     <select class="form-select" id="barangay" name="barangay_id" required>
                         <option value="" disabled selected>Select Barangay</option>
@@ -58,16 +68,16 @@
                 </div>
 
                 <div class="col-md-3"> 
-                    <label for="weight" class="form-label">Weight (kg):</label>
-                    <input class="form-control" id="weight" name="weight" type="number" placeholder="kg" aria-label="default input" min="1" max="50"/>
+                    <label for="weight" class="form-label">Weight (kg): <span style="color:red">*</span></label>
+                    <input class="form-control" required id="weight" name="weight" type="number" placeholder="kg" aria-label="default input" min="1" max="50"/>
                 </div>
 
-                <div class="col-md-3">
+                <div class="col-md-3 me-1">
                     <label for="height" class="form-label">Length (cm):</label>
                     <input class="form-control" id="length" name="length" type="number" placeholder="cm" aria-label="default input" min="1" max="50"/>
                 </div>
 
-                <div class="col-md-6">
+                <div class="col-md-3 ">
                     <div>Sex:<span style="color:red"> *</span></div>
                     <div class="form-check form-check-inline mt-2" id="sex">
                         <input class="form-check-input" type="radio" name="sex" id="male" value="Male" required>

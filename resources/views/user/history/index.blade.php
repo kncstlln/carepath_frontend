@@ -21,6 +21,17 @@
         <div class="col-sm" id="vaccineHistoryTxt">Vaccine History</div>
     </div>
 
+    @if(session('success'))
+            <div class="alert alert-success" id="success-message">
+                {{ session('success') }}
+            </div>
+
+            <script>
+                setTimeout(function() {
+                    document.getElementById('success-message').style.display = 'none';
+                }, 3000);
+            </script>
+            @endif
     <div class="table-responsive-lg" id="filteredImmunizationRecords">
         <table class="table table-striped align-middle" id="myHistory">
             <thead>
