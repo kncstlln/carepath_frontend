@@ -18,7 +18,7 @@
   <div class="container-sm mt-4 content" id="targetclientlist">
 
       <div class="row mb-2">
-          <div class="col-sm" id="infantsTxt">Other Barangays' Infant List</div>
+          <div class="col-12" id="infantsTxt">Other Barangays' Infant List</div>
       </div>
 
       <div class="row d-flex justify-content-center justify-content-md-end">

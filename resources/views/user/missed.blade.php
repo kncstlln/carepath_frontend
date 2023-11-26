@@ -14,6 +14,7 @@
     <script src="https://kit.fontawesome.com/2eead9cc17.js" crossorigin="anonymous"></script>
     <script src="{{ asset('js/dashboard.js') }}"></script>
     <script src="{{ asset('js/sidebar.js') }}" defer></script>
+    <link rel="icon" type="image/x-icon" href="{{ asset('/images/logo.png') }}">
     <title>Missed Vaccinations</title>
 </head>
 <body>

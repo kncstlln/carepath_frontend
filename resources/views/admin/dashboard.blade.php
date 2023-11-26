@@ -29,20 +29,20 @@
           <div class="row g-4 mb-5 text-center">
             <div class="col-6 col-md-3">
               <div class="p-2" id="listbox1">
-                <span style="font-size:2rem; margin-right: 50px;">{{ $dashboard['vaccine_count'] }}</span>  Vaccine Listed
+                <span style="font-size:2rem;">{{ $dashboard['vaccine_count'] }}</span>  Vaccine Listed
               </div>
             </div>
             <div class="col-6 col-md-3">
               <div class="p-2" id="listbox2">
-              <span style="font-size:2rem; margin-right: 50px;">{{ $dashboard['barangay_count'] }}</span> Barangay List</div>
+              <span style="font-size:2rem;">{{ $dashboard['barangay_count'] }}</span> Barangay List</div>
             </div>
             <div class="col-6 col-md-3">
               <div class="p-2" id="listbox3">
-              <span style="font-size:2rem; margin-right: 50px;">{{ $dashboard['partially_vaccinated_count'] }}</span> Partially Vaccinated</div>
+              <span style="font-size:2rem;">{{ $dashboard['partially_vaccinated_count'] }}</span> Partially Vaccinated</div>
             </div>
             <div class="col-6 col-md-3">
               <div class="p-2" id="listbox4">
-              <span style="font-size:2rem; margin-right: 50px;">{{ $dashboard['fully_vaccinated_count'] }}</span> Fully Vaccinated</div>
+              <span style="font-size:2rem;">{{ $dashboard['fully_vaccinated_count'] }}</span> Fully Vaccinated</div>
             </div>
           </div>
           <div class="row">

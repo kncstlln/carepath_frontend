@@ -40,97 +40,87 @@
             </script>
         @endif
 
-            <div class="row g-3">
+        <div class="row g-3">
 
-                <div class="col-md-3 ">
-                    <label for="firstname" class="form-label">First Name: <span style="color:red">*</span></label>
-                    <input type="text" name="firstname" class="form-control" id="firstname" placeholder="Juan" maxlength="40" required>
-                </div>
-
-                <div class="col-md-3 ">
-                    <label for="middlename" class="form-label">Middle Name:</label>
-                    <input type="text" name="middlename" class="form-control" id="middlename" placeholder="Dela" maxlength="40">
-                </div>
-
-                <div class="col-md-3 me-1">
-                    <label for="lastname" class="form-label">Last Name: <span style="color:red">*</span></label>
-                    <input type="text" name="lastname" class="form-control" id="lastname" placeholder="Cruz" maxlength="40" required>
-                </div>
-
-                <div class="col-md-6 col-xl-3"> 
-                    <label for="barangay" class="form-label">Barangay:<span style="color:red;"> *</span></label>
-                    <select class="form-select" id="barangay" name="barangay_id" required>
-                        <option value="" disabled selected>Select Barangay</option>
-                        @foreach($barangays as $barangay)
-                            <option value="{{ $barangay['id'] }}">{{ $barangay['name'] }}</option>
-                        @endforeach
-                    </select>
-                </div>
-
-                <div class="col-md-3"> 
-                    <label for="weight" class="form-label">Weight (kg): <span style="color:red">*</span></label>
-                    <input class="form-control" required id="weight" name="weight" type="number" placeholder="kg" aria-label="default input" min="1" max="50"/>
-                </div>
-
-                <div class="col-md-3 me-1">
-                    <label for="height" class="form-label">Length (cm):</label>
-                    <input class="form-control" id="length" name="length" type="number" placeholder="cm" aria-label="default input" min="1" max="50"/>
-                </div>
-
-                <div class="col-md-3 ">
-                    <div>Sex:<span style="color:red"> *</span></div>
-                    <div class="form-check form-check-inline mt-2" id="sex">
-                        <input class="form-check-input" type="radio" name="sex" id="male" value="Male" required>
-                        <label class="form-check-label" for="male">Male</label>
-                    </div>
-    
-                    <div class="form-check form-check-inline mt-2">
-                        <input class="form-check-input" type="radio" name="sex" id="female" value="Female" required>
-                        <label class="form-check-label" for="female">Female</label>
-                    </div>                 
-                </div>
-
-                <div class="col-md-6 col-xl-3">
-                    <div>Birth date:<span style="color:red;"> *</span></div>
-                    <div class="input-group date" id="datepicker">
-                        <input type="date" name="birth_date" class="form-control" id="birthDate" required />
-                    </div>
-                </div>
-
-                <div class="col-md-6 col-xl-3 mt-1">
-                    <label for="family-serial" class="col-form-label">Family Serial Number: </label>
-                    <input class="form-control" id="family-serial" type="number" name="family_serial_number" placeholder="Number" aria-label="default input"/>
-                </div>
- 
-
+            <div class="col-md-6 ">
+                <label for="name" class="form-label">Name: <span style="color:red">*</span></label>
+                <input type="text" name="name" class="form-control" id="name" placeholder="Juan Dela Cruz" maxlength="40" value="{{ $data['name'] ?? '' }}" required>
             </div>
-        
-       
-            <div class="row g-3 mt-3">
 
-                <div class="col-12 h3 text-center text-md-start">
-                    Parents Information
-                </div>
-         
-                <div class="col-md-6">
-                    <label for="father" class="form-label">Father's Name:</label>
-                    <input class="form-control" id="father" name="father_name" type="text" placeholder="Full Name" aria-label="default input" maxlength="40"/>
-                </div>
-        
+            <div class="col-md-5 "> 
+                <label for="barangay" class="form-label">Barangay:<span style="color:red;"> *</span></label>
+                <select class="form-select" id="barangay" name="barangay_id" required>
+                    <option value="" disabled selected>Select Barangay</option>
+                    @foreach($barangays as $barangay)
+                        <option value="{{ $barangay['id'] }}">{{ $barangay['name'] }}</option>
+                    @endforeach
+                </select>
+            </div>
 
-                <div class="col-md-6">
-                    <label for="mother" class="form-label">Mother's Name:</label>
-                    <input class="form-control" name="mother_name" type="text" placeholder="Full Name" aria-label="default input" maxlength="40"/>
+            <div class="col-md-3"> 
+                <label for="weight" class="form-label">Weight (kg): <span style="color:red">*</span></label>
+                <input class="form-control" required id="weight" name="weight" type="number" placeholder="kg" aria-label="default input" min="1" max="50" value="{{ $data['weight'] ?? '' }}"/>
+            </div>
+
+            <div class="col-md-3">
+                <label for="height" class="form-label">Length (cm):</label>
+                <input class="form-control" id="length" name="length" type="number" placeholder="cm" aria-label="default input" min="1" max="50" value="{{ $data['length'] ?? '' }}"/>
+            </div>
+
+            <div class="col-md-5">
+                <div>Sex:<span style="color:red"> *</span></div>
+                <div class="form-check form-check-inline mt-2" id="sex">
+                    <input class="form-check-input" type="radio" name="sex" id="male" value="Male" required>
+                    <label class="form-check-label" for="male">Male</label>
                 </div>
 
-                <div class="col-md-6 col-lg-4">
-                    <label for="contact" class="form-label">Contact Number:</label>
-                    <input class="form-control" name="contact_number" type="tel" placeholder="Contact Number" id="telephone" placeholder="Contact Number" aria-label="default input"/>
+                <div class="form-check form-check-inline mt-2">
+                    <input class="form-check-input" type="radio" name="sex" id="female" value="Female" required>
+                    <label class="form-check-label" for="female">Female</label>
+                </div>                 
+            </div>
+
+            <div class="col-md-6 col-xl-3">
+                <div>Birth date:<span style="color:red;"> *</span></div>
+                <div class="input-group date" id="datepicker">
+                    <input type="date" name="birth_date" class="form-control" id="birthDate" required value="{{ $data['birth_date'] ?? '' }}"/>
                 </div>
+            </div>
+
+            <div class="col-md-6 col-xl-3 mt-1">
+                <label for="family-serial" class="col-form-label">Family Serial Number: </label>
+                <input class="form-control" id="family-serial" type="number" name="family_serial_number" placeholder="Number" aria-label="default input"/>
+            </div>
+
 
             </div>
 
-            <div class="row mb-4 mt-3">
+
+        <div class="row g-3 mt-3">
+
+            <div class="col-12 h3 text-center text-md-start">
+                Parents Information
+            </div>
+
+            <div class="col-md-6">
+                <label for="father" class="form-label">Father's Name:</label>
+                <input class="form-control" id="father" name="father_name" type="text" placeholder="Full Name" aria-label="default input" maxlength="40" value="{{ $data['father_name'] ?? '' }}"/>
+            </div>
+
+
+            <div class="col-md-6">
+                <label for="mother" class="form-label">Mother's Name:</label>
+                <input class="form-control" name="mother_name" type="text" placeholder="Full Name" aria-label="default input" maxlength="40" value="{{ $data['mother_name'] ?? '' }}"/>
+            </div>
+
+            <div class="col-md-6 col-lg-4">
+                <label for="contact" class="form-label">Contact Number:</label>
+                <input class="form-control" name="contact_number" type="tel" placeholder="Contact Number" id="telephone" placeholder="Contact Number" aria-label="default input" value="{{ $data['contact_number'] ?? '' }}"/>
+            </div>
+
+        </div>
+
+        <div class="row mb-4 mt-3">
 
                 <div class="col-md-5 h4 text-center text-md-start ps-md-4">Complete Address:</div>
                 <div class="mb-3">
@@ -146,7 +136,7 @@
                 <div class="col-md-3 col-lg-2 mt-1">
                     <button type="submit" id="liveToastBtn" class="btn submitButton">Submit</button>
                 </div>
-            </div>  
+        </div>  
 
         </form>
     </div>

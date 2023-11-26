@@ -8,6 +8,7 @@
     <link href="{{ asset('css/user/index.css') }}" rel="stylesheet"/>
     <script src="{{ asset('js/sidebar.js') }}" defer></script>
     <script src="{{ asset('js/dashboard.js') }}"></script>
+    <link rel="icon" type="image/x-icon" href="{{ asset('/images/logo.png') }}">
     <title>My Account</title>
 </head>
 <body>
