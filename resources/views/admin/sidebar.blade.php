@@ -11,7 +11,7 @@
     <script src="{{ asset('js/sidebar.js') }}" defer></script>
   </head>
   <body>
-  <nav class="sidebar z-2">
+  <nav class="sidebar z-9999">
       <div class="logo_items flex">
         <span class="nav_image">
           <img src="{{ asset('images/logo.png') }}" alt="logo_img" />
@@ -69,8 +69,7 @@
             </div>
             <li class="item">
               <a href="/admin/upcoming-vaccinations" class="link flex">
-                <i class="bx bx-flag position-relative">
-                <span class="position-absolute top-0 end-0 translate-middle p-2 bg-danger border border-light rounded-circle">               
+                <i class="bx bx-flag">             
                 </i>
                 <span>Upcoming Vaccination</span>
               </a>

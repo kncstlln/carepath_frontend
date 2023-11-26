@@ -11,6 +11,8 @@
     <link href="https://cdn.datatables.net/v/bs5/dt-1.13.6/r-2.5.0/datatables.min.css" rel="stylesheet">
     <script src="https://kit.fontawesome.com/2eead9cc17.js" crossorigin="anonymous"></script>
     <script src="{{ asset('js/index.js') }}"></script>
+    <link rel="icon" type="image/x-icon" href="{{ asset('/images/logo.png') }}">
+
     <title>Target Client List</title>
 </head>
 <body>

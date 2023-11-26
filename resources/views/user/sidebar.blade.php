@@ -5,22 +5,23 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
     <link href="{{ asset('css/user/sidebar.css') }}" rel="stylesheet"/>
-    <script src="{{ asset('css/user/sidebar.js') }}" defer></script>
+    <script src="{{ asset('js/sidebar.js') }}" defer></script>
     <link href="{{ asset('css/user/dashboard.css') }}" rel="stylesheet"/>
     <script src="https://kit.fontawesome.com/2eead9cc17.js" crossorigin="anonymous"></script>
     <link flex href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet" />
     <script src="{{ asset('css/user/dashboard.js') }}"></script>
+    <link rel="icon" type="image/x-icon" href="{{ asset('/images/logo.png') }}">
     <title>Dashboard</title>
 </head>
 <body>
-  <nav class="sidebar z-2">
+  <nav class="sidebar z-9999">
     <div class="logo_items flex">
       <span class="nav_image">
         <img src="{{ asset('images/logo.png') }}" alt="logo_img" />
       </span>
       <span class="logo_name">Carepath</span>
-      <!-- <i class="bx bx-lock-alt" id="lock-icon" title="Unlock Sidebar"></i>
-      <i class="bx bx-x" id="sidebar-close"></i> -->
+      <i class="bx bx-lock-alt" id="lock-icon" title="Unlock Sidebar"></i>
+      <i class="bx bx-x" id="sidebar-close"></i>
     </div>
     <div class="menu_container">
       <div class="menu_items">
@@ -49,8 +50,7 @@
           </div>
           <li class="item">
             <a href="/user/upcoming-vaccinations" class="link flex">
-                     <i class="bx bx-flag position-relative">
-                <span class="position-absolute top-0 end-0 translate-middle p-2 bg-danger border border-light rounded-circle">               
+                     <i class="bx bx-flag">       
                 </i>
               <span>Upcoming Vaccination</span>
             </a>

@@ -10,6 +10,8 @@
     <script src="{{ asset('js/sidebar.js') }}" defer></script>
     <script src="{{ asset('js/dashboard.js') }}"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="icon" type="image/x-icon" href="{{ asset('/images/logo.png') }}">
+
     <title>Dashboard</title>
 </head>
 <body>
@@ -41,13 +43,13 @@
               <div class="p-3 pt-4" id="listbox2"><span style="font-size:1rem">Barangay {{session('barangay_name')}}</span></div>
             </div>
             <div class="col-6 col-md-3">
-              <div class="p-2" id="listbox1"><span style="font-size:2rem; margin-right: 50px">{{ $dashboard['vaccine_count'] }}</span> Vaccine Listed</div>
+              <div class="p-2" id="listbox1"><span style="font-size:2rem;">{{ $dashboard['vaccine_count'] }}</span> Vaccine Listed</div>
             </div>
             <div class="col-6 col-md-3">
-              <div class="p-2" id="listbox3"><span style="font-size:2rem; margin-right: 50px">{{ $dashboard['partially_vaccinated_count'] }}</span> Partially Vaccinated</div>
+              <div class="p-2" id="listbox3"><span style="font-size:2rem;">{{ $dashboard['partially_vaccinated_count'] }}</span> Partially Vaccinated</div>
             </div>
             <div class="col-6 col-md-3">
-              <div class="p-2" id="listbox4"><span style="font-size:2rem; margin-right: 50px">{{ $dashboard['fully_vaccinated_count'] }}</span> Fully Vaccinated</div>
+              <div class="p-2" id="listbox4"><span style="font-size:2rem;">{{ $dashboard['fully_vaccinated_count'] }}</span> Fully Vaccinated</div>
             </div>
           </div>
           <div class="row">
