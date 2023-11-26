@@ -98,7 +98,7 @@
                             @endforeach
                         </select>
                     </div>
-                </div>
+                  </div>
                   <div class="row mb-4 mt-5 justify-content-center text-center">
                       <div class="col-md-3 col-lg-2 mt-1">
                           <a href="{{ route('admin.users.index') }}"><button type="button" class="btn btn-secondary cancelButton">Cancel</button></a>

@@ -67,27 +67,26 @@
                   </div>
               </div>
               <div class="row mb-4">
-                  <div class="col-md-2 pt-1 text-center">Barangay:</div>
-                  <div class="col-md-3">
-                      <select class="form-select" name="barangay_id" required>
-                          <option value="">Select Barangay</option>
-                          @foreach($barangays as $barangay)
-                              <option value="{{ $barangay['id'] }}" {{ $barangay['id'] === $user['barangay_id'] ? 'selected' : '' }}>{{ $barangay['name'] }}</option>
-                          @endforeach
-                      </select>
-                  </div>
-              </div>
-              <div class="row mb-4">
-                  <div class="col-md-2 pt-1 text-center">Position:</div>
-                  <div class="col-md-3">
-                      <select class="form-select" name="user_type" required>
+                      <div class="col-md-2 pt-1 text-center">Position:<span style="color:red;"> *</span></div>
+                      <div class="col-md-3">
+                          <select class="form-select" id="position" name="user_type" required>
                           <option value="">Select Position</option>
                           <option value="1" {{ $user['user_type'] === 1 ? 'selected' : '' }}>Health Worker</option>
                           <option value="0" {{ $user['user_type'] === 0 ? 'selected' : '' }}>Admin</option>
-                      </select>
+                          </select>
+                      </div>
                   </div>
-              </div>
-              <!-- ... (other form fields) ... -->
+                  <div class="row mb-4">
+                    <div class="col-md-2 pt-1 text-center" id="barangayRow" style="display: none;">Barangay:<span style="color:red;"> *</span></div>
+                    <div class="col-md-3" id="selectBarangay" style="display: none;">
+                        <select class="form-select" name="barangay_id">
+                            <option value="">Select Barangay</option>
+                            @foreach($barangays as $barangay)
+                            <option value="{{ $barangay['id'] }}" {{ $barangay['id'] === $user['barangay_id'] ? 'selected' : '' }}>{{ $barangay['name'] }}</option>
+                            @endforeach
+                        </select>
+                    </div>
+                  </div>
               <div class="row mb-4 mt-5 justify-content-center text-center">
                   <div class="col-md-3 col-lg-2 mt-1">
                       <a href="{{ route('admin.users.index') }}"><button type="button" class="btn btn-secondary cancelButton">Cancel</button></a>
@@ -99,6 +98,72 @@
           </form>
       </div>
   </div>
+
+  <script>
+    const positionSelect = document.getElementById('position');
+    const barangayRow = document.getElementById('barangayRow');
+    const barangaySelect = document.getElementById('selectBarangay');
+
+    positionSelect.addEventListener('change', function() {
+        if (positionSelect.value === '1') {
+            barangayRow.style.display = 'block';
+            barangaySelect.style.display = 'block';
+        } else {
+            barangayRow.style.display = 'none';
+            barangaySelect.style.display = 'none';
+        }
+    });
+</script>
+
+<script>
+function validatePassword() {
+  var passwordInput = document.getElementById("inputPassword");
+  var confirmPasswordInput = document.getElementById("confirmPassword");
+  var errorText = document.getElementById("errorText");
+  var password = passwordInput.value;
+  var confirmPassword = confirmPasswordInput.value;
+
+  // Define regular expressions for letters and numbers
+  var letterRegex = /[a-zA-Z]/;
+  var numberRegex = /[0-9]/;
+  var spaceRegex = /\s/; // Regular expression to check for spaces
+  var emojiRegex = /[\uD800-\uDBFF][\uDC00-\uDFFF]/; // Regular expression to check for emojis
+
+  // Check if passwords match
+  if (password === confirmPassword) {
+    // Passwords match, remove focus ring and message
+    confirmPasswordInput.style.borderColor = "";
+    errorText.style.display = "none";
+  } else {
+    // Passwords don't match, add focus ring and display message
+    confirmPasswordInput.style.borderColor = "red";
+    errorText.style.display = "block";
+  }
+
+  // Your existing password validation code here
+
+  // Check other password criteria
+  if (password.length >= 8 && password.length <= 20 && letterRegex.test(password) && numberRegex.test(password) && !spaceRegex.test(password) && !emojiRegex.test(password)) {
+    // Password meets all criteria
+    return true;
+  } else {
+    // Password does not meet the criteria
+    alert("Your password must be 8-20 characters long, contain letters and numbers, and must not contain spaces or emoji.");
+    passwordInput.value = ""; // Clear the input field
+    return false;
+  }
+}
+
+// Add an event listener to the form to call the validatePassword function when the form is submitted
+document.querySelector("form").addEventListener("submit", function(event) {
+  if (!validatePassword()) {
+    event.preventDefault(); 
+  }
+});
+
+// Add an event listener to the confirmPassword input to call the validatePassword function when its value changes
+document.getElementById("confirmPassword").addEventListener("input", validatePassword);
+</script>
 </body>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"> </script>
 </html>
