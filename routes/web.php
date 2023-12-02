@@ -73,11 +73,11 @@ Route::delete('/users/delete/{id}', [AdminUserController::class, 'delete'])->nam
 
 Route::get('/infants', [AdminTCLController::class, 'index'])->name('admin.infants.index');
 Route::get('/getFilteredInfants/{barangay_id}/{year?}', [AdminTCLController::class, 'getFilteredInfants']);
-Route::get('/infants/add', [AdminTCLController::class, 'add'])->name('admin.infants.add');
-Route::post('/infants', [AdminTCLController::class, 'store'])->name('admin.infants.store');
-Route::delete('/infants/delete/{id}', [AdminTCLController::class, 'delete'])->name('admin.infants.delete');
-Route::get('/infants/edit/{id}', [AdminTCLController::class, 'edit'])->name('admin.infants.edit');
-Route::put('/infants/update/{id}', [AdminTCLController::class, 'update'])->name('admin.infants.update');
+// Route::get('/infants/add', [AdminTCLController::class, 'add'])->name('admin.infants.add');
+// Route::post('/infants', [AdminTCLController::class, 'store'])->name('admin.infants.store');
+// Route::delete('/infants/delete/{id}', [AdminTCLController::class, 'delete'])->name('admin.infants.delete');
+// Route::get('/infants/edit/{id}', [AdminTCLController::class, 'edit'])->name('admin.infants.edit');
+// Route::put('/infants/update/{id}', [AdminTCLController::class, 'update'])->name('admin.infants.update');
 Route::get('/infants/{id}', [AdminTCLController::class, 'view'])->name('admin.infants.view');
 Route::get('/infants/success', [AdminTCLController::class, 'success'])->name('admin.infants.success');
 Route::put('/infants/update-status/{id}', [AdminTCLController::class, 'updateStatus'])->name('admin.infants.update-status');
@@ -85,7 +85,7 @@ Route::get('/get-excel-data/{year}', [AdminTCLController::class, 'exportToExcel'
 
 Route::get('/history', [AdminVaccineHistoryController::class, 'index'])->name('admin.history.index');
 Route::get('/history/filtered-records/{barangay_id}/{year?}', [AdminVaccineHistoryController::class, 'getFilteredImmunizationRecords']);
-Route::get('/history/add/{id}', [AdminVaccineHistoryController::class, 'add'])->name('admin.history.add');
+// Route::get('/history/add/{id}', [AdminVaccineHistoryController::class, 'add'])->name('admin.history.add');
 Route::post('/history', [AdminVaccineHistoryController::class, 'store'])->name('admin.history.store');
 Route::delete('/history/delete/{id}', [AdminVaccineHistoryController::class, 'delete'])->name('admin.history.delete');
 

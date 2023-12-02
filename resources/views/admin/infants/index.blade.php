@@ -16,6 +16,7 @@
     <script src="{{ asset('js/index.js') }}"></script>
 
     <title>Infants</title>
+    
 </head>
 <body>
 @include('admin.sidebar')
@@ -49,9 +50,9 @@
         <div class="col-12 col-sm-8 col-md-5 col-lg-3 col-xl-2 mb-3 me-2">
             <a class="btn addButton w-100" role="button" id="button-export" style="border:solid">Export To Excel</a>
         </div>
-        <div class="col-12 col-sm-8 col-md-5 col-lg-3 col-xl-2 mb-3 me-2">
-            <a class="btn addButton w-100" href="{{ route('admin.infants.add') }}" role="button" id="button-add">Add Infant +</a>
-        </div>
+        <!-- <div class="col-12 col-sm-8 col-md-5 col-lg-3 col-xl-2 mb-3 me-2">
+            <a class="btn addButton w-100"  role="button" id="button-add">Add Infant +</a>
+        </div> -->
     </div>
 
 
@@ -77,16 +78,43 @@
 
 </div>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
+<script src="https://code.jquery.com/jquery-3.7.0.js"></script>
 <script src="https://cdn.datatables.net/v/bs5/dt-1.13.6/r-2.5.0/datatables.min.js"></script>
 
 
 
 
 <script>
-    $(document).ready( function () {
-    $('#myTable').DataTable();
-    });
-</script>
+        $(document).ready(function () {
+            $('#myTable').DataTable({
+                "order": [
+                    [0, "asc"],
+                    [1, "desc"]
+                ],
+                "initComplete": function () {
+                    this.api()
+                        .columns()
+                        .every(function () {
+                            let column = this;
+                            let title = column.footer().textContent;
+
+                            // Create input element
+                            let input = document.createElement('input');
+                            input.placeholder = title;
+                            column.footer().replaceChildren(input);
+
+                            // Event listener for user input
+                            input.addEventListener('keyup', () => {
+                                if (column.search() !== input.value) {
+                                    column.search(input.value).draw();
+                                }
+                            });
+                        });
+                }
+            });
+        });
+    </script>
+
 
 <script>
 
@@ -220,8 +248,29 @@ function downloadCSV(content, fileName) {
                         "order": [
                             [0, "asc"],
                             [1, "desc"]
-                        ]
+                        ],
+                        "initComplete": function () {
+                            this.api()
+                                .columns()
+                                .every(function () {
+                                    let column = this;
+                                    let title = column.footer().textContent;
+                    
+                                    // Create input element
+                                    let input = document.createElement('input');
+                                    input.placeholder = title;
+                                    column.footer().replaceChildren(input);
+                    
+                                    // Event listener for user input
+                                    input.addEventListener('keyup', () => {
+                                        if (column.search() !== input.value) {
+                                            column.search(input.value).draw();
+                                        }
+                                    });
+                                });
+                        }
                     });
+                    
 
                 })
                 .catch(error => {
@@ -260,14 +309,7 @@ function downloadCSV(content, fileName) {
                         <td>
                             <table>
                                 <tr>
-                                    <td class="text-center align-middle"><a href="/admin/history/add/${infant.id}"><i class="fa-solid fa-syringe me-2"></i></a>
                                     <td class="text-center align-middle"><a href="/admin/infants/${infant.id}"><i class="fa-solid fa-eye me-2"></i></a></td>
-                                    <td class="text-center align-middle">
-                                        <a href="/admin/infants/edit/${infant.id}">
-                                            <i class='bx bxs-pencil me-2'></i>
-                                        </a>
-                                    </td>    
-                                    <td class="text-center align-middle"><button class="deleteButton" data-infant-id="${infant.id}" style="border:none; background: transparent;"><i class="fa-solid fa-trash"></i></button></td>
                                 </tr>
                             </table>
                         </td>
@@ -290,6 +332,17 @@ function downloadCSV(content, fileName) {
 
             tableHtml += `
                     </tbody>
+                    <tfoot>
+                        <tr>
+                            <th>Barangay</th>
+                            <th class="table-secondary">Birth Date</th>
+                            <th>Name</th>
+                            <th class="table-secondary">Sex</th>
+                            <th>Patient Number</th>
+                            <th class="table-secondary">Status</th>
+                            <th>Action</th>
+                        </tr>
+                    </tfoot>
                 </table>
             `;
 

@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
     <link href="https://cdn.datatables.net/v/bs5/dt-1.13.6/r-2.5.0/datatables.min.css" rel="stylesheet">
+    <link href="https://cdn.datatables.net/1.13.7/css/jquery.dataTables.min.css" rel="stylesheet">
     <link href="css/admin/sidebar.css" rel="stylesheet"/>
     <script src="js/sidebar.js" defer></script>
     <link href="{{ asset('css/admin/index.css') }}" rel="stylesheet"/>
@@ -59,18 +60,52 @@
                 </tr>
                 @endforeach
             </tbody>
+            <tfoot>
+                <tr>
+                    <th>Barangay</th>
+                    <th class="table-secondary">Infant</th>
+                    <th>Birth Date</th>
+                    <th class="table-secondary">Vaccine/s</th>
+                    <th>Dose</th>
+                    <th class="table-secondary">Vaccination Day</th>
+                </tr>
+            </tfoot>
         </table>
         </div>
     </div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.7.0.js"></script>
     <script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
     <script src="https://cdn.datatables.net/v/bs5/dt-1.13.6/r-2.5.0/datatables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.13.7/js/jquery.dataTables.min.js"></script>
 
     <script>
-      $(document).ready( function () {
-        $('#upcomingTable').DataTable();
-      });
-    </script> 
+        $(document).ready(function () {
+            $('#upcomingTable').DataTable({
+                "initComplete": function () {
+                    this.api()
+                        .columns()
+                        .every(function () {
+                            let column = this;
+                            let title = column.footer().textContent;
+
+                            // Create input element
+                            let input = document.createElement('input');
+                            input.placeholder = title;
+                            column.footer().replaceChildren(input);
+
+                            // Event listener for user input
+                            input.addEventListener('keyup', () => {
+                                if (column.search() !== input.value) {
+                                    column.search(input.value).draw();
+                                }
+                            });
+                        });
+                }
+            });
+        });
+    </script>
+
     
   </body>
 </html>
