@@ -50,10 +50,14 @@
             // Split the QR data by '&' to get individual key-value pairs
             let dataPairs = content.split('&');
             let result = {};
+            
+            
 
             // Loop through the data pairs and populate the result object
             dataPairs.forEach(pair => {
                 let [key, value] = pair.split('=');
+             
+                
                 if (value !== '') {
                     switch (key) {
                         case '1':

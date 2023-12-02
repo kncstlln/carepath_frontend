@@ -113,71 +113,59 @@
         </div>
     </body>
 
-<script>
-    const positionSelect = document.getElementById('position');
-    const barangayRow = document.getElementById('barangayRow');
-    const barangaySelect = document.getElementById('selectBarangay');
+    <script>
+        const positionSelect = document.getElementById('position');
+        const barangayRow = document.getElementById('barangayRow');
+        const barangaySelect = document.getElementById('selectBarangay');
+        const passwordInput = document.getElementById('inputPassword');
+        const confirmPasswordInput = document.getElementById('confirmPassword');
+        const errorText = document.getElementById('errorText');
 
-    positionSelect.addEventListener('change', function() {
-        if (positionSelect.value === '1') {
-            barangayRow.style.display = 'block';
-            barangaySelect.style.display = 'block';
-        } else {
-            barangayRow.style.display = 'none';
-            barangaySelect.style.display = 'none';
+        positionSelect.addEventListener('change', function() {
+            if (positionSelect.value === '1') {
+                barangayRow.style.display = 'block';
+                barangaySelect.style.display = 'block';
+            } else {
+                barangayRow.style.display = 'none';
+                barangaySelect.style.display = 'none';
+            }
+        });
+
+        function validateForm() {
+            const password = passwordInput.value;
+            const confirmPassword = confirmPasswordInput.value;
+
+            // Check if passwords match
+            if (password !== confirmPassword) {
+                errorText.textContent = 'Passwords do not match';
+                errorText.style.display = 'block';
+                confirmPasswordInput.classList.add('error');
+                return false;
+            }
+
+            // Check if the password meets the criteria
+            const passwordRegex = /^(?=.*[a-zA-Z])(?=.*\d)[a-zA-Z\d]{8,20}$/;
+
+            if (!password.match(passwordRegex)) {
+                errorText.textContent = 'Password must be 8-20 characters long, contain letters and numbers, and must not contain spaces or emoji.';
+                errorText.style.display = 'block';
+                confirmPasswordInput.classList.add('error');
+                return false;
+            }
+
+            // Passwords match and meet the criteria
+            errorText.style.display = 'none';
+            confirmPasswordInput.classList.remove('error');
+            return true;
         }
-    });
-</script>
 
-<script>
-function validatePassword() {
-  var passwordInput = document.getElementById("inputPassword");
-  var confirmPasswordInput = document.getElementById("confirmPassword");
-  var errorText = document.getElementById("errorText");
-  var password = passwordInput.value;
-  var confirmPassword = confirmPasswordInput.value;
+        confirmPasswordInput.addEventListener('input', function() {
+            errorText.style.display = 'none';
+            confirmPasswordInput.classList.remove('error');
+        });
+    </script>
 
-  // Define regular expressions for letters and numbers
-  var letterRegex = /[a-zA-Z]/;
-  var numberRegex = /[0-9]/;
-  var spaceRegex = /\s/; // Regular expression to check for spaces
-  var emojiRegex = /[\uD800-\uDBFF][\uDC00-\uDFFF]/; // Regular expression to check for emojis
 
-  // Check if passwords match
-  if (password === confirmPassword) {
-    // Passwords match, remove focus ring and message
-    confirmPasswordInput.style.borderColor = "";
-    errorText.style.display = "none";
-  } else {
-    // Passwords don't match, add focus ring and display message
-    confirmPasswordInput.style.borderColor = "red";
-    errorText.style.display = "block";
-  }
-
-  // Your existing password validation code here
-
-  // Check other password criteria
-  if (password.length >= 8 && password.length <= 20 && letterRegex.test(password) && numberRegex.test(password) && !spaceRegex.test(password) && !emojiRegex.test(password)) {
-    // Password meets all criteria
-    return true;
-  } else {
-    // Password does not meet the criteria
-    alert("Your password must be 8-20 characters long, contain letters and numbers, and must not contain spaces or emoji.");
-    passwordInput.value = ""; // Clear the input field
-    return false;
-  }
-}
-
-// Add an event listener to the form to call the validatePassword function when the form is submitted
-document.querySelector("form").addEventListener("submit", function(event) {
-  if (!validatePassword()) {
-    event.preventDefault(); 
-  }
-});
-
-// Add an event listener to the confirmPassword input to call the validatePassword function when its value changes
-document.getElementById("confirmPassword").addEventListener("input", validatePassword);
-</script>
 
 
 

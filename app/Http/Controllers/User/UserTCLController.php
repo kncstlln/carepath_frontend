@@ -170,11 +170,11 @@ class UserTCLController extends Controller
             'sex' => 'required',
             'birth_date' => 'required',
             'family_serial_number' => 'nullable',
-            'weight' => 'nullable',
+            'weight' => 'required',
             'length' => 'nullable',
-            'father_name' => 'required',
-            'mother_name' => 'required',
-            'contact_number' => 'required',
+            'father_name' => 'nullable',
+            'mother_name' => 'nullable',
+            'contact_number' => 'nullable',
             'complete_address' => 'nullable',
         ]);
 

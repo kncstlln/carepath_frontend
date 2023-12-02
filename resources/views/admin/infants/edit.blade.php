@@ -61,12 +61,12 @@
 
                 <div class="col-md-3"> 
                     <label for="weight" class="form-label">Weight (kg): <span style="color:red">*</span></label>
-                    <input class="form-control" required name="weight" type="number" placeholder="kg" aria-label="default input" min="1" max="50" value="{{ $infant['weight'] }}"/>
+                    <input class="form-control" required name="weight" type="number" step=".01" placeholder="kg" pattern="\d+(\.\d{1,2})?" aria-label="default input" min="1" max="99" value="{{ $infant['weight'] }}"/>
                 </div>
 
                 <div class="col-md-3">
                     <label for="height" class="form-label">Length (cm):</label>
-                    <input class="form-control" name="length" type="number" placeholder="cm" aria-label="default input" min="1" max="50" value="{{ $infant['length'] }}"/>
+                    <input class="form-control" name="length" type="number" placeholder="cm" pattern="\d+(\.\d{1,2})?" aria-label="default input" min="1" max="99" value="{{ $infant['length'] }}"/>
                 </div>
 
                 <div class="col-md-6">
@@ -85,7 +85,7 @@
                 <div class="col-md-6 col-xl-3">
                     <div>Birth date:<span style="color:red;"> *</span></div>
                     <div class="input-group date" id="datepicker">
-                        <input type="date" name="birth_date" class="form-control" required value="{{ $infant['birth_date'] }}"/>
+                        <input type="date" name="birth_date" id="birthDate" class="form-control" required value="{{ $infant['birth_date'] }}"/>
                     </div>
                 </div>
 
@@ -95,7 +95,7 @@
                 </div>
 
                 <div class="col-md-6 col-xl-4 mt-1">
-                    <label for="family-serial" class="col-form-label">Tracking Number: </label>
+                    <label for="family-serial" class="col-form-label">Patient Number: </label>
                     <input class="form-control" type="text" name="tracking_number" aria-label="default input" value="{{ $infant['tracking_number'] }}"/>
                 </div>
  
@@ -144,6 +144,38 @@
                     <button type="submit" class="btn submitButton">Submit</button>
                 </div>
             </div>
+            
+            <script>
+    function validateDecimal(input) {
+        // Remove any non-numeric characters and restrict to two decimal places
+        input.value = input.value.replace(/[^0-9.]/g, '');
+        const parts = input.value.split('.');
+        if (parts[1] && parts[1].length > 2) {
+            parts[1] = parts[1].slice(0, 2);
+        }
+        input.value = parts.join('.');
+    }
+</script>
+            
+            <script>
+    // Get the current date
+    var today = new Date();
+    var dd = today.getDate();
+    var mm = today.getMonth() + 1;
+    var yyyy = today.getFullYear();
+
+    if (dd < 10) {
+        dd = '0' + dd;
+    }
+    if (mm < 10) {
+        mm = '0' + mm;
+    }
+
+    today = yyyy + '-' + mm + '-' + dd;
+
+    // Set the min attribute of the date input to today's date
+    document.getElementById('birthDate').setAttribute('max', today);
+</script>
 
 
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>

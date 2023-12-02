@@ -23,39 +23,29 @@
                 My Account       
             </div>
         </div>
-        <form action="{{ route('user.update-password') }}" method="POST">
+        <form onsubmit="return validatePassword()" action="{{ route('user.update-password') }}" method="POST">
         @csrf
         @method('PUT')
         @if(session('error'))
-                <div class="alert alert-danger" id="error-message">
-                    {{ session('error') }}
-                </div>
+                    <div class="alert alert-danger" id="error-message">
+                        {{ session('error') }}
+                    </div>
 
-                <script>
-                    setTimeout(function() {
-                        document.getElementById('error-message').style.display = 'none';
-                    }, 3000);
-                </script>
-            @endif
-            @if(session('success'))
-            <div class="alert alert-success" id="success-message">
-                {{ session('success') }}
-            </div>
-
-            <script>
-                setTimeout(function() {
-                    document.getElementById('success-message').style.display = 'none';
-                }, 3000);
-            </script>
-            @endif
+                    <script>
+                        setTimeout(function() {
+                            document.getElementById('error-message').style.display = 'none';
+                        }, 3000);
+                    </script>
+                @endif
         <div class="row">
             <div class="col-12 col-md-7 mb-3">
                 <label for="currentPassword" class="form-label">New Password:</label>
-                <input class="form-control" type="password" name="password" placeholder="Password" aria-label="currentPassword">
+                <input class="form-control" type="password" name="password" id="password" placeholder="Password" aria-label="currentPassword">
             </div>
             <div class="col-12 col-md-7 mb-3">
                 <label for="currentPassword" class="form-label">Confirm Password:</label>
-                <input class="form-control" type="password" name="password_confirmation" placeholder="Confirm Password" aria-label="currentPassword">
+                <input class="form-control" type="password" name="password_confirmation" id="confirmPassword" placeholder="Confirm Password" aria-label="currentPassword">
+                <p id="passwordMatchError" class="text-danger"></p>
             </div>
         </div>
         <div class="row mb-4 mt-5 justify-content-center text-center">
@@ -69,7 +59,21 @@
         </form>
     </div>
 
+    <script>
+        function validatePassword() {
+            var password = document.getElementById("password").value;
+            var confirmPassword = document.getElementById("confirmPassword").value;
+            var errorElement = document.getElementById("passwordMatchError");
 
+            if (password !== confirmPassword) {
+                errorElement.textContent = "Passwords do not match!";
+                return false; // Prevent form submission
+            } else {
+                errorElement.textContent = "";
+                return true; // Allow form submission
+            }
+        }
+    </script>
 
     
 

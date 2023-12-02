@@ -60,12 +60,12 @@
 
                 <div class="col-md-3"> 
                     <label for="weight" class="form-label">Weight (kg): <span style="color:red"> *</span></label>
-                    <input class="form-control" required id="weight" name="weight" type="number" placeholder="kg" aria-label="default input" min="1" max="50" value="{{ $data['weight'] ?? '' }}"/>
+                    <input class="form-control" required id="weight" name="weight" type="number" step=".01" placeholder="kg" aria-label="default input" min="1" max="50" value="{{ $data['weight'] ?? '' }}" pattern="\d+(\.\d{1,2})?" title="Enter a number with up to two decimal places"/>
                 </div>
 
                 <div class="col-md-3">
                     <label for="height" class="form-label">Length (cm):</label>
-                    <input class="form-control" id="length" name="length" type="number" placeholder="cm" aria-label="default input" min="1" max="50" value="{{ $data['length'] ?? '' }}"/>
+                    <input class="form-control" id="length" step=".01" name="length" pattern="\d+(\.\d{1,2})?" title="Enter a number with up to two decimal places" type="number" placeholder="cm" aria-label="default input" min="1"  value="{{ $data['length'] ?? '' }}"/>
                 </div>
 
                 <div class="col-md-6">
@@ -84,7 +84,7 @@
                 <div class="col-md-6 col-xl-3">
                     <div>Birth date:<span style="color:red;"> *</span></div>
                     <div class="input-group date" id="datepicker">
-                        <input type="date" name="birth_date" class="form-control" value="{{ $data['birth_date'] ?? '' }}" required/>
+                        <input type="date" name="birth_date" id="birthDate" class="form-control" value="{{ $data['birth_date'] ?? '' }}" required/>
                     </div>
                 </div>
 
@@ -143,18 +143,51 @@
         </form>
     </div>
 </div>
+
 <script>
-    const data = {!! json_encode($data ?? []) !!};
-    document.addEventListener('DOMContentLoaded', () => {
-        // Gender
-        if (data.gender === 'm') {
-            document.getElementById('male').checked = true;
-        } else if (data.gender === 'f') {
-            document.getElementById('female').checked = true;
+    function validateDecimal(input) {
+        // Remove any non-numeric characters and restrict to two decimal places
+        input.value = input.value.replace(/[^0-9.]/g, '');
+        const parts = input.value.split('.');
+        if (parts[1] && parts[1].length > 2) {
+            parts[1] = parts[1].slice(0, 2);
         }
-        // ... Additional form field population
-    });
+        input.value = parts.join('.');
+    }
 </script>
+
+<script>
+    // Get the current date
+    var today = new Date();
+    var dd = today.getDate();
+    var mm = today.getMonth() + 1;
+    var yyyy = today.getFullYear();
+
+    if (dd < 10) {
+        dd = '0' + dd;
+    }
+    if (mm < 10) {
+        mm = '0' + mm;
+    }
+
+    today = yyyy + '-' + mm + '-' + dd;
+
+    // Set the min attribute of the date input to today's date
+    document.getElementById('birthDate').setAttribute('max', today);
+</script>
+
+    <script>
+
+        const data = {!! json_encode($data ?? []) !!};
+        document.addEventListener('DOMContentLoaded', () => {
+            // Gender
+            if (data.gender === 'm') {
+                document.getElementById('male').checked = true;
+            } else if (data.gender === 'f') {
+                document.getElementById('female').checked = true;
+            }
+        });
+    </script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
 
 

@@ -117,8 +117,9 @@ class AdminTCLController extends Controller
         }
     }
 
-    public function add()
+    public function add(Request $request)
     {
+        $data = $request->query();
         $response = $this->apiService->get('/barangays', session('token'));
 
         if (isset($response['data'])) {
@@ -127,7 +128,7 @@ class AdminTCLController extends Controller
             $barangays = [];
         }
         
-        return view('admin.infants.add', compact('barangays'));
+        return view('admin.infants.add', compact('barangays', 'data'));
     }
 
 
