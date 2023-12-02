@@ -1,12 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<script src="https://rawgit.com/schmich/instascan-builds/master/instascan.min.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+    <script src="https://rawgit.com/schmich/instascan-builds/master/instascan.min.js"></script>
 </head>
 <body>
     @include('admin/sidebar')
     <div class="container content createRecord">
-        <div class="row justify-content-end mt-5">
+        <div class="row justify-content-center mt-5">
             <div class="col-6 col-md-8 col-lg-6 justify-content-center">
                 <select id="cameraSelect"></select>
                 <video id="preview" willReadFrequently></video>
@@ -51,10 +53,12 @@
             // Loop through the data pairs and populate the result object
             dataPairs.forEach(pair => {
                 let [key, value] = pair.split('=');
+
+
                 if (value !== '') {
                     switch (key) {
                         case '1':
-                            result['name'] = decodeURIComponent(value);
+                            result['name'] = value;
                             break;
                         case '2':
                             result['birth_date'] = value;
@@ -69,10 +73,10 @@
                             result['length'] = value;
                             break;
                         case '6':
-                            result['father_name'] = decodeURIComponent(value);
+                            result['father_name'] = value;
                             break;
                         case '7':
-                            result['mother_name'] = decodeURIComponent(value);
+                            result['mother_name'] = value;
                             break;
                         case '8':
                             result['contact_number'] = value;

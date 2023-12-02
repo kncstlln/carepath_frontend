@@ -11,7 +11,7 @@
     <script src="{{ asset('js/sidebar.js') }}" defer></script>
   </head>
   <body>
-  <nav class="sidebar z-9999">
+  <nav class="sidebar z-9999 locked">
       <div class="logo_items flex">
         <span class="nav_image">
           <img src="{{ asset('images/logo.png') }}" alt="logo_img" />

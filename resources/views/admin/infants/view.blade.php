@@ -85,18 +85,18 @@
                           <div class="col-md-4 pt-2"><strong>Complete Address: </strong> </div>
                           <div class="col-md-10 pt-2">{{ $infant['complete_address'] }}</div>
                         </div>
-                        <div class="row d-flex justify-content-end">
-                            <div class="col-4 d-flex">
-                                <select class="form-select btn btn-lg mb-4 addButton" id="status" role="button" id="button-add">
+                        <!-- <div class="row d-flex justify-content-center justify-content-md-between">
+                            <div class="col-12 col-md-6 col-lg-4 d-flex">
+                                <select class="form-select btn btn-lg mb-4" id="status" role="button" style="border: 1px solid black">
                                     <option value="0" {{ $infant['status'] === 0 ? 'selected' : '' }}>Not Vaccinated</option>
                                     <option value="1" {{ $infant['status'] === 1 ? 'selected' : '' }}>Partially Vaccinated</option>
                                     <option value="2" {{ $infant['status'] === 2 ? 'selected' : '' }}>Fully Vaccinated</option>
                                 </select>
                             </div>
-                            <div class="col-7 d-flex justify-content-end">
-                                <a class="btn btn-lg mb-4 addButton" href="{{ route('admin.history.add', ['id' => $infant['id']]) }}" role="button" id="button-add">Vaccinate Infant</a>
+                            <div class="col-12 col-md-6 col-lg-4  d-flex justify-content-center justify-content-md-end">
+                                <a class="btn btn-lg mb-4 addButton" role="button" id="button-add">Vaccinate Infant</a>
                             </div>
-                        </div>
+                        </div> -->
                         <div class="table-responsive-lg text-center">
                         <table class="table table-striped">
                           <thead>

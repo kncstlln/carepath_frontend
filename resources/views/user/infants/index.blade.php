@@ -23,13 +23,11 @@
           <div class="col-sm" id="infantsTxt">List of Infants</div>
       </div>
 
-      <div class="row mb-7">
-        <div class="col-12 col-sm-8 col-md-5 col-lg-3 col-xl-2 mb-3 me-2">
-            <a class="btn addButton w-100" role="button" id="button-export" style="border:solid">Export To Excel</a>
-        </div>
-        </div>
 
-      <div class="row d-flex justify-content-center justify-content-md-end">
+      <div class="row d-flex justify-content-center justify-content-md-between mt-5">
+            <div class="col-12 col-sm-8 col-md-5 col-lg-3 col-xl-2 mb-3 me-2">
+                <a class="btn addButton w-100" role="button" id="button-export" style="border:solid">Export To Excel</a>
+            </div>
           <div class="col-12 col-sm-8 col-md-5 col-lg-3 col-xl-2 mb-3 me-2">
               <a class="btn addButton w-100" href="{{ route('user.infants.add') }}" role="button" id="button-add">Add Infant +</a>
           </div>
@@ -95,6 +93,16 @@
               </tr>
               @endforeach 
           </tbody>
+          <tfoot>
+              <tr>
+                  <th>Birth Date</th>
+                  <th class="table-secondary">Name</th>
+                  <th>Sex</th>
+                  <th class="table-secondary">Patient Number</th>
+                  <th>Status</th>
+                  <th class="table-secondary">Action</th>
+              </tr>
+          </tfoot>
       </table>
           
   
@@ -105,14 +113,36 @@
   <script src="https://cdn.datatables.net/v/bs5/dt-1.13.6/r-2.5.0/datatables.min.js"></script>
 
   <script>
-      $(document).ready( function () {
-      $('#myTable').DataTable({
-            "order": [
-                [0, "desc"],
-                [1, "asc"],
-        ]});
-  } );ç
-  </script>
+        $(document).ready(function () {
+            $('#myTable').DataTable({
+                "order": [
+                    [0, "asc"],
+                    [1, "desc"]
+                ],
+                "initComplete": function () {
+                    this.api()
+                        .columns()
+                        .every(function () {
+                            let column = this;
+                            let title = column.footer().textContent;
+
+                            // Create input element
+                            let input = document.createElement('input');
+                            input.placeholder = title;
+                            column.footer().replaceChildren(input);
+
+                            // Event listener for user input
+                            input.addEventListener('keyup', () => {
+                                if (column.search() !== input.value) {
+                                    column.search(input.value).draw();
+                                }
+                            });
+                        });
+                }
+            });
+        });
+    </script>
+
 <script>
 document.getElementById('button-export').addEventListener('click', function () {
     const year = prompt('Please enter the year for data export:', '');
@@ -216,7 +246,7 @@ function downloadCSV(content, fileName) {
     link.click();
 }
 
-</script>
+</scrip>
 
 </body>
 </html>

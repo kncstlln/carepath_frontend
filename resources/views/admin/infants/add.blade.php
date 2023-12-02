@@ -59,12 +59,12 @@
 
             <div class="col-md-3"> 
                 <label for="weight" class="form-label">Weight (kg): <span style="color:red">*</span></label>
-                <input class="form-control" required id="weight" name="weight" type="number" placeholder="kg" aria-label="default input" min="1" max="50" value="{{ $data['weight'] ?? '' }}"/>
+                <input class="form-control" required id="weight" name="weight" type="number" placeholder="kg" step=".01" pattern="\d+(\.\d{1,2})?" title="Enter a number with up to two decimal places" aria-label="default input" min="1" max="99" value="{{ $data['weight'] ?? '' }}"/>
             </div>
 
             <div class="col-md-3">
                 <label for="height" class="form-label">Length (cm):</label>
-                <input class="form-control" id="length" name="length" type="number" placeholder="cm" aria-label="default input" min="1" max="50" value="{{ $data['length'] ?? '' }}"/>
+                <input class="form-control" id="length" name="length" type="number" placeholder="cm" aria-label="default input" pattern="\d+(\.\d{1,2})?" title="Enter a number with up to two decimal places" min="1" max="99" value="{{ $data['length'] ?? '' }}"/>
             </div>
 
             <div class="col-md-5">
@@ -145,16 +145,17 @@
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
 
 <script>
-    const toastTrigger = document.getElementById('liveToastBtn')
-    const toastLiveExample = document.getElementById('liveToast')
-
-    if (toastTrigger) {
-    const toastBootstrap = bootstrap.Toast.getOrCreateInstance(toastLiveExample)
-    toastTrigger.addEventListener('click', () => {
-        toastBootstrap.show()
-    })
+    function validateDecimal(input) {
+        // Remove any non-numeric characters and restrict to two decimal places
+        input.value = input.value.replace(/[^0-9.]/g, '');
+        const parts = input.value.split('.');
+        if (parts[1] && parts[1].length > 2) {
+            parts[1] = parts[1].slice(0, 2);
+        }
+        input.value = parts.join('.');
     }
 </script>
+
 
 <script>
     // Get the current date
@@ -175,6 +176,19 @@
     // Set the min attribute of the date input to today's date
     document.getElementById('birthDate').setAttribute('max', today);
 </script>
+
+<script>
+
+        const data = {!! json_encode($data ?? []) !!};
+        document.addEventListener('DOMContentLoaded', () => {
+            // Gender
+            if (data.gender === 'm') {
+                document.getElementById('male').checked = true;
+            } else if (data.gender === 'f') {
+                document.getElementById('female').checked = true;
+            }
+        });
+    </script>
 
 </body>
 </html>

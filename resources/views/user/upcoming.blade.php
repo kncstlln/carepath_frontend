@@ -53,6 +53,16 @@
                   </tr>
                   @endforeach
               </tbody>
+              <tfoot>
+                  <tr>
+                      <th>Barangay</th>
+                      <th class="table-secondary">Infant</th>
+                      <th>Birth Date</th>
+                      <th class="table-secondary">Vaccine/s</th>
+                      <th>Dose</th>
+                      <th class="table-secondary">Vaccination Day</th>
+                  </tr>
+              </tfoot>
           </table>
         </div>
     </div>
@@ -62,9 +72,30 @@
     <script src="https://cdn.datatables.net/v/bs5/dt-1.13.6/r-2.5.0/datatables.min.js"></script>
 
     <script>
-      $(document).ready( function () {
-        $('#upcomingTable').DataTable();
-      });
-    </script> 
+        $(document).ready(function () {
+            $('#upcomingTable').DataTable({
+                "initComplete": function () {
+                    this.api()
+                        .columns()
+                        .every(function () {
+                            let column = this;
+                            let title = column.footer().textContent;
+
+                            // Create input element
+                            let input = document.createElement('input');
+                            input.placeholder = title;
+                            column.footer().replaceChildren(input);
+
+                            // Event listener for user input
+                            input.addEventListener('keyup', () => {
+                                if (column.search() !== input.value) {
+                                    column.search(input.value).draw();
+                                }
+                            });
+                        });
+                }
+            });
+        });
+    </script>
   </body>
 </html>
