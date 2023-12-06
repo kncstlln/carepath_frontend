@@ -45,10 +45,31 @@
               <span style="font-size:2rem;">{{ $dashboard['fully_vaccinated_count'] }}</span> Fully Vaccinated</div>
             </div>
           </div>
+          <div class="row g-4 mb-5 text-center">
+              <div class="col-6 col-md-3">
+                  <div class="p-2" id="listbox1">
+                      <span style="font-size:2rem; color:red;">{{ $numUpcomingVaccinations }}</span> Upcoming Vaccinations
+                  </div>
+              </div>
+              <div class="col-6 col-md-3">
+                  <div class="p-2" id="listbox3">
+                      <span style="font-size:2rem;color:red;">{{ $numMissedVaccinations }}</span> Missed Vaccinations
+                  </div>
+              </div>
+          </div>
           <div class="row">
               <div class="col-12 p-3" id="lineChartCanvas">
                   <canvas id="lineChart"></canvas>
             </div>
+          </div>
+          <br><br>
+          <div class="row">
+              <div class="col-md-6">
+                  <canvas id="upcomingPieChart"></canvas>
+              </div>
+              <div class="col-md-6">
+                  <canvas id="missedPieChart"></canvas>
+              </div>
           </div>
       </div>
 
@@ -88,6 +109,108 @@ const lineChart = new Chart(ctx, {
         }
     }
 });
+
+console.log('Pie Chart Script Executed');
+
+    // Get the data from the PHP variable $upcomingVaccinations and $missedVaccinations and convert them to JavaScript objects
+    const upcomingData = @json($upcomingVaccinations);
+    const missedData = @json($missedVaccinations);
+
+    // Function to count occurrences of vaccine names in the data
+    function countVaccineOccurrences(data) {
+        const vaccineCounts = {};
+        
+        if (data && data.length > 0) {
+            data.forEach(item => {
+                const vaccineName = item.vaccine_name;
+                vaccineCounts[vaccineName] = (vaccineCounts[vaccineName] || 0) + 1;
+            });
+        }
+
+        return vaccineCounts;
+    }
+
+    // Count vaccine occurrences in upcoming and missed vaccinations
+    const upcomingVaccineCounts = countVaccineOccurrences(Array.isArray(upcomingData) ? upcomingData : []);
+    const missedVaccineCounts = countVaccineOccurrences(Array.isArray(missedData) ? missedData : []);
+
+    // Extract data for the upcoming pie chart
+    const upcomingLabels = Object.keys(upcomingVaccineCounts);
+    const upcomingDataValues = Object.values(upcomingVaccineCounts);
+
+    // Extract data for the missed pie chart
+    const missedLabels = Object.keys(missedVaccineCounts);
+    const missedDataValues = Object.values(missedVaccineCounts);
+
+    // Create the Chart.js pie charts
+    const upcomingPieCtx = document.getElementById('upcomingPieChart').getContext('2d');
+    const missedPieCtx = document.getElementById('missedPieChart').getContext('2d');
+
+    const pieChartOptions = {
+        plugins: {
+            title: {
+                display: true,
+                text: 'Upcoming Vaccinations', // Change this to your desired title
+                fontSize: 16,
+                fontStyle: 'bold',
+            },
+            legend: {
+                position: 'bottom',
+                labels: {
+                    boxWidth: 20, // Adjust the box width as needed
+                },
+            },
+        },
+        elements: {
+            arc: {
+                borderWidth: 1, // Border width
+            },
+        },
+    };
+
+    const upcomingPieChart = new Chart(upcomingPieCtx, {
+        type: 'pie',
+        data: {
+            labels: upcomingLabels,
+            datasets: [{
+                data: upcomingDataValues,
+                backgroundColor: ['#FF6384', '#36A2EB', '#FFCE56', '#4CAF50', '#9C27B0', '#FF9800'],
+            }]
+        },
+        options: pieChartOptions,
+    });
+
+    const missedPieChart = new Chart(missedPieCtx, {
+        type: 'pie',
+        data: {
+            labels: missedLabels,
+            datasets: [{
+                data: missedDataValues,
+                backgroundColor: ['#FF6384', '#36A2EB', '#FFCE56', '#4CAF50', '#9C27B0', '#FF9800'],
+            }]
+        },
+        options: {
+            plugins: {
+                title: {
+                    display: true,
+                    text: 'Missed Vaccinations', // Change this to your desired title
+                    fontSize: 16,
+                    fontStyle: 'bold',
+                },
+                legend: {
+                    position: 'bottom',
+                    labels: {
+                        boxWidth: 20, // Adjust the box width as needed
+                    },
+                },
+            },
+            elements: {
+                arc: {
+                    borderWidth: 1, // Border width
+                },
+            },
+        },
+    });
 </script>
 
 </body>

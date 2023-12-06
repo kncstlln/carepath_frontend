@@ -17,14 +17,20 @@ class UserDashboardController extends Controller
 
     public function index()
     {
-        $response = $this->apiService->get('/dashboard', session('token'));
+        // Fetch data from '/dashboard' endpoint
+        $dashboardResponse = $this->apiService->get('/dashboard', session('token'));
+        $dashboard = isset($dashboardResponse['data']) ? $dashboardResponse['data'] : [];
 
-        if (isset($response['data'])) {
-            $dashboard = $response['data'];
-        } else {
-            $dashboard = [];
-        }
+        // Fetch data from '/upcoming-vaccinations' endpoint
+        $upcomingResponse = $this->apiService->get('/filtered-upcoming-vaccinations', session('token'));
+        $upcomingVaccinations = isset($upcomingResponse['data']) ? $upcomingResponse['data'] : [];
+        $numUpcomingVaccinations = count($upcomingVaccinations);
 
-        return view('user.dashboard', compact('dashboard'));
+        // Fetch data from '/missed-vaccinations' endpoint
+        $missedResponse = $this->apiService->get('/missed-vaccinations', session('token'));
+        $missedVaccinations = isset($missedResponse['data']) ? $missedResponse['data'] : [];
+        $numMissedVaccinations = count($missedVaccinations);
+
+        return view('user.dashboard', compact('dashboard', 'upcomingVaccinations', 'numUpcomingVaccinations', 'missedVaccinations', 'numMissedVaccinations'));
     }
 }

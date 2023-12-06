@@ -107,7 +107,7 @@
                                   <th>Administered in</th>
                                   <th>Administered By</th>
                                   <th>Remarks</th>
-                                  <th>Action</th>
+                                  <!-- <th>Action</th> -->
                               </tr>
                           </thead>
                           <tbody>
@@ -126,11 +126,11 @@
                                           </td>
                                           <td>{{ $immunization['Administered By'] }}</td>
                                           <td>{{ $immunization['Remarks'] }}</td>
-                                          <td class="text-center align-middle">
+                                          <!-- <td class="text-center align-middle">
                                             <button class="deleteButton" data-record-id="{{ $immunization['Id'] }}" style="border:none">
                                                 <i class="fa-solid fa-trash"></i>
                                             </button>
-                                          </td>
+                                          </td> -->
                                       </tr>
                                   @endforeach
                               @else

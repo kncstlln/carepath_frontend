@@ -126,9 +126,11 @@
                                       <td>{{ $immunization['Administered By'] }}</td>
                                       <td>{{ $immunization['Remarks'] }}</td>
                                       <td class="text-center align-middle">
-                                        <button class="deleteButton" data-record-id="{{ $immunization['Id'] }}" style="border:none; background: transparent;">
-                                            <i class="fa-solid fa-trash"></i>
-                                        </button>
+                                      @if ($immunization['Administered By'] == session('name'))
+                                            <button class="deleteButton" data-record-id="{{ $immunization['Id'] }}" style="border:none; background: transparent;">
+                                                <i class="fa-solid fa-trash"></i>
+                                            </button>
+                                        @endif
                                       </td>
                                   </tr>
                               @endforeach

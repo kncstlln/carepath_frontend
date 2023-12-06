@@ -36,6 +36,14 @@
                 <a class="btn addButton w-100" href="{{ route('admin.send-sms-upcoming') }}" role="button" id="button-add" style="background-color:green">Send SMS</a>
             </div>
         </div>
+        <div class="row justify-content-center justify-content-md-between">
+            <div class="col-12 col-sm-8 col-md-5 col-lg-3 col-xl-2 mb-3 me-2">
+                <a class="btn addButton w-100" role="button" id="button-export" style="border:solid">Export To Excel</a>
+            </div>
+            <!-- <div class="col-12 col-sm-8 col-md-5 col-lg-3 col-xl-2 mb-3 me-2">
+                <a class="btn addButton w-100"  role="button" id="button-add">Add Infant +</a>
+            </div> -->
+        </div>
         <div class="table-responsive-lg">
         <table class="table table-striped" id="upcomingTable">
             <thead>
@@ -104,6 +112,50 @@
                 }
             });
         });
+
+        function convertJSONToCSV(data) {
+            const table = document.getElementById('upcomingTable');
+            const headers = Array.from(table.querySelectorAll('thead th')).map(th => th.textContent.trim());
+
+            const rows = Array.from(table.querySelectorAll('tbody tr'));
+            const csvRows = rows.map(row => {
+                const cells = Array.from(row.children);
+                const csvValues = cells.map(cell => {
+                    let value = cell.textContent.trim();
+                    // Check if the value contains a comma and wrap it in double quotes
+                    if (value.includes(',')) {
+                        value = `"${value}"`;
+                    }
+                    return value;
+                });
+
+                return csvValues.join(',');
+            });
+
+            return [headers.join(','), ...csvRows].join('\n')
+        }
+
+        document.getElementById('button-export').addEventListener('click', function () {
+            // Fetch the current data from the DataTable
+            const table = $('#upcomingTable').DataTable();
+            const data = table.data().toArray();
+
+            if (data.length > 0) {
+                // Here, convert the data to CSV format
+                const csvContent = convertJSONToCSV(data);
+                downloadCSV(csvContent, 'upcomingTable.csv');
+            } else {
+                alert('No data available for export.');
+            }
+        });
+
+        function downloadCSV(content, fileName) {
+            const blob = new Blob([content], { type: 'text/csv' });
+            const link = document.createElement('a');
+            link.href = window.URL.createObjectURL(blob);
+            link.download = fileName;
+            link.click();
+        }
     </script>
 
     
