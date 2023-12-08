@@ -57,6 +57,7 @@
                   </tr>
                   @endforeach
               </tbody>
+             
           </table>
         </div>
     </div>
@@ -66,30 +67,63 @@
 
   <script>
         $(document).ready(function () {
-            
-            $('#missedTable').DataTable({
-                "initComplete": function () {
-                    this.api()
-                        .columns()
-                        .every(function () {
-                            let column = this;
-                            let title = column.footer().textContent;
+   
+        let searchInputsContainer = $('<div class="search-inputs row mb-3"></div>');
+        searchInputsContainer.insertBefore('#missedTable');
 
-                            // Create input element
-                            let input = document.createElement('input');
-                            input.placeholder = title;
-                            column.footer().replaceChildren(input);
+        $('#missedTable').DataTable({
+            "initComplete": function () {
+                let table = this;
 
-                            // Event listener for user input
-                            input.addEventListener('keyup', () => {
-                                if (column.search() !== input.value) {
-                                    column.search(input.value).draw();
-                                }
-                            });
+                table.api()
+                    .columns()
+                    .every(function () {
+                        let column = this;
+                        let title = column.header().textContent;
+
+             
+                        let searchInputColumn = $('<div class="col"></div>');
+
+                    
+                        if (title.toLowerCase() === 'birth date') {
+                            searchInputColumn = $('<div class="col-2"></div>');
+                        }
+
+                        if (title.toLowerCase() === 'dose') {
+                            searchInputColumn = $('<div class="col-1"></div>');
+                        }
+
+                        searchInputsContainer.append(searchInputColumn);
+
+                     
+                        let input;
+
+                        
+                        if (title.toLowerCase() === 'birth date') {
+                            input = document.createElement('input');
+                            input.className = 'form-control';
+                            input.type = 'date';
+                        } else {
+                            input = document.createElement('input');
+                            input.className = 'form-control';
+                        }
+
+                        input.placeholder = title;
+
+                 
+                        searchInputColumn.append(input);
+
+                        $(input).on('keyup change clear', function () {
+                            if (column.search() !== this.value) {
+                                column.search(this.value).draw();
+                            }
                         });
-                }
-            });
+                    });
+            }
         });
+    });
+
+
 
         
         function convertJSONToCSV(data) {
