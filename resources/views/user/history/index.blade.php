@@ -10,6 +10,8 @@
     <link rel="icon" type="image/x-icon" href="{{ asset('/images/logo.png') }}">
     <link href="https://cdn.datatables.net/v/bs5/dt-1.13.6/r-2.5.0/datatables.min.css" rel="stylesheet">
     <link flex href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet" />
+    <script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
     <script src="https://kit.fontawesome.com/2eead9cc17.js" crossorigin="anonymous"></script>
     <script src="{{ asset('js/index.js') }}"></script>
     <title>Vaccine History</title>
@@ -104,19 +106,63 @@
     </div>
 </div>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
-<script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
+<script src="https://code.jquery.com/jquery-3.7.0.js"></script>
 <script src="https://cdn.datatables.net/v/bs5/dt-1.13.6/r-2.5.0/datatables.min.js"></script>
 
 <script>
     $(document).ready(function () {
-        $('#myHistory').DataTable({
-            "order": [[0, "desc"]]
+ 
+        let searchInputsContainer = $('<div class="search-inputs row mb-3"></div>');
+    searchInputsContainer.insertBefore('#filteredImmunizationRecords');
+
+    $('#myHistory').DataTable({
+        "order": [
+            [0, "asc"],
+            [1, "desc"]
+        ],
+        "initComplete": function () {
+            this.api().columns().every(function () {
+                let column = this;
+                let title = column.header().textContent;
+
+           
+                if (title.toLowerCase() !== 'action') {
+                    let searchInputColumn = $('<div class="col"></div>');
+
+                    if (title.toLowerCase() === 'immunization date') {
+                        searchInputColumn = $('<div class="col-2"></div>');
+                    }
+
+                    searchInputsContainer.append(searchInputColumn);
+
+                    let input;
+
+                    if (title.toLowerCase() === 'immunization date') {
+                        input = document.createElement('input');
+                        input.className = 'form-control';
+                        input.type = 'date';
+                    } else {
+                        input = document.createElement('input');
+                        input.className = 'form-control';
+                    }
+
+                    input.placeholder = title;
+
+                    searchInputColumn.append(input);
+
+                    input.addEventListener('input', () => {
+                        if (column.search() !== input.value) {
+                            column.search(input.value).draw();
+                        }
+                    });
+                }
+            });
+        },
+        "dom": "lrtip"
         });
-        
-        // Call the function to attach click event listeners to delete buttons
-        attachDeleteButtonListeners();
     });
+
+
 
     function attachDeleteButtonListeners() {
         const deleteButtons = document.querySelectorAll('.deleteButton');

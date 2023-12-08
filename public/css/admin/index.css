@@ -66,10 +66,7 @@ a {
   padding-left: 300px;
 }
 
-input[placeholder]::before {
-    content: '* ';
-    color: red;
-}
+
 
 .paginationTxt{
     color:#980B0B;

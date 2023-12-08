@@ -4,18 +4,16 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
-    <link href="https://cdn.datatables.net/v/bs5/dt-1.13.6/r-2.5.0/datatables.min.css" rel="stylesheet">
-    <link href="https://cdn.datatables.net/1.13.7/css/jquery.dataTables.min.css" rel="stylesheet">
-    <link href="css/admin/sidebar.css" rel="stylesheet"/>
-    <script src="js/sidebar.js" defer></script>
+    <link href="{{ asset('css/admin/sidebar.css') }}" rel="stylesheet"/>
+    <script src="{{ asset('js/sidebar.js') }}" defer></script>
     <link href="{{ asset('css/admin/index.css') }}" rel="stylesheet"/>
-    <link href="{{ asset('css/admin/dashboard.css') }}" rel="stylesheet"/>
-    <link href="css/admin/vaccine.css" rel="stylesheet"/>
-    <link href="css/admin/brgySelect.css" rel="stylesheet"/>
-    <link flex href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet" />
     <link rel="icon" type="image/x-icon" href="{{ asset('/images/logo.png') }}">
+    <link href="https://cdn.datatables.net/v/bs5/dt-1.13.6/r-2.5.0/datatables.min.css" rel="stylesheet">
+    <link flex href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet" />
+    <script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
     <script src="https://kit.fontawesome.com/2eead9cc17.js" crossorigin="anonymous"></script>
-    <script src="js/dashboard.js"></script>
+    <script src="{{ asset('js/index.js') }}"></script>
     <title>Upcoming Vaccination</title>
 </head>
 <body>
@@ -31,12 +29,11 @@
                 <option value="3">Salapungan</option>
             </select> -->
         </div>
-        <div class="row d-flex justify-content-center justify-content-md-start">
+        <div class="row d-flex justify-content-center justify-content-md-between">
             <div class="col-12 col-sm-8 col-md-5 col-lg-3 col-xl-2 mb-3 me-2">
                 <a class="btn addButton w-100" href="{{ route('admin.send-sms-upcoming') }}" role="button" id="button-add" style="background-color:green">Send SMS</a>
             </div>
-        </div>
-        <div class="row justify-content-center justify-content-md-between">
+
             <div class="col-12 col-sm-8 col-md-5 col-lg-3 col-xl-2 mb-3 me-2">
                 <a class="btn addButton w-100" role="button" id="button-export" style="border:solid">Export To Excel</a>
             </div>
@@ -68,50 +65,71 @@
                 </tr>
                 @endforeach
             </tbody>
-            <tfoot>
-                <tr>
-                    <th>Barangay</th>
-                    <th class="table-secondary">Infant</th>
-                    <th>Birth Date</th>
-                    <th class="table-secondary">Vaccine/s</th>
-                    <th>Dose</th>
-                    <th class="table-secondary">Vaccination Day</th>
-                </tr>
-            </tfoot>
+
         </table>
         </div>
     </div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
     <script src="https://code.jquery.com/jquery-3.7.0.js"></script>
-    <script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
     <script src="https://cdn.datatables.net/v/bs5/dt-1.13.6/r-2.5.0/datatables.min.js"></script>
-    <script src="https://cdn.datatables.net/1.13.7/js/jquery.dataTables.min.js"></script>
 
     <script>
-        $(document).ready(function () {
+            $(document).ready(function () {
+   
+            let searchInputsContainer = $('<div class="search-inputs row mb-3"></div>');
+            searchInputsContainer.insertBefore('#upcomingTable');
+
             $('#upcomingTable').DataTable({
                 "initComplete": function () {
-                    this.api()
+                    let table = this;
+
+                    table.api()
                         .columns()
                         .every(function () {
                             let column = this;
-                            let title = column.footer().textContent;
+                            let title = column.header().textContent;
 
-                            // Create input element
-                            let input = document.createElement('input');
+                    
+                            let searchInputColumn = $('<div class="col"></div>');
+
+                        
+                            if (title.toLowerCase() === 'birth date') {
+                                searchInputColumn = $('<div class="col-2"></div>');
+                            }
+
+                            if (title.toLowerCase() === 'dose') {
+                                searchInputColumn = $('<div class="col-1"></div>');
+                            }
+
+                            searchInputsContainer.append(searchInputColumn);
+
+                            
+                            let input;
+
+                            
+                            if (title.toLowerCase() === 'birth date') {
+                                input = document.createElement('input');
+                                input.className = 'form-control';
+                                input.type = 'date';
+                            } else {
+                                input = document.createElement('input');
+                                input.className = 'form-control';
+                            }
+
                             input.placeholder = title;
-                            column.footer().replaceChildren(input);
 
-                            // Event listener for user input
-                            input.addEventListener('keyup', () => {
-                                if (column.search() !== input.value) {
-                                    column.search(input.value).draw();
+                        
+                            searchInputColumn.append(input);
+
+                            $(input).on('keyup change clear', function () {
+                                if (column.search() !== this.value) {
+                                    column.search(this.value).draw();
                                 }
                             });
                         });
                 }
             });
-        });
+            });
 
         function convertJSONToCSV(data) {
             const table = document.getElementById('upcomingTable');

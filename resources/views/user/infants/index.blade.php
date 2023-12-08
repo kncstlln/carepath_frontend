@@ -93,16 +93,7 @@
               </tr>
               @endforeach 
           </tbody>
-          <tfoot>
-              <tr>
-                  <th>Birth Date</th>
-                  <th class="table-secondary">Name</th>
-                  <th>Sex</th>
-                  <th class="table-secondary">Patient Number</th>
-                  <th>Status</th>
-                  <th class="table-secondary">Action</th>
-              </tr>
-          </tfoot>
+          
       </table>
           
   
@@ -113,35 +104,125 @@
   <script src="https://cdn.datatables.net/v/bs5/dt-1.13.6/r-2.5.0/datatables.min.js"></script>
 
   <script>
-        $(document).ready(function () {
-            $('#myTable').DataTable({
-                "order": [
-                    [0, "asc"],
-                    [1, "desc"]
-                ],
-                "initComplete": function () {
-                    this.api()
-                        .columns()
-                        .every(function () {
-                            let column = this;
-                            let title = column.footer().textContent;
+    $(document).ready(function () {
+        let searchInputsContainer = $('<div class="search-inputs row mb-3"></div>');
+        searchInputsContainer.insertBefore('#myTable');
 
-                            // Create input element
-                            let input = document.createElement('input');
-                            input.placeholder = title;
-                            column.footer().replaceChildren(input);
+        $('#myTable').DataTable({
+            "order": [
+                [0, "asc"],
+                [1, "desc"]
+            ],
+            "initComplete": function () {
+                this.api().columns().every(function (index) {
+                    let column = this;
+                    let title = column.header().textContent;
 
-                            // Event listener for user input
-                            input.addEventListener('keyup', () => {
-                                if (column.search() !== input.value) {
-                                    column.search(input.value).draw();
-                                }
+            
+                    if (title.toLowerCase() !== 'action') {
+                    
+                        if (title.toLowerCase() === 'name') {
+                            searchInputColumn = $('<div class="col-4"></div>');
+                        }
+
+                        if (title.toLowerCase() === 'patient number') {
+                            searchInputColumn = $('<div class="col-2"></div>');
+                        }
+                        
+
+                        if (title.toLowerCase() === 'birth date') {
+                            searchInputColumn = $('<div class="col-2"></div>');
+                        }
+
+                        if (title.toLowerCase() === 'status') {
+                            searchInputColumn = $('<div class="col-2"></div>');
+                        }
+
+                        
+                        if (title.toLowerCase() === 'sex') {
+                            searchInputColumn = $('<div class="col-1"></div>');
+                        }
+
+                        searchInputsContainer.append(searchInputColumn);
+
+                        let input;
+                    
+                        if (title.toLowerCase() === 'status') {
+                            input = document.createElement('select');
+                            input.className = 'form-control'; 
+
+                            
+                            const defaultOption = document.createElement('option');
+                            defaultOption.value = '';
+                            defaultOption.text = 'Select Status';
+                            input.add(defaultOption);
+
+                            
+                            const options = ['Fully Vaccinated', 'Partially Vaccinated', 'Not Vaccinated'];
+                            options.forEach(option => {
+                                const optionElement = document.createElement('option');
+                                optionElement.value = option;
+                                optionElement.text = option;
+                                input.add(optionElement);
                             });
+                        }
+                    
+                        else if (title.toLowerCase() === 'sex') {
+                            input = document.createElement('select');
+                            input.className = 'form-control'; 
+
+                        
+                            const defaultOption = document.createElement('option');
+                            defaultOption.value = '';
+                            defaultOption.text = 'Sex';
+                            input.add(defaultOption);
+
+                            
+                            const sexOptions = ['M', 'F'];
+                            sexOptions.forEach(option => {
+                                const optionElement = document.createElement('option');
+                                optionElement.value = option;
+                                optionElement.text = option;
+                                input.add(optionElement);
+                            });
+                        } else if (title.toLowerCase() === 'birth date') {
+                        input = document.createElement('input');
+                        input.className = 'form-control';
+                        input.type = 'date';
+
+                        } else {
+                            input = document.createElement('input');
+                            input.className = 'form-control'; 
+                        }
+
+                        input.placeholder = title;
+
+                        
+                        searchInputColumn.append(input);
+
+                    
+                        input.addEventListener('input', () => {
+                            if (column.search() !== input.value) {
+                                column.search(input.value).draw();
+                            }
                         });
-                }
-            });
+
+            
+                        if (title.toLowerCase() === 'status' || title.toLowerCase() === 'sex') {
+                            input.addEventListener('change', () => {
+                                column.search(input.value).draw();
+                            });
+                        }
+                    }
+                });
+            },
+            "dom": "lrtip"
         });
-    </script>
+    });
+
+
+
+</script>
 
 <script>
 document.getElementById('button-export').addEventListener('click', function () {

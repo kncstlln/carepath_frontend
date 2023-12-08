@@ -61,7 +61,7 @@
                 </div>
             </div>
         </div>
-        <div class="row g-4 mb-5 text-center">
+        <div class="row g-4 mb-5 text-center justify-content-center">
             <div class="col-6 col-md-3">
                 <div class="p-2" id="listbox1">
                     <span style="font-size:2rem; color:red;">{{ $numUpcomingVaccinations }}</span> Upcoming Vaccinations

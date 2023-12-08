@@ -85,35 +85,109 @@
 
 
 <script>
-        $(document).ready(function () {
-            $('#myTable').DataTable({
-                "order": [
-                    [0, "asc"],
-                    [1, "desc"]
-                ],
-                "initComplete": function () {
-                    this.api()
-                        .columns()
-                        .every(function () {
-                            let column = this;
-                            let title = column.footer().textContent;
+    $(document).ready(function () {
 
-                            // Create input element
-                            let input = document.createElement('input');
-                            input.placeholder = title;
-                            column.footer().replaceChildren(input);
 
-                            // Event listener for user input
-                            input.addEventListener('keyup', () => {
-                                if (column.search() !== input.value) {
-                                    column.search(input.value).draw();
-                                }
+        let searchInputsContainer = $('<div class="search-inputs row mb-3"></div>');
+        searchInputsContainer.insertBefore('#filteredInfants');
+
+        $('#myTable').DataTable({
+            "order": [
+                [0, "asc"],
+                [1, "desc"]
+            ],
+            "initComplete": function () {
+                this.api().columns().every(function (index) {
+                    let column = this;
+                    let title = column.header().textContent;
+
+            
+                    if (title.toLowerCase() !== 'action') {
+                    
+                        let searchInputColumn = $('<div class="col"></div>');
+
+                        
+                        if (title.toLowerCase() === 'sex') {
+                            searchInputColumn = $('<div class="col-1"></div>');
+                        }
+
+                        searchInputsContainer.append(searchInputColumn);
+
+                    
+                        let input;
+
+                    
+                        if (title.toLowerCase() === 'status') {
+                            input = document.createElement('select');
+                            input.className = 'form-control'; 
+
+                            
+                            const defaultOption = document.createElement('option');
+                            defaultOption.value = '';
+                            defaultOption.text = 'Select Status';
+                            input.add(defaultOption);
+
+                            
+                            const options = ['Fully Vaccinated', 'Partially Vaccinated', 'Not Vaccinated'];
+                            options.forEach(option => {
+                                const optionElement = document.createElement('option');
+                                optionElement.value = option;
+                                optionElement.text = option;
+                                input.add(optionElement);
                             });
+                        }
+                    
+                        else if (title.toLowerCase() === 'sex') {
+                            input = document.createElement('select');
+                            input.className = 'form-control'; 
+
+                        
+                            const defaultOption = document.createElement('option');
+                            defaultOption.value = '';
+                            defaultOption.text = 'Sex';
+                            input.add(defaultOption);
+
+                            
+                            const sexOptions = ['M', 'F'];
+                            sexOptions.forEach(option => {
+                                const optionElement = document.createElement('option');
+                                optionElement.value = option;
+                                optionElement.text = option;
+                                input.add(optionElement);
+                            });
+                        } else {
+                            input = document.createElement('input');
+                            input.className = 'form-control'; 
+                        }
+
+                        input.placeholder = title;
+
+                        
+                        searchInputColumn.append(input);
+
+                    
+                        input.addEventListener('input', () => {
+                            if (column.search() !== input.value) {
+                                column.search(input.value).draw();
+                            }
                         });
-                }
-            });
+
+            
+                        if (title.toLowerCase() === 'status' || title.toLowerCase() === 'sex') {
+                            input.addEventListener('change', () => {
+                                column.search(input.value).draw();
+                            });
+                        }
+                    }
+                });
+            },
+            "dom": "lrtip"
         });
-    </script>
+    });
+
+
+
+</script>
 
 
 <script>
@@ -244,32 +318,104 @@ function downloadCSV(content, fileName) {
                     // Attach click event listeners to delete buttons
                     attachDeleteButtonListeners();
 
+             
+                    let searchInputsContainer = $('<div class="search-inputs row mb-3"></div>');
+                    searchInputsContainer.insertBefore('#filteredInfants');
+
                     $('#myTable').DataTable({
                         "order": [
                             [0, "asc"],
                             [1, "desc"]
                         ],
                         "initComplete": function () {
-                            this.api()
-                                .columns()
-                                .every(function () {
-                                    let column = this;
-                                    let title = column.footer().textContent;
-                    
-                                    // Create input element
-                                    let input = document.createElement('input');
+                            this.api().columns().every(function (index) {
+                                let column = this;
+                                let title = column.header().textContent;
+
+                                
+                                if (title.toLowerCase() !== 'action') {
+                                    // Create a column for the search input
+                                    let searchInputColumn = $('<div class="col"></div>');
+
+                                    
+                                    if (title.toLowerCase() === 'sex') {
+                                        searchInputColumn = $('<div class="col-1"></div>');
+                                    }
+
+                                    searchInputsContainer.append(searchInputColumn);
+
+                                    
+                                    let input;
+
+                                    
+                                    if (title.toLowerCase() === 'status') {
+                                        input = document.createElement('select');
+                                        input.className = 'form-control';
+
+                                        
+                                        const defaultOption = document.createElement('option');
+                                        defaultOption.value = '';
+                                        defaultOption.text = 'Select Status';
+                                        input.add(defaultOption);
+
+                                        
+                                        const options = ['Fully Vaccinated', 'Partially Vaccinated', 'Not Vaccinated'];
+                                        options.forEach(option => {
+                                            const optionElement = document.createElement('option');
+                                            optionElement.value = option;
+                                            optionElement.text = option;
+                                            input.add(optionElement);
+                                        });
+                                    }
+                                   
+                                    else if (title.toLowerCase() === 'sex') {
+                                        input = document.createElement('select');
+                                        input.className = 'form-control'; 
+
+                                        
+                                        const defaultOption = document.createElement('option');
+                                        defaultOption.value = '';
+                                        defaultOption.text = 'Sex';
+                                        input.add(defaultOption);
+
+                                        
+                                        const sexOptions = ['M', 'F'];
+                                        sexOptions.forEach(option => {
+                                            const optionElement = document.createElement('option');
+                                            optionElement.value = option;
+                                            optionElement.text = option;
+                                            input.add(optionElement);
+                                        });
+                                    } else {
+                                        input = document.createElement('input');
+                                        input.className = 'form-control'; 
+                                    }
+
                                     input.placeholder = title;
-                                    column.footer().replaceChildren(input);
-                    
-                                    // Event listener for user input
-                                    input.addEventListener('keyup', () => {
+
+                                    
+                                    searchInputColumn.append(input);
+
+                                    
+                                    input.addEventListener('input', () => {
                                         if (column.search() !== input.value) {
                                             column.search(input.value).draw();
                                         }
                                     });
-                                });
-                        }
+
+                                    
+                                    if (title.toLowerCase() === 'status' || title.toLowerCase() === 'sex') {
+                                        input.addEventListener('change', () => {
+                                            column.search(input.value).draw();
+                                        });
+                                    }
+                                }
+                            });
+                        },
+                        "dom": "lrtip"
                     });
+                
+
                     
 
                 })
@@ -332,17 +478,7 @@ function downloadCSV(content, fileName) {
 
             tableHtml += `
                     </tbody>
-                    <tfoot>
-                        <tr>
-                            <th>Barangay</th>
-                            <th class="table-secondary">Birth Date</th>
-                            <th>Name</th>
-                            <th class="table-secondary">Sex</th>
-                            <th>Patient Number</th>
-                            <th class="table-secondary">Status</th>
-                            <th>Action</th>
-                        </tr>
-                    </tfoot>
+
                 </table>
             `;
 
