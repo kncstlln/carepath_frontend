@@ -27,7 +27,7 @@ class UserDashboardController extends Controller
         $numUpcomingVaccinations = count($upcomingVaccinations);
 
         // Fetch data from '/missed-vaccinations' endpoint
-        $missedResponse = $this->apiService->get('/missed-vaccinations', session('token'));
+        $missedResponse = $this->apiService->get('/filtered-missed-vaccinations', session('token'));
         $missedVaccinations = isset($missedResponse['data']) ? $missedResponse['data'] : [];
         $numMissedVaccinations = count($missedVaccinations);
 

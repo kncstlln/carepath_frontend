@@ -72,8 +72,17 @@
     <script src="https://cdn.datatables.net/v/bs5/dt-1.13.6/r-2.5.0/datatables.min.js"></script>
 
     <script>
-            $(document).ready(function () {
-   
+    $(document).ready(function () {
+    function getUrlParameter(name) {
+        name = name.replace(/[[]/, '\\[').replace(/[\]]/, '\\]');
+        const regex = new RegExp('[\\?&]' + name + '=([^&#]*)');
+        const results = regex.exec(location.search);
+        return results === null ? '' : decodeURIComponent(results[1].replace(/\+/g, ' '));
+    }
+
+    // Set initial filter value based on URL parameter
+    const vaccineFilter = getUrlParameter('upcoming-vaccine-filter');
+    
    let searchInputsContainer = $('<div class="search-inputs row mb-3"></div>');
    searchInputsContainer.insertBefore('#upcomingTable');
 
@@ -116,7 +125,12 @@
 
                    input.placeholder = title;
 
-            
+                   // Set search term for the 'Vaccine/s' column based on URL parameter
+                   if (title.toLowerCase() === 'vaccine/s' && vaccineFilter) {
+                        input.value = vaccineFilter;
+                        column.search(vaccineFilter).draw();
+                    }
+
                    searchInputColumn.append(input);
 
                    $(input).on('keyup change clear', function () {

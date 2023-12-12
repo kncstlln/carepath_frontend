@@ -63,14 +63,18 @@
         </div>
         <div class="row g-4 mb-5 text-center justify-content-center">
             <div class="col-6 col-md-3">
-                <div class="p-2" id="listbox1">
-                    <span style="font-size:2rem; color:red;">{{ $numUpcomingVaccinations }}</span> Upcoming Vaccinations
-                </div>
+                <a href="{{ route('user.upcoming') }}" style="text-decoration: none; color: inherit;">
+                    <div class="p-2" id="listbox1">
+                        <span style="font-size:2rem; color:red;">{{ $numUpcomingVaccinations }}</span> Upcoming Vaccinations
+                    </div>
+                </a>
             </div>
             <div class="col-6 col-md-3">
-                <div class="p-2" id="listbox3">
-                    <span style="font-size:2rem;color:red;">{{ $numMissedVaccinations }}</span> Missed Vaccinations
-                </div>
+                <a href="{{ route('user.missed') }}" style="text-decoration: none; color: inherit;">
+                    <div class="p-2" id="listbox3">
+                        <span style="font-size:2rem;color:red;">{{ $numMissedVaccinations }}</span> Missed Vaccinations
+                    </div>
+                </a>
             </div>
         </div>
         <div class="row">
@@ -199,6 +203,19 @@
         options: pieChartOptions,
     });
 
+    upcomingPieCtx.canvas.addEventListener('click', function(event) {
+        const activeSlice = upcomingPieChart.getElementsAtEventForMode(event, 'nearest', { intersect: true }, false, false);
+        if (activeSlice.length > 0) {
+            const selectedLabel = upcomingLabels[activeSlice[0].index];
+            const selectedData = upcomingData.find(item => item.vaccine_name === selectedLabel);
+
+            if (selectedData) {
+                const filterParam = encodeURIComponent(selectedData.vaccine_name);
+                window.location.href = `{{ route('user.upcoming') }}?upcoming-vaccine-filter=${filterParam}`;
+            }
+        }
+    });
+
     const missedPieChart = new Chart(missedPieCtx, {
         type: 'pie',
         data: {
@@ -229,6 +246,29 @@
                 },
             },
         },
+    });
+
+    missedPieCtx.canvas.addEventListener('click', function(event) {
+        const activeSlice = missedPieChart.getElementsAtEventForMode(event, 'nearest', { intersect: true }, false, false);
+        if (activeSlice.length > 0) {
+            const selectedLabel = missedLabels[activeSlice[0].index];
+            const selectedData = missedData.find(item => item.vaccine_name === selectedLabel);
+
+            if (selectedData) {
+                const filterParam = encodeURIComponent(selectedData.vaccine_name);
+                window.location.href = `{{ route('user.missed') }}?missed-vaccine-filter=${filterParam}`;
+            }
+        }
+    });
+
+    upcomingPieCtx.canvas.addEventListener('mousemove', function(event) {
+        const activeSlice = upcomingPieChart.getElementsAtEventForMode(event, 'nearest', { intersect: true }, false, false);
+        upcomingPieCtx.canvas.style.cursor = activeSlice.length > 0 ? 'pointer' : 'default';
+    });
+
+    missedPieCtx.canvas.addEventListener('mousemove', function(event) {
+        const activeSlice = missedPieChart.getElementsAtEventForMode(event, 'nearest', { intersect: true }, false, false);
+        missedPieCtx.canvas.style.cursor = activeSlice.length > 0 ? 'pointer' : 'default';
     });
 </script>
 </body>
