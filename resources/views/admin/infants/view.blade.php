@@ -1,19 +1,5 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
-    <link href="{{ asset('css/admin/sidebar.css') }}" rel="stylesheet"/>
-    <link href="{{ asset('css/admin/index.css') }}" rel="stylesheet"/>
-    <link href="{{ asset('css/admin/viewInfant.css') }}" rel="stylesheet"/>
-    <script src="{{ asset('js/sidebar.js') }}" defer></script>
-    <script src="{{ asset('js/index.js') }}"></script>
-    <link rel="icon" type="image/x-icon" href="{{ asset('/images/logo.png') }}">
-    <link flex href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet" />
-    <script src="https://kit.fontawesome.com/2eead9cc17.js" crossorigin="anonymous"></script>
-    <title>View Infant</title>    
-</head>
+@include('admin/head')
+<title>View Infant</title>    
   <body>
               @include('admin.sidebar')
         <div class="container-sm content mt-4">
@@ -85,18 +71,6 @@
                           <div class="col-md-4 pt-2"><strong>Complete Address: </strong> </div>
                           <div class="col-md-10 pt-2">{{ $infant['complete_address'] }}</div>
                         </div>
-                        <!-- <div class="row d-flex justify-content-center justify-content-md-between">
-                            <div class="col-12 col-md-6 col-lg-4 d-flex">
-                                <select class="form-select btn btn-lg mb-4" id="status" role="button" style="border: 1px solid black">
-                                    <option value="0" {{ $infant['status'] === 0 ? 'selected' : '' }}>Not Vaccinated</option>
-                                    <option value="1" {{ $infant['status'] === 1 ? 'selected' : '' }}>Partially Vaccinated</option>
-                                    <option value="2" {{ $infant['status'] === 2 ? 'selected' : '' }}>Fully Vaccinated</option>
-                                </select>
-                            </div>
-                            <div class="col-12 col-md-6 col-lg-4  d-flex justify-content-center justify-content-md-end">
-                                <a class="btn btn-lg mb-4 addButton" role="button" id="button-add">Vaccinate Infant</a>
-                            </div>
-                        </div> -->
                         <div class="table-responsive-lg text-center">
                         <table class="table table-striped">
                           <thead>
@@ -107,7 +81,6 @@
                                   <th>Administered in</th>
                                   <th>Administered By</th>
                                   <th>Remarks</th>
-                                  <!-- <th>Action</th> -->
                               </tr>
                           </thead>
                           <tbody>
@@ -126,11 +99,6 @@
                                           </td>
                                           <td>{{ $immunization['Administered By'] }}</td>
                                           <td>{{ $immunization['Remarks'] }}</td>
-                                          <!-- <td class="text-center align-middle">
-                                            <button class="deleteButton" data-record-id="{{ $immunization['Id'] }}" style="border:none">
-                                                <i class="fa-solid fa-trash"></i>
-                                            </button>
-                                          </td> -->
                                       </tr>
                                   @endforeach
                               @else
@@ -148,13 +116,12 @@
         </div>
         <script>
             document.addEventListener('DOMContentLoaded', function () {
-                const selectStatus = document.getElementById('status'); // Assuming this is the select element for the infant status
+                const selectStatus = document.getElementById('status');
 
                 selectStatus.addEventListener('change', function () {
                     const newStatus = selectStatus.value;
-                    const infantId = {!! json_encode($infant['id']) !!}; // Get the infant ID from PHP
+                    const infantId = {!! json_encode($infant['id']) !!};
 
-                    // Fetch to update infant status
                     fetch(`/admin/infants/update-status/${infantId}`, {
                         method: 'PUT',
                         headers: {
@@ -168,7 +135,6 @@
                     })
                     .then(response => {
                         if (response.ok) {
-                            // Optionally, you can handle success (if needed)
                             return response.json();
                         } else {
                             // Handle the failure case
@@ -176,13 +142,10 @@
                         }
                     })
                     .then(data => {
-                        // Handle response data if necessary
                         console.log('Infant status updated successfully:', data);
-                        // You might want to refresh the page or update the UI after the successful update
                     })
                     .catch(error => {
                         console.error('Error:', error);
-                        // Handle error in updating infant status
                     });
                 });
 
@@ -190,7 +153,6 @@
                 attachDeleteButtonListeners();
             });
 
-            // Function to attach click event listeners to delete buttons
             function attachDeleteButtonListeners() {
                 const deleteButtons = document.querySelectorAll('.deleteButton');
                 deleteButtons.forEach(button => {
@@ -198,7 +160,6 @@
                         const recordId = this.getAttribute('data-record-id');
 
                         if (confirm('Are you sure you want to delete this immunization record?')) {
-                            // Make an AJAX request to delete the immunization record
                             fetch(`/admin/history/delete/${recordId}`, {
                                 method: 'DELETE',
                                 headers: {
@@ -208,7 +169,6 @@
                             .then(response => response.json())
                             .then(data => {
                                 if (data.success) {
-                                    // Remove the row from the table
                                     const row = this.parentElement.parentElement;
                                     row.remove();
                                 } else {

@@ -3,9 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
-    <link href="{{ asset('css/admin/sidebar.css') }}" rel="stylesheet"/>
-    <script src="{{ asset('js/sidebar.js') }}" defer></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">A
     <link href="{{ asset('css/admin/dashboard.css') }}" rel="stylesheet"/>
     <script src="{{ asset('js/dashboard.js') }}"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
@@ -45,22 +43,6 @@
               <span style="font-size:2rem;">{{ $dashboard['fully_vaccinated_count'] }}</span> Fully Vaccinated</div>
             </div>
           </div>
-          <div class="row g-4 mb-5 text-center justify-content-center">
-              <div class="col-6 col-md-3">
-                <a href="{{ route('admin.upcoming') }}" style="text-decoration: none; color: inherit;">
-                  <div class="p-2" id="listbox1">
-                      <span style="font-size:2rem; color:red;">{{ $numUpcomingVaccinations }}</span> Upcoming Vaccinations
-                  </div>
-                </a>
-              </div>
-              <div class="col-6 col-md-3">
-                <a href="{{ route('admin.missed') }}" style="text-decoration: none; color: inherit;">
-                  <div class="p-2" id="listbox3">
-                      <span style="font-size:2rem;color:red;">{{ $numMissedVaccinations }}</span> Missed Vaccinations
-                  </div>
-                </a>
-              </div>
-          </div>
           <div class="row">
               <div class="col-12 p-3" id="lineChartCanvas">
                   <canvas id="lineChart"></canvas>
@@ -78,20 +60,15 @@
       </div>
 
 <script>
-// Check if the script executes
 console.log('Chart Script Executed');
 
-// Get the data from the PHP variable $dashboard and convert it to JavaScript object
 const dashboardData = @json($dashboard);
 
-// Extract month names and counts from the received data
 const months = Object.keys(dashboardData.records_by_month);
 const counts = Object.values(dashboardData.records_by_month);
 
-// Get the current year
 const currentYear = new Date().getFullYear();
 
-// Create the Chart.js line chart
 const ctx = document.getElementById('lineChart').getContext('2d');
 const lineChart = new Chart(ctx, {
     type: 'line',
@@ -116,11 +93,9 @@ const lineChart = new Chart(ctx, {
 
 console.log('Pie Chart Script Executed');
 
-    // Get the data from the PHP variable $upcomingVaccinations and $missedVaccinations and convert them to JavaScript objects
     const upcomingData = @json($upcomingVaccinations);
     const missedData = @json($missedVaccinations);
 
-    // Function to count occurrences of vaccine names in the data
     function countVaccineOccurrences(data) {
         const vaccineCounts = {};
         
@@ -134,19 +109,19 @@ console.log('Pie Chart Script Executed');
         return vaccineCounts;
     }
 
-    // Count vaccine occurrences in upcoming and missed vaccinations
+
     const upcomingVaccineCounts = countVaccineOccurrences(Array.isArray(upcomingData) ? upcomingData : []);
     const missedVaccineCounts = countVaccineOccurrences(Array.isArray(missedData) ? missedData : []);
 
-    // Extract data for the upcoming pie chart
+
     const upcomingLabels = Object.keys(upcomingVaccineCounts);
     const upcomingDataValues = Object.values(upcomingVaccineCounts);
 
-    // Extract data for the missed pie chart
+
     const missedLabels = Object.keys(missedVaccineCounts);
     const missedDataValues = Object.values(missedVaccineCounts);
 
-    // Create the Chart.js pie charts
+
     const upcomingPieCtx = document.getElementById('upcomingPieChart').getContext('2d');
     const missedPieCtx = document.getElementById('missedPieChart').getContext('2d');
 
@@ -154,20 +129,20 @@ console.log('Pie Chart Script Executed');
         plugins: {
             title: {
                 display: true,
-                text: 'Upcoming Vaccinations', // Change this to your desired title
+                text: 'Upcoming Vaccinations',
                 fontSize: 16,
                 fontStyle: 'bold',
             },
             legend: {
                 position: 'bottom',
                 labels: {
-                    boxWidth: 20, // Adjust the box width as needed
+                    boxWidth: 20,
                 },
             },
         },
         elements: {
             arc: {
-                borderWidth: 1, // Border width
+                borderWidth: 1,
             },
         },
     };
@@ -178,7 +153,7 @@ console.log('Pie Chart Script Executed');
             labels: upcomingLabels,
             datasets: [{
                 data: upcomingDataValues,
-                backgroundColor: ['#FF6384', '#36A2EB', '#FFCE56', '#4CAF50', '#9C27B0', '#FF9800'],
+                backgroundColor: ['#003f5c', '#444e86', '#955196', '#dd5182', '#ff6e54', '#ffa600'],
             }]
         },
         options: pieChartOptions,
@@ -203,27 +178,27 @@ console.log('Pie Chart Script Executed');
             labels: missedLabels,
             datasets: [{
                 data: missedDataValues,
-                backgroundColor: ['#FF6384', '#36A2EB', '#FFCE56', '#4CAF50', '#9C27B0', '#FF9800'],
+                backgroundColor: ['#003f5c', '#444e86', '#955196', '#dd5182', '#ff6e54', '#ffa600'],
             }]
         },
         options: {
             plugins: {
                 title: {
                     display: true,
-                    text: 'Missed Vaccinations', // Change this to your desired title
+                    text: 'Missed Vaccinations',
                     fontSize: 16,
                     fontStyle: 'bold',
                 },
                 legend: {
                     position: 'bottom',
                     labels: {
-                        boxWidth: 20, // Adjust the box width as needed
+                        boxWidth: 20,
                     },
                 },
             },
             elements: {
                 arc: {
-                    borderWidth: 1, // Border width
+                    borderWidth: 1,
                 },
             },
         },

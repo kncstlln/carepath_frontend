@@ -8,13 +8,11 @@ function hideElementsAt1199px() {
       });
     } else {
       elementsToHide.forEach(element => {
-        element.style.display = 'block'; // or 'flex' if using flexbox
+        element.style.display = 'block';
       });
     }
   }
 
-  // Call the function on page load
-  hideElementsAt1199px();
 
-  // Add an event listener to check on window resize
+  hideElementsAt1199px();
   window.addEventListener('resize', hideElementsAt1199px);

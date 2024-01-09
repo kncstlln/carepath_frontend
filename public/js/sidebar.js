@@ -1,11 +1,9 @@
-// Selecting the sidebar and buttons
 const sidebar = document.querySelector(".sidebar");
 const content = document.querySelector(".content");
 const sidebarOpenBtn = document.querySelector("#sidebar-open");
 const sidebarCloseBtn = document.querySelector("#sidebar-close");
 const sidebarLockBtn = document.querySelector("#lock-icon");
 
-// Function to toggle the lock state of the sidebar
 const toggleLock = () => {
   sidebar.classList.toggle("locked");
 
@@ -18,7 +16,6 @@ const toggleLock = () => {
   }
 };
 
-// Function to hide the sidebar when the mouse leaves
 const hideSidebar = () => {
   if (sidebar.classList.contains("hoverable")) {
     sidebar.classList.add("close");
@@ -26,7 +23,7 @@ const hideSidebar = () => {
   }
 };
 
-// Function to show the sidebar when the mouse enter
+
 const showSidebar = () => {
   if (sidebar.classList.contains("hoverable")) {
     sidebar.classList.remove("close");
@@ -34,7 +31,7 @@ const showSidebar = () => {
   }
 };
 
-// Function to show and hide the sidebar
+
 const toggleSidebar = () => {
   sidebar.classList.toggle("close");
 };
@@ -43,7 +40,7 @@ document.addEventListener("DOMContentLoaded", () => {
     content.classList.add("shifted");
   });
 
-// If the window width is less than 800px, close the sidebar and remove hoverability and lock
+
 if (window.innerWidth < 800) {
   sidebar.classList.add("close");
   sidebar.classList.remove("locked");

@@ -1,21 +1,5 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
-    <link href="https://cdn.datatables.net/v/bs5/dt-1.13.6/r-2.5.0/datatables.min.css" rel="stylesheet">
-    <link href="{{ asset('css/admin/sidebar.css') }}" rel="stylesheet"/>
-    <script src="{{ asset('js/sidebar.js') }}" defer></script>
-    <link href="{{ asset('css/admin/dashboard.css') }}" rel="stylesheet"/>
-    <link href="{{ asset('css/admin/vaccine.css') }}" rel="stylesheet"/>
-    <link href="{{ asset('css/admin/index.css') }}" rel="stylesheet"/>
-    <link flex href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet" />
-    <script src="https://kit.fontawesome.com/2eead9cc17.js" crossorigin="anonymous"></script>
-    <link rel="icon" type="image/x-icon" href="{{ asset('/images/logo.png') }}">
-    <script src="{{ asset('js/dashboard.js') }}"></script>
-    <title>Users List</title>
-</head>
+@include('admin/head')
+<title>Users List</title>
 <body>
 @include('admin/sidebar')
     <div class="container-sm content mt-4" id="targetclientlist">
@@ -56,16 +40,14 @@
             @foreach($users as $key => $user)
                 <tr>
                     <th scope="row">{{ $key + 1 }}</th>
-                    <td class="align-middle">
+                    <td class="align-middle table-secondary">
                         @if(isset($user['barangay']))
                             {{ $user['barangay']['name'] }}
-                        @else
-                            <!-- Leave it as a blank -->
                         @endif
                     </td>
-                    <td class="table-secondary align-middle">{{ $user['username'] }}</td>
+                    <td class="align-middle">{{ $user['username'] }}</td>
                     <td class="table-secondary align-middle">{{ $user['name'] }}</td>
-                    <td class="table-secondary align-middle">{{ $user['email'] }}</td>
+                    <td class="align-middle">{{ $user['email'] }}</td>
                     <td class="table-secondary">{{ $user['user_type'] === 0 ? 'Admin' : 'Health Worker' }}</td>
                     <td class="align-middle d-flex justify-content-center">
                         <a href="{{ route('admin.users.edit', ['id' => $user['id']]) }}" class="my-auto"><i class='bx bxs-pencil me-2'></i></a>

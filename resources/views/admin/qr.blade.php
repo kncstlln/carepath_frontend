@@ -18,13 +18,11 @@
 
     
     <script>
-        // Start camera scanning
         let scanner;
         Instascan.Camera.getCameras().then(function (cameras) {
             if (cameras.length > 0) {
                 scanner = new Instascan.Scanner({ video: document.getElementById('preview'), mirror: false });
                 scanner.addListener('scan', function (content) {
-                    // Process the scanned QR code content
                     processQRCodeContent(content);
                 });
                 let select = document.getElementById('cameraSelect');
@@ -46,11 +44,9 @@
         });
 
         function processQRCodeContent(content) {
-            // Split the QR data by '&' to get individual key-value pairs
             let dataPairs = content.split('&');
             let result = {};
 
-            // Loop through the data pairs and populate the result object
             dataPairs.forEach(pair => {
                 let [key, value] = pair.split('=');
 
@@ -81,17 +77,14 @@
                         case '8':
                             result['contact_number'] = value;
                             break;
-                        // Add more cases if there are more possible keys
                     }
                 }
             });
 
-            // Redirect to the specified route with the extracted variables as parameters in the URL
             let queryString = Object.keys(result).map(key => key + '=' + result[key]).join('&');
             console.log(queryString);
-            let redirectURL = '/admin/infants/add?' + queryString; // Adjust the URL as needed
+            let redirectURL = '/admin/infants/add?' + queryString;
 
-            // Redirect the user to the specified route
             window.location.href = redirectURL;
         }
     </script>

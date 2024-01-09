@@ -5,7 +5,7 @@ function validateForm() {
     var usernameError = document.getElementById("usernameError");
     var passwordError = document.getElementById("passwordError");
 
-    // Reset previous error messages
+
     usernameError.style.display = "none";
     passwordError.style.display = "none";
 
