@@ -1,21 +1,5 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
-    <link href="https://cdn.datatables.net/v/bs5/dt-1.13.6/r-2.5.0/datatables.min.css" rel="stylesheet">
-    <link href="{{ asset('../css/user/sidebar.css') }}" rel="stylesheet"/>
-    <script src="{{ asset('js/sidebar.js') }}" defer></script>
-    <link href="{{ asset('css/user/dashboard.css') }}" rel="stylesheet"/>
-    <link href="{{ asset('css/user/vaccine.css') }}" rel="stylesheet"/>
-    <link href="{{ asset('css/user/index.css') }}" rel="stylesheet"/>
-    <link href="{{ asset('css/brgySelect.css') }}" rel="stylesheet"/>
-    <link flex href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet" />
-    <script src="https://kit.fontawesome.com/2eead9cc17.js" crossorigin="anonymous"></script>
-    <script src="{{ asset('js/dashboard.js') }}"></script>
-    <title>Upcoming Vaccinations</title>
-</head>
+@include('admin/head')
+<title>Upcoming Vaccinations</title>
 <body>
 @include('user.sidebar')
     <div class="container-sm content mt-4" id="targetclientlist">

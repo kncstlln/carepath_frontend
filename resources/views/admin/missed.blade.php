@@ -1,22 +1,5 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
-    <link href="https://cdn.datatables.net/v/bs5/dt-1.13.6/r-2.5.0/datatables.min.css" rel="stylesheet">
-    <link href="css/admin/sidebar.css" rel="stylesheet"/>
-    <script src="js/sidebar.js" defer></script>
-    <link href="{{ asset('css/admin/index.css') }}" rel="stylesheet"/>
-    <link href="css/admin/dashboard.css" rel="stylesheet"/>
-    <link href="css/admin/vaccine.css" rel="stylesheet"/>
-    <link href="css/admin/brgySelect.css" rel="stylesheet"/>
-    <link flex href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet" />
-    <link rel="icon" type="image/x-icon" href="{{ asset('/images/logo.png') }}">
-    <script src="https://kit.fontawesome.com/2eead9cc17.js" crossorigin="anonymous"></script>
-    <script src="js/dashboard.js"></script>
-    <title>Missed Vaccinations</title>
-</head>
+@include('admin/head')
+<title>Missed Vaccinations</title>
 <body>
   @include('admin/sidebar')
     <div class="container-md mt-4 content" id="targetclientlist">
@@ -28,9 +11,6 @@
             <div class="col-12 col-sm-8 col-md-5 col-lg-3 col-xl-2 mb-3 me-2">
                 <a class="btn addButton w-100" role="button" id="button-export" style="border:solid">Export To Excel</a>
             </div>
-            <!-- <div class="col-12 col-sm-8 col-md-5 col-lg-3 col-xl-2 mb-3 me-2">
-                <a class="btn addButton w-100"  role="button" id="button-add">Add Infant +</a>
-            </div> -->
         </div>
 
         <div class="table-responsive-lg">
@@ -74,7 +54,6 @@
             return results === null ? '' : decodeURIComponent(results[1].replace(/\+/g, ' '));
         }
 
-        // Set initial filter value based on URL parameter
         const vaccineFilter = getUrlParameter('missed-vaccine-filter');
 
         let searchInputsContainer = $('<div class="search-inputs row mb-3"></div>');
@@ -119,7 +98,6 @@
 
                         input.placeholder = title;
 
-                        // Set search term for the 'Vaccine/s' column based on URL parameter
                         if (title.toLowerCase() === 'vaccine/s' && vaccineFilter) {
                             input.value = vaccineFilter;
                             column.search(vaccineFilter).draw();
@@ -149,7 +127,6 @@
                 const cells = Array.from(row.children);
                 const csvValues = cells.map(cell => {
                     let value = cell.textContent.trim();
-                    // Check if the value contains a comma and wrap it in double quotes
                     if (value.includes(',')) {
                         value = `"${value}"`;
                     }
@@ -163,12 +140,10 @@
         }
 
         document.getElementById('button-export').addEventListener('click', function () {
-            // Fetch the current data from the DataTable
             const table = $('#missedTable').DataTable();
             const data = table.data().toArray();
 
-            if (data.length > 0) {
-                // Here, convert the data to CSV format
+            if (data.length > 0) { 
                 const csvContent = convertJSONToCSV(data);
                 downloadCSV(csvContent, 'missedTable.csv');
             } else {

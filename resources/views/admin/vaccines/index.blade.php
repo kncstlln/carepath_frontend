@@ -1,21 +1,5 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
-    <link href="https://cdn.datatables.net/v/bs5/dt-1.13.6/r-2.5.0/datatables.min.css" rel="stylesheet">
-    <link href="{{ asset('css/admin/sidebar.css') }}" rel="stylesheet"/>
-    <script src="{{ asset('js/sidebar.js') }}" defer></script>
-    <link href="{{ asset('css/admin/dashboard.css') }}" rel="stylesheet"/>
-    <link href="{{ asset('css/admin/vaccine.css') }}" rel="stylesheet"/>
-    <link href="{{ asset('css/admin/index.css') }}" rel="stylesheet"/>
-    <link flex href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet" />
-    <script src="https://kit.fontawesome.com/2eead9cc17.js" crossorigin="anonymous"></script>
-    <link rel="icon" type="image/x-icon" href="{{ asset('/images/logo.png') }}">
-    <script src="{{ asset('js/dashboard.js') }}"></script>
-    <title>Vaccine List</title>
-</head>
+@include('admin/head')
+<title>Vaccine List</title>
 <body>
 @include('admin/sidebar')
     <div class="container-sm mt-4 content" id="targetclientlist" >
@@ -60,7 +44,7 @@
                   <td scope="row">{{ $vaccine['id'] }}</td>
                   <td class="table-secondary align-middle">{{ $vaccine['name'] }}</td>
                   <td class="align-middle">{{ $vaccine['short_name'] }}</td>
-                  <td class="table-secondary tableSize">
+                  <td class="table-secondary" style="width: 150px;">
                       <select class="form-select vaccine-status" data-vaccine-id="{{ $vaccine['id'] }}" aria-label="Default select example">
                           <option value="1" {{ $vaccine['status'] == 1 ? 'selected' : '' }}>Active</option>
                           <option value="0" {{ $vaccine['status'] == 0 ? 'selected' : '' }}>Inactive</option>

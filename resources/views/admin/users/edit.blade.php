@@ -1,19 +1,5 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
-    <link href="{{ asset('css/admin/sidebar.css') }}" rel="stylesheet"/>
-    <link href="{{ asset('css/admin/index.css') }}" rel="stylesheet"/>
-    <link href="{{ asset('css/admin/addVaccine.css') }}" rel="stylesheet"/>
-    <script src="{{ asset('js/sidebar.js') }}" defer></script>
-    <script src="{{ asset('js/index.js') }}"></script>
-    <link rel="icon" type="image/x-icon" href="{{ asset('/images/logo.png') }}">
-    <link flex href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet" />
-    <script src="https://kit.fontawesome.com/2eead9cc17.js" crossorigin="anonymous"></script>
-    <title>Edit User</title>    
-</head>
+@include('admin/head')
+<title>Edit User</title>   
 <body>
 @include('admin/sidebar')
   <div class="container-sm content mt-4">
@@ -89,7 +75,7 @@
       </div>
   </div>
 
-  <script>
+<script>
     const positionSelect = document.getElementById('position');
     const barangayRow = document.getElementById('barangayRow');
     const barangaySelect = document.getElementById('selectBarangay');
@@ -106,54 +92,44 @@
 </script>
 
 <script>
-function validatePassword() {
-  var passwordInput = document.getElementById("inputPassword");
-  var confirmPasswordInput = document.getElementById("confirmPassword");
-  var errorText = document.getElementById("errorText");
-  var password = passwordInput.value;
-  var confirmPassword = confirmPasswordInput.value;
+    function validatePassword() {
+    var passwordInput = document.getElementById("inputPassword");
+    var confirmPasswordInput = document.getElementById("confirmPassword");
+    var errorText = document.getElementById("errorText");
+    var password = passwordInput.value;
+    var confirmPassword = confirmPasswordInput.value;
 
-  // Define regular expressions for letters and numbers
-  var letterRegex = /[a-zA-Z]/;
-  var numberRegex = /[0-9]/;
-  var spaceRegex = /\s/; // Regular expression to check for spaces
-  var emojiRegex = /[\uD800-\uDBFF][\uDC00-\uDFFF]/; // Regular expression to check for emojis
+    var letterRegex = /[a-zA-Z]/;
+    var numberRegex = /[0-9]/;
+    var spaceRegex = /\s/;
+    var emojiRegex = /[\uD800-\uDBFF][\uDC00-\uDFFF]/;
 
-  // Check if passwords match
-  if (password === confirmPassword) {
-    // Passwords match, remove focus ring and message
-    confirmPasswordInput.style.borderColor = "";
-    errorText.style.display = "none";
-  } else {
-    // Passwords don't match, add focus ring and display message
-    confirmPasswordInput.style.borderColor = "red";
-    errorText.style.display = "block";
-  }
 
-  // Your existing password validation code here
+    if (password === confirmPassword) {
+        confirmPasswordInput.style.borderColor = "";
+        errorText.style.display = "none";
+    } else {
+        confirmPasswordInput.style.borderColor = "red";
+        errorText.style.display = "block";
+    }
 
-  // Check other password criteria
-  if (password.length >= 8 && password.length <= 20 && letterRegex.test(password) && numberRegex.test(password) && !spaceRegex.test(password) && !emojiRegex.test(password)) {
-    // Password meets all criteria
-    return true;
-  } else {
-    // Password does not meet the criteria
-    alert("Your password must be 8-20 characters long, contain letters and numbers, and must not contain spaces or emoji.");
-    passwordInput.value = ""; // Clear the input field
-    return false;
-  }
-}
-
-// Add an event listener to the form to call the validatePassword function when the form is submitted
+    if (password.length >= 8 && password.length <= 20 && letterRegex.test(password) && numberRegex.test(password) && !spaceRegex.test(password) && !emojiRegex.test(password)) {
+        return true;
+    } else {
+        alert("Your password must be 8-20 characters long, contain letters and numbers, and must not contain spaces or emoji.");
+        passwordInput.value = "";
+        return false;
+    }
+    }
 document.querySelector("form").addEventListener("submit", function(event) {
   if (!validatePassword()) {
     event.preventDefault(); 
   }
 });
 
-// Add an event listener to the confirmPassword input to call the validatePassword function when its value changes
 document.getElementById("confirmPassword").addEventListener("input", validatePassword);
 </script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"> </script>
+
 </body>
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"> </script>
 </html>

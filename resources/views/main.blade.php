@@ -3,23 +3,12 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link
-      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
-      rel="stylesheet"
-      integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM"
-      crossorigin="anonymous"
-    />
-    <script
-      src="https://kit.fontawesome.com/2eead9cc17.js"
-      crossorigin="anonymous"
-    ></script>
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
-    />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+    <link rel="icon" type="image/x-icon" href="{{ asset('/images/logo.png') }}">
     <link href="{{ asset('css/main.css') }}" rel="stylesheet" />
     <script src="{{ asset('js/main.js') }}"></script>
-    <link rel="icon" type="image/x-icon" href="{{ asset('/images/logo.png') }}">
+    <script src="https://kit.fontawesome.com/2eead9cc17.js" crossorigin="anonymous"></script>
     <title>CarePath</title>
   </head>
   <body>
@@ -182,7 +171,7 @@
             width="250"
           />
           <img
-            src="images/banner2.png"
+            src="{{ asset('images/banner3.jpeg') }}"
             class="img-fluid fourth"
             width="250"
           />
@@ -230,7 +219,7 @@
           </div>
           <div class="col-md mt-2 d-flex justify-content-center">
             <div class="card animate__animated animate__fadeInRight" style="width: 18rem;">
-              <img src="images/banner.png" class="card-img-top" alt="...">
+              <img src="{{ asset('images/banner3.jpeg') }}" class="card-img-top" alt="Carepath Photo">
               <div class="card-body">
                 <h5 class="card-title">Community Outreach & Education:</h5>
                 <p class="card-text">Engaging community with educational resources to raise awareness about infant immunization.</p>
