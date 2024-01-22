@@ -1,0 +1,94 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap");
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+}
+body {
+  overflow-x: hidden;
+  min-height: 100vh;
+  background: #eef5fe;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+input[type=number] {
+   appearance: textfield;
+  -moz-appearance: textfield;
+}
+
+a {
+    color: inherit;
+}
+
+.dropdown-color:hover{
+    background-color:#980B0B;
+    color: white;
+}
+
+#button-add{
+    background-color:#863A3A;
+    color: white;
+}
+
+#button-add:hover{
+    background-color:#642c2c;
+    color: white;
+}
+
+.selectSize{
+    width:300px;
+}
+
+.selectDate{
+    width:150px;
+}
+
+.createRecord{
+    border:1px solid black;
+    border-radius: 20px;
+}
+
+td.text-uppercase{
+    text-transform:uppercase;
+}
+
+button.btn.cancelButton{
+    height: 50px;
+    width: 150px;
+    
+}
+
+button.btn.submitButton{
+    height: 50px;
+    width: 150px;
+    background-color:#980B0B;
+    color:white;
+}
+
+button.btn.submitButton:hover{
+    height: 50px;
+    background-color:#680c0c;
+    color:white;
+}
+
+.pagination > li > a, .pagination > li > span{
+    background-color:white; 
+    color: black;
+}
+
+.pagination > li.active > a, .pagination > li.active > span{
+    background-color:#980B0B; 
+    border-color: transparent;
+}
+/* 
+tfoot input {
+    width: 100%;
+    padding: 3px;
+    box-sizing: border-box;
+} */

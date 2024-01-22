@@ -1,0 +1,50 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap");
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+}
+body {
+  min-height: 100vh;
+  background: #eef5fe;
+}
+
+.createRecord{
+    border:1px solid black;
+    border-radius: 20px;
+}
+
+
+.container .btn.buttonColor{
+    background-color:#980B0B;
+    color:white;
+    width:150px;
+    height:50px;
+}
+
+.container .btn.buttonColor:hover{
+    background-color:#630808;
+    color:white;
+    width:150px;
+    height:50px;
+}
+
+.submitButton{
+    height: 50px;
+    width: 200px;
+    background-color:#980B0B;
+    color:white;
+}
+
+.submitButton:hover{
+    height: 50px;
+    background-color:#680c0c;
+    color:white;
+}
+
+.cancelButton{
+    height: 50px;
+    width: 200px;
+    
+}

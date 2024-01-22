@@ -1,0 +1,72 @@
+#rectangle{
+    border:1px solid;
+    border-radius: 10px;
+    background-color:#980B0B;
+    height: 160px;
+}
+#user{
+    color: white;
+    font-size: 41px;
+    margin-top:33px;
+}
+
+.buttonProfile{
+    background-color:#ffffff;
+}
+
+.buttonProfile:focus, .buttonProfile:active, .buttonProfile:hover{
+    background-color:#ffffff;
+}
+
+
+
+#subtitle{
+    color:#D4E3F0;
+    font-size:16px;
+}
+
+#listbox1{
+    height:75px;
+    border: 1px solid;
+    border-radius: 8px;
+    border-color:#60347A;
+    font-size: 14px;
+    background-color: #FFF
+}
+
+#listbox2{
+    height:75px;
+    border: 1px solid;
+    font-size: 14px;
+    border-radius: 8px;
+    border-color:#DDB271;
+    background-color: #FFF
+}
+
+#listbox3{
+    height:75px;
+    border: 1px solid;
+    font-size: 14px;
+    border-radius: 8px;
+    border-color:#6E7191;
+    background-color: #FFF
+}
+
+#listbox4{
+    height:75px;
+    border: 1px solid;
+    font-size: 14px;
+    border-radius: 8px;
+    border-color:#980B0B;
+    background-color: #FFF
+}
+
+@media only screen and (max-width: 768px){
+    #subtitle{
+        font-size: 14px;
+    }
+    
+    #user{
+        font-size: 31px;
+    }
+}
